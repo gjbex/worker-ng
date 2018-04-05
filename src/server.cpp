@@ -3,7 +3,7 @@
 #include <iostream>
 #include <zmq.hpp>
 
-#include "worker_ng_config.h"
+#include "utils.h"
 
 namespace po = boost::program_options;
 
@@ -67,9 +67,7 @@ Options get_options(int argc, char* argv[]) {
     }
 
     if (vm.count("version")) {
-        std::cout << worker_ng_NAME << " "
-                  << worker_ng_VERSION_MAJOR << "."
-                  << worker_ng_VERSION_MINOR << std::endl;
+        print_version_info();
         std::exit(0);
     }
 

@@ -45,8 +45,12 @@ install (FILES "${PROJECT_SOURCE_DIR}/src/work_parser.h"
          DESTINATION include)
 
 if (Boost_FOUND)
+    set (worker_ng_COMMON_SRCS "${PROJECT_SOURCE_DIR}/src/utils.cpp")
 # define worker_server target and installation
-    add_executable (worker_server "${PROJECT_SOURCE_DIR}/src/server.cpp")
+    add_executable (worker_server
+            "${PROJECT_SOURCE_DIR}/src/server.cpp"
+            "${worker_ng_COMMON_SRCS}"
+            )
     target_include_directories (worker_server PRIVATE
             "${ZeroMQ_INCLUDE_DIR}"
             "${Boost_INCLUDE_DIR}"
@@ -58,7 +62,10 @@ if (Boost_FOUND)
     install (TARGETS worker_server DESTINATION bin)
 
 # define worker_client target and installation
-    add_executable (worker_client "${PROJECT_SOURCE_DIR}/src/client.cpp")
+    add_executable (worker_client
+            "${PROJECT_SOURCE_DIR}/src/client.cpp"
+            "${worker_ng_COMMON_SRCS}"
+            )
     target_include_directories (worker_client PRIVATE
             "${ZeroMQ_INCLUDE_DIR}"
             "${Boost_INCLUDE_DIR}"
