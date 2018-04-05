@@ -1,6 +1,5 @@
 #include <boost/asio/ip/host_name.hpp>
 #include <iostream>
-#include <sstream>
 #include <zmq.hpp>
 
 int main() {
@@ -15,7 +14,7 @@ int main() {
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
     socket.bind(bind_str);
-    std::cout << "Server listening on " << info_str << std::endl;
+    std::cerr << "Server listening on " << info_str << std::endl;
 
     for (int msg_nr = 0; ; ++msg_nr) {
         zmq::message_t request;
