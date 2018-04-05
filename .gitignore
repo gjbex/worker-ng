@@ -33,3 +33,11 @@
 
 # Editor backup files
 *~
+*.swp
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles
+
+# Build directory
+build
