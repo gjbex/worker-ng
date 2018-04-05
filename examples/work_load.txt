@@ -1,0 +1,5 @@
+echo "hello world"
+sleep 10
+#----
+sleep 15
+echo "bye world"
