@@ -32,7 +32,7 @@ find_library (ZeroMQ_LIBRARY
 # find Boost
 set (Boost_USE_STATIC_LIBS ON)
 set (Boost_USE_MULTIHREADED OFF)
-find_package (Boost 1.66.0 COMPONENTS program_options)
+find_package (Boost 1.66.0 COMPONENTS program_options system)
 
 # define work_parser target
 add_library (work_parser "${PROJECT_SOURCE_DIR}/src/work_parser.cpp")
@@ -46,14 +46,26 @@ install (FILES "${PROJECT_SOURCE_DIR}/src/work_parser.h"
 if (Boost_FOUND)
 # define worker_server target and installation
     add_executable (worker_server "${PROJECT_SOURCE_DIR}/src/server.cpp")
-    target_include_directories (worker_server PUBLIC "${ZeroMQ_INCLUDE_DIR}")
-    target_link_libraries (worker_server ${ZeroMQ_LIBRARY})
+    target_include_directories (worker_server PRIVATE
+            "${ZeroMQ_INCLUDE_DIR}"
+            "${Boost_INCLUDE_DIR}"
+            )
+    target_link_libraries (worker_server LINK_PRIVATE
+            ${ZeroMQ_LIBRARY}
+            ${Boost_LIBRARIES}
+            )
     install (TARGETS worker_server DESTINATION bin)
 
 # define worker_client target and installation
     add_executable (worker_client "${PROJECT_SOURCE_DIR}/src/client.cpp")
-    target_include_directories (worker_client PUBLIC "${ZeroMQ_INCLUDE_DIR}")
-    target_link_libraries (worker_client ${ZeroMQ_LIBRARY})
+    target_include_directories (worker_client PRIVATE
+            "${ZeroMQ_INCLUDE_DIR}"
+            "${Boost_INCLUDE_DIR}"
+            )
+    target_link_libraries (worker_client LINK_PRIVATE
+            ${ZeroMQ_LIBRARY}
+            ${Boost_LIBRARIES}
+            )
     install (TARGETS worker_client DESTINATION bin)
 endif()
 
