@@ -10,11 +10,13 @@ configure_file (
     "${PROJECT_SOURCE_DIR}/src/worker_ng_config.h.in"
     "${PROJECT_SOURCE_DIR}/src/worker_ng_config.h"
     )
+install (FILES "${PROJECT_SOURCE_DIR}/src/worker_ng_config.h"
+         DESTINATION include)
 
 # set compiler optons
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -g -Wall -Wextra")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra")
 
-# search libraries
+# search 0MQ library
 find_package (PkgConfig)
 pkg_check_modules (PC_ZeroMQ QUIET zmq)
 find_path (ZeroMQ_INCLUDE_DIR
@@ -27,28 +29,33 @@ find_library (ZeroMQ_LIBRARY
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
 
-# define targets
+# find Boost
+set (Boost_USE_STATIC_LIBS ON)
+set (Boost_USE_MULTIHREADED OFF)
+find_package (Boost 1.66.0 COMPONENTS program_options)
+
+# define work_parser target
 add_library (work_parser "${PROJECT_SOURCE_DIR}/src/work_parser.cpp")
 add_executable (parser_test "${PROJECT_SOURCE_DIR}/src/parser_test.cpp")
 target_link_libraries (parser_test work_parser)
-
-add_executable (worker_server "${PROJECT_SOURCE_DIR}/src/server.cpp")
-target_include_directories (worker_server PUBLIC "${ZeroMQ_INCLUDE_DIR}")
-target_link_libraries (worker_server ${ZeroMQ_LIBRARY})
-
-add_executable (worker_client "${PROJECT_SOURCE_DIR}/src/client.cpp")
-target_include_directories (worker_client PUBLIC "${ZeroMQ_INCLUDE_DIR}")
-target_link_libraries (worker_client ${ZeroMQ_LIBRARY})
-
-# define installation locations
 install (TARGETS parser_test DESTINATION bin)
 install (TARGETS work_parser DESTINATION lib)
-install (FILES "${PROJECT_SOURCE_DIR}/src/worker_ng_config.h"
-         DESTINATION include)
 install (FILES "${PROJECT_SOURCE_DIR}/src/work_parser.h"
          DESTINATION include)
-install (TARGETS worker_server DESTINATION bin)
-install (TARGETS worker_client DESTINATION bin)
+
+if (Boost_FOUND)
+# define worker_server target and installation
+    add_executable (worker_server "${PROJECT_SOURCE_DIR}/src/server.cpp")
+    target_include_directories (worker_server PUBLIC "${ZeroMQ_INCLUDE_DIR}")
+    target_link_libraries (worker_server ${ZeroMQ_LIBRARY})
+    install (TARGETS worker_server DESTINATION bin)
+
+# define worker_client target and installation
+    add_executable (worker_client "${PROJECT_SOURCE_DIR}/src/client.cpp")
+    target_include_directories (worker_client PUBLIC "${ZeroMQ_INCLUDE_DIR}")
+    target_link_libraries (worker_client ${ZeroMQ_LIBRARY})
+    install (TARGETS worker_client DESTINATION bin)
+endif()
 
 # add packer settings
 include (InstallRequiredSystemLibraries)
