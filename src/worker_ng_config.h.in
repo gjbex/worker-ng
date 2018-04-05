@@ -1,0 +1,3 @@
+// version information passed in from CMake
+#define worker_ng_VERSION_MAJOR @worker_ng_VERSION_MAJOR@
+#define worker_ng_VERSION_MINOR @worker_ng_VERSION_MINOR@
