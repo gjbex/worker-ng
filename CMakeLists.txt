@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.0)
+cmake_minimum_required (VERSION 3.11 FATAL_ERROR)
 project (worker_ng LANGUAGES CXX)
 
 # version information
@@ -36,13 +36,10 @@ set (Boost_USE_MULTIHREADED OFF)
 find_package (Boost 1.66.0 COMPONENTS program_options system)
 
 # define work_parser target
-add_library (work_parser "${PROJECT_SOURCE_DIR}/src/work_parser.cpp")
+add_subdirectory ("${PROJECT_SOURCE_DIR}/src/work_parser")
 add_executable (parser_test "${PROJECT_SOURCE_DIR}/src/parser_test.cpp")
 target_link_libraries (parser_test work_parser)
 install (TARGETS parser_test DESTINATION bin)
-install (TARGETS work_parser DESTINATION lib)
-install (FILES "${PROJECT_SOURCE_DIR}/src/work_parser.h"
-         DESTINATION include)
 
 if (Boost_FOUND)
     set (worker_ng_COMMON_SRCS "${PROJECT_SOURCE_DIR}/src/utils.cpp")

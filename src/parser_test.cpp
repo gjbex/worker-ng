@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "work_parser.h"
+#include "work_parser/work_parser.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
