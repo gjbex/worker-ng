@@ -6,7 +6,7 @@
 #include <tuple>
 #include <zmq.hpp>
 
-#include "envelope.h"
+#include "message.h"
 #include "utils.h"
 
 namespace po = boost::program_options;
@@ -19,7 +19,7 @@ Options get_options(int argc, char* argv[]);
 
 int main(int argc, char* argv[]) {
     Uuid id = boost::uuids::random_generator()();
-    Envelope_builder env_builder(id);
+    Message_builder env_builder(id);
     std::string server;
     int time_out;
     std::tie(server, time_out) = get_options(argc, argv);

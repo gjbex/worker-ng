@@ -14,16 +14,16 @@ target_link_libraries (parser_test work_parser)
 install (TARGETS parser_test DESTINATION bin)
 
 if (Boost_FOUND)
-    set (worker_ng_COMMON_SRCS utils.cpp envelope.cpp)
-# define envelope_test target and installation
-    add_executable (envelope_test
-            envelope_test.cpp
-            envelope.cpp
+    set (worker_ng_COMMON_SRCS utils.cpp message.cpp)
+# define message_test target and installation
+    add_executable (message_test
+            message_test.cpp
+            message.cpp
             )
-    target_include_directories (envelope_test PRIVATE
+    target_include_directories (message_test PRIVATE
             "${Boost_INCLUDE_DIR}"
             )
-    install (TARGETS envelope_test DESTINATION bin)
+    install (TARGETS message_test DESTINATION bin)
 # define worker_server target and installation
     add_executable (worker_server
             server.cpp
