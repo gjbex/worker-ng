@@ -1,18 +1,25 @@
 #include <boost/program_options.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
 #include <iostream>
 #include <sstream>
 #include <tuple>
 #include <zmq.hpp>
 
+#include "envelope.h"
 #include "utils.h"
 
 namespace po = boost::program_options;
+
+using Uuid = boost::uuids::uuid;
 
 using Options = std::tuple<std::string, int>;
 
 Options get_options(int argc, char* argv[]);
 
 int main(int argc, char* argv[]) {
+    Uuid id = boost::uuids::random_generator()();
+    Envelope_builder env_builder(id);
     std::string server;
     int time_out;
     std::tie(server, time_out) = get_options(argc, argv);
