@@ -1,23 +1,21 @@
 #include <boost/asio/ip/host_name.hpp>
 #include <boost/program_options.hpp>
-#include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include <iostream>
 #include <zmq.hpp>
 
 #include "message.h"
 #include "utils.h"
-
-namespace po = boost::program_options;
-
-using Uuid = boost::uuids::uuid;
+#include "work_parser/work_parser.h"
 
 using Options = std::tuple<std::string, int>;
 
 Options get_options(int argc, char* argv[]);
+
 int main(int argc, char* argv[]) {
     Uuid id = boost::uuids::random_generator()();
-    Message_builder env_builder(id);
+    Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
     std::string workfile_name;
     int port_nr;
@@ -32,6 +30,7 @@ int main(int argc, char* argv[]) {
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
     socket.bind(bind_str);
+    std::cerr << "Server id: " << id << std::endl;
     std::cerr << "Server listening on " << info_str << std::endl;
 
     for (int msg_nr = 0; ; ++msg_nr) {
@@ -48,6 +47,7 @@ int main(int argc, char* argv[]) {
 }
 
 Options get_options(int argc, char* argv[]) {
+    namespace po = boost::program_options;
     std::string workfile_name;
     const int default_port {5555};
     int port_nr;
