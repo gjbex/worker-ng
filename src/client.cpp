@@ -1,6 +1,7 @@
+#include <boost/lexical_cast.hpp>
 #include <boost/program_options.hpp>
-#include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include <iostream>
 #include <sstream>
 #include <tuple>
@@ -9,44 +10,55 @@
 #include "message.h"
 #include "utils.h"
 
-namespace po = boost::program_options;
-
-using Uuid = boost::uuids::uuid;
-
-using Options = std::tuple<std::string, int>;
+using Options = std::tuple<std::string, Uuid, int>;
 
 Options get_options(int argc, char* argv[]);
 
 int main(int argc, char* argv[]) {
-    Uuid id = boost::uuids::random_generator()();
-    Message_builder env_builder(id);
+    Uuid client_id = boost::uuids::random_generator()();
+    Message_builder msg_builder(client_id);
     std::string server;
+    Uuid server_id;
     int time_out;
-    std::tie(server, time_out) = get_options(argc, argv);
+    std::tie(server, server_id, time_out) = get_options(argc, argv);
 
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REQ);
     socket.setsockopt(ZMQ_RCVTIMEO, time_out);
     socket.setsockopt(ZMQ_SNDTIMEO, time_out);
     socket.connect(server);
+    std::cerr << "Client id: " << client_id << std::endl;
 
-    for (int request_nr = 0; request_nr < 5; ++request_nr) {
-        zmq::message_t request(4);
-        memcpy(request.data(), "ping", 4);
-        std::cout << "sending ping " << request_nr << std::endl;
+    for (;;) {
+        auto msg_str = msg_builder.to(server_id).subject(Subject::query)
+                           .build_str();
+        size_t msg_length = msg_str.length();
+        zmq::message_t request(msg_length);
+        memcpy(request.data(), &msg_str[0], msg_length);
+        std::cout << "sending ping " << std::endl;
         socket.send(request);
         zmq::message_t reply;
         socket.recv(&reply);
-        std::istringstream msg(static_cast<char*>(reply.data()));
-        int msg_nr;
-        msg >> msg_nr;
-        std::cout << "received " << msg_nr << std::endl;
+        msg_str = std::string(static_cast<char*>(reply.data()));
+        auto msg = msg_builder.build(msg_str);
+        if (msg.subject() == Subject::stop) {
+            break;
+        } else if(msg.subject() == Subject::work) {
+            std::cout << "doing:" << std::endl;
+            std::cout << msg.content() << std::endl;
+        } else {
+            std::cerr << "### error: receive invalid message" << std::endl;
+            std::exit(2);
+        }
+
     }
     return 0;
 }
 
 Options get_options(int argc, char* argv[]) {
+    namespace po = boost::program_options;
     std::string server {""};
+    std::string server_uuid_str {""};
     const int default_timeout {1000};
     int timeout;
     po::options_description desc("Allowed options");
@@ -54,15 +66,12 @@ Options get_options(int argc, char* argv[]) {
         ("help,h", "produce help message")
         ("version,v", "show software version")
         ("server", po::value<std::string>(&server), "server to use")
+        ("uuid", po::value<std::string>(&server_uuid_str), "server UUID")
         ("timeout", po::value<int>(&timeout)->default_value(default_timeout),
          "client time out in ms")
     ;
-    po::positional_options_description pos_desc;
-    pos_desc.add("server", -1);
-
     po::variables_map vm;
-    po::store(po::command_line_parser(argc, argv)
-              .options(desc).positional(pos_desc).run(), vm);
+    po::store(po::parse_command_line(argc, argv, desc), vm);
     po::notify(vm);
 
     if (vm.count("help")) {
@@ -80,5 +89,11 @@ Options get_options(int argc, char* argv[]) {
         std::exit(1);
     }
 
-    return std::make_tuple(server, timeout);
+    if (!vm.count("uuid")) {
+        std::cerr << "### error: no server UUID specified" << std::endl;
+        std::exit(1);
+    }
+    Uuid uuid = boost::lexical_cast<Uuid>(server_uuid_str);
+
+    return std::make_tuple(server, uuid, timeout);
 }
