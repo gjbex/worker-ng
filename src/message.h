@@ -48,7 +48,8 @@ class message_parse_exception : public Worker_exception {
 
 class Message_builder {
     public:
-        Message_builder(Uuid process_id) : _from {process_id} {};
+        Message_builder(Uuid process_id) :
+            _from {process_id}, _id {0}, _content {""} {};
         Message_builder& to(const Uuid& to) {
             _to = to;
             return *this;
@@ -65,9 +66,8 @@ class Message_builder {
             _content = str;
             return *this;
         };
-        Message build() const {
-            return Message(_from, _to, _subject, _id, _content);
-        };
+        Message build();
+        std::string build_str();
         Message build(const std::string& str) const;
     private:
         Uuid _from;

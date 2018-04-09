@@ -13,6 +13,19 @@ std::ostream& operator<<(std::ostream& out, const Message& message) {
     return out;
 }
 
+Message Message_builder::build() {
+    Message msg(_from, _to, _subject, _id, _content);
+    _id = 0;
+    _content = std::string("");
+    return msg;
+}
+
+std::string Message_builder::build_str() {
+    std::stringstream str;
+    str << build();
+    return str.str();
+}
+
 Message Message_builder::build(const std::string& str) const {
     std::stringstream input(str);
     Uuid from;
