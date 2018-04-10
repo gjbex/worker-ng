@@ -2,6 +2,9 @@
 #define UTILS_HDR
 
 #include <exception>
+#include <zmq.hpp>
+
+#include "message.h"
 
 void print_version_info();
 
@@ -12,5 +15,7 @@ class Worker_exception : public std::exception {
     private:
         const char* _msg;
 };
+
+Message get_message(const zmq::message_t& zmq_msg);
 
 #endif

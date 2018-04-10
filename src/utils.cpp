@@ -1,5 +1,4 @@
 #include <iostream>
-#include <zmq.hpp>
 
 #include "worker_ng_config.h"
 #include "utils.h"
@@ -16,3 +15,10 @@ void print_version_info() {
         << zmq_minor << "."
         << zmq_patch << std::endl;
 };
+
+Message get_message(const zmq::message_t& zmq_msg) {
+    std::string msg_str;
+    msg_str.resize(zmq_msg.size());
+    memcpy(&msg_str[0], zmq_msg.data(), request.size());
+    return msg_builder.build(std::string(msg_str));
+}
