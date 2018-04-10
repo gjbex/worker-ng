@@ -30,17 +30,14 @@ int main(int argc, char* argv[]) {
     std::cerr << "Client id: " << client_id << std::endl;
 
     for (;;) {
-        auto msg_str = msg_builder.to(server_id).subject(Subject::query)
-                           .build_str();
-        size_t msg_length = msg_str.length();
-        zmq::message_t request(msg_length);
-        memcpy(request.data(), &msg_str[0], msg_length);
+        auto msg = msg_builder.to(server_id).subject(Subject::query)
+                           .build();
+        zmq::message_t request = pack_message(msg);
         std::cout << "sending ping " << std::endl;
         socket.send(request);
         zmq::message_t reply;
         socket.recv(&reply);
-        msg_str = std::string(static_cast<char*>(reply.data()));
-        auto msg = msg_builder.build(msg_str);
+        msg = unpack_message(reply, msg_builder);
         if (msg.subject() == Subject::stop) {
             break;
         } else if(msg.subject() == Subject::work) {

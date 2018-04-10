@@ -2,6 +2,7 @@
 #include <boost/program_options.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include <fstream>
 #include <iostream>
 #include <zmq.hpp>
 
@@ -20,6 +21,8 @@ int main(int argc, char* argv[]) {
     std::string workfile_name;
     int port_nr;
     std::tie(workfile_name, port_nr) = get_options(argc, argv);
+    Work_parser parser(std::make_shared<std::ifstream>(workfile_name));
+
     auto hostname = boost::asio::ip::host_name();
     const std::string bind_str {protocol + "://*:" +
                                 std::to_string(port_nr)};
@@ -35,13 +38,27 @@ int main(int argc, char* argv[]) {
 
     for (int msg_nr = 0; ; ++msg_nr) {
         zmq::message_t request;
-
         socket.recv(&request);
-        std::cout << "received ping" << std::endl;
-        std::string msg {std::to_string(msg_nr)};
-        zmq::message_t reply(msg.length());
-        memcpy(reply.data(), msg.c_str(), msg.length());
-        socket.send(reply);
+        auto msg = unpack_message(request, msg_builder);
+        std::cout << "message from " << msg.from() << std::endl;
+        if (msg.subject() == Subject::query) {
+            if (parser.has_next()) {
+                std::string work_item = parser.next();
+                size_t work_id = parser.nr_items();
+                msg_builder.to(msg.from()) .subject(Subject::work)
+                    .id(work_id) .content(work_item);
+            } else {
+                msg_builder.to(msg.from()) .subject(Subject::stop);
+            }
+            auto work_msg = msg_builder.build();
+            auto reply = pack_message(work_msg);
+            socket.send(reply);
+        } else if (msg.subject() == Subject::result) {
+            std::cout << "message from " << msg.from() << std::endl;
+        } else {
+            std::cerr << "### error: receive invalid message" << std::endl;
+            std::exit(2);
+        }
     }
     return 0;
 }
