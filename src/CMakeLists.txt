@@ -36,6 +36,7 @@ if (Boost_FOUND)
     target_link_libraries (worker_server LINK_PRIVATE
             "${ZeroMQ_LIBRARY}"
             "${Boost_LIBRARIES}"
+            work_parser
             )
     install (TARGETS worker_server DESTINATION bin)
 # define worker_client target and installation
