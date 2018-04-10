@@ -4,7 +4,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <iostream>
 
-#include "utils.h"
+#include "worker_exception.h"
 
 using Uuid = boost::uuids::uuid;
 
