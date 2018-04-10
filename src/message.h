@@ -26,6 +26,7 @@ class Message {
         size_t id() const { return _id; };
         std::string content() const { return _content; };
         size_t length() const { return _content.length(); };
+        std::string to_string() const;
         friend std::ostream& operator<<(std::ostream& out,
                                         const Message& envelope);
     private:
@@ -67,7 +68,6 @@ class Message_builder {
             return *this;
         };
         Message build();
-        std::string build_str();
         Message build(const std::string& str) const;
     private:
         Uuid _from;

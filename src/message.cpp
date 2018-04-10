@@ -3,6 +3,12 @@
 
 #include "message.h"
 
+std::string Message::to_string() const {
+    std::stringstream str;
+    str << *this;
+    return str.str();
+}
+
 std::ostream& operator<<(std::ostream& out, const Message& message) {
     out << message._from << " "
         << message._to << " "
@@ -18,12 +24,6 @@ Message Message_builder::build() {
     _id = 0;
     _content = std::string("");
     return msg;
-}
-
-std::string Message_builder::build_str() {
-    std::stringstream str;
-    str << build();
-    return str.str();
 }
 
 Message Message_builder::build(const std::string& str) const {
