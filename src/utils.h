@@ -16,6 +16,8 @@ class Worker_exception : public std::exception {
         const char* _msg;
 };
 
-Message get_message(const zmq::message_t& zmq_msg);
+Message unpack_message(const zmq::message_t& zmq_msg);
+
+zmq::message_t pack_message(const Message& msg);
 
 #endif

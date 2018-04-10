@@ -16,9 +16,17 @@ void print_version_info() {
         << zmq_patch << std::endl;
 };
 
-Message get_message(const zmq::message_t& zmq_msg) {
+Message unpack_message(const zmq::message_t& zmq_msg) {
     std::string msg_str;
     msg_str.resize(zmq_msg.size());
     memcpy(&msg_str[0], zmq_msg.data(), request.size());
     return msg_builder.build(std::string(msg_str));
+}
+
+zmq::message_t pack_message(const Message& msg) {
+    std::String msg_str = msg.to_string();
+    size_t msg_length = msg_str.length();
+    zmq::message_t zmq_msg(msg_length);
+    memcpy(zmq_msg.data(), &msg_str[0], msg_length);
+    return zmq_msg;
 }
