@@ -33,21 +33,32 @@ int main(int argc, char* argv[]) {
         auto msg = msg_builder.to(server_id).subject(Subject::query)
                            .build();
         zmq::message_t request = pack_message(msg);
-        std::cout << "sending ping " << std::endl;
+        std::cerr << "sending request to " << msg.to() << std::endl;
         socket.send(request);
         zmq::message_t reply;
         socket.recv(&reply);
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == Subject::stop) {
+            std::cerr << "received stop from " << msg.from()
+                      << ", exiting..." << std::endl;
             break;
         } else if(msg.subject() == Subject::work) {
-            std::cout << "doing:" << std::endl;
-            std::cout << msg.content() << std::endl;
+            std::cerr << "received work from " << msg.from()
+                      << ", processing..." << std::endl;
+            auto work_str = msg.content();
+            auto work_id = msg.id();
+            std::cout << work_str << std::endl;
+            std::string result {"done"};
+            auto result_msg = msg_builder.to(server_id)
+                                  .subject(Subject::result).id(work_id)
+                                  .content(result).build();
+            zmq::message_t result_reply = pack_message(result_msg);
+            std::cerr << "sending result to " << msg.to() << std::endl;
+            socket.send(result_reply);
         } else {
             std::cerr << "### error: receive invalid message" << std::endl;
             std::exit(2);
         }
-
     }
     return 0;
 }
