@@ -11,6 +11,7 @@ using Uuid = boost::uuids::uuid;
 class Message_builder;
 
 enum class Subject : char {
+    ack = 'a',
     query = 'q',
     result = 'r',
     work = 'w',

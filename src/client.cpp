@@ -55,6 +55,8 @@ int main(int argc, char* argv[]) {
             zmq::message_t result_reply = pack_message(result_msg);
             std::cerr << "sending result to " << msg.to() << std::endl;
             socket.send(result_reply);
+            zmq::message_t ack_response;
+            socket.recv(&ack_response);
         } else {
             std::cerr << "### error: receive invalid message" << std::endl;
             std::exit(2);

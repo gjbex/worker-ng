@@ -40,8 +40,8 @@ int main(int argc, char* argv[]) {
         zmq::message_t request;
         socket.recv(&request);
         auto msg = unpack_message(request, msg_builder);
-        std::cout << "message from " << msg.from() << std::endl;
         if (msg.subject() == Subject::query) {
+            std::cerr << "query message from " << msg.from() << std::endl;
             if (parser.has_next()) {
                 std::string work_item = parser.next();
                 size_t work_id = parser.nr_items();
@@ -51,10 +51,13 @@ int main(int argc, char* argv[]) {
                 msg_builder.to(msg.from()) .subject(Subject::stop);
             }
             auto work_msg = msg_builder.build();
-            auto reply = pack_message(work_msg);
-            socket.send(reply);
+            socket.send(pack_message(work_msg));
         } else if (msg.subject() == Subject::result) {
-            std::cout << "message from " << msg.from() << std::endl;
+            std::cerr << "reply message from " << msg.from() << std::endl;
+            std::cout << "result: " << msg.content() << std::endl;
+            auto ack_msg = msg_builder.to(msg.from()).subject(Subject::ack)
+                               .build();
+            socket.send(pack_message(ack_msg));
         } else {
             std::cerr << "### error: receive invalid message" << std::endl;
             std::exit(2);
