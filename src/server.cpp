@@ -4,6 +4,7 @@
 #include <boost/uuid/uuid_io.hpp>
 #include <fstream>
 #include <iostream>
+#include <set>
 #include <zmq.hpp>
 
 #include "message.h"
@@ -11,6 +12,13 @@
 #include "work_parser/work_parser.h"
 
 using Options = std::tuple<std::string, int>;
+
+void print_to_do(const std::set<size_t> to_do) {
+    std::cerr << "To do: ";
+    for (const auto& id: to_do)
+        std::cerr << " " << id;
+    std::cerr << std::endl;
+}
 
 Options get_options(int argc, char* argv[]);
 
@@ -36,7 +44,9 @@ int main(int argc, char* argv[]) {
     std::cerr << "Server id: " << id << std::endl;
     std::cerr << "Server listening on " << info_str << std::endl;
 
+    std::set<size_t> to_do;
     for (int msg_nr = 0; ; ++msg_nr) {
+        print_to_do(to_do);
         zmq::message_t request;
         socket.recv(&request);
         auto msg = unpack_message(request, msg_builder);
@@ -47,14 +57,23 @@ int main(int argc, char* argv[]) {
                 size_t work_id = parser.nr_items();
                 msg_builder.to(msg.from()) .subject(Subject::work)
                     .id(work_id) .content(work_item);
+                auto work_msg = msg_builder.build();
+                to_do.insert(work_id);
+                std::cerr << "work message to " << work_msg.to() << std::endl;
+                socket.send(pack_message(work_msg));
             } else {
                 msg_builder.to(msg.from()) .subject(Subject::stop);
+                auto stop_msg = msg_builder.build();
+                std::cerr << "stop message to " << stop_msg.to() << std::endl;
+                socket.send(pack_message(stop_msg));
+                if (to_do.empty())
+                    break;
             }
-            auto work_msg = msg_builder.build();
-            socket.send(pack_message(work_msg));
         } else if (msg.subject() == Subject::result) {
             std::cerr << "reply message from " << msg.from() << std::endl;
             std::cout << "result: " << msg.content() << std::endl;
+            int work_id = msg.id();
+            to_do.erase(work_id);
             auto ack_msg = msg_builder.to(msg.from()).subject(Subject::ack)
                                .build();
             socket.send(pack_message(ack_msg));
