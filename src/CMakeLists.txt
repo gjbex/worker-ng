@@ -9,6 +9,9 @@ install (FILES worker_ng_config.h
 # define work_parser target
 add_subdirectory ("work_parser")
 
+# define work_processor target
+add_subdirectory ("work_processor")
+
 add_executable (parser_test parser_test.cpp)
 target_link_libraries (parser_test work_parser)
 install (TARGETS parser_test DESTINATION bin)

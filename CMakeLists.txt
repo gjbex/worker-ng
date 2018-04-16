@@ -23,9 +23,8 @@ find_library (ZeroMQ_LIBRARY
         )
 
 # find Boost
-set (Boost_USE_STATIC_LIBS ON)
 set (Boost_USE_MULTIHREADED OFF)
-find_package (Boost 1.66.0 COMPONENTS program_options system)
+find_package (Boost 1.66.0 COMPONENTS program_options filesystem system)
 
 # define work_parser target
 add_subdirectory (src)
