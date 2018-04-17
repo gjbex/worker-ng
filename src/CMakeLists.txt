@@ -23,10 +23,16 @@ if (Boost_FOUND)
             message_test.cpp
             message.cpp
             )
-    target_include_directories (message_test PRIVATE
-            "${Boost_INCLUDE_DIR}"
-            )
     install (TARGETS message_test DESTINATION bin)
+# define processor_test target and installation
+    add_executable (processor_test
+            processor_test.cpp
+            )
+    target_link_libraries (processor_test LINK_PRIVATE
+            work_processor
+            pthread
+            )
+    install (TARGETS processor_test DESTINATION bin)
 # define worker_server target and installation
     add_executable (worker_server
             server.cpp
