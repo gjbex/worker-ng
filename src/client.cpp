@@ -9,6 +9,7 @@
 
 #include "message.h"
 #include "utils.h"
+#include "work_processor/processor.h"
 
 using Options = std::tuple<std::string, Uuid, int>;
 
@@ -47,11 +48,10 @@ int main(int argc, char* argv[]) {
                       << ", processing..." << std::endl;
             auto work_str = msg.content();
             auto work_id = msg.id();
-            std::cout << work_str << std::endl;
-            std::string result {"done"};
+            Process_result result = process_work(work_str);
             auto result_msg = msg_builder.to(server_id)
                                   .subject(Subject::result).id(work_id)
-                                  .content(result).build();
+                                  .content(std::get<1>(result)).build();
             zmq::message_t result_reply = pack_message(result_msg);
             std::cerr << "sending result to " << msg.to() << std::endl;
             socket.send(result_reply);

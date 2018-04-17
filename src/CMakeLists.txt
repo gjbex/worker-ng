@@ -60,6 +60,8 @@ if (Boost_FOUND)
     target_link_libraries (worker_client LINK_PRIVATE
             "${ZeroMQ_LIBRARY}"
             "${Boost_LIBRARIES}"
+            work_processor
+            pthread
             )
     install (TARGETS worker_client DESTINATION bin)
 endif()
