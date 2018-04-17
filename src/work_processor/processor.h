@@ -1,10 +1,7 @@
 #ifndef PROCEESSOR_HDR
 #define PROCEESSOR_HDR
 
-#include <boost/process.hpp>
 #include <tuple>
-
-namespace bp = boost::process;
 
 using Process_result = std::tuple<int,std::string,std::string>;
 
