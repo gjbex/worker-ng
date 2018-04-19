@@ -1,6 +1,8 @@
 #ifndef PROCESSOR_RESULT_HDR
 #define PROCESSOR_RESULT_HDR
 
+#include <iostream>
+
 #include "../worker_exception.h"
 
 class Result {
@@ -13,6 +15,9 @@ class Result {
         int exit_status() const { return _exit_status; };
         std::string stdout() const { return _stdout; };
         std::string stderr() const { return _stderr; };
+        std::string to_string() const;
+        friend std::ostream& operator<<(std::ostream& out,
+                                        const Result& result);
     private:
         int _exit_status;
         std::string _stdout;

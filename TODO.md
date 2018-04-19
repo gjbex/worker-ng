@@ -1,6 +1,5 @@
 # To do list
 
-  * Add result to string conversion.
   * Generate Result objects in client, use result parser in server.
   * Add server output streams.
   * Add API-level documentation for doxygen.
