@@ -1,5 +1,5 @@
 if (Boost_FOUND)
-    add_library (work_processor processor.cpp)
+    add_library (work_processor processor.cpp result.cpp)
     target_compile_options (work_processor PRIVATE
             "-Wno-unused-result" "-Wno-unused-parameter"
     )
