@@ -10,13 +10,13 @@ int main() {
         work_item << line << std::endl;
     std::cout << "work:" << std::endl;
     std::cout << work_item.str() << std::endl;
-    Process_result result = process_work(work_item.str());
+    Result result = process_work(work_item.str());
     std::cout << "result:" << std::endl;
-    std::cout << "\texit code: " << std::get<0>(result) << std::endl;
+    std::cout << "\texit code: " << result.exit_status() << std::endl;
     std::cout << "##### stdout #####" << std::endl;
-    std::cout << std::get<1>(result) << std::endl;
+    std::cout << result.stdout() << std::endl;
     std::cout << "##### stder #####" << std::endl;
-    std::cout << std::get<2>(result) << std::endl;
+    std::cout << result.stderr() << std::endl;
     std::cout << "#####" << std::endl;
     return 0;
 }

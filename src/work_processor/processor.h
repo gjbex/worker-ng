@@ -3,8 +3,8 @@
 
 #include <tuple>
 
-using Process_result = std::tuple<int,std::string,std::string>;
+#include "result.h"
 
-Process_result process_work(const std::string work_item);
+Result process_work(const std::string work_item);
 
 #endif

@@ -5,7 +5,7 @@
 
 namespace bp = boost::process;
 
-Process_result process_work(const std::string work_item) {
+Result process_work(const std::string work_item) {
     int exit_code {0};
     std::string output_str;
     std::string error_str;
@@ -23,5 +23,5 @@ Process_result process_work(const std::string work_item) {
         error_str += line + "\n";
     exit_code = process.exit_code();
     process.terminate();
-    return std::make_tuple(exit_code, output_str, error_str);
+    return Result(exit_code, output_str, error_str);
 }
