@@ -46,6 +46,7 @@ if (Boost_FOUND)
             "${ZeroMQ_LIBRARY}"
             "${Boost_LIBRARIES}"
             work_parser
+            work_processor
             )
     install (TARGETS worker_server DESTINATION bin)
 # define worker_client target and installation

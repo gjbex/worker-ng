@@ -10,6 +10,7 @@
 #include "message.h"
 #include "utils.h"
 #include "work_parser/work_parser.h"
+#include "work_processor/result.h"
 
 using Options = std::tuple<std::string, int>;
 
@@ -71,7 +72,10 @@ int main(int argc, char* argv[]) {
             }
         } else if (msg.subject() == Subject::result) {
             std::cerr << "reply message from " << msg.from() << std::endl;
-            std::cout << "result: " << msg.content() << std::endl;
+            std::string result_str = msg.content();
+            Result result(result_str);
+            std::cout << "result: " << result.stdout() << std::endl;
+            std::cerr << "result: " << result.stderr() << std::endl;
             int work_id = msg.id();
             to_do.erase(work_id);
             auto ack_msg = msg_builder.to(msg.from()).subject(Subject::ack)
