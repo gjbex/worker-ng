@@ -32,8 +32,8 @@ class Message {
                                         const Message& envelope);
     private:
         Message(const Uuid& from, const Uuid& to,
-                 const Subject& subject, const size_t id,
-                 const std::string& str) :
+                const Subject& subject, const size_t id,
+                const std::string& str) :
             _from {from}, _to {to}, _subject {subject}, _id {id},
             _content {str} {};
         Uuid _from;
