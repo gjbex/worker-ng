@@ -1,4 +1,8 @@
 #include <boost/asio/ip/host_name.hpp>
+#define BOOST_LOG_DYN_LINK 1
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/sources/severity_logger.hpp>
 #include <boost/program_options.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -12,7 +16,11 @@
 #include "work_parser/work_parser.h"
 #include "work_processor/result.h"
 
-using Options = std::tuple<std::string, int>;
+using Options = struct {
+    std::string workfile_name;
+    int port_nr;
+    std::string logfile_name;
+};
 
 void print_to_do(const std::set<size_t> to_do) {
     std::cerr << "To do: ";
@@ -23,36 +31,42 @@ void print_to_do(const std::set<size_t> to_do) {
 
 Options get_options(int argc, char* argv[]);
 
+namespace logging = boost::log;
+namespace src = boost::log::sources;
+ 
 int main(int argc, char* argv[]) {
+    auto options = get_options(argc, argv);
+    init_logging(options.logfile_name);
+    // logging::add_common_attributes();
+    using namespace logging::trivial;
+    src::severity_logger<severity_level> lg;
     Uuid id = boost::uuids::random_generator()();
     Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
-    std::string workfile_name;
-    int port_nr;
-    std::tie(workfile_name, port_nr) = get_options(argc, argv);
-    Work_parser parser(std::make_shared<std::ifstream>(workfile_name));
+    Work_parser parser(std::make_shared<std::ifstream>(options.workfile_name));
 
     auto hostname = boost::asio::ip::host_name();
     const std::string bind_str {protocol + "://*:" +
-                                std::to_string(port_nr)};
+                                std::to_string(options.port_nr)};
     const std::string info_str {protocol + "://" + hostname +
-                                ":" + std::to_string(port_nr)};
+                                ":" + std::to_string(options.port_nr)};
 
 
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
     socket.bind(bind_str);
+    BOOST_LOG_SEV(lg, info) << "server ID " << id;
+    BOOST_LOG_SEV(lg, info) << "server address " << info_str;
     std::cerr << "Server id: " << id << std::endl;
     std::cerr << "Server listening on " << info_str << std::endl;
 
     std::set<size_t> to_do;
     for (int msg_nr = 0; ; ++msg_nr) {
-        print_to_do(to_do);
         zmq::message_t request;
         socket.recv(&request);
         auto msg = unpack_message(request, msg_builder);
         if (msg.subject() == Subject::query) {
-            std::cerr << "query message from " << msg.from() << std::endl;
+            BOOST_LOG_SEV(lg, info) << "query message from " << msg.from();
             if (parser.has_next()) {
                 std::string work_item = parser.next();
                 size_t work_id = parser.nr_items();
@@ -60,18 +74,20 @@ int main(int argc, char* argv[]) {
                     .id(work_id) .content(work_item);
                 auto work_msg = msg_builder.build();
                 to_do.insert(work_id);
-                std::cerr << "work message to " << work_msg.to() << std::endl;
+                BOOST_LOG_SEV(lg, info) << "work message to "
+                                        << work_msg.to();
                 socket.send(pack_message(work_msg));
             } else {
                 msg_builder.to(msg.from()) .subject(Subject::stop);
                 auto stop_msg = msg_builder.build();
-                std::cerr << "stop message to " << stop_msg.to() << std::endl;
+                BOOST_LOG_SEV(lg, info) << "stop message to "
+                                        << stop_msg.to();
                 socket.send(pack_message(stop_msg));
                 if (to_do.empty())
                     break;
             }
         } else if (msg.subject() == Subject::result) {
-            std::cerr << "reply message from " << msg.from() << std::endl;
+            BOOST_LOG_SEV(lg, info) << "reply message from " << msg.from();
             std::string result_str = msg.content();
             Result result(result_str);
             std::cout << "result: " << result.stdout() << std::endl;
@@ -82,26 +98,29 @@ int main(int argc, char* argv[]) {
                                .build();
             socket.send(pack_message(ack_msg));
         } else {
-            std::cerr << "### error: receive invalid message" << std::endl;
+            BOOST_LOG_SEV(lg, fatal) << "receive invalid message";
             std::exit(2);
         }
     }
+    BOOST_LOG_SEV(lg, info) << "processing done";
     return 0;
 }
 
 Options get_options(int argc, char* argv[]) {
     namespace po = boost::program_options;
-    std::string workfile_name;
+    Options options;
+    const std::string default_logfile_name {"server.log"};
     const int default_port {5555};
-    int port_nr;
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help,h", "produce help message")
         ("version,v", "show software version")
-        ("workfile", po::value<std::string>(&workfile_name),
+        ("workfile", po::value<std::string>(&options.workfile_name),
          "work file to use")
-        ("port", po::value<int>(&port_nr)->default_value(default_port),
+        ("port", po::value<int>(&options.port_nr)->default_value(default_port),
          "port to listen on")
+        ("log,l", po::value<std::string>(&options.logfile_name)->default_value(default_logfile_name),
+         "name of the log file to use")
     ;
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);
@@ -126,5 +145,5 @@ Options get_options(int argc, char* argv[]) {
         std::exit(1);
     }
 
-    return std::make_tuple(workfile_name, port_nr);
+    return options;
 }

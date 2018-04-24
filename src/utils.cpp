@@ -6,10 +6,13 @@
 #include <boost/log/expressions.hpp>
 #include <boost/log/sinks/text_file_backend.hpp>
 #include <boost/log/utility/setup/file.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/sources/severity_logger.hpp>
+#include <boost/log/sources/severity_feature.hpp>
+#include <boost/log/sources/record_ostream.hpp>
 
 #include "worker_ng_config.h"
 #include "utils.h"
-
 
 void print_version_info() {
     std::cout << worker_ng_NAME << " "
@@ -39,11 +42,17 @@ zmq::message_t pack_message(const Message& msg) {
     return zmq_msg;
 }
 
-namespace logging = boost::log;
-
 void init_logging(const std::string& file_name) {
-    logging::add_file_log(file_name);
+    namespace logging = boost::log;
+    namespace keywords = boost::log::keywords;
+    using namespace logging::trivial;
+    logging::register_simple_formatter_factory<severity_level,char>("Severity");
+    logging::add_file_log(
+            keywords::file_name = file_name,
+            keywords::format = "%TimeStamp% [%Severity%]: %Message%"
+    );
     logging::core::get()->set_filter(
             logging::trivial::severity >= logging::trivial::info
     );
+    logging::add_common_attributes();
 }
