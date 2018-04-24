@@ -13,4 +13,6 @@ Message unpack_message(const zmq::message_t& zmq_msg,
 
 zmq::message_t pack_message(const Message& msg);
 
+void init_logging(const std::string& file_name);
+
 #endif

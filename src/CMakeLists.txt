@@ -43,6 +43,7 @@ if (Boost_FOUND)
             "${Boost_INCLUDE_DIR}"
             )
     target_link_libraries (worker_server LINK_PRIVATE
+            pthread
             "${ZeroMQ_LIBRARY}"
             "${Boost_LIBRARIES}"
             work_parser
