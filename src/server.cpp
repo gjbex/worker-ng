@@ -19,7 +19,7 @@
 using Options = struct {
     std::string workfile_name;
     int port_nr;
-    std::string logfile_name;
+    std::string log_name;
 };
 
 void print_to_do(const std::set<size_t> to_do) {
@@ -36,8 +36,7 @@ namespace src = boost::log::sources;
  
 int main(int argc, char* argv[]) {
     auto options = get_options(argc, argv);
-    init_logging(options.logfile_name);
-    // logging::add_common_attributes();
+    init_logging(options.log_name);
     using namespace logging::trivial;
     src::severity_logger<severity_level> lg;
     Uuid id = boost::uuids::random_generator()();
@@ -109,7 +108,7 @@ int main(int argc, char* argv[]) {
 Options get_options(int argc, char* argv[]) {
     namespace po = boost::program_options;
     Options options;
-    const std::string default_logfile_name {"server.log"};
+    const std::string default_log_name {"server.log"};
     const int default_port {5555};
     po::options_description desc("Allowed options");
     desc.add_options()
@@ -119,7 +118,7 @@ Options get_options(int argc, char* argv[]) {
          "work file to use")
         ("port", po::value<int>(&options.port_nr)->default_value(default_port),
          "port to listen on")
-        ("log,l", po::value<std::string>(&options.logfile_name)->default_value(default_logfile_name),
+        ("log,l", po::value<std::string>(&options.log_name)->default_value(default_log_name),
          "name of the log file to use")
     ;
     po::positional_options_description pos_desc;
