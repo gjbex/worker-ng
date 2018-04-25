@@ -26,6 +26,7 @@ Options get_options(int argc, char* argv[]);
 
 namespace logging = boost::log;
 namespace src = boost::log::sources;
+namespace wm = worker::message;
 
 int main(int argc, char* argv[]) {
     auto options = get_options(argc, argv);
@@ -37,7 +38,7 @@ int main(int argc, char* argv[]) {
     using namespace logging::trivial;
     src::severity_logger<severity_level> logger;
     BOOST_LOG_SEV(logger, info) << "client ID " << client_id;
-    Message_builder msg_builder(client_id);
+    wm::Message_builder msg_builder(client_id);
 
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REQ);
@@ -49,18 +50,18 @@ int main(int argc, char* argv[]) {
 
     for (;;) {
         auto msg = msg_builder.to(options.server_id)
-                           .subject(Subject::query) .build();
+                           .subject(wm::Subject::query) .build();
         zmq::message_t request = pack_message(msg);
         BOOST_LOG_SEV(logger, info) << "query message to " << msg.to();
         socket.send(request);
         zmq::message_t reply;
         socket.recv(&reply);
         msg = unpack_message(reply, msg_builder);
-        if (msg.subject() == Subject::stop) {
+        if (msg.subject() == wm::Subject::stop) {
             BOOST_LOG_SEV(logger, info) << "stop message from "
                                         << msg.from();
             break;
-        } else if(msg.subject() == Subject::work) {
+        } else if(msg.subject() == wm::Subject::work) {
             BOOST_LOG_SEV(logger, info) << "work message for " << msg.id()
                                         << " from " << msg.from();
             auto work_str = msg.content();
@@ -72,7 +73,7 @@ int main(int argc, char* argv[]) {
                                         << " finished: "
                                         << result.exit_status();
             auto result_msg = msg_builder.to(options.server_id)
-                                  .subject(Subject::result).id(work_id)
+                                  .subject(wm::Subject::result).id(work_id)
                                   .content(result.to_string()).build();
             zmq::message_t result_reply = pack_message(result_msg);
             BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()

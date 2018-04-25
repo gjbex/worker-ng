@@ -37,6 +37,7 @@ Options get_options(int argc, char* argv[]);
 namespace logging = boost::log;
 namespace src = boost::log::sources;
 namespace wp = worker::work_parser;
+namespace wm = worker::message;
  
 int main(int argc, char* argv[]) {
     Uuid id = boost::uuids::random_generator()();
@@ -48,7 +49,7 @@ int main(int argc, char* argv[]) {
     using namespace logging::trivial;
     src::severity_logger<severity_level> logger;
     BOOST_LOG_SEV(logger, info) << "server ID " << id;
-    Message_builder msg_builder(id);
+    wm::Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
     wp::Work_parser parser(std::make_shared<std::ifstream>(options.workfile_name));
     std::ofstream ofs(options.out_name + "-" + id_str);
@@ -71,13 +72,13 @@ int main(int argc, char* argv[]) {
         zmq::message_t request;
         socket.recv(&request);
         auto msg = unpack_message(request, msg_builder);
-        if (msg.subject() == Subject::query) {
+        if (msg.subject() == wm::Subject::query) {
             BOOST_LOG_SEV(logger, info) << "query message from "
                                         << msg.from();
             if (parser.has_next()) {
                 std::string work_item = parser.next();
                 size_t work_id = parser.nr_items();
-                msg_builder.to(msg.from()) .subject(Subject::work)
+                msg_builder.to(msg.from()) .subject(wm::Subject::work)
                     .id(work_id) .content(work_item);
                 auto work_msg = msg_builder.build();
                 to_do.insert(work_id);
@@ -85,7 +86,7 @@ int main(int argc, char* argv[]) {
                                             << " to " << work_msg.to();
                 socket.send(pack_message(work_msg));
             } else {
-                msg_builder.to(msg.from()) .subject(Subject::stop);
+                msg_builder.to(msg.from()) .subject(wm::Subject::stop);
                 auto stop_msg = msg_builder.build();
                 BOOST_LOG_SEV(logger, info) << "stop message to "
                                             << stop_msg.to();
@@ -95,7 +96,7 @@ int main(int argc, char* argv[]) {
                     break;
                 }
             }
-        } else if (msg.subject() == Subject::result) {
+        } else if (msg.subject() == wm::Subject::result) {
             BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
                                         << " from " << msg.from();
             std::string result_str = msg.content();
@@ -105,8 +106,8 @@ int main(int argc, char* argv[]) {
             BOOST_LOG_SEV(logger, info) << "work item " << msg.id()
                                         << ": " << result.exit_status();
             to_do.erase(msg.id());
-            auto ack_msg = msg_builder.to(msg.from()).subject(Subject::ack)
-                               .build();
+            auto ack_msg = msg_builder.to(msg.from())
+                               .subject(wm::Subject::ack).build();
             socket.send(pack_message(ack_msg));
         } else {
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
