@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
     zmq::socket_t socket(context, ZMQ_REP);
     socket.bind(bind_str);
     BOOST_LOG_SEV(logger, info) << "server address " << info_str;
-    std::cerr << id << " " << info_str << std::endl;
+    std::cout << id << " " << info_str << std::endl;
 
     std::set<size_t> to_do;
     for (int msg_nr = 0; ; ++msg_nr) {
@@ -80,8 +80,8 @@ int main(int argc, char* argv[]) {
                     .id(work_id) .content(work_item);
                 auto work_msg = msg_builder.build();
                 to_do.insert(work_id);
-                BOOST_LOG_SEV(logger, info) << "work message to "
-                                            << work_msg.to();
+                BOOST_LOG_SEV(logger, info) << "work message " << work_id
+                                            << " to " << work_msg.to();
                 socket.send(pack_message(work_msg));
             } else {
                 msg_builder.to(msg.from()) .subject(Subject::stop);
@@ -95,14 +95,15 @@ int main(int argc, char* argv[]) {
                 }
             }
         } else if (msg.subject() == Subject::result) {
-            BOOST_LOG_SEV(logger, info) << "reply message from "
-                                        << msg.from();
+            BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
+                                        << " from " << msg.from();
             std::string result_str = msg.content();
             Result result(result_str);
             ofs << result.stdout() << std::endl;
             efs << result.stderr() << std::endl;
-            int work_id = msg.id();
-            to_do.erase(work_id);
+            BOOST_LOG_SEV(logger, info) << "work item " << msg.id()
+                                        << ": " << result.exit_status();
+            to_do.erase(msg.id());
             auto ack_msg = msg_builder.to(msg.from()).subject(Subject::ack)
                                .build();
             socket.send(pack_message(ack_msg));
@@ -123,6 +124,7 @@ Options get_options(int argc, char* argv[]) {
     std::string default_err_name {"err"};
     std::string default_log_name_prefix {"server"};
     std::string default_log_name_ext {".log"};
+
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help,h", "produce help message")
@@ -138,12 +140,12 @@ Options get_options(int argc, char* argv[]) {
         ("log_prefix", po::value<std::string>(&options.log_name_prefix)
             ->default_value(default_log_name_prefix),
          "log file name prefix")
-        ("log_ext", po::value<std::string>(&options.log_name_ext)->default_value(default_log_name_ext),
+        ("log_ext", po::value<std::string>(&options.log_name_ext)
+            ->default_value(default_log_name_ext),
          "log file name extension")
     ;
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);
-
     po::variables_map vm;
     po::store(po::command_line_parser(argc, argv)
               .options(desc).positional(pos_desc).run(), vm);

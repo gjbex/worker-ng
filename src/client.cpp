@@ -30,6 +30,7 @@ namespace src = boost::log::sources;
 int main(int argc, char* argv[]) {
     auto options = get_options(argc, argv);
     Uuid client_id = boost::uuids::random_generator()();
+    std::cout << client_id << std::endl;
     std::string log_name = options.log_name_prefix + "-" +
        boost::lexical_cast<std::string>(client_id) + options.log_name_ext;
     init_logging(log_name);
@@ -45,7 +46,6 @@ int main(int argc, char* argv[]) {
     socket.connect(options.server_name);
     BOOST_LOG_SEV(logger, info) << "connected to server"
                                 << options.server_name;
-    std::cerr << "Client id: " << client_id << std::endl;
 
     for (;;) {
         auto msg = msg_builder.to(options.server_id)
@@ -61,20 +61,22 @@ int main(int argc, char* argv[]) {
                                         << msg.from();
             break;
         } else if(msg.subject() == Subject::work) {
-            BOOST_LOG_SEV(logger, info) << "work messaage from "
-                                        << msg.from();
+            BOOST_LOG_SEV(logger, info) << "work message for " << msg.id()
+                                        << " from " << msg.from();
             auto work_str = msg.content();
             auto work_id = msg.id();
+            BOOST_LOG_SEV(logger, info) << "work item " << work_id
+                                        << " started";
             Result result = process_work(work_str);
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
-                                        << " done: "
+                                        << " finished: "
                                         << result.exit_status();
             auto result_msg = msg_builder.to(options.server_id)
                                   .subject(Subject::result).id(work_id)
                                   .content(result.to_string()).build();
             zmq::message_t result_reply = pack_message(result_msg);
-            BOOST_LOG_SEV(logger, info) << "result message to "
-                                        << msg.to();
+            BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
+                                        << " to " << msg.to();
             socket.send(result_reply);
             zmq::message_t ack_response;
             socket.recv(&ack_response);
@@ -94,19 +96,22 @@ Options get_options(int argc, char* argv[]) {
     const int default_time_out {1000};
     std::string default_log_name_prefix {"client"};
     std::string default_log_name_ext {".log"};
-    po::options_description desc("Allowed options");
 
+    po::options_description desc("Allowed options");
     desc.add_options()
         ("help,h", "produce help message")
         ("version,v", "show software version")
         ("server", po::value<std::string>(&options.server_name),
          "name of the server to use")
         ("uuid", po::value<std::string>(&server_uuid_str), "server UUID")
-        ("timeout,t", po::value<int>(&options.time_out)->default_value(default_time_out),
+        ("timeout,t", po::value<int>(&options.time_out)
+             ->default_value(default_time_out),
          "client time out in ms")
-        ("log_prefix", po::value<std::string>(&options.log_name_prefix)->default_value(default_log_name_prefix),
+        ("log_prefix", po::value<std::string>(&options.log_name_prefix)
+             ->default_value(default_log_name_prefix),
          "log file name prefix")
-        ("log_ext", po::value<std::string>(&options.log_name_ext)->default_value(default_log_name_ext),
+        ("log_ext", po::value<std::string>(&options.log_name_ext)
+             ->default_value(default_log_name_ext),
          "log file name extension")
     ;
     po::variables_map vm;
