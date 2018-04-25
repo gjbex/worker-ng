@@ -14,6 +14,8 @@
 #include "worker_ng_config.h"
 #include "utils.h"
 
+namespace wm = worker::message;
+
 void print_version_info() {
     std::cout << worker_ng_NAME << " "
         << worker_ng_VERSION_MAJOR << "."
@@ -26,15 +28,15 @@ void print_version_info() {
         << zmq_patch << std::endl;
 };
 
-Message unpack_message(const zmq::message_t& zmq_msg,
-                       const Message_builder& msg_builder) {
+wm::Message unpack_message(const zmq::message_t& zmq_msg,
+                           const wm::Message_builder& msg_builder) {
     std::string msg_str;
     msg_str.resize(zmq_msg.size());
     memcpy(&msg_str[0], zmq_msg.data(), zmq_msg.size());
     return msg_builder.build(std::string(msg_str));
 }
 
-zmq::message_t pack_message(const Message& msg) {
+zmq::message_t pack_message(const wm::Message& msg) {
     std::string msg_str = msg.to_string();
     size_t msg_length = msg_str.length();
     zmq::message_t zmq_msg(msg_length);

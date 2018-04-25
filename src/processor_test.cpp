@@ -3,6 +3,8 @@
 
 #include "work_processor/processor.h"
 
+namespace wpr = worker::work_processor;
+
 int main() {
     std::stringstream work_item;
     std::string line;
@@ -10,7 +12,7 @@ int main() {
         work_item << line << std::endl;
     std::cout << "work:" << std::endl;
     std::cout << work_item.str() << std::endl;
-    Result result = process_work(work_item.str());
+    auto result = wpr::process_work(work_item.str());
     std::cout << "result:" << std::endl;
     std::cout << "\texit code: " << result.exit_status() << std::endl;
     std::cout << "##### stdout #####" << std::endl;
