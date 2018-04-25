@@ -81,8 +81,10 @@ int main(int argc, char* argv[]) {
                 BOOST_LOG_SEV(logger, info) << "stop message to "
                                             << stop_msg.to();
                 socket.send(pack_message(stop_msg));
-                if (to_do.empty())
+                if (to_do.empty()) {
+                    BOOST_LOG_SEV(logger, info) << "processing done";
                     break;
+                }
             }
         } else if (msg.subject() == Subject::result) {
             BOOST_LOG_SEV(logger, info) << "reply message from " << msg.from();
@@ -96,11 +98,11 @@ int main(int argc, char* argv[]) {
                                .build();
             socket.send(pack_message(ack_msg));
         } else {
-            BOOST_LOG_SEV(logger, fatal) << "receive invalid message";
+            BOOST_LOG_SEV(logger, fatal) << "invalid message";
             std::exit(2);
         }
     }
-    BOOST_LOG_SEV(logger, info) << "processing done";
+    BOOST_LOG_SEV(logger, info) << "exiting normally";
     return 0;
 }
 
