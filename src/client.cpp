@@ -27,6 +27,7 @@ Options get_options(int argc, char* argv[]);
 namespace logging = boost::log;
 namespace src = boost::log::sources;
 namespace wm = worker::message;
+namespace wpr = worker::work_processor;
 
 int main(int argc, char* argv[]) {
     auto options = get_options(argc, argv);
@@ -68,7 +69,7 @@ int main(int argc, char* argv[]) {
             auto work_id = msg.id();
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " started";
-            Result result = process_work(work_str);
+            auto result = wpr::process_work(work_str);
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " finished: "
                                         << result.exit_status();

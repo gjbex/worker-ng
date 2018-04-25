@@ -36,8 +36,9 @@ Options get_options(int argc, char* argv[]);
 
 namespace logging = boost::log;
 namespace src = boost::log::sources;
-namespace wp = worker::work_parser;
 namespace wm = worker::message;
+namespace wp = worker::work_parser;
+namespace wpr = worker::work_processor;
  
 int main(int argc, char* argv[]) {
     Uuid id = boost::uuids::random_generator()();
@@ -100,7 +101,7 @@ int main(int argc, char* argv[]) {
             BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
                                         << " from " << msg.from();
             std::string result_str = msg.content();
-            Result result(result_str);
+            wpr::Result result(result_str);
             ofs << result.stdout() << std::endl;
             efs << result.stderr() << std::endl;
             BOOST_LOG_SEV(logger, info) << "work item " << msg.id()
