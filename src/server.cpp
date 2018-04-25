@@ -19,7 +19,8 @@
 using Options = struct {
     std::string workfile_name;
     int port_nr;
-    std::string log_name;
+    std::string log_name_prefix;
+    std::string log_name_ext;
 };
 
 void print_to_do(const std::set<size_t> to_do) {
@@ -35,11 +36,13 @@ namespace logging = boost::log;
 namespace src = boost::log::sources;
  
 int main(int argc, char* argv[]) {
+    Uuid id = boost::uuids::random_generator()();
     auto options = get_options(argc, argv);
-    init_logging(options.log_name);
+    std::string log_name = options.log_name_prefix + "-" +
+       boost::lexical_cast<std::string>(id) + options.log_name_ext;
+    init_logging(log_name);
     using namespace logging::trivial;
     src::severity_logger<severity_level> logger;
-    Uuid id = boost::uuids::random_generator()();
     Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
     Work_parser parser(std::make_shared<std::ifstream>(options.workfile_name));
@@ -109,8 +112,9 @@ int main(int argc, char* argv[]) {
 Options get_options(int argc, char* argv[]) {
     namespace po = boost::program_options;
     Options options;
-    const std::string default_log_name {"server.log"};
     const int default_port {5555};
+    std::string default_log_name_prefix {"server"};
+    std::string default_log_name_ext {".log"};
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help,h", "produce help message")
@@ -119,8 +123,10 @@ Options get_options(int argc, char* argv[]) {
          "work file to use")
         ("port", po::value<int>(&options.port_nr)->default_value(default_port),
          "port to listen on")
-        ("log,l", po::value<std::string>(&options.log_name)->default_value(default_log_name),
-         "name of the log file to use")
+        ("log_prefix", po::value<std::string>(&options.log_name_prefix)->default_value(default_log_name_prefix),
+         "log file name prefix")
+        ("log_ext", po::value<std::string>(&options.log_name_ext)->default_value(default_log_name_ext),
+         "log file name extension")
     ;
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);
