@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     auto options = get_options(argc, argv);
     init_logging(options.log_name);
     using namespace logging::trivial;
-    src::severity_logger<severity_level> lg;
+    src::severity_logger<severity_level> logger;
     Uuid id = boost::uuids::random_generator()();
     Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
@@ -50,12 +50,11 @@ int main(int argc, char* argv[]) {
     const std::string info_str {protocol + "://" + hostname +
                                 ":" + std::to_string(options.port_nr)};
 
-
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
     socket.bind(bind_str);
-    BOOST_LOG_SEV(lg, info) << "server ID " << id;
-    BOOST_LOG_SEV(lg, info) << "server address " << info_str;
+    BOOST_LOG_SEV(logger, info) << "server ID " << id;
+    BOOST_LOG_SEV(logger, info) << "server address " << info_str;
     std::cerr << "Server id: " << id << std::endl;
     std::cerr << "Server listening on " << info_str << std::endl;
 
@@ -65,7 +64,7 @@ int main(int argc, char* argv[]) {
         socket.recv(&request);
         auto msg = unpack_message(request, msg_builder);
         if (msg.subject() == Subject::query) {
-            BOOST_LOG_SEV(lg, info) << "query message from " << msg.from();
+            BOOST_LOG_SEV(logger, info) << "query message from " << msg.from();
             if (parser.has_next()) {
                 std::string work_item = parser.next();
                 size_t work_id = parser.nr_items();
@@ -73,20 +72,20 @@ int main(int argc, char* argv[]) {
                     .id(work_id) .content(work_item);
                 auto work_msg = msg_builder.build();
                 to_do.insert(work_id);
-                BOOST_LOG_SEV(lg, info) << "work message to "
-                                        << work_msg.to();
+                BOOST_LOG_SEV(logger, info) << "work message to "
+                                            << work_msg.to();
                 socket.send(pack_message(work_msg));
             } else {
                 msg_builder.to(msg.from()) .subject(Subject::stop);
                 auto stop_msg = msg_builder.build();
-                BOOST_LOG_SEV(lg, info) << "stop message to "
-                                        << stop_msg.to();
+                BOOST_LOG_SEV(logger, info) << "stop message to "
+                                            << stop_msg.to();
                 socket.send(pack_message(stop_msg));
                 if (to_do.empty())
                     break;
             }
         } else if (msg.subject() == Subject::result) {
-            BOOST_LOG_SEV(lg, info) << "reply message from " << msg.from();
+            BOOST_LOG_SEV(logger, info) << "reply message from " << msg.from();
             std::string result_str = msg.content();
             Result result(result_str);
             std::cout << "result: " << result.stdout() << std::endl;
@@ -97,11 +96,11 @@ int main(int argc, char* argv[]) {
                                .build();
             socket.send(pack_message(ack_msg));
         } else {
-            BOOST_LOG_SEV(lg, fatal) << "receive invalid message";
+            BOOST_LOG_SEV(logger, fatal) << "receive invalid message";
             std::exit(2);
         }
     }
-    BOOST_LOG_SEV(lg, info) << "processing done";
+    BOOST_LOG_SEV(logger, info) << "processing done";
     return 0;
 }
 
