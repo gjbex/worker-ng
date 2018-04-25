@@ -19,6 +19,8 @@
 using Options = struct {
     std::string workfile_name;
     int port_nr;
+    std::string out_name;
+    std::string err_name;
     std::string log_name_prefix;
     std::string log_name_ext;
 };
@@ -37,15 +39,19 @@ namespace src = boost::log::sources;
  
 int main(int argc, char* argv[]) {
     Uuid id = boost::uuids::random_generator()();
+    std::string id_str = boost::lexical_cast<std::string>(id);
     auto options = get_options(argc, argv);
-    std::string log_name = options.log_name_prefix + "-" +
-       boost::lexical_cast<std::string>(id) + options.log_name_ext;
+    std::string log_name = options.log_name_prefix + "-" + id_str +
+        options.log_name_ext;
     init_logging(log_name);
     using namespace logging::trivial;
     src::severity_logger<severity_level> logger;
+    BOOST_LOG_SEV(logger, info) << "server ID " << id;
     Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
     Work_parser parser(std::make_shared<std::ifstream>(options.workfile_name));
+    std::ofstream ofs(options.out_name + "-" + id_str);
+    std::ofstream efs(options.err_name + "-" + id_str);
 
     auto hostname = boost::asio::ip::host_name();
     const std::string bind_str {protocol + "://*:" +
@@ -56,10 +62,8 @@ int main(int argc, char* argv[]) {
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
     socket.bind(bind_str);
-    BOOST_LOG_SEV(logger, info) << "server ID " << id;
     BOOST_LOG_SEV(logger, info) << "server address " << info_str;
-    std::cerr << "Server id: " << id << std::endl;
-    std::cerr << "Server listening on " << info_str << std::endl;
+    std::cerr << id << " " << info_str << std::endl;
 
     std::set<size_t> to_do;
     for (int msg_nr = 0; ; ++msg_nr) {
@@ -67,7 +71,8 @@ int main(int argc, char* argv[]) {
         socket.recv(&request);
         auto msg = unpack_message(request, msg_builder);
         if (msg.subject() == Subject::query) {
-            BOOST_LOG_SEV(logger, info) << "query message from " << msg.from();
+            BOOST_LOG_SEV(logger, info) << "query message from "
+                                        << msg.from();
             if (parser.has_next()) {
                 std::string work_item = parser.next();
                 size_t work_id = parser.nr_items();
@@ -90,11 +95,12 @@ int main(int argc, char* argv[]) {
                 }
             }
         } else if (msg.subject() == Subject::result) {
-            BOOST_LOG_SEV(logger, info) << "reply message from " << msg.from();
+            BOOST_LOG_SEV(logger, info) << "reply message from "
+                                        << msg.from();
             std::string result_str = msg.content();
             Result result(result_str);
-            std::cout << "result: " << result.stdout() << std::endl;
-            std::cerr << "result: " << result.stderr() << std::endl;
+            ofs << result.stdout() << std::endl;
+            efs << result.stderr() << std::endl;
             int work_id = msg.id();
             to_do.erase(work_id);
             auto ack_msg = msg_builder.to(msg.from()).subject(Subject::ack)
@@ -113,6 +119,8 @@ Options get_options(int argc, char* argv[]) {
     namespace po = boost::program_options;
     Options options;
     const int default_port {5555};
+    std::string default_out_name {"out"};
+    std::string default_err_name {"err"};
     std::string default_log_name_prefix {"server"};
     std::string default_log_name_ext {".log"};
     po::options_description desc("Allowed options");
@@ -121,9 +129,14 @@ Options get_options(int argc, char* argv[]) {
         ("version,v", "show software version")
         ("workfile", po::value<std::string>(&options.workfile_name),
          "work file to use")
-        ("port", po::value<int>(&options.port_nr)->default_value(default_port),
-         "port to listen on")
-        ("log_prefix", po::value<std::string>(&options.log_name_prefix)->default_value(default_log_name_prefix),
+        ("port", po::value<int>(&options.port_nr)
+            ->default_value(default_port), "port to listen on")
+        ("out,o", po::value<std::string>(&options.out_name)
+            ->default_value(default_out_name), "output file name prefix")
+        ("err,e", po::value<std::string>(&options.err_name)
+            ->default_value(default_err_name), "error file name prefix")
+        ("log_prefix", po::value<std::string>(&options.log_name_prefix)
+            ->default_value(default_log_name_prefix),
          "log file name prefix")
         ("log_ext", po::value<std::string>(&options.log_name_ext)->default_value(default_log_name_ext),
          "log file name extension")
