@@ -36,6 +36,7 @@ Options get_options(int argc, char* argv[]);
 
 namespace logging = boost::log;
 namespace src = boost::log::sources;
+namespace wp = worker::work_parser;
  
 int main(int argc, char* argv[]) {
     Uuid id = boost::uuids::random_generator()();
@@ -49,7 +50,7 @@ int main(int argc, char* argv[]) {
     BOOST_LOG_SEV(logger, info) << "server ID " << id;
     Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
-    Work_parser parser(std::make_shared<std::ifstream>(options.workfile_name));
+    wp::Work_parser parser(std::make_shared<std::ifstream>(options.workfile_name));
     std::ofstream ofs(options.out_name + "-" + id_str);
     std::ofstream efs(options.err_name + "-" + id_str);
 
