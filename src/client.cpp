@@ -34,6 +34,9 @@ int main(int argc, char* argv[]) {
        boost::lexical_cast<std::string>(options.server_id) +
        options.log_name_ext;
     init_logging(log_name);
+    using namespace logging::trivial;
+    src::severity_logger<severity_level> logger;
+    BOOST_LOG_SEV(logger, info) << "client ID " << client_id;
     Message_builder msg_builder(client_id);
 
     zmq::context_t context(1);
@@ -41,40 +44,47 @@ int main(int argc, char* argv[]) {
     socket.setsockopt(ZMQ_RCVTIMEO, options.time_out);
     socket.setsockopt(ZMQ_SNDTIMEO, options.time_out);
     socket.connect(options.server_name);
+    BOOST_LOG_SEV(logger, info) << "connected to server"
+                                << options.server_name;
     std::cerr << "Client id: " << client_id << std::endl;
 
     for (;;) {
         auto msg = msg_builder.to(options.server_id)
                            .subject(Subject::query) .build();
         zmq::message_t request = pack_message(msg);
-        std::cerr << "sending request to " << msg.to() << std::endl;
+        BOOST_LOG_SEV(logger, info) << "query message to " << msg.to();
         socket.send(request);
         zmq::message_t reply;
         socket.recv(&reply);
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == Subject::stop) {
-            std::cerr << "received stop from " << msg.from()
-                      << ", exiting..." << std::endl;
+            BOOST_LOG_SEV(logger, info) << "stop message from "
+                                        << msg.from();
             break;
         } else if(msg.subject() == Subject::work) {
-            std::cerr << "received work from " << msg.from()
-                      << ", processing..." << std::endl;
+            BOOST_LOG_SEV(logger, info) << "work messaage from "
+                                        << msg.from();
             auto work_str = msg.content();
             auto work_id = msg.id();
             Result result = process_work(work_str);
+            BOOST_LOG_SEV(logger, info) << "work item " << work_id
+                                        << " done: "
+                                        << result.exit_status();
             auto result_msg = msg_builder.to(options.server_id)
                                   .subject(Subject::result).id(work_id)
                                   .content(result.to_string()).build();
             zmq::message_t result_reply = pack_message(result_msg);
-            std::cerr << "sending result to " << msg.to() << std::endl;
+            BOOST_LOG_SEV(logger, info) << "result message to "
+                                        << msg.to();
             socket.send(result_reply);
             zmq::message_t ack_response;
             socket.recv(&ack_response);
         } else {
-            std::cerr << "### error: receive invalid message" << std::endl;
+            BOOST_LOG_SEV(logger, fatal) << "invalid message";
             std::exit(2);
         }
     }
+    BOOST_LOG_SEV(logger, info) << "exiting normally";
     return 0;
 }
 
