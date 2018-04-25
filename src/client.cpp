@@ -31,8 +31,7 @@ int main(int argc, char* argv[]) {
     auto options = get_options(argc, argv);
     Uuid client_id = boost::uuids::random_generator()();
     std::string log_name = options.log_name_prefix + "-" +
-       boost::lexical_cast<std::string>(options.server_id) +
-       options.log_name_ext;
+       boost::lexical_cast<std::string>(client_id) + options.log_name_ext;
     init_logging(log_name);
     using namespace logging::trivial;
     src::severity_logger<severity_level> logger;
