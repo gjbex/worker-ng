@@ -14,6 +14,8 @@
 #include "utils.h"
 #include "work_processor/processor.h"
 
+using Uuid = boost::uuids::uuid;
+
 using Options = struct {
     std::string server_name;
     Uuid server_id;

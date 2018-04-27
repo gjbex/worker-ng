@@ -25,6 +25,8 @@ using Options = struct {
     std::string log_name_ext;
 };
 
+using Uuid = boost::uuids::uuid;
+
 void print_to_do(const std::set<size_t> to_do) {
     std::cerr << "To do: ";
     for (const auto& id: to_do)

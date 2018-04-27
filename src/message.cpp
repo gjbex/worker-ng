@@ -30,6 +30,8 @@ namespace worker {
             return msg;
         }
 
+        using Uuid = boost::uuids::uuid;
+
         Message Message_builder::build(const std::string& str) const {
             std::stringstream input(str);
             Uuid from;

@@ -6,6 +6,8 @@
 
 namespace wm = worker::message;
 
+using Uuid = boost::uuids::uuid;
+
 int main() {
     auto uuid_generator = boost::uuids::random_generator();
     Uuid from = uuid_generator();
