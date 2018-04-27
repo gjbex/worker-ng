@@ -12,7 +12,7 @@ DISTR_DIR="$(pwd)/distr"
 COMPILER="g++"
 BUILD_TYPE="RelWithDebInfo"
 
-if [ $1 == 'clean' ]
+if [[ $1 == 'clean' ]]
 then
     rm -rf ${BUILD_DIR}
     rm -rf ${DISTR_DIR}
