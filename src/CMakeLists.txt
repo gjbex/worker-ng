@@ -3,8 +3,9 @@ configure_file (
     worker_ng_config.h.in
     worker_ng_config.h
     )
-install (FILES worker_ng_config.h
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/worker_ng_config.h
          DESTINATION include)
+include_directories (${CMAKE_CURRENT_BINARY_DIR})
 
 # define work_parser target
 add_subdirectory ("work_parser")
