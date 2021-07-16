@@ -6,8 +6,13 @@ set (worker_ng_NAME "worker_ng")
 set (worker_ng_VERSION_MAJOR 0)
 set (worker_ng_VERSION_MINOR 1)
 
-# set general compiler options
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra")
+# set C++ specification
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
+set(CMAKE_CXX_EXTENSIONS NO)
+
+# set extra compiler options
+add_compile_options(-Wall -Wextra -Wpedantic)
 
 # search and configure doxygen
 find_package (Doxygen)
@@ -27,7 +32,7 @@ find_library (ZeroMQ_LIBRARY
 # find Boost
 set (Boost_USE_MULTIHREADED ON)
 find_package (Boost 1.66.0 COMPONENTS
-         program_options filesystem system log
+         program_options filesystem system log log_setup
          )
 if (NOT Boost_FOUND)
     message (FATAL_ERROR "Boost is required, but not found")
