@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
         zmq::message_t request;
         auto recv_result = socket.recv(request, zmq::recv_flags::none);
         if (!recv_result) {
-            BOOST_LOG_SEV(logger, info) << "server could not receive message";
+            BOOST_LOG_SEV(logger, error) << "server could not receive message";
         }
         auto msg = unpack_message(request, msg_builder);
         if (msg.subject() == wm::Subject::query) {
