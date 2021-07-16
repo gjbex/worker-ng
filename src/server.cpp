@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
     std::set<size_t> to_do;
     for (int msg_nr = 0; ; ++msg_nr) {
         zmq::message_t request;
-        socket.recv(&request);
+        socket.recv(request, zmq::recv_flags::none);
         auto msg = unpack_message(request, msg_builder);
         if (msg.subject() == wm::Subject::query) {
             BOOST_LOG_SEV(logger, info) << "query message from "
@@ -87,13 +87,13 @@ int main(int argc, char* argv[]) {
                 to_do.insert(work_id);
                 BOOST_LOG_SEV(logger, info) << "work message " << work_id
                                             << " to " << work_msg.to();
-                socket.send(pack_message(work_msg));
+                socket.send(pack_message(work_msg), zmq::send_flags::none);
             } else {
                 msg_builder.to(msg.from()) .subject(wm::Subject::stop);
                 auto stop_msg = msg_builder.build();
                 BOOST_LOG_SEV(logger, info) << "stop message to "
                                             << stop_msg.to();
-                socket.send(pack_message(stop_msg));
+                socket.send(pack_message(stop_msg), zmq::send_flags::none);
                 if (to_do.empty()) {
                     BOOST_LOG_SEV(logger, info) << "processing done";
                     break;

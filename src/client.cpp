@@ -45,8 +45,8 @@ int main(int argc, char* argv[]) {
 
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REQ);
-    socket.setsockopt(ZMQ_RCVTIMEO, options.time_out);
-    socket.setsockopt(ZMQ_SNDTIMEO, options.time_out);
+    socket.set(zmq::sockopt::rcvtimeo, options.time_out);
+    socket.set(zmq::sockopt::sndtimeo, options.time_out);
     socket.connect(options.server_name);
     BOOST_LOG_SEV(logger, info) << "connected to server"
                                 << options.server_name;
@@ -56,9 +56,9 @@ int main(int argc, char* argv[]) {
                            .subject(wm::Subject::query) .build();
         zmq::message_t request = pack_message(msg);
         BOOST_LOG_SEV(logger, info) << "query message to " << msg.to();
-        socket.send(request);
+        socket.send(request, zmq::send_flags::none);
         zmq::message_t reply;
-        socket.recv(&reply);
+        socket.recv(reply, zmq::recv_flags::none);
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == wm::Subject::stop) {
             BOOST_LOG_SEV(logger, info) << "stop message from "
@@ -81,9 +81,9 @@ int main(int argc, char* argv[]) {
             zmq::message_t result_reply = pack_message(result_msg);
             BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
                                         << " to " << msg.to();
-            socket.send(result_reply);
+            socket.send(result_reply, zmq::send_flags::none);
             zmq::message_t ack_response;
-            socket.recv(&ack_response);
+            socket.recv(ack_response, zmq::recv_flags::none);
         } else {
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
             std::exit(2);
