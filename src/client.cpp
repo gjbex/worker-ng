@@ -56,9 +56,15 @@ int main(int argc, char* argv[]) {
                            .subject(wm::Subject::query) .build();
         zmq::message_t request = pack_message(msg);
         BOOST_LOG_SEV(logger, info) << "query message to " << msg.to();
-        socket.send(request, zmq::send_flags::none);
+        auto send_result = socket.send(request, zmq::send_flags::none);
+        if (!send_result) {
+            BOOST_LOG_SEV(logger, error) << "client can not send message";
+        }
         zmq::message_t reply;
-        socket.recv(reply, zmq::recv_flags::none);
+        auto recv_resuolt = socket.recv(reply, zmq::recv_flags::none);
+        if (!recv_resuolt) {
+            BOOST_LOG_SEV(logger, error) << "client can not receive message";
+        }
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == wm::Subject::stop) {
             BOOST_LOG_SEV(logger, info) << "stop message from "
@@ -81,9 +87,15 @@ int main(int argc, char* argv[]) {
             zmq::message_t result_reply = pack_message(result_msg);
             BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
                                         << " to " << msg.to();
-            socket.send(result_reply, zmq::send_flags::none);
+            auto send_result = socket.send(result_reply, zmq::send_flags::none);
+            if (!send_result) {
+                BOOST_LOG_SEV(logger, error) << "client can not send message";
+            }
             zmq::message_t ack_response;
-            socket.recv(ack_response, zmq::recv_flags::none);
+            auto recv_result = socket.recv(ack_response, zmq::recv_flags::none);
+            if (!recv_result) {
+                BOOST_LOG_SEV(logger, error) << "client can not receive message";
+            }
         } else {
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
             std::exit(2);
