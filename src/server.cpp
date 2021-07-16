@@ -73,7 +73,10 @@ int main(int argc, char* argv[]) {
     std::set<size_t> to_do;
     for (int msg_nr = 0; ; ++msg_nr) {
         zmq::message_t request;
-        socket.recv(request, zmq::recv_flags::none);
+        auto recv_result = socket.recv(request, zmq::recv_flags::none);
+        if (!recv_result) {
+            BOOST_LOG_SEV(logger, info) << "server could not receive message";
+        }
         auto msg = unpack_message(request, msg_builder);
         if (msg.subject() == wm::Subject::query) {
             BOOST_LOG_SEV(logger, info) << "query message from "
@@ -87,13 +90,19 @@ int main(int argc, char* argv[]) {
                 to_do.insert(work_id);
                 BOOST_LOG_SEV(logger, info) << "work message " << work_id
                                             << " to " << work_msg.to();
-                socket.send(pack_message(work_msg), zmq::send_flags::none);
+                auto send_result = socket.send(pack_message(work_msg), zmq::send_flags::none);
+                if (!send_result) {
+                    BOOST_LOG_SEV(logger, error) << "server could not send messag";
+                }
             } else {
                 msg_builder.to(msg.from()) .subject(wm::Subject::stop);
                 auto stop_msg = msg_builder.build();
                 BOOST_LOG_SEV(logger, info) << "stop message to "
                                             << stop_msg.to();
-                socket.send(pack_message(stop_msg), zmq::send_flags::none);
+                auto send_result = socket.send(pack_message(stop_msg), zmq::send_flags::none);
+                if (!send_result) {
+                    BOOST_LOG_SEV(logger, error) << "server could not send message";
+                }
                 if (to_do.empty()) {
                     BOOST_LOG_SEV(logger, info) << "processing done";
                     break;
@@ -111,7 +120,10 @@ int main(int argc, char* argv[]) {
             to_do.erase(msg.id());
             auto ack_msg = msg_builder.to(msg.from())
                                .subject(wm::Subject::ack).build();
-            socket.send(pack_message(ack_msg));
+            auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
+            if (!send_result) {
+                BOOST_LOG_SEV(logger, error) << "server could not send message";
+            }
         } else {
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
             std::exit(2);
