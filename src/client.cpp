@@ -117,9 +117,10 @@ Options get_options(int argc, char* argv[]) {
     desc.add_options()
         ("help,h", "produce help message")
         ("version,v", "show software version")
-        ("server", po::value<std::string>(&options.server_name),
+        ("server", po::value<std::string>(&options.server_name)->required(),
          "name of the server to use")
-        ("uuid", po::value<std::string>(&server_uuid_str), "server UUID")
+        ("uuid", po::value<std::string>(&server_uuid_str)->required(),
+         "server UUID")
         ("timeout,t", po::value<int>(&options.time_out)
              ->default_value(default_time_out),
          "client time out in ms")
@@ -132,8 +133,8 @@ Options get_options(int argc, char* argv[]) {
     ;
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
-    po::notify(vm);
 
+    // first deal with options that don't require the required arguments
     if (vm.count("help")) {
         std::cout << desc << std::endl;
         std::exit(0);
@@ -144,15 +145,17 @@ Options get_options(int argc, char* argv[]) {
         std::exit(0);
     }
 
-    if (!vm.count("server") || !vm.count("uuid")) {
-        std::cerr << "### error: both server address and UUID have to be specified" << std::endl;
+    try {
+        po::notify(vm);
+    } catch (boost::wrapexcept<boost::program_options::required_option>& err) {
+        std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
         std::exit(1);
     }
 
     try {
         options.server_id = boost::lexical_cast<Uuid>(server_uuid_str);
-} catch (boost::wrapexcept<boost::bad_lexical_cast>) {
+    } catch (boost::wrapexcept<boost::bad_lexical_cast>&) {
         std::cerr << "### error: invalid UUID" << std::endl;
         std::exit(2);
     }

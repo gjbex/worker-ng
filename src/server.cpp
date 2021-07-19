@@ -147,7 +147,7 @@ Options get_options(int argc, char* argv[]) {
     desc.add_options()
         ("help,h", "produce help message")
         ("version,v", "show software version")
-        ("workfile", po::value<std::string>(&options.workfile_name),
+        ("workfile", po::value<std::string>(&options.workfile_name)->required(),
          "work file to use")
         ("port", po::value<int>(&options.port_nr)
             ->default_value(default_port), "port to listen on")
@@ -165,9 +165,14 @@ Options get_options(int argc, char* argv[]) {
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);
     po::variables_map vm;
-    po::store(po::command_line_parser(argc, argv)
-              .options(desc).positional(pos_desc).run(), vm);
-    po::notify(vm);
+    try {
+        po::store(po::command_line_parser(argc, argv)
+                  .options(desc).positional(pos_desc).run(), vm);
+    } catch (boost::wrapexcept<boost::program_options::invalid_option_value>& err) {
+        std::cerr << "### error: " << err.what() << std::endl;
+        std::cerr << desc << std::endl;
+        std::exit(1);
+    }
 
     if (vm.count("help")) {
         std::cout << desc << std::endl;
@@ -179,8 +184,11 @@ Options get_options(int argc, char* argv[]) {
         std::exit(0);
     }
 
-    if (!vm.count("workfile")) {
-        std::cerr << "### error: no work file specified" << std::endl;
+    try {
+        po::notify(vm);
+    } catch (boost::wrapexcept<boost::program_options::required_option>& err) {
+        std::cerr << "### error: " << err.what() << std::endl;
+        std::cerr << desc << std::endl;
         std::exit(1);
     }
 
