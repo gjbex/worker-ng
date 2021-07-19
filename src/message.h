@@ -40,12 +40,12 @@ namespace worker {
         class Message {
             friend class Message_builder;
             public:
-                boost::uuids::uuid from() const { return _from; };
-                boost::uuids::uuid to() const { return _to; };
-                Subject subject() const { return _subject; };
-                size_t id() const { return _id; };
-                std::string content() const { return _content; };
-                size_t length() const { return _content.length(); };
+                boost::uuids::uuid from() const { return from_; };
+                boost::uuids::uuid to() const { return to_; };
+                Subject subject() const { return subject_; };
+                size_t id() const { return id_; };
+                std::string content() const { return content_; };
+                size_t length() const { return content_.length(); };
                 std::string to_string() const;
                 friend std::ostream& operator<<(std::ostream& out,
                         const Message& envelope);
@@ -54,13 +54,14 @@ namespace worker {
                         const boost::uuids::uuid& to,
                         const Subject& subject, const size_t id,
                         const std::string& str) :
-                    _from {from}, _to {to}, _subject {subject}, _id {id},
-                          _content {str} {};
-                boost::uuids::uuid _from;
-                boost::uuids::uuid _to;
-                Subject _subject;
-                size_t _id;
-                std::string _content;
+                    from_ {from}, to_ {to}, subject_ {subject}, id_ {id},
+                          content_ {str} {};
+
+                boost::uuids::uuid from_;
+                boost::uuids::uuid to_;
+                Subject subject_;
+                size_t id_;
+                std::string content_;
         };
 
         class message_parse_exception : public Worker_exception {
@@ -72,31 +73,31 @@ namespace worker {
         class Message_builder {
             public:
                 Message_builder(boost::uuids::uuid process_id) :
-                    _from {process_id}, _id {0}, _content {""} {};
+                    from_ {process_id}, id_ {0}, content_ {""} {};
                 Message_builder& to(const boost::uuids::uuid& to) {
-                    _to = to;
+                    to_ = to;
                     return *this;
                 };
                 Message_builder& subject(const Subject& subject) {
-                    _subject = subject;
+                    subject_ = subject;
                     return *this;
                 };
                 Message_builder& id(const size_t& id) {
-                    _id = id;
+                    id_ = id;
                     return *this;
                 };
                 Message_builder& content(const std::string& str) {
-                    _content = str;
+                    content_ = str;
                     return *this;
                 };
                 Message build();
                 Message build(const std::string& str) const;
             private:
-                boost::uuids::uuid _from;
-                boost::uuids::uuid _to;
-                Subject _subject;
-                size_t _id;
-                std::string _content;
+                boost::uuids::uuid from_;
+                boost::uuids::uuid to_;
+                Subject subject_;
+                size_t id_;
+                std::string content_;
         };
 
     }
