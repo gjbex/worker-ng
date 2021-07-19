@@ -54,7 +54,12 @@ int main(int argc, char* argv[]) {
     BOOST_LOG_SEV(logger, info) << "server ID " << id;
     wm::Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
-    wp::Work_parser parser(std::make_shared<std::ifstream>(options.workfile_name));
+    std::ifstream ifs(options.workfile_name);
+    if (!ifs) {
+        std::cerr << "### error: can not open file '" << options.workfile_name << "'" << std::endl;
+        std::exit(3);
+    }
+    wp::Work_parser parser(ifs);
     std::ofstream ofs(options.out_name + "-" + id_str);
     std::ofstream efs(options.err_name + "-" + id_str);
 

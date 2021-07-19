@@ -6,7 +6,6 @@
 #define WORK_PARSER_HDR
 
 #include <istream>
-#include <memory>
 
 namespace worker {
     namespace work_parser {
@@ -22,12 +21,12 @@ namespace worker {
             public:
                 /*!
                   \brief Work_parser constructor
-                  \param work_stream std::shared_ptr<std::istream> to an
+                  \param work_stream std::istream& reference to an
                          input stream that contains the work items.
                   \param separator std::string representing the separator
                           between the individual work items.
                  */
-                Work_parser(std::shared_ptr<std::istream> work_stream,
+                Work_parser(std::istream& work_stream,
                         const std::string& separator) :
                     ifs_ {work_stream}, sep_ {separator}, nr_items_ {0} {
                         parse_next();
@@ -36,10 +35,10 @@ namespace worker {
                 /*!
                   \brief Work_parser constructor that uses the default
                          work item separator.
-                  \param work_stream std::shared_ptr<std::istream> to an
+                  \param work_stream std::istream& reference to an
                          input stream that contains the work items.
                  */
-                Work_parser(std::shared_ptr<std::istream> work_stream) :
+                Work_parser(std::istream& work_stream) :
                     Work_parser(work_stream, DEFAULT_SEP) {};
 
                 /*!
@@ -74,7 +73,7 @@ namespace worker {
                 //! default separator
                 static const std::string DEFAULT_SEP;
                 //! shared pointer to input stream that contains work items
-                std::shared_ptr<std::istream> ifs_;
+                std::istream& ifs_;
                 //! next work item to be returned by next()
                 std::string next_item_;
                 //! separator used by Work_parser
