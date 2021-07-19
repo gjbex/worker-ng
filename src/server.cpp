@@ -42,6 +42,17 @@ namespace wm = worker::message;
 namespace wp = worker::work_parser;
 namespace wpr = worker::work_processor;
  
+using namespace logging::trivial;
+using Logger = src::severity_logger<severity_level>;
+
+size_t send_work(zmq::socket_t& socket, const Uuid& dest,
+        wp::Work_parser& parser, wm::Message_builder& msg_builder,
+        Logger& logger);
+void send_stop(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder, Logger& logger);
+void send_ack(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder, Logger& logger);
+
 int main(int argc, char* argv[]) {
     Uuid id = boost::uuids::random_generator()();
     std::string id_str = boost::lexical_cast<std::string>(id);
@@ -49,8 +60,7 @@ int main(int argc, char* argv[]) {
     std::string log_name = options.log_name_prefix + "-" + id_str +
         options.log_name_ext;
     init_logging(log_name);
-    using namespace logging::trivial;
-    src::severity_logger<severity_level> logger;
+    Logger logger;
     BOOST_LOG_SEV(logger, info) << "server ID " << id;
     wm::Message_builder msg_builder(id);
     const std::string protocol {"tcp"};
@@ -87,27 +97,10 @@ int main(int argc, char* argv[]) {
             BOOST_LOG_SEV(logger, info) << "query message from "
                                         << msg.from();
             if (parser.has_next()) {
-                std::string work_item = parser.next();
-                size_t work_id = parser.nr_items();
-                msg_builder.to(msg.from()) .subject(wm::Subject::work)
-                    .id(work_id) .content(work_item);
-                auto work_msg = msg_builder.build();
+                size_t work_id = send_work(socket, msg.from(), parser, msg_builder, logger);
                 to_do.insert(work_id);
-                BOOST_LOG_SEV(logger, info) << "work message " << work_id
-                                            << " to " << work_msg.to();
-                auto send_result = socket.send(pack_message(work_msg), zmq::send_flags::none);
-                if (!send_result) {
-                    BOOST_LOG_SEV(logger, error) << "server could not send messag";
-                }
             } else {
-                msg_builder.to(msg.from()) .subject(wm::Subject::stop);
-                auto stop_msg = msg_builder.build();
-                BOOST_LOG_SEV(logger, info) << "stop message to "
-                                            << stop_msg.to();
-                auto send_result = socket.send(pack_message(stop_msg), zmq::send_flags::none);
-                if (!send_result) {
-                    BOOST_LOG_SEV(logger, error) << "server could not send message";
-                }
+                send_stop(socket, msg.from(), msg_builder, logger);
                 if (to_do.empty()) {
                     BOOST_LOG_SEV(logger, info) << "processing done";
                     break;
@@ -123,12 +116,7 @@ int main(int argc, char* argv[]) {
             BOOST_LOG_SEV(logger, info) << "work item " << msg.id()
                                         << ": " << result.exit_status();
             to_do.erase(msg.id());
-            auto ack_msg = msg_builder.to(msg.from())
-                               .subject(wm::Subject::ack).build();
-            auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
-            if (!send_result) {
-                BOOST_LOG_SEV(logger, error) << "server could not send message";
-            }
+            send_ack(socket, msg.from(), msg_builder, logger);
         } else {
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
             std::exit(2);
@@ -197,4 +185,42 @@ Options get_options(int argc, char* argv[]) {
     }
 
     return options;
+}
+
+size_t send_work(zmq::socket_t& socket, const Uuid& dest,
+        wp::Work_parser& parser, wm::Message_builder& msg_builder,
+        Logger& logger) {
+    std::string work_item = parser.next();
+    size_t work_id = parser.nr_items();
+    msg_builder.to(dest) .subject(wm::Subject::work)
+        .id(work_id) .content(work_item);
+    auto work_msg = msg_builder.build();
+    BOOST_LOG_SEV(logger, info) << "work message " << work_id
+                                << " to " << work_msg.to();
+    auto send_result = socket.send(pack_message(work_msg), zmq::send_flags::none);
+    if (!send_result) {
+        BOOST_LOG_SEV(logger, error) << "server could not send messag";
+    }
+    return work_id;
+}
+
+void send_stop(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder, Logger& logger) {
+    msg_builder.to(dest) .subject(wm::Subject::stop);
+    auto stop_msg = msg_builder.build();
+    BOOST_LOG_SEV(logger, info) << "stop message to "
+                                << stop_msg.to();
+    auto send_result = socket.send(pack_message(stop_msg), zmq::send_flags::none);
+    if (!send_result) {
+        BOOST_LOG_SEV(logger, error) << "server could not send message";
+    }
+}
+
+void send_ack(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder, Logger& logger) {
+    auto ack_msg = msg_builder.to(dest) .subject(wm::Subject::ack).build();
+    auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
+    if (!send_result) {
+        BOOST_LOG_SEV(logger, error) << "server could not send message";
+    }
 }
