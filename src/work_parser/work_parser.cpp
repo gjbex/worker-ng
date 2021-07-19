@@ -10,9 +10,7 @@ namespace worker {
         void Work_parser::parse_next() {
             std::stringstream item {""};
             std::string line;
-            while (std::getline(*ifs_, line)) {
-                if (line == sep_)
-                    break;
+            while (std::getline(*ifs_, line) && line != sep_) {
                 item << line << "\n";
             }
             next_item_ = item.str();
