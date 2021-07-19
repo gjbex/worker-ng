@@ -18,14 +18,15 @@ namespace worker {
             bp::child process(bp::search_path("bash"),
                     bp::std_out > ips, bp::std_err > eps,
                     bp::std_in < ops);
-            ops << work_item << std::endl;;
+            ops << work_item << std::endl;
+            process.wait();
             std::string line;
-            while (process.running() && std::getline(ips, line) &&
-                    !line.empty())
+            while (std::getline(ips, line)) {
                 output_str += line + "\n";
-            while (process.running() && std::getline(eps, line) &&
-                    !line.empty())
+            }
+            while (std::getline(eps, line)) {
                 error_str += line + "\n";
+            }
             exit_code = process.exit_code();
             process.terminate();
             return Result(exit_code, output_str, error_str);
