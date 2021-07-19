@@ -29,7 +29,7 @@ namespace worker {
                  */
                 Work_parser(std::shared_ptr<std::istream> work_stream,
                         const std::string& separator) :
-                    _ifs {work_stream}, _sep {separator}, _nr_items {0} {
+                    ifs_ {work_stream}, sep_ {separator}, nr_items_ {0} {
                         parse_next();
                     };
 
@@ -47,7 +47,7 @@ namespace worker {
                   \return true if the Work_parser has work items left,
                           false otherwise.
                  */
-                bool has_next() const { return _next_item.length() > 0; };
+                bool has_next() const { return next_item_.length() > 0; };
 
                 /*!
                   \brief returns the next work item.
@@ -61,26 +61,26 @@ namespace worker {
                   \return number of work items the Work_parser has
                           provided so far.
                  */
-                size_t nr_items() const { return _nr_items; };
+                size_t nr_items() const { return nr_items_; };
 
                 /*!
                   \brief returns the separator for the Work_parser.
                   \return string representing the separator used by the
                           Work_parser.
                  */
-                std::string separator() const { return _sep; };
+                std::string separator() const { return sep_; };
 
             private:
                 //! default separator
                 static const std::string DEFAULT_SEP;
                 //! shared pointer to input stream that contains work items
-                std::shared_ptr<std::istream> _ifs;
+                std::shared_ptr<std::istream> ifs_;
                 //! next work item to be returned by next()
-                std::string _next_item;
+                std::string next_item_;
                 //! separator used by Work_parser
-                std::string _sep;
+                std::string sep_;
                 //! number of items returned so far
-                size_t _nr_items;
+                size_t nr_items_;
                 /*!
                   \brief parses the istream and sets _next_item
                  */

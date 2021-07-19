@@ -10,18 +10,18 @@ namespace worker {
         void Work_parser::parse_next() {
             std::stringstream item {""};
             std::string line;
-            while (std::getline(*_ifs, line)) {
-                if (line == _sep)
+            while (std::getline(*ifs_, line)) {
+                if (line == sep_)
                     break;
-                item << line << std::endl;
+                item << line << "\n";
             }
-            _next_item = item.str();
-            if (_next_item.length() > 0)
-                ++_nr_items;
+            next_item_ = item.str();
+            if (next_item_.length() > 0)
+                ++nr_items_;
         }
 
         std::string Work_parser::next() {
-            std::string result {_next_item};
+            std::string result {next_item_};
             parse_next();
             return result;
         }
