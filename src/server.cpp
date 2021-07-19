@@ -76,8 +76,7 @@ int main(int argc, char* argv[]) {
     std::cout << id << " " << info_str << std::endl;
 
     std::set<size_t> to_do;
-    size_t msg_counter {0};
-    for (int msg_nr = 0; ; ++msg_nr) {
+    for (size_t msg_nr = 0; ; ++msg_nr) {
         zmq::message_t request;
         auto recv_result = socket.recv(request, zmq::recv_flags::none);
         if (!recv_result) {
@@ -89,7 +88,7 @@ int main(int argc, char* argv[]) {
                                         << msg.from();
             if (parser.has_next()) {
                 std::string work_item = parser.next();
-                size_t work_id = ++msg_counter;
+                size_t work_id = parser.nr_items();
                 msg_builder.to(msg.from()) .subject(wm::Subject::work)
                     .id(work_id) .content(work_item);
                 auto work_msg = msg_builder.build();

@@ -14,12 +14,12 @@ namespace worker {
                 item << line << "\n";
             }
             next_item_ = item.str();
-            if (next_item_.length() > 0)
-                ++nr_items_;
         }
 
         std::string Work_parser::next() {
             std::string result {next_item_};
+            if (result.length() > 0)
+                ++nr_items_;
             parse_next();
             return result;
         }
