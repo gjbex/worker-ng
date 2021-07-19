@@ -144,16 +144,18 @@ Options get_options(int argc, char* argv[]) {
         std::exit(0);
     }
 
-    if (!vm.count("server")) {
-        std::cerr << "### error: no server specified" << std::endl;
+    if (!vm.count("server") || !vm.count("uuid")) {
+        std::cerr << "### error: both server address and UUID have to be specified" << std::endl;
+        std::cerr << desc << std::endl;
         std::exit(1);
     }
 
-    if (!vm.count("uuid")) {
-        std::cerr << "### error: no server UUID specified" << std::endl;
-        std::exit(1);
+    try {
+        options.server_id = boost::lexical_cast<Uuid>(server_uuid_str);
+} catch (boost::wrapexcept<boost::bad_lexical_cast>) {
+        std::cerr << "### error: invalid UUID" << std::endl;
+        std::exit(2);
     }
-    options.server_id = boost::lexical_cast<Uuid>(server_uuid_str);
 
     return options;
 }
