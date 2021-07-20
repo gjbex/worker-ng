@@ -1,5 +1,7 @@
-#ifndef WORKER_EXCEPTION_HRD
-#define WORKER_EXCEPTION_HRD
+#ifndef WORKER_EXCEPTION_HDR
+#define WORKER_EXCEPTION_HDR
+
+#include <exception>
 
 namespace worker {
 
@@ -19,6 +21,15 @@ namespace worker {
         private:
             const char* _msg;
     };
+
+    enum class Error : int {
+        cli_option = 1,
+        file = 2,
+        socket = 3,
+        unexpected = 4
+    };
+
+    void exit(Error err);
 
 }
 

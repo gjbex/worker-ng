@@ -112,6 +112,7 @@ int main(int argc, char* argv[]) {
     zmq::socket_t socket(context, ZMQ_REP);
     try {
         socket.bind(bind_str);
+        BOOST_LOG_SEV(logger, info) << "socket boundi on " << bind_str;
     } catch (zmq::error_t& err) {
         BOOST_LOG_SEV(logger, error) << "socket binding failed, " << err.what();
         std::cerr << "### error: socket can not bind to " << bind_str << std::endl;

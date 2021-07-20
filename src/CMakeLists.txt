@@ -17,7 +17,7 @@ add_executable (parser_test parser_test.cpp)
 target_link_libraries (parser_test work_parser)
 install (TARGETS parser_test DESTINATION bin)
 
-set (worker_ng_COMMON_SRCS utils.cpp message.cpp)
+set (worker_ng_COMMON_SRCS utils.cpp message.cpp worker_exception.cpp)
 # define message_test target and installation
 add_executable (message_test
         message_test.cpp

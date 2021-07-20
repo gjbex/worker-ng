@@ -1,3 +1,4 @@
+#include <boost/filesystem/exception.hpp>
 #include <boost/lexical_cast.hpp>
 #define BOOST_LOG_DYN_LINK 1
 #include <boost/log/trivial.hpp>
@@ -13,6 +14,7 @@
 #include "message.h"
 #include "utils.h"
 #include "work_processor/processor.h"
+#include "worker_exception.h"
 
 using Uuid = boost::uuids::uuid;
 
@@ -32,26 +34,46 @@ namespace wm = worker::message;
 namespace wpr = worker::work_processor;
 
 int main(int argc, char* argv[]) {
+    // handle command line options
     auto options = get_options(argc, argv);
+    // create UUID for this client
     Uuid client_id = boost::uuids::random_generator()();
     std::cout << client_id << std::endl;
+
+    // set up logging
     std::string log_name = options.log_name_prefix + "-" +
        boost::lexical_cast<std::string>(client_id) + options.log_name_ext;
-    init_logging(log_name);
+    
     using namespace logging::trivial;
     src::severity_logger<severity_level> logger;
-    BOOST_LOG_SEV(logger, info) << "client ID " << client_id;
-    wm::Message_builder msg_builder(client_id);
+    try {
+        init_logging(log_name);
+        BOOST_LOG_SEV(logger, info) << "client ID " << client_id;
+    } catch (boost::wrapexcept<boost::filesystem::filesystem_error>& err) {
+        std::cerr << "### error: can not create log file, " << err.what() << std::endl;
+        worker::exit(worker::Error::file);
+    }
 
+    // create socket and connect to server
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REQ);
     socket.set(zmq::sockopt::rcvtimeo, options.time_out);
     socket.set(zmq::sockopt::sndtimeo, options.time_out);
-    socket.connect(options.server_name);
-    BOOST_LOG_SEV(logger, info) << "connected to server"
-                                << options.server_name;
+    try {
+        socket.connect(options.server_name);
+        BOOST_LOG_SEV(logger, info) << "connected to server"
+                                    << options.server_name;
+    } catch (zmq::error_t& err) {
+        BOOST_LOG_SEV(logger, error) << "socket connection failed, " << err.what();
+        std::cerr << "### error: socket can not connect to " << options.server_name << std::endl;
+        worker::exit(worker::Error::socket);
+    }
 
+    wm::Message_builder msg_builder(client_id);
+
+    // message loop
     for (;;) {
+        // ask server for work
         auto msg = msg_builder.to(options.server_id)
                            .subject(wm::Subject::query) .build();
         zmq::message_t request = pack_message(msg);
@@ -60,6 +82,7 @@ int main(int argc, char* argv[]) {
         if (!send_result) {
             BOOST_LOG_SEV(logger, error) << "client can not send message";
         }
+        // get and handle server's reply
         zmq::message_t reply;
         auto recv_resuolt = socket.recv(reply, zmq::recv_flags::none);
         if (!recv_resuolt) {
@@ -67,10 +90,12 @@ int main(int argc, char* argv[]) {
         }
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == wm::Subject::stop) {
+            // no more work, stop
             BOOST_LOG_SEV(logger, info) << "stop message from "
                                         << msg.from();
             break;
         } else if(msg.subject() == wm::Subject::work) {
+            // handle work
             BOOST_LOG_SEV(logger, info) << "work message for " << msg.id()
                                         << " from " << msg.from();
             auto work_str = msg.content();
@@ -81,6 +106,7 @@ int main(int argc, char* argv[]) {
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " finished: "
                                         << result.exit_status();
+            // send result of work to server
             auto result_msg = msg_builder.to(options.server_id)
                                   .subject(wm::Subject::result).id(work_id)
                                   .content(result.to_string()).build();
@@ -91,14 +117,16 @@ int main(int argc, char* argv[]) {
             if (!send_result) {
                 BOOST_LOG_SEV(logger, error) << "client can not send message";
             }
+            // wait for acknowledgement from server
             zmq::message_t ack_response;
             auto recv_result = socket.recv(ack_response, zmq::recv_flags::none);
             if (!recv_result) {
                 BOOST_LOG_SEV(logger, error) << "client can not receive message";
             }
         } else {
+            // unknown message type
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
-            std::exit(2);
+            worker::exit(worker::Error::unexpected);
         }
     }
     BOOST_LOG_SEV(logger, info) << "exiting normally";
@@ -132,7 +160,17 @@ Options get_options(int argc, char* argv[]) {
          "log file name extension")
     ;
     po::variables_map vm;
-    po::store(po::parse_command_line(argc, argv, desc), vm);
+    try {
+        po::store(po::parse_command_line(argc, argv, desc), vm);
+    } catch (boost::wrapexcept<boost::program_options::invalid_option_value>& err) {
+        std::cerr << "### error: " << err.what() << std::endl;
+        std::cerr << desc << std::endl;
+        worker::exit(worker::Error::cli_option);
+    } catch (boost::wrapexcept<boost::program_options::ambiguous_option>& err) {
+        std::cerr << "### error: " << err.what() << std::endl;
+        std::cerr << desc << std::endl;
+        worker::exit(worker::Error::cli_option);
+    }
 
     // first deal with options that don't require the required arguments
     if (vm.count("help")) {
@@ -150,14 +188,14 @@ Options get_options(int argc, char* argv[]) {
     } catch (boost::wrapexcept<boost::program_options::required_option>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
-        std::exit(1);
+        worker::exit(worker::Error::cli_option);
     }
 
     try {
         options.server_id = boost::lexical_cast<Uuid>(server_uuid_str);
     } catch (boost::wrapexcept<boost::bad_lexical_cast>&) {
         std::cerr << "### error: invalid UUID" << std::endl;
-        std::exit(2);
+        worker::exit(worker::Error::cli_option);
     }
 
     return options;
