@@ -14,19 +14,9 @@
 
 #include "message.h"
 #include "utils.h"
+#include "worker_exception.h"
 #include "work_parser/work_parser.h"
 #include "work_processor/result.h"
-
-enum class Error : int {
-    cli_option = 1,
-    file = 2,
-    socket = 3,
-    unexpected = 4
-};
-
-void exit_on(Error err) {
-    std::exit(static_cast<int>(err));
-}
 
 using Options = struct {
     std::string workfile_name;
@@ -53,7 +43,7 @@ namespace src = boost::log::sources;
 namespace wm = worker::message;
 namespace wp = worker::work_parser;
 namespace wpr = worker::work_processor;
- 
+
 using namespace logging::trivial;
 using Logger = src::severity_logger<severity_level>;
 
@@ -82,7 +72,7 @@ int main(int argc, char* argv[]) {
         BOOST_LOG_SEV(logger, info) << "server ID " << id;
     } catch (boost::wrapexcept<boost::filesystem::filesystem_error>& err) {
         std::cerr << "### error: can not create log file, " << err.what() << std::endl;
-        exit_on(Error::file);
+        worker::exit(worker::Error::file);
     }
 
     // open workfile and create work parser
@@ -90,7 +80,7 @@ int main(int argc, char* argv[]) {
     if (ifs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open workfile '" << options.workfile_name << "'";
         std::cerr << "### error: can not open workfile '" << options.workfile_name << "'" << std::endl;
-        exit_on(Error::file);
+        worker::exit(worker::Error::file);
     }
     wp::Work_parser parser(ifs);
 
@@ -100,7 +90,7 @@ int main(int argc, char* argv[]) {
     if (ofs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open output '" << out_file_name << "'";
         std::cerr << "### error: can not create output file '" << out_file_name << "'" << std::endl;
-        exit_on(Error::file);
+        worker::exit(worker::Error::file);
     }
 
     // open error file
@@ -109,14 +99,14 @@ int main(int argc, char* argv[]) {
     if (efs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open error '" << err_file_name << "'";
         std::cerr << "### error: can not create error file '" << err_file_name << "'" << std::endl;
-        exit_on(Error::file);
+        worker::exit(worker::Error::file);
     }
 
     // create socket and bind to it
     const std::string protocol {"tcp"};
     auto hostname = boost::asio::ip::host_name();
     const std::string bind_str {protocol + "://*:" +
-                                std::to_string(options.port_nr)};
+        std::to_string(options.port_nr)};
 
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
@@ -125,12 +115,12 @@ int main(int argc, char* argv[]) {
     } catch (zmq::error_t& err) {
         BOOST_LOG_SEV(logger, error) << "socket binding failed, " << err.what();
         std::cerr << "### error: socket can not bind to " << bind_str << std::endl;
-        exit_on(Error::socket);
+        worker::exit(worker::Error::socket);
     }
 
     // show server info for use by clients
     const std::string info_str {protocol + "://" + hostname +
-                                ":" + std::to_string(options.port_nr)};
+        ":" + std::to_string(options.port_nr)};
     BOOST_LOG_SEV(logger, info) << "server address " << info_str;
     std::cout << id << " " << info_str << std::endl;
 
@@ -153,7 +143,7 @@ int main(int argc, char* argv[]) {
         if (msg.subject() == wm::Subject::query) {
             // client wants work, if there is work, send it, if not send stop message
             BOOST_LOG_SEV(logger, info) << "query message from "
-                                        << msg.from();
+                << msg.from();
             if (parser.has_next()) {
                 size_t work_id = send_work(socket, msg.from(), parser, msg_builder, logger);
                 to_do.insert(work_id);
@@ -167,18 +157,18 @@ int main(int argc, char* argv[]) {
         } else if (msg.subject() == wm::Subject::result) {
             // client sent result, handle it, and send acknowledgement
             BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
-                                        << " from " << msg.from();
+                << " from " << msg.from();
             std::string result_str = msg.content();
             wpr::Result result(result_str);
             ofs << result.stdout() << std::endl;
             efs << result.stderr() << std::endl;
             BOOST_LOG_SEV(logger, info) << "work item " << msg.id()
-                                        << ": " << result.exit_status();
+                << ": " << result.exit_status();
             to_do.erase(msg.id());
             send_ack(socket, msg.from(), msg_builder, logger);
         } else {
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
-            exit_on(Error::unexpected);
+            worker::exit(worker::Error::unexpected);
         }
     }
     BOOST_LOG_SEV(logger, info) << "exiting normally";
@@ -201,32 +191,32 @@ Options get_options(int argc, char* argv[]) {
         ("workfile", po::value<std::string>(&options.workfile_name)->required(),
          "work file to use")
         ("port", po::value<int>(&options.port_nr)
-            ->default_value(default_port), "port to listen on")
+         ->default_value(default_port), "port to listen on")
         ("out,o", po::value<std::string>(&options.out_name)
-            ->default_value(default_out_name), "output file name prefix")
+         ->default_value(default_out_name), "output file name prefix")
         ("err,e", po::value<std::string>(&options.err_name)
-            ->default_value(default_err_name), "error file name prefix")
+         ->default_value(default_err_name), "error file name prefix")
         ("log_prefix", po::value<std::string>(&options.log_name_prefix)
-            ->default_value(default_log_name_prefix),
+         ->default_value(default_log_name_prefix),
          "log file name prefix")
         ("log_ext", po::value<std::string>(&options.log_name_ext)
-            ->default_value(default_log_name_ext),
+         ->default_value(default_log_name_ext),
          "log file name extension")
-    ;
+        ;
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);
     po::variables_map vm;
     try {
         po::store(po::command_line_parser(argc, argv)
-                  .options(desc).positional(pos_desc).run(), vm);
+                .options(desc).positional(pos_desc).run(), vm);
     } catch (boost::wrapexcept<boost::program_options::invalid_option_value>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
-        exit_on(Error::cli_option);
+        worker::exit(worker::Error::cli_option);
     } catch (boost::wrapexcept<boost::program_options::ambiguous_option>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
-        exit_on(Error::cli_option);
+        worker::exit(worker::Error::cli_option);
     }
 
     if (vm.count("help")) {
@@ -244,12 +234,12 @@ Options get_options(int argc, char* argv[]) {
     } catch (boost::wrapexcept<boost::program_options::required_option>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
-        exit_on(Error::cli_option);
+        worker::exit(worker::Error::cli_option);
     }
 
     if (options.port_nr < 1 || options.port_nr > 65535) {
         std::cerr << "### error: invalid port number" << std::endl;
-        exit_on(Error::cli_option);
+        worker::exit(worker::Error::cli_option);
     }
 
     return options;
