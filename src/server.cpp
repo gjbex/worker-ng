@@ -17,6 +17,17 @@
 #include "work_parser/work_parser.h"
 #include "work_processor/result.h"
 
+enum class Error : int {
+    cli_option = 1,
+    file = 2,
+    socket = 3,
+    unexpected = 4
+};
+
+void exit_on(Error err) {
+    std::exit(static_cast<int>(err));
+}
+
 using Options = struct {
     std::string workfile_name;
     int port_nr;
@@ -71,7 +82,7 @@ int main(int argc, char* argv[]) {
         BOOST_LOG_SEV(logger, info) << "server ID " << id;
     } catch (boost::wrapexcept<boost::filesystem::filesystem_error>& err) {
         std::cerr << "### error: can not create log file, " << err.what() << std::endl;
-        std::exit(3);
+        exit_on(Error::file);
     }
 
     // open workfile and create work parser
@@ -79,7 +90,7 @@ int main(int argc, char* argv[]) {
     if (ifs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open workfile '" << options.workfile_name << "'";
         std::cerr << "### error: can not open workfile '" << options.workfile_name << "'" << std::endl;
-        std::exit(3);
+        exit_on(Error::file);
     }
     wp::Work_parser parser(ifs);
 
@@ -89,7 +100,7 @@ int main(int argc, char* argv[]) {
     if (ofs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open output '" << out_file_name << "'";
         std::cerr << "### error: can not create output file '" << out_file_name << "'" << std::endl;
-        std::exit(3);
+        exit_on(Error::file);
     }
 
     // open error file
@@ -98,7 +109,7 @@ int main(int argc, char* argv[]) {
     if (efs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open error '" << err_file_name << "'";
         std::cerr << "### error: can not create error file '" << err_file_name << "'" << std::endl;
-        std::exit(3);
+        exit_on(Error::file);
     }
 
     // create socket and bind to it
@@ -114,7 +125,7 @@ int main(int argc, char* argv[]) {
     } catch (zmq::error_t& err) {
         BOOST_LOG_SEV(logger, error) << "socket binding failed, " << err.what();
         std::cerr << "### error: socket can not bind to " << bind_str << std::endl;
-        std::exit(5);
+        exit_on(Error::socket);
     }
 
     // show server info for use by clients
@@ -167,7 +178,7 @@ int main(int argc, char* argv[]) {
             send_ack(socket, msg.from(), msg_builder, logger);
         } else {
             BOOST_LOG_SEV(logger, fatal) << "invalid message";
-            std::exit(2);
+            exit_on(Error::unexpected);
         }
     }
     BOOST_LOG_SEV(logger, info) << "exiting normally";
@@ -211,11 +222,11 @@ Options get_options(int argc, char* argv[]) {
     } catch (boost::wrapexcept<boost::program_options::invalid_option_value>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
-        std::exit(1);
+        exit_on(Error::cli_option);
     } catch (boost::wrapexcept<boost::program_options::ambiguous_option>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
-        std::exit(1);
+        exit_on(Error::cli_option);
     }
 
     if (vm.count("help")) {
@@ -233,12 +244,12 @@ Options get_options(int argc, char* argv[]) {
     } catch (boost::wrapexcept<boost::program_options::required_option>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
-        std::exit(1);
+        exit_on(Error::cli_option);
     }
 
     if (options.port_nr < 1 || options.port_nr > 65535) {
         std::cerr << "### error: invalid port number" << std::endl;
-        std::exit(1);
+        exit_on(Error::cli_option);
     }
 
     return options;
