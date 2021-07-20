@@ -1,4 +1,5 @@
 #include <boost/asio/ip/host_name.hpp>
+#include <boost/filesystem/exception.hpp>
 #define BOOST_LOG_DYN_LINK 1
 #include <boost/log/trivial.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
@@ -54,46 +55,92 @@ void send_ack(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder, Logger& logger);
 
 int main(int argc, char* argv[]) {
+    // determine UUID for this run
     Uuid id = boost::uuids::random_generator()();
     std::string id_str = boost::lexical_cast<std::string>(id);
+
+    // handle command line options
     auto options = get_options(argc, argv);
+
+    // set up logging
+    Logger logger;
     std::string log_name = options.log_name_prefix + "-" + id_str +
         options.log_name_ext;
-    init_logging(log_name);
-    Logger logger;
-    BOOST_LOG_SEV(logger, info) << "server ID " << id;
-    wm::Message_builder msg_builder(id);
-    const std::string protocol {"tcp"};
+    try {
+        init_logging(log_name);
+        BOOST_LOG_SEV(logger, info) << "server ID " << id;
+    } catch (boost::wrapexcept<boost::filesystem::filesystem_error>& err) {
+        std::cerr << "### error: can not create log file, " << err.what() << std::endl;
+        std::exit(3);
+    }
+
+    // open workfile and create work parser
     std::ifstream ifs(options.workfile_name);
-    if (!ifs) {
-        std::cerr << "### error: can not open file '" << options.workfile_name << "'" << std::endl;
+    if (ifs.fail()) {
+        BOOST_LOG_SEV(logger, error) << "could not open workfile '" << options.workfile_name << "'";
+        std::cerr << "### error: can not open workfile '" << options.workfile_name << "'" << std::endl;
         std::exit(3);
     }
     wp::Work_parser parser(ifs);
-    std::ofstream ofs(options.out_name + "-" + id_str);
-    std::ofstream efs(options.err_name + "-" + id_str);
 
+    // open output file
+    const std::string out_file_name = options.out_name + "-" + id_str;
+    std::ofstream ofs(out_file_name);
+    if (ofs.fail()) {
+        BOOST_LOG_SEV(logger, error) << "could not open output '" << out_file_name << "'";
+        std::cerr << "### error: can not create output file '" << out_file_name << "'" << std::endl;
+        std::exit(3);
+    }
+
+    // open error file
+    const std::string err_file_name = options.err_name + "-" + id_str;
+    std::ofstream efs(err_file_name);
+    if (efs.fail()) {
+        BOOST_LOG_SEV(logger, error) << "could not open error '" << err_file_name << "'";
+        std::cerr << "### error: can not create error file '" << err_file_name << "'" << std::endl;
+        std::exit(3);
+    }
+
+    // create socket and bind to it
+    const std::string protocol {"tcp"};
     auto hostname = boost::asio::ip::host_name();
     const std::string bind_str {protocol + "://*:" +
                                 std::to_string(options.port_nr)};
-    const std::string info_str {protocol + "://" + hostname +
-                                ":" + std::to_string(options.port_nr)};
 
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
-    socket.bind(bind_str);
+    try {
+        socket.bind(bind_str);
+    } catch (zmq::error_t& err) {
+        BOOST_LOG_SEV(logger, error) << "socket binding failed, " << err.what();
+        std::cerr << "### error: socket can not bind to " << bind_str << std::endl;
+        std::exit(5);
+    }
+
+    // show server info for use by clients
+    const std::string info_str {protocol + "://" + hostname +
+                                ":" + std::to_string(options.port_nr)};
     BOOST_LOG_SEV(logger, info) << "server address " << info_str;
     std::cout << id << " " << info_str << std::endl;
 
+    wm::Message_builder msg_builder(id);
+    // set of open work item IDs, i.e., work items started, but not completed yet
     std::set<size_t> to_do;
+
+
+    // start message loop
     for (size_t msg_nr = 0; ; ++msg_nr) {
+        // wait for incoming messages
         zmq::message_t request;
         auto recv_result = socket.recv(request, zmq::recv_flags::none);
         if (!recv_result) {
             BOOST_LOG_SEV(logger, error) << "server could not receive message";
         }
         auto msg = unpack_message(request, msg_builder);
+
+        // handle incoming message
         if (msg.subject() == wm::Subject::query) {
+            // client wants work, if there is work, send it, if not send stop message
             BOOST_LOG_SEV(logger, info) << "query message from "
                                         << msg.from();
             if (parser.has_next()) {
@@ -107,6 +154,7 @@ int main(int argc, char* argv[]) {
                 }
             }
         } else if (msg.subject() == wm::Subject::result) {
+            // client sent result, handle it, and send acknowledgement
             BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
                                         << " from " << msg.from();
             std::string result_str = msg.content();
@@ -164,6 +212,10 @@ Options get_options(int argc, char* argv[]) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
         std::exit(1);
+    } catch (boost::wrapexcept<boost::program_options::ambiguous_option>& err) {
+        std::cerr << "### error: " << err.what() << std::endl;
+        std::cerr << desc << std::endl;
+        std::exit(1);
     }
 
     if (vm.count("help")) {
@@ -181,6 +233,11 @@ Options get_options(int argc, char* argv[]) {
     } catch (boost::wrapexcept<boost::program_options::required_option>& err) {
         std::cerr << "### error: " << err.what() << std::endl;
         std::cerr << desc << std::endl;
+        std::exit(1);
+    }
+
+    if (options.port_nr < 1 || options.port_nr > 65535) {
+        std::cerr << "### error: invalid port number" << std::endl;
         std::exit(1);
     }
 
