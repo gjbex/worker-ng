@@ -20,7 +20,7 @@ namespace worker {
             bp::ipstream ips;
             bp::ipstream eps;
             bp::opstream ops;
-            bp::child process(bp::search_path("bash"), env,
+            bp::child process(bp::search_path("bash"), "-l", env,
                     bp::std_out > ips, bp::std_err > eps,
                     bp::std_in < ops);
             ops << work_item << std::endl;

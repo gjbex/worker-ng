@@ -24,6 +24,8 @@ using Options = struct {
     int time_out;
     std::string log_name_prefix;
     std::string log_name_ext;
+    std::string numactl;
+    int nr_threads;
 };
 
 Options get_options(int argc, char* argv[]);
@@ -108,6 +110,8 @@ int main(int argc, char* argv[]) {
             env["WORKER_CLIENT_ID"] = boost::lexical_cast<std::string>(client_id);
             env["WORKER_SERVER_NAME"] = options.server_name;
             env["WORKER_SERVER_ID"] = boost::lexical_cast<std::string>(options.server_id);
+            env["WORKER_NUMACTL_OPTS"] = options.numactl;
+            env["WORKER_NUM_THREADS"] = std::to_string(options.nr_threads);
             auto result = wpr::process_work(work_str, env);
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " finished: "
@@ -146,6 +150,8 @@ Options get_options(int argc, char* argv[]) {
     const int default_time_out {1000};
     std::string default_log_name_prefix {"client"};
     std::string default_log_name_ext {".log"};
+    std::string default_numactl {""};
+    int default_nr_threads {1};
 
     po::options_description desc("Allowed options");
     desc.add_options()
@@ -156,14 +162,20 @@ Options get_options(int argc, char* argv[]) {
         ("uuid", po::value<std::string>(&server_uuid_str)->required(),
          "server UUID")
         ("timeout,t", po::value<int>(&options.time_out)
-             ->default_value(default_time_out),
+         ->default_value(default_time_out),
          "client time out in ms")
         ("log_prefix", po::value<std::string>(&options.log_name_prefix)
-             ->default_value(default_log_name_prefix),
+         ->default_value(default_log_name_prefix),
          "log file name prefix")
         ("log_ext", po::value<std::string>(&options.log_name_ext)
-             ->default_value(default_log_name_ext),
+         ->default_value(default_log_name_ext),
          "log file name extension")
+        ("numactl", po::value<std::string>(&options.numactl)
+         ->default_value(default_numactl),
+         "numactl optoins")
+        ("nr_threads", po::value<int>(&options.nr_threads)
+         ->default_value(default_nr_threads),
+         "number of threads the work items can use")
     ;
     po::variables_map vm;
     try {
