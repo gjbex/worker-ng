@@ -1,3 +1,3 @@
-echo "hello world, $WORKER_ITEM_ID $BLABLA"; sleep 10; exit
+env; sleep 5; exit
 #----
-sleep 15; echo "bye world $WORKER_ITEM_ID"; exit
+sleep 5; env; exit
