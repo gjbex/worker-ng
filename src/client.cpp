@@ -173,7 +173,7 @@ Options get_options(int argc, char* argv[]) {
         ("numactl", po::value<std::string>(&options.numactl)
          ->default_value(default_numactl),
          "numactl optoins")
-        ("nr_threads", po::value<int>(&options.nr_threads)
+        ("num_threads", po::value<int>(&options.nr_threads)
          ->default_value(default_nr_threads),
          "number of threads the work items can use")
     ;
