@@ -9,13 +9,18 @@ namespace worker {
         namespace bp = boost::process;
 
         Result process_work(const std::string work_item) {
+            Env env;
+            return process_work(work_item, env);
+        }
+
+        Result process_work(const std::string work_item, Env& env) {
             int exit_code {0};
             std::string output_str;
             std::string error_str;
             bp::ipstream ips;
             bp::ipstream eps;
             bp::opstream ops;
-            bp::child process(bp::search_path("bash"),
+            bp::child process(bp::search_path("bash"), env,
                     bp::std_out > ips, bp::std_err > eps,
                     bp::std_in < ops);
             ops << work_item << std::endl;

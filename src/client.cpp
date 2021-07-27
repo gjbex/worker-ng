@@ -102,7 +102,13 @@ int main(int argc, char* argv[]) {
             auto work_id = msg.id();
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " started";
-            auto result = wpr::process_work(work_str);
+            // set up environment
+            wpr::Env env;
+            env["WORKER_ITEM_ID"] = std::to_string(work_id);
+            env["WORKER_CLIENT_ID"] = boost::lexical_cast<std::string>(client_id);
+            env["WORKER_SERVER_NAME"] = options.server_name;
+            env["WORKER_SERVER_ID"] = boost::lexical_cast<std::string>(options.server_id);
+            auto result = wpr::process_work(work_str, env);
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " finished: "
                                         << result.exit_status();
