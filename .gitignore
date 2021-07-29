@@ -51,3 +51,6 @@ distr
 # work output and error files produced by runs
 out-*
 err-*
+
+# Python caching
+__pycache__
