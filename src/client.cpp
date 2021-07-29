@@ -25,7 +25,7 @@ using Options = struct {
     std::string log_name_prefix;
     std::string log_name_ext;
     std::string numactl;
-    int nr_threads;
+    int nr_cores;
 };
 
 Options get_options(int argc, char* argv[]);
@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
             env["WORKER_SERVER_NAME"] = options.server_name;
             env["WORKER_SERVER_ID"] = boost::lexical_cast<std::string>(options.server_id);
             env["WORKER_NUMACTL_OPTS"] = options.numactl;
-            env["WORKER_NUM_THREADS"] = std::to_string(options.nr_threads);
+            env["WORKER_NUM_THREADS"] = std::to_string(options.nr_cores);
             auto result = wpr::process_work(work_str, env);
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " finished: "
@@ -151,7 +151,7 @@ Options get_options(int argc, char* argv[]) {
     std::string default_log_name_prefix {"client"};
     std::string default_log_name_ext {".log"};
     std::string default_numactl {""};
-    int default_nr_threads {1};
+    int default_nr_cores {1};
 
     po::options_description desc("Allowed options");
     desc.add_options()
@@ -173,9 +173,9 @@ Options get_options(int argc, char* argv[]) {
         ("numactl", po::value<std::string>(&options.numactl)
          ->default_value(default_numactl),
          "numactl optoins")
-        ("num_threads", po::value<int>(&options.nr_threads)
-         ->default_value(default_nr_threads),
-         "number of threads the work items can use")
+        ("num_cores", po::value<int>(&options.nr_cores)
+         ->default_value(default_nr_cores),
+         "number of cores the work items can use")
     ;
     po::variables_map vm;
     try {
