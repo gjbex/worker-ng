@@ -1,3 +1,4 @@
+#include <boost/asio/ip/host_name.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/lexical_cast.hpp>
 #define BOOST_LOG_DYN_LINK 1
@@ -26,6 +27,7 @@ using Options = struct {
     std::string log_name_ext;
     std::string numactl;
     int nr_cores;
+    std::string host_info;
 };
 
 Options get_options(int argc, char* argv[]);
@@ -112,6 +114,7 @@ int main(int argc, char* argv[]) {
             env["WORKER_SERVER_ID"] = boost::lexical_cast<std::string>(options.server_id);
             env["WORKER_NUMACTL_OPTS"] = options.numactl;
             env["WORKER_NUM_THREADS"] = std::to_string(options.nr_cores);
+            env["WORKER_HOST_INFO"] = options.host_info;
             auto result = wpr::process_work(work_str, env);
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " finished: "
@@ -152,6 +155,7 @@ Options get_options(int argc, char* argv[]) {
     std::string default_log_name_ext {".log"};
     std::string default_numactl {""};
     int default_nr_cores {1};
+    std::string default_host_info {boost::asio::ip::host_name() + ":1"};
 
     po::options_description desc("Allowed options");
     desc.add_options()
@@ -176,6 +180,9 @@ Options get_options(int argc, char* argv[]) {
         ("num_cores", po::value<int>(&options.nr_cores)
          ->default_value(default_nr_cores),
          "number of cores the work items can use")
+        ("host_info", po::value<std::string>(&options.host_info)
+         ->default_value(default_host_info),
+         "host information to construct an MPI hostfile")
     ;
     po::variables_map vm;
     try {
