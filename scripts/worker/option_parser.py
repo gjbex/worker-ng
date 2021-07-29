@@ -24,7 +24,7 @@ class OptionParser:
     def __init__(self):
         self._description='Parser for resource manager options'
         self._specific_parser = argparse.ArgumentParser(description=self._description, add_help=False)
-        self._specific_parser.add_argument('--num-cores', type=int, default=1,
+        self._specific_parser.add_argument('--num_cores', type=int, default=1,
                                            help='number of cores per work item')
 
     def parse(self, args):
