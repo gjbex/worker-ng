@@ -10,6 +10,8 @@
 #include <boost/uuid/uuid_io.hpp>
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <vector>
 #include <zmq.hpp>
 
 #include "message.h"
@@ -18,6 +20,7 @@
 #include "worker_exception.h"
 
 using Uuid = boost::uuids::uuid;
+using EnvVarOptions = std::vector<std::string>;
 
 using Options = struct {
     std::string server_name;
@@ -28,6 +31,7 @@ using Options = struct {
     std::string numactl;
     int nr_cores;
     std::string host_info;
+    EnvVarOptions env_variables;
 };
 
 Options get_options(int argc, char* argv[]);
@@ -40,9 +44,31 @@ namespace wpr = worker::work_processor;
 int main(int argc, char* argv[]) {
     // handle command line options
     auto options = get_options(argc, argv);
+
     // create UUID for this client
     Uuid client_id = boost::uuids::random_generator()();
     std::cout << client_id << std::endl;
+
+    // parse environment variables
+    wpr::Env env;
+    env["WORKER_CLIENT_ID"] = boost::lexical_cast<std::string>(client_id);
+    env["WORKER_SERVER_NAME"] = options.server_name;
+    env["WORKER_SERVER_ID"] = boost::lexical_cast<std::string>(options.server_id);
+    env["WORKER_NUMACTL_OPTS"] = options.numactl;
+    env["WORKER_NUM_CORES"] = std::to_string(options.nr_cores);
+    env["WORKER_HOST_INFO"] = options.host_info;
+    for (const auto& env_var: options.env_variables) {
+        std::string var_name;
+        std::string var_value;
+        if (auto pos = env_var.find("="); pos != std::string::npos) {
+            var_name = env_var.substr(0, pos);
+            var_value = env_var.substr(pos + 1);
+        } else {
+            var_name = env_var;
+            var_value = "";
+        }
+        env[var_name] = var_value;
+    }
 
     // set up logging
     std::string log_name = options.log_name_prefix + "-" +
@@ -106,15 +132,9 @@ int main(int argc, char* argv[]) {
             auto work_id = msg.id();
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " started";
-            // set up environment
-            wpr::Env env;
+            // add item-specific info to the environment
             env["WORKER_ITEM_ID"] = std::to_string(work_id);
-            env["WORKER_CLIENT_ID"] = boost::lexical_cast<std::string>(client_id);
-            env["WORKER_SERVER_NAME"] = options.server_name;
-            env["WORKER_SERVER_ID"] = boost::lexical_cast<std::string>(options.server_id);
-            env["WORKER_NUMACTL_OPTS"] = options.numactl;
-            env["WORKER_NUM_THREADS"] = std::to_string(options.nr_cores);
-            env["WORKER_HOST_INFO"] = options.host_info;
+            // execute work item
             auto result = wpr::process_work(work_str, env);
             BOOST_LOG_SEV(logger, info) << "work item " << work_id
                                         << " finished: "
@@ -183,6 +203,9 @@ Options get_options(int argc, char* argv[]) {
         ("host_info", po::value<std::string>(&options.host_info)
          ->default_value(default_host_info),
          "host information to construct an MPI hostfile")
+        ("env", po::value<EnvVarOptions>(&options.env_variables)
+         ->composing(),
+         "environment varialbes to pass to process")
     ;
     po::variables_map vm;
     try {
