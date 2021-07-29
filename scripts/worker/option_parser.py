@@ -3,10 +3,10 @@ import shlex
 
 
 def expand_options(options):
-    new_optoins = list()
+    new_options = list()
     for option in options:
-        new_optoins.extend(option.split(','))
-    return new_optoins
+        new_options.extend(option.split(','))
+    return new_options
 
 def get_nodes_resource(resource_list):
     nodes = list(option for option in expand_options(resource_list) if option.startswith('nodes'))
