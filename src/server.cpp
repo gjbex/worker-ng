@@ -22,7 +22,9 @@ using Options = struct {
     std::string workfile_name;
     int port_nr;
     std::string out_name;
+    std::string out_prefix;
     std::string err_name;
+    std::string err_prefix;
     std::string log_name_prefix;
     std::string log_name_ext;
 };
@@ -85,7 +87,8 @@ int main(int argc, char* argv[]) {
     wp::Work_parser parser(ifs);
 
     // open output file
-    const std::string out_file_name = options.out_name + "-" + id_str;
+    const std::string out_file_name = options.out_name.length() ? options.out_name :
+        options.out_prefix + "-" + id_str;
     std::ofstream ofs(out_file_name);
     if (ofs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open output '" << out_file_name << "'";
@@ -94,7 +97,8 @@ int main(int argc, char* argv[]) {
     }
 
     // open error file
-    const std::string err_file_name = options.err_name + "-" + id_str;
+    const std::string err_file_name = options.err_name.length() ? options.err_name :
+        options.err_prefix + "-" + id_str;
     std::ofstream efs(err_file_name);
     if (efs.fail()) {
         BOOST_LOG_SEV(logger, error) << "could not open error '" << err_file_name << "'";
@@ -180,8 +184,10 @@ Options get_options(int argc, char* argv[]) {
     namespace po = boost::program_options;
     Options options;
     const int default_port {5555};
-    std::string default_out_name {"out"};
-    std::string default_err_name {"err"};
+    std::string default_out_name {""};
+    std::string default_out_prefix {"out"};
+    std::string default_err_name {""};
+    std::string default_err_prefix {"err"};
     std::string default_log_name_prefix {"server"};
     std::string default_log_name_ext {".log"};
 
@@ -194,9 +200,13 @@ Options get_options(int argc, char* argv[]) {
         ("port", po::value<int>(&options.port_nr)
          ->default_value(default_port), "port to listen on")
         ("out,o", po::value<std::string>(&options.out_name)
-         ->default_value(default_out_name), "output file name prefix")
+         ->default_value(default_out_name), "output file name")
+        ("out_prefix", po::value<std::string>(&options.out_prefix)
+         ->default_value(default_out_prefix), "output file name prefix")
         ("err,e", po::value<std::string>(&options.err_name)
-         ->default_value(default_err_name), "error file name prefix")
+         ->default_value(default_err_name), "error file name")
+        ("err_prefix", po::value<std::string>(&options.err_prefix)
+         ->default_value(default_err_prefix), "error file name prefix")
         ("log_prefix", po::value<std::string>(&options.log_name_prefix)
          ->default_value(default_log_name_prefix),
          "log file name prefix")
