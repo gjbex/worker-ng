@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+#
+# variables that should be subsituted
+#   * scheduler_directives
+#   * log_prefix_opt, e.g., --log_prefix path_to_log_prefix
+#   * {port_opt}, e.g., --port 1234
+#   * worker_path
+#   * server_start_delay, 5 (in seconds)
+#   * workfile
+#   * o_opt, e.g., -o path_to_output_file
+#   * e_opt, e.g., -e path_to_error_file
+#   * num_cores
+#   * exit_on_client_fail, i.e., true or false
+#
+{scheuler_directives}
+
+# source worker functions used in this script
+source "{worker_path}/scripts/worker_functoins.sh"
+
+# file to store the server details
+SERVER_INFO="server_info_${{PBS_JOBID}}.txt"
+
+# start the server
+"{worker_path}/worker_server" \
+    {log_prefix_opt} \
+    {port_opt} \
+    --workfile "{workfile}" \
+    {o_opt} {e_opt} \
+    > "$SERVER_INFO" &
+server_exit=$?
+if [ $server_exit -ne 0 ]
+then
+
+    (>&2 echo "### error: failed to launch server")
+    exit $server_exit
+fi
+
+# ensure it is up and running
+sleep {server_start_delay}
+
+# determine the server address and UUID for the clients to use
+uuid=$(cut -d ' ' -f 1 $SERVER_INFO)
+server=$(cut -d ' ' -f 2 $SERVER_INFO)
+
+(>&2 echo "### info: server launhed at '$server' with UUID '$uuid'")
+
+# environment variables will not be available on non-server nodes,
+# so they need to be passed to the client explicitly
+env_variables=$(compute_env_vars '^VSC_' '^PBS_')
+
+# launch clients
+nodes=$(cat $PBS_NODEFILE)
+num_clients=$(( ${#nodes} / $num_cores ))
+
+# compute numactl arguments
+numactl_args=( $( compute_numactl_args $num_cores $nodes ) )
+numactl_status=$?
+
+for (( client_num=0; client_num < num_clients; client_num++ ))
+do
+    client_nodes="${nodes[@_]:$(( client_num*num_cores )):$num_cores}"
+    host_info=$( compute_host_file $num_cores $client_nodes )
+    numactl_opt=''
+    if [ $numactl_status ]
+    then
+        numactl_opt="--numactl ${{numactl_args[$client_num]}}"
+    fi
+    ssh ${{client_nodes[0]}} "{worker_path}/worker_client" \
+        --server "$server" --uuid "$uuid" \
+        $env_variables $numactl_opt --host_info "$host_info" &
+    client_exit=$?
+    if [ $client_exit -eq 0 ]
+    then
+        (>&2 echo "### info: client launhed on '$client_node'")
+    else
+        (>&2 echo "### error: client failed to launhed on '$client_node', exit status $client_exit")
+        if [ {exit_on_client_fail} ]
+        then
+            exit $client_exit
+        fi
+    fi
+done
+
+# wait for the server to finish
+wait
