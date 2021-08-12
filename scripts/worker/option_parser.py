@@ -1,6 +1,8 @@
 import argparse
+import collections
 import shlex
 
+ParseData = collections.namedtuple('ParseData', ['options', 'shebang', 'directives', 'script'])
 
 def expand_options(options):
     '''some options can have multiple values separated by comma, this function expands
@@ -53,21 +55,22 @@ class OptionParser:
 
         Returns
         -------
-        options: namespace
-            relevant options for worker
-        shebang: str
-            shebang line used in the job script
-        directives: str
-            directives for the scheduler in the job script
-        script: str
-            script to be executed, payload of the job
+        Parameters
+            named tuple with the following fields
+                options: namespace
+                    relevant options for worker
+                shebang: str
+                    shebang line used in the job script
+                directives: str
+                    directives for the scheduler in the job script
+                script: str
+                    script to be executed, payload of the job
         '''
-
         cl_options, unknown_args = self._cl_parser.parse_known_args(args)
         script_options, shebang, directives, script = self._parse_script(cl_options.script,
                                                                          cl_options.directive_prefix)
         options, _ = self._cl_parser.parse_known_args(args, script_options)
-        return options, shebang, directives, script
+        return ParseData(options, shebang, directives, script)
 
     def filter_cl(self, args):
         _, regular_options = self._specific_parser.parse_known_args(args)
