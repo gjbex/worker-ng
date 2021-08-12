@@ -16,7 +16,7 @@ def get_nodes_resource(resource_list):
     str | None
         relevant node specification
     '''
-    nodes = list(option for option in expand_options(resource_list) if option.startswith('nodes'))
+    nodes = list(option for option in option_parser.expand_options(resource_list) if option.startswith('nodes'))
     return nodes[-1] if nodes else None
 
 
