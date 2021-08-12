@@ -33,12 +33,14 @@ class PbsTorqueOptionParser(OptionParser):
             new parser instance
         '''
         super().__init__()
+        self._directive_prefix = '#PBS'
+        self._arrayid_var_name = 'PBS_ARRAYID'
         self._base_parser = argparse.ArgumentParser(description=self._description, add_help=False)
         self._base_parser.add_argument('-l', dest='resources', action='append',
                                        help='resource list')
         self._base_parser.add_argument('-j', dest='join', choices=['oe', 'eo', 'n'],
                                        help='join output/erroro')
-        self._base_parser.add_argument('-C', dest='directive_prefix', default='#PBS ',
+        self._base_parser.add_argument('-C', dest='directive_prefix', default=self.get_directive_prefix(),
                                        help='directive prefix')
         self._base_parser.add_argument('-e', dest='error',
                                        help='error file path')

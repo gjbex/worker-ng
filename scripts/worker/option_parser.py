@@ -7,9 +7,10 @@ import shlex
 ParseData = collections.namedtuple('ParseData', ['options', 'shebang', 'directives', 'script'])
 
 def _get_parser_class_info(scheduler_name):
-    name_parts = scheduler_name.split() + ['Option', 'Parser']
-    class_name = ''.join(map(str.capitalize, name_parts))
-    module_name = 'worker.' + '_'.join(map(str.lower, name_parts))
+    name_parts = scheduler_name.split()
+    class_parts = ['option', 'parser']
+    class_name = ''.join(map(str.capitalize, name_parts + class_parts))
+    module_name = 'worker.' + '_'.join(map(str.lower, name_parts)) + '.' + '_'.join(class_parts)
     return class_name, module_name
 
 def get_parser(scheduler_name):
@@ -31,16 +32,41 @@ class OptionParser:
     implemented for specific schedulers such as PBS torque or Slurm.
     '''
 
-    def __init__(self):
+    def __init__(self, description='Parser for resource manager options'):
         '''Base constructor, only to be called from subclasses
         '''
-        self._description='Parser for resource manager options'
-        self._specific_parser = argparse.ArgumentParser(description=self._description, add_help=False)
+        self._description = description
+        self._specific_parser = argparse.ArgumentParser(add_help=False)
         self._specific_parser.add_argument('--num_cores', type=int, default=1,
                                            help='number of cores per work item')
+        self._specific_parser.add_argument('--data', help='data file containing the parameters'
+                                                          'for the work items')
+
+    @property
+    def directive_prefix(self):
+        '''Return the default directive prefix in job scripts
+
+        Returns
+        -------
+        str
+            Prefix for scheduler directives in job scripts
+        '''
+        return self._directive_prefix
+
+    @property
+    def arrayid_var_name(self):
+        '''Return the name of the variable that the scheduler sets for job array IDs
+
+        Returns
+        -------
+        str
+            name of the variable that is set to the array ID by the scheduler
+        '''
+        return self._arrayid_var_name
 
     def parse(self, args):
-        '''Method to parse command line arguments passed to the submission command of a scheduler
+        '''Method to parse command line arguments passed to the submission command of a
+        scheduler
 
         Parameters
         ----------
