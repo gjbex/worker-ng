@@ -1,28 +1,22 @@
 import argparse
 import collections
+import importlib
 import shlex
+
 
 ParseData = collections.namedtuple('ParseData', ['options', 'shebang', 'directives', 'script'])
 
-def expand_options(options):
-    '''some options can have multiple values separated by comma, this function expands
-    those options
+def _get_parser_class_info(scheduler_name):
+    name_parts = scheduler_name.split() + ['Option', 'Parser']
+    class_name = ''.join(map(str.capitalize, name_parts))
+    module_name = 'worker.' + '_'.join(map(str.lower, name_parts))
+    return class_name, module_name
 
-    Parameters
-    ----------
-    options: list
-        list of options, some of which may have to be expanded
-
-    Returns
-    -------
-    list
-        expanded options list, order is preserved
-    '''
-    new_options = list()
-    for option in options:
-        new_options.extend(option.split(','))
-    return new_options
-
+def get_parser(scheduler_name):
+    class_name, module_name = _get_parser_class_info(scheduler_name)
+    parser_module = importlib.import_module(module_name)
+    parser_class = getattr(parser_module, class_name)
+    return parser_class()
 
 class OptionParserException(Exception):
     '''Base class for exceptions related to parsing options for schedulers

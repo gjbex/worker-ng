@@ -1,5 +1,6 @@
 import argparse
-import option_parser
+from worker.option_parser import OptionParser
+from worker.utils import expand_options
 import shlex
 
 
@@ -16,11 +17,11 @@ def get_nodes_resource(resource_list):
     str | None
         relevant node specification
     '''
-    nodes = list(option for option in option_parser.expand_options(resource_list) if option.startswith('nodes'))
+    nodes = list(option for option in expand_options(resource_list) if option.startswith('nodes'))
     return nodes[-1] if nodes else None
 
 
-class PbsTorqueOptionParser(option_parser.OptionParser):
+class PbsTorqueOptionParser(OptionParser):
     '''Parser for PBS torque command line options and job scripts'''
 
     def __init__(self):
