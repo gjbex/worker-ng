@@ -12,16 +12,16 @@
 #   * num_cores
 #   * exit_on_client_fail, i.e., true or false
 #
-{scheuler_directives}
+{scheduler_directives}
 
 # source worker functions used in this script
 source "{worker_path}/scripts/worker_functoins.sh"
 
 # file to store the server details
-SERVER_INFO="server_info_${{PBS_JOBID}}.txt"
+SERVER_INFO="worker_server_info_${{PBS_JOBID}}.txt"
 
 # start the server
-"{worker_path}/worker_server" \
+"{worker_path}/bin/worker_server" \
     {log_prefix_opt} \
     {port_opt} \
     --workfile "{workfile}" \
@@ -50,7 +50,7 @@ env_variables=$(compute_env_vars '^VSC_' '^PBS_')
 
 # launch clients
 nodes=$(cat $PBS_NODEFILE)
-num_clients=$(( ${#nodes} / $num_cores ))
+num_clients=$(( ${{#nodes}} / num_cores ))
 
 # compute numactl arguments
 numactl_args=( $( compute_numactl_args $num_cores $nodes ) )
@@ -58,14 +58,14 @@ numactl_status=$?
 
 for (( client_num=0; client_num < num_clients; client_num++ ))
 do
-    client_nodes="${nodes[@_]:$(( client_num*num_cores )):$num_cores}"
+    client_nodes="${{nodes[@_]:$(( client_num*num_cores )):$num_cores}}"
     host_info=$( compute_host_file $num_cores $client_nodes )
     numactl_opt=''
     if [ $numactl_status ]
     then
         numactl_opt="--numactl ${{numactl_args[$client_num]}}"
     fi
-    ssh ${{client_nodes[0]}} "{worker_path}/worker_client" \
+    ssh ${{client_nodes[0]}} "{worker_path}/bin/worker_client" \
         --server "$server" --uuid "$uuid" \
         $env_variables $numactl_opt --host_info "$host_info" &
     client_exit=$?
@@ -83,3 +83,6 @@ done
 
 # wait for the server to finish
 wait
+
+# clean up
+rm -f "$SERVER_INFO"
