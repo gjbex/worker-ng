@@ -4,8 +4,16 @@ import shlex
 
 
 class PbsTorqueOptionParser(option_parser.OptionParser):
+    '''Parser for PBS torque command line options and job scripts'''
 
     def __init__(self):
+        '''Constructor
+
+        Returns
+        -------
+        PbsTorqueOptionParser
+            new parser instance
+        '''
         super().__init__()
         self._base_parser = argparse.ArgumentParser(description=self._description, add_help=False)
         self._base_parser.add_argument('-l', dest='resources', action='append',
@@ -29,6 +37,16 @@ class PbsTorqueOptionParser(option_parser.OptionParser):
 
 
     def _parse_script(self, file_name, directive_prefix):
+        '''Concrete implementation of the parser for PBS torque scripts, private method,
+        to be called by the superclass
+
+        Parameters
+        ----------
+        file_name: str
+            path to the job script
+        directive_prefix: str
+            directive prefix used in the script
+        '''
         args = list()
         shebang = None
         pbs_directives = ''
