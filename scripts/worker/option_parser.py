@@ -8,10 +8,6 @@ def expand_options(options):
         new_options.extend(option.split(','))
     return new_options
 
-def get_nodes_resource(resource_list):
-    nodes = list(option for option in expand_options(resource_list) if option.startswith('nodes'))
-    return nodes[-1] if nodes else None
-
 
 class OptionParserException(Exception):
     '''Base class for exceptions related to parsing options for schedulers

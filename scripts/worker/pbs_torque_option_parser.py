@@ -3,6 +3,23 @@ import option_parser
 import shlex
 
 
+def get_nodes_resource(resource_list):
+    '''Select the nodes rersource out of a list of resource specifications
+
+    Parameters
+    ----------
+    resource_list: list
+        list of resource specifications
+
+    Returns
+    -------
+    str | None
+        relevant node specification
+    '''
+    nodes = list(option for option in expand_options(resource_list) if option.startswith('nodes'))
+    return nodes[-1] if nodes else None
+
+
 class PbsTorqueOptionParser(option_parser.OptionParser):
     '''Parser for PBS torque command line options and job scripts'''
 
