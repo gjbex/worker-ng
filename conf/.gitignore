@@ -1,0 +1,2 @@
+# worker.conf should be a symbolic link to the relevant configuration file
+worker.conf
