@@ -39,8 +39,9 @@ class OptionParser:
         self._specific_parser = argparse.ArgumentParser(add_help=False)
         self._specific_parser.add_argument('--num_cores', type=int, default=1,
                                            help='number of cores per work item')
-        self._specific_parser.add_argument('--data', help='data file containing the parameters'
-                                                          'for the work items')
+        self._specific_parser.add_argument('--data', action='append',
+                                           help='data file containing the parameters'
+                                                'for the work items')
 
     @property
     def directive_prefix(self):
