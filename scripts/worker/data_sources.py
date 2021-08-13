@@ -3,8 +3,32 @@ import itertools
 import re
 
 class DataSource:
+    '''Iterator that aggregates over data sources.  Data sources can be CSV files,
+    text files representing a single column of data and a job array specificatoin.
+
+    The first line of a data file has the column haeaders.  As they will be used
+    as variable names in a Bash script they should adhere to the implied
+    syntax restrictions.
+
+    Each following line is a parameter instance and will be passed as a work item.
+
+    It will iterate until the smallest data source is exhausted.
+    '''
 
     def __init__(self, filenames, sniff_length, array_spec, array_var):
+        '''Constructor for an aggregated data source.
+
+        Parameters
+        ----------
+        filenames: list
+            names of text data files, CSV or single column files
+        sniff_length: int
+            number of bytes to use for the CSV sniffer
+        array_spec: str
+            job array specification
+        array_var: str
+            name of the variable that holds the array ID
+        '''
         data_sources = list()
         for filename in filenames:
             try:
