@@ -24,7 +24,7 @@ def get_nodes_resource(resource_list):
 class PbsTorqueOptionParser(OptionParser):
     '''Parser for PBS torque command line options and job scripts'''
 
-    def __init__(self):
+    def __init__(self, description='Parser for PBS torque qsub optionsa'):
         '''Constructor
 
         Returns
@@ -33,6 +33,7 @@ class PbsTorqueOptionParser(OptionParser):
             new parser instance
         '''
         super().__init__()
+        self._description = description
         self._directive_prefix = '#PBS'
         self._arrayid_var_name = 'PBS_ARRAYID'
         self._base_parser = argparse.ArgumentParser(description=self._description, add_help=False)
@@ -40,7 +41,7 @@ class PbsTorqueOptionParser(OptionParser):
                                        help='resource list')
         self._base_parser.add_argument('-j', dest='join', choices=['oe', 'eo', 'n'],
                                        help='join output/erroro')
-        self._base_parser.add_argument('-C', dest='directive_prefix', default=self.get_directive_prefix(),
+        self._base_parser.add_argument('-C', dest='directive_prefix', default=self._directive_prefix,
                                        help='directive prefix')
         self._base_parser.add_argument('-e', dest='error',
                                        help='error file path')
