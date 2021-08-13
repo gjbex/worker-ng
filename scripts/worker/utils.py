@@ -29,3 +29,17 @@ def expand_options(options):
     for option in options:
         new_options.extend(option.split(','))
     return new_options
+
+def create_workitem_file(filename, script, data_sources, sep):
+    with open(filename, 'w') as file:
+        data = next(data_sources)
+        for var_name, value in data.items():
+            print(f"export {var_name}='{value}'", file=file)
+        print(file=file)
+        print(script, file=file)
+        for data in data_sources:
+            print(sep, file=file)
+            for var_name, value in data.items():
+                print(f"export {var_name}='{value}'", file=file)
+            print(file=file)
+            print(script, file=file)
