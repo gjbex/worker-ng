@@ -16,7 +16,7 @@ def main():
     template = worker.templates.get_jobscript_template(config['scheduler']['name'])
     data_sources = DataSource(parser_result.options.data, 1024,
                               parser_result.options.array_request, 'PBS_ARRAYID')
-    create_workitem_file('bla.txt', parser_result.script, data_sources, '#WORKER ------')
+    create_workitem_file('bla.txt', parser_result.script, data_sources, '#WORKER----')
 
 if __name__ == '__main__':
     main()

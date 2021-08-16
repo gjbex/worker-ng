@@ -1,0 +1,99 @@
+sleep 8; echo work item 1; exit
+#WORKER----
+sleep 3; echo work item 2; exit
+#WORKER----
+sleep 7; echo work item 3; exit
+#WORKER----
+sleep 9; echo work item 4; exit
+#WORKER----
+sleep 0; echo work item 5; exit
+#WORKER----
+sleep 4; echo work item 6; exit
+#WORKER----
+sleep 7; echo work item 7; exit
+#WORKER----
+sleep 9; echo work item 8; exit
+#WORKER----
+sleep 9; echo work item 9; exit
+#WORKER----
+sleep 1; echo work item 10; exit
+#WORKER----
+sleep 2; echo work item 11; exit
+#WORKER----
+sleep 3; echo work item 12; exit
+#WORKER----
+sleep 8; echo work item 13; exit
+#WORKER----
+sleep 5; echo work item 14; exit
+#WORKER----
+sleep 9; echo work item 15; exit
+#WORKER----
+sleep 2; echo work item 16; exit
+#WORKER----
+sleep 4; echo work item 17; exit
+#WORKER----
+sleep 7; echo work item 18; exit
+#WORKER----
+sleep 3; echo work item 19; exit
+#WORKER----
+sleep 1; echo work item 20; exit
+#WORKER----
+sleep 5; echo work item 21; exit
+#WORKER----
+sleep 4; echo work item 22; exit
+#WORKER----
+sleep 8; echo work item 23; exit
+#WORKER----
+sleep 1; echo work item 24; exit
+#WORKER----
+sleep 5; echo work item 25; exit
+#WORKER----
+sleep 2; echo work item 26; exit
+#WORKER----
+sleep 1; echo work item 27; exit
+#WORKER----
+sleep 8; echo work item 28; exit
+#WORKER----
+sleep 8; echo work item 29; exit
+#WORKER----
+sleep 5; echo work item 30; exit
+#WORKER----
+sleep 3; echo work item 31; exit
+#WORKER----
+sleep 3; echo work item 32; exit
+#WORKER----
+sleep 5; echo work item 33; exit
+#WORKER----
+sleep 2; echo work item 34; exit
+#WORKER----
+sleep 4; echo work item 35; exit
+#WORKER----
+sleep 4; echo work item 36; exit
+#WORKER----
+sleep 5; echo work item 37; exit
+#WORKER----
+sleep 3; echo work item 38; exit
+#WORKER----
+sleep 1; echo work item 39; exit
+#WORKER----
+sleep 7; echo work item 40; exit
+#WORKER----
+sleep 5; echo work item 41; exit
+#WORKER----
+sleep 9; echo work item 42; exit
+#WORKER----
+sleep 8; echo work item 43; exit
+#WORKER----
+sleep 4; echo work item 44; exit
+#WORKER----
+sleep 5; echo work item 45; exit
+#WORKER----
+sleep 4; echo work item 46; exit
+#WORKER----
+sleep 0; echo work item 47; exit
+#WORKER----
+sleep 1; echo work item 48; exit
+#WORKER----
+sleep 7; echo work item 49; exit
+#WORKER----
+sleep 1; echo work item 50; exit

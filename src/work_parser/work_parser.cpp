@@ -5,7 +5,7 @@
 namespace worker {
     namespace work_parser {
 
-        const std::string Work_parser::DEFAULT_SEP {"#----"};
+        const std::string Work_parser::DEFAULT_SEP {"#WORKER----"};
 
         void Work_parser::parse_next() {
             std::stringstream item {""};
