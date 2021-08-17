@@ -44,6 +44,11 @@ class OptionParser:
                                                 'for the work items')
         self._specific_parser.add_argument('--port', type=int,
                                            help='port the worker server will listen on')
+        self._specific_parser.add_argument('--verbose', action='store_true',
+                                           help='give verbose output for debugging')
+        self._specific_parser.add_argument('--dryrun', action='store_true',
+                                           help='create worker artifacts but do not submit job')
+        self._specific_parser.add_argument('script', help='job script')
 
     @property
     def directive_prefix(self):
@@ -55,17 +60,6 @@ class OptionParser:
             Prefix for scheduler directives in job scripts
         '''
         return self._directive_prefix
-
-    @property
-    def arrayid_var_name(self):
-        '''Return the name of the variable that the scheduler sets for job array IDs
-
-        Returns
-        -------
-        str
-            name of the variable that is set to the array ID by the scheduler
-        '''
-        return self._arrayid_var_name
 
     def parse(self, args):
         '''Method to parse command line arguments passed to the submission command of a

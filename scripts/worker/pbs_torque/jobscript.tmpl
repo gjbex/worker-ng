@@ -3,9 +3,10 @@
 # variables that should be subsituted
 #   * shebang, shebang for this script
 #   * scheduler_directives
+#   * worker_path
+#   * server_info
 #   * log_prefix_opt, e.g., --log_prefix path_to_log_prefix
 #   * {port_opt}, e.g., --port 1234
-#   * worker_path
 #   * server_start_delay, 5 (in seconds)
 #   * workfile
 #   * o_opt, e.g., -out path_to_output_file
@@ -19,7 +20,7 @@
 source "{worker_path}/scripts/worker_functoins.sh"
 
 # file to store the server details
-SERVER_INFO="worker_server_info_${{PBS_JOBID}}.txt"
+SERVER_INFO={server_info}
 
 # start the server
 "{worker_path}/bin/worker_server" \
@@ -84,6 +85,3 @@ done
 
 # wait for the server to finish
 wait
-
-# clean up
-rm -f "$SERVER_INFO"
