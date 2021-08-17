@@ -42,6 +42,8 @@ class OptionParser:
         self._specific_parser.add_argument('--data', action='append',
                                            help='data file containing the parameters'
                                                 'for the work items')
+        self._specific_parser.add_argument('--port', type=int,
+                                           help='port the worker server will listen on')
 
     @property
     def directive_prefix(self):
