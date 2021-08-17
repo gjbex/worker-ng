@@ -30,16 +30,19 @@ class DataSource:
             name of the variable that holds the array ID
         '''
         data_sources = list()
-        for filename in filenames:
-            try:
-                data_sources.append(CsvDataSource(filename, sniff_length))
-            except csv.Error as csv_error:
+        if filenames is not None:
+            for filename in filenames:
                 try:
-                    data_sources.append(SingleColumnDataSource(filename))
-                except ValueError:
-                    raise csv_error
+                    data_sources.append(CsvDataSource(filename, sniff_length))
+                except csv.Error as csv_error:
+                    try:
+                        data_sources.append(SingleColumnDataSource(filename))
+                    except ValueError:
+                        raise csv_error
         if array_spec is not None:
             data_sources.append(RangeDataSource(array_var, array_spec))
+        if not data_sources:
+            raise ValueError('no data sources specified')
         self._iter = zip(*data_sources)
 
     def __iter__(self):
