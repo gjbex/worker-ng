@@ -1,14 +1,15 @@
-#!/usr/bin/env bash
+{shebang}
 #
 # variables that should be subsituted
+#   * shebang, shebang for this script
 #   * scheduler_directives
 #   * log_prefix_opt, e.g., --log_prefix path_to_log_prefix
 #   * {port_opt}, e.g., --port 1234
 #   * worker_path
 #   * server_start_delay, 5 (in seconds)
 #   * workfile
-#   * o_opt, e.g., -o path_to_output_file
-#   * e_opt, e.g., -e path_to_error_file
+#   * o_opt, e.g., -out path_to_output_file
+#   * e_opt, e.g., -err path_to_error_file
 #   * num_cores
 #   * exit_on_client_fail, i.e., true or false
 #
@@ -50,7 +51,7 @@ env_variables=$(compute_env_vars '^VSC_' '^PBS_')
 
 # launch clients
 nodes=$(cat $PBS_NODEFILE)
-num_clients=$(( ${{#nodes}} / num_cores ))
+num_clients=$(( ${{#nodes[@]}} / num_cores ))
 
 # compute numactl arguments
 numactl_args=( $( compute_numactl_args $num_cores $nodes ) )
