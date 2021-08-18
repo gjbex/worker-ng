@@ -1,5 +1,7 @@
 import configparser
 import pathlib
+import shlex
+import subprocess
 import uuid
 from worker.data_sources import DataSource
 from worker.templates import get_jobscript_template
@@ -141,3 +143,17 @@ def create_jobscript(file_path, parser_result, config):
     with open(file_path, 'w') as jobscript_file:
         print(template.format(**templ_params), file=jobscript_file)
 
+def submit_job(submit_cmd_path, jobscript_path, parser_result, config, original_cl_options):
+    command = [config['scheduler']['submit_command']] + original_cl_options + [str(jobscript_path)]
+    command_str = shlex.join(command)
+    with open(submit_cmd_path, 'w') as file:
+        print(command_str, file=file)
+    if parser_result.options.dryrun:
+        print(command_str)
+        return ''
+    else:
+        completed = subprocess.run(command, capture_output=True, text=True)
+        if completed.returncode:
+            raise(OSError(completed.returncode, completed.stderr))
+        else:
+            return completed.stdout.strip()

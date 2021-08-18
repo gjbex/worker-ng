@@ -1,29 +1,10 @@
 #!/usr/bin/env python
 
-import shlex
-import subprocess
 import sys
 import worker.option_parser
 import worker.utils
 from worker.utils import (get_worker_path, read_config_file, create_tempdir,
-                          create_workfile, create_jobscript)
-
-def submit_job(submit_cmd_path, jobscript_path, parser_result, config, original_cl_options):
-    command = [config['scheduler']['submit_command']] + original_cl_options + [str(jobscript_path)]
-    command_str = shlex.join(command)
-    with open(submit_cmd_path, 'w') as file:
-        print(command_str, file=file)
-    if parser_result.options.dryrun:
-        print(command_str)
-        return ''
-    else:
-        completed = subprocess.run(command, capture_output=True, text=True)
-        if completed.returncode:
-            print('### error: job submission failed', file=sys.stderr)
-            print(completed.stderr, file-sys.stderr)
-            sys.exit(completed.returncode)
-        else:
-            return completed.stdout.strip()
+                          create_workfile, create_jobscript, submit_job)
 
 def main():
     # read configuration file
