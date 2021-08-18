@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
     }
 
     // set up logging
-    std::string log_name = options.log_name_prefix + "-" +
+    std::string log_name = options.log_name_prefix + "client_" +
        boost::lexical_cast<std::string>(client_id) + options.log_name_ext;
     
     using namespace logging::trivial;
