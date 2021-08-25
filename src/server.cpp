@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 
     // set up logging
     Logger logger;
-    std::string log_name = options.log_name_prefix + "server_" + options.log_name_ext;
+    std::string log_name = options.log_name_prefix + options.log_name_ext;
     try {
         init_logging(log_name);
         BOOST_LOG_SEV(logger, info) << "server ID " << id;
