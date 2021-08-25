@@ -11,6 +11,7 @@
 #   * workfile
 #   * o_opt, e.g., -out path_to_output_file
 #   * e_opt, e.g., -err path_to_error_file
+#   * env_var_exprs, e.g., '^VSC' '^PBS_'
 #   * num_cores
 #   * exit_on_client_fail, i.e., true or false
 #
@@ -48,7 +49,7 @@ server=$(cut -d ' ' -f 2 $SERVER_INFO)
 
 # environment variables will not be available on non-server nodes,
 # so they need to be passed to the client explicitly
-env_variables=$(compute_env_vars '^VSC_' '^PBS_')
+env_variables=$(compute_env_vars {env_var_exprs})
 
 # launch clients
 nodes=$(cat $PBS_NODEFILE)

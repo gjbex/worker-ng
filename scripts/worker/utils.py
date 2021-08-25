@@ -137,6 +137,7 @@ def create_jobscript(file_path, parser_result, config):
         'workfile': str(worker_dir_path / 'workerfile.txt'),
         'o_opt': f'-out "{parser_result.options.output}"' if parser_result.options.output else '',
         'e_opt': f'-err "{parser_result.options.error}"' if parser_result.options.error else '',
+        'env_var_exprs': f"{config['worker']['env_var_exprs']} {config['scheduler']['env_var_exprs']}",
         'num_cores': parser_result.options.num_cores,
         'exit_on_client_fail': 'false',
     }
