@@ -151,6 +151,7 @@ int main(int argc, char* argv[]) {
             if (parser.has_next()) {
                 size_t work_id = send_work(socket, msg.from(), parser, msg_builder, logger);
                 to_do.insert(work_id);
+                BOOST_LOG_SEV(logger, info) << "start work item " << work_id;
             } else {
                 send_stop(socket, msg.from(), msg_builder, logger);
                 if (to_do.empty()) {
@@ -166,7 +167,7 @@ int main(int argc, char* argv[]) {
             wpr::Result result(result_str);
             ofs << result.stdout() << std::endl;
             efs << result.stderr() << std::endl;
-            BOOST_LOG_SEV(logger, info) << "work item " << msg.id()
+            BOOST_LOG_SEV(logger, info) << "end work item " << msg.id()
                 << ": " << result.exit_status();
             to_do.erase(msg.id());
             send_ack(socket, msg.from(), msg_builder, logger);
