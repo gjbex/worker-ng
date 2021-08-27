@@ -1,4 +1,5 @@
-from collections import defaultdict, namedtuple
+import abc
+from collections import defaultdict
 import dataclasses
 from dataclasses import dataclass
 import datetime
@@ -24,7 +25,7 @@ def convert_to_dict(workitems):
             workitem_dict[field.name].append(getattr(workitem, field.name))
     return workitem_dict
 
-class LogParser:
+class LogParser(abc.ABC):
 
     def __init__(self):
         self._exprs = {
@@ -42,6 +43,17 @@ class LogParser:
     def parse_time(datetime_str):
         return datetime.datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S.%f')
 
+    def parse(self, obj):
+        if type(obj) == str:
+            with open(obj) as file:
+                return self._parse(file)
+        else:
+            return self._parse(obj)
+
+    @abc.abstractmethod
+    def _parse(self, file):
+        ...
+
 
 class WorkitemLogParser(LogParser):
 
@@ -52,14 +64,6 @@ class WorkitemLogParser(LogParser):
         self._exprs['done_msg'] = r'{msg}\s+done\s*:\s*{exit_status}'.format(**self._exprs)
         self._started_expr = re.compile(r'{prefix}\s+{started_msg}'.format(**self._exprs))
         self._done_expr = re.compile(r'{prefix}\s+{done_msg}'.format(**self._exprs))
-
-    def parse(self, obj):
-        if type(obj) == str:
-            with open(obj) as file:
-                return self._parse(file)
-        else:
-            return self._parse(obj)
-
 
     def _parse(self, file):
         workitems = defaultdict(WorkItem)
