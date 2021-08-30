@@ -1,5 +1,4 @@
 import argparse
-from worker.option_parser import OptionParser
 from worker.utils import expand_options
 import shlex
 
