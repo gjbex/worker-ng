@@ -51,10 +51,7 @@ class OptionParserException(Exception):
         super().__init__(*args)
 
 
-class SubmitOptionParser:
-    '''Abstract base class for scheduler option parsers.  Concrete classes should be
-    implemented for specific schedulers such as PBS torque or Slurm.
-    '''
+class OptionParser:
 
     def __init__(self, scheduler_option_parser, description):
         '''Base constructor, only to be called from subclasses
@@ -64,18 +61,12 @@ class SubmitOptionParser:
         self._specific_parser = argparse.ArgumentParser(add_help=False)
         self._specific_parser.add_argument('--num_cores', type=int, default=1,
                                            help='number of cores per work item')
-        self._specific_parser.add_argument('--data', action='append',
-                                           help='data file containing the parameters'
-                                                'for the work items')
         self._specific_parser.add_argument('--port', type=int,
                                            help='port the worker server will listen on')
         self._specific_parser.add_argument('--verbose', action='store_true',
                                            help='give verbose output for debugging')
         self._specific_parser.add_argument('--dryrun', action='store_true',
                                            help='create worker artifacts but do not submit job')
-        self._specific_parser.add_argument('--batch', dest='script', help='job script')
-        self._cl_parser = argparse.ArgumentParser(parents=[self._scheduler_option_parser._base_parser,
-                                                           self._specific_parser])
 
     @property
     def directive_prefix(self):
@@ -86,10 +77,26 @@ class SubmitOptionParser:
         str
             Prefix for scheduler directives in job scripts
         '''
-        return self._directive_prefix
+        return self._scheduler_option_parser._directive_prefix
 
     def _parse_script(self, file_name, directive_prefix):
         return self._scheduler_option_parser._parse_script(file_name, directive_prefix)
+
+
+class SubmitOptionParser(OptionParser):
+    '''Abstract base class for scheduler option parsers.  Concrete classes should be
+    implemented for specific schedulers such as PBS torque or Slurm.
+    '''
+    def __init__(self, scheduler_option_parser, description):
+        '''Base constructor, only to be called from subclasses
+        '''
+        super().__init__(scheduler_option_parser, description)
+        self._specific_parser.add_argument('--data', action='append',
+                                           help='data file containing the parameters'
+                                                'for the work items')
+        self._specific_parser.add_argument('--batch', dest='script', help='job script')
+        self._cl_parser = argparse.ArgumentParser(parents=[self._scheduler_option_parser._base_parser,
+                                                           self._specific_parser])
 
     def parse(self, args):
         '''Method to parse command line arguments passed to the submission command of a
