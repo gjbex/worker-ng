@@ -2,6 +2,7 @@
 
 import sys
 import worker.option_parser
+from worker.option_parser import get_scheduler_option_parser, OptionParser
 import worker.utils
 from worker.utils import (get_worker_path, read_config_file, create_tempdir,
                           create_workfile, create_jobscript, submit_job)
@@ -14,7 +15,8 @@ def main():
     scheduler_name = config['scheduler']['name']
 
     # parse command line options and job script directives
-    option_parser = worker.option_parser.get_parser(scheduler_name)
+    scheuler_option_parser = get_scheduler_option_parser(scheduler_name)
+    option_parser = OptionParser(scheuler_option_parser, 'submit worker job')
     parser_result = option_parser.parse(sys.argv[1:])
     original_cl_options = option_parser.filter_cl(sys.argv[1:])
 

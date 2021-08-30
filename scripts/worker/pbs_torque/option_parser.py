@@ -21,7 +21,7 @@ def get_nodes_resource(resource_list):
     return nodes[-1] if nodes else None
 
 
-class PbsTorqueOptionParser(OptionParser):
+class PbsTorqueOptionParser:
     '''Parser for PBS torque command line options and job scripts'''
 
     def __init__(self, description='Parser for PBS torque qsub optionsa'):
@@ -32,10 +32,8 @@ class PbsTorqueOptionParser(OptionParser):
         PbsTorqueOptionParser
             new parser instance
         '''
-        super().__init__(description)
-        self._description = description
         self._directive_prefix = '#PBS'
-        self._base_parser = argparse.ArgumentParser(description=self._description, add_help=False)
+        self._base_parser = argparse.ArgumentParser(add_help=False)
         self._base_parser.add_argument('-l', dest='resources', action='append',
                                        help='resource list')
         self._base_parser.add_argument('-j', dest='join', choices=['oe', 'eo', 'n'],
@@ -52,7 +50,6 @@ class PbsTorqueOptionParser(OptionParser):
                                        help='array request')
         self._base_parser.add_argument('-w', dest='working_dir',
                                        help='working directory')
-        self._cl_parser = argparse.ArgumentParser(parents=[self._base_parser, self._specific_parser])
 
     def _parse_script(self, file_name, directive_prefix):
         '''Concrete implementation of the parser for PBS torque scripts, private method,

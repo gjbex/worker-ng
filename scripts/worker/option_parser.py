@@ -7,13 +7,37 @@ import shlex
 ParseData = collections.namedtuple('ParseData', ['options', 'shebang', 'directives', 'script'])
 
 def _get_parser_class_info(scheduler_name):
+    '''Retrieve the appropriate class and module for the specified scheduler
+
+    Parameters
+    ----------
+    scheduler_name: str
+        name of the scheduler
+
+    Returns
+    -------
+    tuple(str, str)
+        class name and module name for the option parser
+    '''
     name_parts = scheduler_name.split()
     class_parts = ['option', 'parser']
     class_name = ''.join(map(str.capitalize, name_parts + class_parts))
     module_name = 'worker.' + '_'.join(map(str.lower, name_parts)) + '.' + '_'.join(class_parts)
     return class_name, module_name
 
-def get_parser(scheduler_name):
+def get_scheduler_option_parser(scheduler_name):
+    '''Instantiate a scheduler option parser based on the scheduler's name
+
+    Parameters
+    ----------
+    scheduler_name: str
+        name of the scheduler
+
+    Returns
+    -------
+    object
+        instance of the scheduler option parser
+    '''
     class_name, module_name = _get_parser_class_info(scheduler_name)
     parser_module = importlib.import_module(module_name)
     parser_class = getattr(parser_module, class_name)
@@ -32,9 +56,10 @@ class OptionParser:
     implemented for specific schedulers such as PBS torque or Slurm.
     '''
 
-    def __init__(self, description='Parser for resource manager options'):
+    def __init__(self, scheduler_option_parser, description):
         '''Base constructor, only to be called from subclasses
         '''
+        self._scheduler_option_parser = scheduler_option_parser
         self._description = description
         self._specific_parser = argparse.ArgumentParser(add_help=False)
         self._specific_parser.add_argument('--num_cores', type=int, default=1,
@@ -48,7 +73,9 @@ class OptionParser:
                                            help='give verbose output for debugging')
         self._specific_parser.add_argument('--dryrun', action='store_true',
                                            help='create worker artifacts but do not submit job')
-        self._specific_parser.add_argument('script', help='job script')
+        self._specific_parser.add_argument('--batch', dest='script', help='job script')
+        self._cl_parser = argparse.ArgumentParser(parents=[self._scheduler_option_parser._base_parser,
+                                                           self._specific_parser])
 
     @property
     def directive_prefix(self):
@@ -60,6 +87,9 @@ class OptionParser:
             Prefix for scheduler directives in job scripts
         '''
         return self._directive_prefix
+
+    def _parse_script(self, file_name, directive_prefix):
+        return self._scheduler_option_parser._parse_script(file_name, directive_prefix)
 
     def parse(self, args):
         '''Method to parse command line arguments passed to the submission command of a
