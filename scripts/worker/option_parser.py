@@ -51,7 +51,7 @@ class OptionParserException(Exception):
         super().__init__(*args)
 
 
-class OptionParser:
+class SubmitOptionParser:
     '''Abstract base class for scheduler option parsers.  Concrete classes should be
     implemented for specific schedulers such as PBS torque or Slurm.
     '''
