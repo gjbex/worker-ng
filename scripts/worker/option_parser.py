@@ -1,6 +1,7 @@
 import argparse
 import collections
 import importlib
+import pathlib
 import shlex
 
 
@@ -82,10 +83,13 @@ class OptionParser:
     def _parse_script(self, file_name, directive_prefix):
         return self._scheduler_option_parser._parse_script(file_name, directive_prefix)
 
+    def filter_cl(self, args):
+        _, regular_options = self._specific_parser.parse_known_args(args)
+        return regular_options
+
 
 class SubmitOptionParser(OptionParser):
-    '''Abstract base class for scheduler option parsers.  Concrete classes should be
-    implemented for specific schedulers such as PBS torque or Slurm.
+    '''Class for scheduler option parser for submit command line arguments
     '''
     def __init__(self, scheduler_option_parser, description):
         '''Base constructor, only to be called from subclasses
@@ -94,7 +98,8 @@ class SubmitOptionParser(OptionParser):
         self._specific_parser.add_argument('--data', action='append',
                                            help='data file containing the parameters'
                                                 'for the work items')
-        self._specific_parser.add_argument('--batch', dest='script', help='job script')
+        self._specific_parser.add_argument('--batch', dest='script', required=True,
+                                           help='job script')
         self._cl_parser = argparse.ArgumentParser(parents=[self._scheduler_option_parser._base_parser,
                                                            self._specific_parser])
 
@@ -126,6 +131,33 @@ class SubmitOptionParser(OptionParser):
         options, _ = self._cl_parser.parse_known_args(args, script_options)
         return ParseData(options, shebang, directives, script)
 
-    def filter_cl(self, args):
-        _, regular_options = self._specific_parser.parse_known_args(args)
-        return regular_options
+
+class ResubmitOptionParser(OptionParser):
+    '''Class for scheduler option parser for resubmit command line options
+    '''
+    def __init__(self, scheduler_option_parser, description):
+        '''Base constructor, only to be called from subclasses
+        '''
+        super().__init__(scheduler_option_parser, description)
+        self._specific_parser.add_argument('--dir', required=True,
+                                           help='directory containing job information to resume')
+        self._cl_parser = argparse.ArgumentParser(parents=[self._scheduler_option_parser._base_parser,
+                                                           self._specific_parser])
+
+    def parse(self, args):
+        cl_options, unknown_args = self._cl_parser.parse_known_args(args)
+        previous_job_dir = pathlib.Path(cl_options.dir)
+        script_name = previous_job_dir / 'jobscript.sh'
+        script_options, shebang, directives, _ = self._parse_script(script_name,
+                                                                    cl_options.directive_prefix)
+        submit_cmd_name = previous_job_dir / 'submit.sh'
+        original_submit_options = self._parse_submit_cmd(submit_cmd_name)
+        options, _ = self._cl_parser.parse_known_args(original_submit_options, script_options)
+        options, _ = self._cl_parser.parse_known_args(args, options)
+        return ParseData(options, shebang, directives, None)
+
+    def _parse_submit_cmd(submit_cmd_name):
+        with open(submit_cmd_name) as file:
+            cmd_str = file.readline()
+        _, arg_str = cmd_str.strip().split(maxsplit=1)
+        return shlex.split(arg_str)
