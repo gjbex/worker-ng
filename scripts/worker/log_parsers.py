@@ -5,6 +5,7 @@ from dataclasses import dataclass
 import datetime
 from functools import singledispatchmethod
 import pandas as pd
+import pathlib
 import re
 import typing
 
@@ -44,7 +45,7 @@ class LogParser(abc.ABC):
         return datetime.datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S.%f')
 
     def parse(self, obj):
-        if type(obj) == str:
+        if type(obj) == str or type(obj) == pathlib.PosixPath:
             with open(obj) as file:
                 return self._parse(file)
         else:
