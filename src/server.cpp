@@ -19,6 +19,7 @@
 #include "work_processor/result.h"
 
 using Options = struct {
+    std::string server_info;
     std::string workfile_name;
     int port_nr;
     std::string out_name;
@@ -46,6 +47,7 @@ namespace wpr = worker::work_processor;
 using namespace logging::trivial;
 using Logger = src::severity_logger<severity_level>;
 
+void write_server_info(const Uuid& id, const std::string& info_str);
 size_t send_work(zmq::socket_t& socket, const Uuid& dest,
         wp::Work_parser& parser, wm::Message_builder& msg_builder,
         Logger& logger);
@@ -126,7 +128,7 @@ int main(int argc, char* argv[]) {
     const std::string info_str {protocol + "://" + hostname +
         ":" + std::to_string(options.port_nr)};
     BOOST_LOG_SEV(logger, info) << "server address " << info_str;
-    std::cout << id << " " << info_str << std::endl;
+    write_server_info(id, info_str);
 
     wm::Message_builder msg_builder(id);
     // set of open work item IDs, i.e., work items started, but not completed yet
@@ -193,6 +195,8 @@ Options get_options(int argc, char* argv[]) {
     desc.add_options()
         ("help,h", "produce help message")
         ("version,v", "show software version")
+        ("server_info", po::value<std::string>(&options.server_info)->required(),
+         "file name to store server info in")
         ("workfile", po::value<std::string>(&options.workfile_name)->required(),
          "work file to use")
         ("port", po::value<int>(&options.port_nr)
@@ -245,6 +249,10 @@ Options get_options(int argc, char* argv[]) {
     }
 
     return options;
+}
+
+void write_server_info(const Uuid& id, const std::string& info_str) {
+    std::cout << id << " " << info_str << std::endl;
 }
 
 size_t send_work(zmq::socket_t& socket, const Uuid& dest,
