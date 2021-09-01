@@ -9,8 +9,6 @@
 #   * {port_opt}, e.g., --port 1234
 #   * server_start_delay, 5 (in seconds)
 #   * workfile
-#   * o_opt, e.g., -out path_to_output_file
-#   * e_opt, e.g., -err path_to_error_file
 #   * env_var_exprs, e.g., '^VSC' '^PBS_'
 #   * num_cores
 #   * exit_on_client_fail, i.e., true or false
@@ -28,7 +26,6 @@ SERVER_INFO={server_info}
     {log_opt} \
     {port_opt} \
     --workfile "{workfile}" \
-    {o_opt} {e_opt} \
     > "$SERVER_INFO" &
 server_exit=$?
 if [ $server_exit -ne 0 ]

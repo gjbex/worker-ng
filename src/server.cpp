@@ -22,9 +22,7 @@ using Options = struct {
     std::string workfile_name;
     int port_nr;
     std::string out_name;
-    std::string out_prefix;
     std::string err_name;
-    std::string err_prefix;
     std::string log_name;
 };
 
@@ -84,24 +82,28 @@ int main(int argc, char* argv[]) {
     wp::Work_parser parser(ifs);
 
     // open output file
-    const std::string out_file_name = options.out_name.length() ? options.out_name :
-        options.out_prefix + "-" + id_str;
-    std::ofstream ofs(out_file_name);
-    if (ofs.fail()) {
-        BOOST_LOG_SEV(logger, error) << "could not open output '" << out_file_name << "'";
-        std::cerr << "### error: can not create output file '" << out_file_name << "'" << std::endl;
-        worker::exit(worker::Error::file);
+    std::ofstream ofs;
+    if (options.out_name.length() > 0) {
+        ofs.open(options.out_name);
+        if (ofs.fail()) {
+            BOOST_LOG_SEV(logger, error) << "could not open output '" << options.out_name << "'";
+            std::cerr << "### error: can not create output file '" << options.out_name << "'" << std::endl;
+            worker::exit(worker::Error::file);
+        }
     }
+    std::ostream& out_stream(ofs.is_open() ? ofs : std::cout);
 
     // open error file
-    const std::string err_file_name = options.err_name.length() ? options.err_name :
-        options.err_prefix + "-" + id_str;
-    std::ofstream efs(err_file_name);
-    if (efs.fail()) {
-        BOOST_LOG_SEV(logger, error) << "could not open error '" << err_file_name << "'";
-        std::cerr << "### error: can not create error file '" << err_file_name << "'" << std::endl;
-        worker::exit(worker::Error::file);
+    std::ofstream efs(options.err_name);
+    if (options.err_name.length() > 0) {
+        efs.open(options.err_name);
+        if (efs.fail()) {
+            BOOST_LOG_SEV(logger, error) << "could not open error '" << options.err_name << "'";
+            std::cerr << "### error: can not create error file '" << options.err_name << "'" << std::endl;
+            worker::exit(worker::Error::file);
+        }
     }
+    std::ostream& err_stream(efs.is_open() ? efs : std::cerr);
 
     // create socket and bind to it
     const std::string protocol {"tcp"};
@@ -164,8 +166,8 @@ int main(int argc, char* argv[]) {
                 << " from " << msg.from();
             std::string result_str = msg.content();
             wpr::Result result(result_str);
-            ofs << result.stdout() << std::endl;
-            efs << result.stderr() << std::endl;
+            out_stream << result.stdout() << std::endl;
+            err_stream << result.stderr() << std::endl;
             BOOST_LOG_SEV(logger, info) << "workitem " << msg.id()
                 << " done: " << result.exit_status();
             to_do.erase(msg.id());
@@ -184,9 +186,7 @@ Options get_options(int argc, char* argv[]) {
     Options options;
     const int default_port {5555};
     std::string default_out_name {""};
-    std::string default_out_prefix {"out"};
     std::string default_err_name {""};
-    std::string default_err_prefix {"err"};
     std::string default_log_name {"server"};
 
     po::options_description desc("Allowed options");
@@ -197,14 +197,10 @@ Options get_options(int argc, char* argv[]) {
          "work file to use")
         ("port", po::value<int>(&options.port_nr)
          ->default_value(default_port), "port to listen on")
-        ("out,o", po::value<std::string>(&options.out_name)
+        ("out", po::value<std::string>(&options.out_name)
          ->default_value(default_out_name), "output file name")
-        ("out_prefix", po::value<std::string>(&options.out_prefix)
-         ->default_value(default_out_prefix), "output file name prefix")
-        ("err,e", po::value<std::string>(&options.err_name)
+        ("err", po::value<std::string>(&options.err_name)
          ->default_value(default_err_name), "error file name")
-        ("err_prefix", po::value<std::string>(&options.err_prefix)
-         ->default_value(default_err_prefix), "error file name prefix")
         ("log", po::value<std::string>(&options.log_name)
          ->default_value(default_log_name),
          "log file name")
