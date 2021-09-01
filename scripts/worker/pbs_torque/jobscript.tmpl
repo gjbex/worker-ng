@@ -5,7 +5,7 @@
 #   * scheduler_directives
 #   * worker_path
 #   * server_info
-#   * log_prefix_opt, e.g., --log_prefix path_to_log_prefix
+#   * log_opt, e.g., --log path_to_log_file
 #   * {port_opt}, e.g., --port 1234
 #   * server_start_delay, 5 (in seconds)
 #   * workfile
@@ -25,7 +25,7 @@ SERVER_INFO={server_info}
 
 # start the server
 "{worker_path}/bin/worker_server" \
-    {log_prefix_opt} \
+    {log_opt} \
     {port_opt} \
     --workfile "{workfile}" \
     {o_opt} {e_opt} \

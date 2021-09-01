@@ -25,8 +25,7 @@ using Options = struct {
     std::string out_prefix;
     std::string err_name;
     std::string err_prefix;
-    std::string log_name_prefix;
-    std::string log_name_ext;
+    std::string log_name;
 };
 
 using Uuid = boost::uuids::uuid;
@@ -67,9 +66,8 @@ int main(int argc, char* argv[]) {
 
     // set up logging
     Logger logger;
-    std::string log_name = options.log_name_prefix + options.log_name_ext;
     try {
-        init_logging(log_name);
+        init_logging(options.log_name);
         BOOST_LOG_SEV(logger, info) << "server ID " << id;
     } catch (boost::wrapexcept<boost::filesystem::filesystem_error>& err) {
         std::cerr << "### error: can not create log file, " << err.what() << std::endl;
@@ -189,8 +187,7 @@ Options get_options(int argc, char* argv[]) {
     std::string default_out_prefix {"out"};
     std::string default_err_name {""};
     std::string default_err_prefix {"err"};
-    std::string default_log_name_prefix {"server"};
-    std::string default_log_name_ext {".log"};
+    std::string default_log_name {"server"};
 
     po::options_description desc("Allowed options");
     desc.add_options()
@@ -208,12 +205,9 @@ Options get_options(int argc, char* argv[]) {
          ->default_value(default_err_name), "error file name")
         ("err_prefix", po::value<std::string>(&options.err_prefix)
          ->default_value(default_err_prefix), "error file name prefix")
-        ("log_prefix", po::value<std::string>(&options.log_name_prefix)
-         ->default_value(default_log_name_prefix),
-         "log file name prefix")
-        ("log_ext", po::value<std::string>(&options.log_name_ext)
-         ->default_value(default_log_name_ext),
-         "log file name extension")
+        ("log", po::value<std::string>(&options.log_name)
+         ->default_value(default_log_name),
+         "log file name")
         ;
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);

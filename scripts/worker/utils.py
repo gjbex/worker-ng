@@ -131,7 +131,7 @@ def create_jobscript(file_path, parser_result, config):
         'scheduler_directives': parser_result.directives,
         'worker_path': config['worker']['path'],
         'server_info': str(worker_dir_path / 'server_info.txt'),
-        'log_prefix_opt': f'--log_prefix "{str(worker_dir_path / "log_")}"',
+        'log_opt': f'--log "{str(worker_dir_path / "server.log")}"',
         'port_opt': f"--port {parser_result.options.port or config['worker']['worker_port']}",
         'server_start_delay': config['worker']['server_start_delay'],
         'workfile': str(worker_dir_path / 'workerfile.txt'),
