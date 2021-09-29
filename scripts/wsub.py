@@ -18,7 +18,7 @@ def main():
     scheduler_option_parser = get_scheduler_option_parser(scheduler_name)
     option_parser = SubmitOptionParser(scheduler_option_parser, 'submit worker job')
     parser_result = option_parser.parse(sys.argv[1:])
-    original_cl_options = option_parser.filter_cl(sys.argv[1:])
+    original_cl_options = option_parser.filter_command_cl(sys.argv[1:])
 
     # create directory to store worker artfifacts
     tempdir_path = create_tempdir(config['worker']['tempdir_prefix'])

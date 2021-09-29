@@ -1,23 +1,28 @@
 import argparse
+from worker.option_parser import ParseData
 from worker.utils import expand_options
 import shlex
 
+def _normalize_resources(resources):
+    resource_dict = {}
+    for resource in resources:
+        parts = resource.split(',')
+        for part in parts:
+            key, value = part.split('=', maxsplit=1)
+            resource_dict[key] = value
+    return resource_dict
 
-def get_nodes_resource(resource_list):
-    '''Select the nodes rersource out of a list of resource specifications
+def _merge_resources(old_resources, new_resources):
+    if old_resources is None:
+        return new_resources
+    if new_resources is None:
+        return old_resources
+    print(old_resources)
+    resources = _normalize_resources(old_resources)
+    resources.update(_normalize_resources(new_resources))
+    return [f'{key}={value}' for key, value in resources.items()]
 
-    Parameters
-    ----------
-    resource_list: list
-        list of resource specifications
 
-    Returns
-    -------
-    str | None
-        relevant node specification
-    '''
-    nodes = list(option for option in expand_options(resource_list) if option.startswith('nodes'))
-    return nodes[-1] if nodes else None
 
 
 class PbsTorqueOptionParser:
@@ -31,24 +36,29 @@ class PbsTorqueOptionParser:
         PbsTorqueOptionParser
             new parser instance
         '''
-        self._directive_prefix = '#PBS'
         self._base_parser = argparse.ArgumentParser(add_help=False)
-        self._base_parser.add_argument('-l', dest='resources', action='append',
-                                       help='resource list')
-        self._base_parser.add_argument('-j', dest='join', choices=['oe', 'eo', 'n'],
-                                       help='join output/erroro')
-        self._base_parser.add_argument('-C', dest='directive_prefix', default=self._directive_prefix,
-                                       help='directive prefix')
-        self._base_parser.add_argument('-e', dest='error',
-                                       help='error file path')
-        self._base_parser.add_argument('-o', dest='output',
-                                       help='output file path')
-        self._base_parser.add_argument('-N', dest='name',
-                                       help='job name')
-        self._base_parser.add_argument('-t', dest='array_request',
-                                       help='array request')
-        self._base_parser.add_argument('-w', dest='working_dir',
-                                       help='working directory')
+        self._base_parser.add_argument(self.name_option)
+        self._base_parser.add_argument(self.directive_prefix_option)
+        self._base_parser.add_argument(self.array_option)
+
+    @property
+    def array_option(self):
+        return '-t'
+
+    @property
+    def name_option(self):
+        return '-N'
+
+    @property
+    def directive_prefix_option(self):
+        return '-C'
+
+    @property
+    def default_directive_prefix(self):
+        return '#PBS'
+
+    def parse_cl(self, args, context=None):
+        return self._base_parser.parse_known_args(args, context)
 
     def _parse_script(self, file_name, directive_prefix):
         '''Concrete implementation of the parser for PBS torque scripts, private method,
@@ -79,4 +89,27 @@ class PbsTorqueOptionParser:
                     parsing_pbs = False
                     script += line
         options, _ = self._base_parser.parse_known_args(args)
-        return options, shebang, pbs_directives, script
+        return ParseData(options, shebang, pbs_directives, script)
+
+    def merge_options(self, new_args, old_args):
+        pass_through_options = ['-a', '-A', '-b', '-c', '-d', '-D', '-e', '-j', '-k', '-K', '-L',
+                                '-m', '-M', '-n', '-N', '-o', '-p', '-P', '-q', '-r', '-S',
+                                '-T', '-u', '-v', '-w', '-W', ]
+        pass_through_flags = ['-V', '-h', '-f', '-F', ]
+        arg_parser = argparse.ArgumentParser(add_help=False)
+        for option in pass_through_options:
+            arg_parser.add_argument(option)
+        for flag in pass_through_flags:
+            arg_parser.add_argument(flag, action='store_true')
+        old_options, _ = arg_parser.parse_known_args(old_args)
+        new_options, _ = arg_parser.parse_known_args(new_args)
+        resource_parser = argparse.ArgumentParser()
+        resource_parser.add_argument('-l', action='append')
+        old_resources, _ = resource_parser.parse_known_args(old_args)
+        new_resources, _ = resource_parser.parse_known_args(new_args)
+        resources = _merge_resources(old_resources.l, new_resources.l)
+        merged_options = vars(old_options)
+        merged_options.update(vars(new_options))
+        merged_options = argparse.Namespace(l=resources, **merged_options)
+        return merged_options
+

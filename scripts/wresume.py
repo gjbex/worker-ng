@@ -2,8 +2,9 @@
 
 import argparse
 import pathlib
+import sys
 from worker.log_parsers import WorkitemLogParser
-from worker.option_parser import get_scheduler_option_parser, ResubmitOptionParser
+from worker.option_parser import get_scheduler_option_parser, ResubmitOptionParser, parse_submit_cmd
 from worker.workfile_parser import WorkfileParser, filter_workfile
 from worker.utils import (get_worker_path, read_config_file, create_tempdir,
                           create_workfile, create_jobscript, submit_job)
@@ -18,10 +19,10 @@ def main():
 
     # parse command line options and job script directives
     scheduler_option_parser = get_scheduler_option_parser(scheduler_name)
-    option_parser = ResubmitOptionParser(scheduler_option_parser, 'submit worker job')
+    option_parser = ResubmitOptionParser(scheduler_option_parser, 'resume worker job')
     parser_result = option_parser.parse(sys.argv[1:])
-    original_cl_options = option_parser.filter_cl(sys.argv[1:])
     previous_job_dir = pathlib.Path(parser_result.options.dir)
+    print(parser_result)
 
     # create directory to store worker artfifacts
     tempdir_path = create_tempdir(config['worker']['tempdir_prefix'])
@@ -30,10 +31,10 @@ def main():
     log_parser = WorkitemLogParser()
     report = log_parser.parse(previous_job_dir / 'server.log')
     work_ids = report.incompletes
-    if options.redo:
+    if parser_result.options.redo:
         work_ids.extend(report.failures)
-    filter_workfile(previous_job_dir / 'workfile.txt',
-                    tempdir_path / 'worikfile.txt',
+    filter_workfile(previous_job_dir / 'workerfile.txt',
+                    tempdir_path / 'workerfile.txt',
                     '#WORKER----', work_ids)
 
     # create job script in the worker artifacts directory
