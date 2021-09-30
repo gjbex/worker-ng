@@ -190,7 +190,7 @@ Options get_options(int argc, char* argv[]) {
     const int default_port {5555};
     std::string default_out_name {""};
     std::string default_err_name {""};
-    std::string default_log_name {"server"};
+    std::string default_log_name {"server.log"};
 
     po::options_description desc("Allowed options");
     desc.add_options()
