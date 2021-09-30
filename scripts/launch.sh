@@ -18,7 +18,7 @@ fi
 
 SERVER_INFO="server_info.txt"
 
-./worker_server --workfile "$work_file" > $SERVER_INFO &
+./worker_server --workfile "$work_file" --server_info $SERVER_INFO &
 if [ $? -ne 0 ]
 then
     (>&2 echo "### error: failed to launch server")
