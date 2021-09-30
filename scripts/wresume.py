@@ -21,8 +21,10 @@ def main():
     scheduler_option_parser = get_scheduler_option_parser(scheduler_name)
     option_parser = ResubmitOptionParser(scheduler_option_parser, 'resume worker job')
     parser_result = option_parser.parse(sys.argv[1:])
+    if parser_result.options.verbose:
+        print('wresume command line options:', file=sys.stderr)
+        print('\t{0}'.format(str(parser_result)), file=sys.stderr)
     previous_job_dir = pathlib.Path(parser_result.options.dir)
-    print(parser_result)
 
     # create directory to store worker artfifacts
     tempdir_path = create_tempdir(config['worker']['tempdir_prefix'])
