@@ -1,0 +1,47 @@
+export dest='1'
+export source='2'
+
+echo "hello to $dest from $source"
+
+#WORKER----
+export dest='1'
+export source='3'
+
+echo "hello to $dest from $source"
+
+#WORKER----
+export dest='2'
+export source='3'
+
+echo "hello to $dest from $source"
+
+#WORKER----
+export dest='2'
+export source='1'
+
+echo "hello to $dest from $source"
+
+#WORKER----
+export dest='3'
+export source='1'
+
+echo "hello to $dest from $source"
+
+#WORKER----
+export dest='3'
+export source='2'
+
+echo "hello to $dest from $source"
+
+#WORKER----
+export dest='4'
+export source='1'
+
+echo "hello to $dest from $source"
+
+#WORKER----
+export dest='1'
+export source='4'
+
+echo "hello to $dest from $source"
+
