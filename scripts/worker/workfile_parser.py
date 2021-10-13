@@ -21,7 +21,6 @@ def filter_workfile(input_file_name, output_file_name, sep, item_ids):
     with open(output_file_name, 'w') as output_file:
         for i, workitem in enumerate(parser.parse(input_file_name)):
             if i + 1 in item_ids:
-                print(f'keep {i + 1}')
                 if item_count > 0:
                     print(sep, file=output_file)
                 print(workitem, file=output_file)
