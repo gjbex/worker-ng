@@ -1,0 +1,260 @@
+2021-09-30 09:59:37.364309 [info]: server ID cf373809-d6d1-4ad2-a47c-2aa6fb55be86
+2021-09-30 09:59:37.365719 [info]: socket boundi on tcp://*:5555
+2021-09-30 09:59:37.365759 [info]: server address tcp://manjaro:5555
+2021-09-30 09:59:37.366041 [info]: created server_info file 'server_info.txt'
+2021-09-30 09:59:38.373911 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:38.373952 [info]: work message 1 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:38.373988 [info]: workitem 1 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:38.377849 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:38.377896 [info]: work message 2 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:38.377949 [info]: workitem 2 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:41.490453 [info]: result message for 2 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:41.490522 [info]: workitem 2 done: 0
+2021-09-30 09:59:41.491065 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:41.491085 [info]: work message 3 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:41.491121 [info]: workitem 3 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:46.477908 [info]: result message for 1 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:46.477973 [info]: workitem 1 done: 0
+2021-09-30 09:59:46.478678 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:46.478732 [info]: work message 4 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:46.478803 [info]: workitem 4 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:48.575493 [info]: result message for 3 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:48.575554 [info]: workitem 3 done: 0
+2021-09-30 09:59:48.576068 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:48.576088 [info]: work message 5 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:48.576123 [info]: workitem 5 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:48.658261 [info]: result message for 5 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:48.658340 [info]: workitem 5 done: 0
+2021-09-30 09:59:48.659184 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:48.659212 [info]: work message 6 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:48.659251 [info]: workitem 6 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:52.754283 [info]: result message for 6 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:52.754343 [info]: workitem 6 done: 0
+2021-09-30 09:59:52.754804 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:52.754837 [info]: work message 7 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:52.754879 [info]: workitem 7 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:55.637567 [info]: result message for 4 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:55.637658 [info]: workitem 4 done: 0
+2021-09-30 09:59:55.638195 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:55.638234 [info]: work message 8 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:55.638340 [info]: workitem 8 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 09:59:59.842442 [info]: result message for 7 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:59.842968 [info]: workitem 7 done: 0
+2021-09-30 09:59:59.843965 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:59.844008 [info]: work message 9 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 09:59:59.844088 [info]: workitem 9 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:04.760823 [info]: result message for 8 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:04.760883 [info]: workitem 8 done: 0
+2021-09-30 10:00:04.761328 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:04.761346 [info]: work message 10 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:04.761380 [info]: workitem 10 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:05.863914 [info]: result message for 10 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:05.863975 [info]: workitem 10 done: 0
+2021-09-30 10:00:05.864495 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:05.864515 [info]: work message 11 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:05.864551 [info]: workitem 11 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:08.030310 [info]: result message for 11 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:08.030380 [info]: workitem 11 done: 0
+2021-09-30 10:00:08.030860 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:08.030891 [info]: work message 12 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:08.030964 [info]: workitem 12 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:08.975938 [info]: result message for 9 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:08.976001 [info]: workitem 9 done: 0
+2021-09-30 10:00:08.976545 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:08.976565 [info]: work message 13 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:08.976601 [info]: workitem 13 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:11.135953 [info]: result message for 12 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:11.136037 [info]: workitem 12 done: 0
+2021-09-30 10:00:11.136628 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:11.136681 [info]: work message 14 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:11.136744 [info]: workitem 14 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:16.242774 [info]: result message for 14 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:16.242835 [info]: workitem 14 done: 0
+2021-09-30 10:00:16.243322 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:16.243349 [info]: work message 15 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:16.243405 [info]: workitem 15 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:17.068403 [info]: result message for 13 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:17.068479 [info]: workitem 13 done: 0
+2021-09-30 10:00:17.069160 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:17.069189 [info]: work message 16 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:17.069236 [info]: workitem 16 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:19.187149 [info]: result message for 16 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:19.187209 [info]: workitem 16 done: 0
+2021-09-30 10:00:19.187835 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:19.187857 [info]: work message 17 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:19.187893 [info]: workitem 17 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:23.271759 [info]: result message for 17 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:23.271820 [info]: workitem 17 done: 0
+2021-09-30 10:00:23.272333 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:23.272357 [info]: work message 18 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:23.272417 [info]: workitem 18 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:25.340239 [info]: result message for 15 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:25.340315 [info]: workitem 15 done: 0
+2021-09-30 10:00:25.340747 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:25.340771 [info]: work message 19 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:25.340813 [info]: workitem 19 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:28.466179 [info]: result message for 19 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:28.466298 [info]: workitem 19 done: 0
+2021-09-30 10:00:28.466930 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:28.466954 [info]: work message 20 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:28.466992 [info]: workitem 20 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:29.555189 [info]: result message for 20 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:29.555265 [info]: workitem 20 done: 0
+2021-09-30 10:00:29.555767 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:29.555788 [info]: work message 21 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:29.555823 [info]: workitem 21 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:30.361940 [info]: result message for 18 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:30.362014 [info]: workitem 18 done: 0
+2021-09-30 10:00:30.362670 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:30.362692 [info]: work message 22 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:30.362727 [info]: workitem 22 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:34.452965 [info]: result message for 22 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:34.453058 [info]: workitem 22 done: 0
+2021-09-30 10:00:34.453562 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:34.453627 [info]: work message 23 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:34.453716 [info]: workitem 23 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:34.641154 [info]: result message for 21 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:34.641438 [info]: workitem 21 done: 0
+2021-09-30 10:00:34.644036 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:34.645891 [info]: work message 24 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:34.645980 [info]: workitem 24 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:35.974032 [info]: result message for 24 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:35.974175 [info]: workitem 24 done: 0
+2021-09-30 10:00:36.012613 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:36.012660 [info]: work message 25 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:36.012745 [info]: workitem 25 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:41.111523 [info]: result message for 25 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:41.111599 [info]: workitem 25 done: 0
+2021-09-30 10:00:41.111952 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:41.111978 [info]: work message 26 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:41.112005 [info]: workitem 26 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:42.770903 [info]: result message for 23 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:42.770964 [info]: workitem 23 done: 0
+2021-09-30 10:00:42.771493 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:42.771513 [info]: work message 27 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:42.771549 [info]: workitem 27 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:43.283363 [info]: result message for 26 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:43.283427 [info]: workitem 26 done: 0
+2021-09-30 10:00:43.284031 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:43.284065 [info]: work message 28 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:43.284118 [info]: workitem 28 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:43.858924 [info]: result message for 27 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:43.859048 [info]: workitem 27 done: 0
+2021-09-30 10:00:43.862537 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:43.862587 [info]: work message 29 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:43.862665 [info]: workitem 29 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:51.427761 [info]: result message for 28 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:51.427821 [info]: workitem 28 done: 0
+2021-09-30 10:00:51.428295 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:51.428318 [info]: work message 30 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:51.428375 [info]: workitem 30 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:51.997214 [info]: result message for 29 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:51.997276 [info]: workitem 29 done: 0
+2021-09-30 10:00:51.997774 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:51.997794 [info]: work message 31 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:51.997830 [info]: workitem 31 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:55.083248 [info]: result message for 31 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:55.083340 [info]: workitem 31 done: 0
+2021-09-30 10:00:55.084220 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:55.084249 [info]: work message 32 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:55.084289 [info]: workitem 32 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:56.517730 [info]: result message for 30 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:56.517793 [info]: workitem 30 done: 0
+2021-09-30 10:00:56.518289 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:56.518309 [info]: work message 33 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:56.518344 [info]: workitem 33 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:00:58.171575 [info]: result message for 32 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:58.171724 [info]: workitem 32 done: 0
+2021-09-30 10:00:58.172301 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:58.172332 [info]: work message 34 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:00:58.172384 [info]: workitem 34 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:00.307911 [info]: result message for 34 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:00.307985 [info]: workitem 34 done: 0
+2021-09-30 10:01:00.308450 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:00.308493 [info]: work message 35 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:00.308539 [info]: workitem 35 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:01.614520 [info]: result message for 33 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:01.614609 [info]: workitem 33 done: 0
+2021-09-30 10:01:01.615182 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:01.615218 [info]: work message 36 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:01.615275 [info]: workitem 36 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:04.407679 [info]: result message for 35 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:04.407798 [info]: workitem 35 done: 0
+2021-09-30 10:01:04.408843 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:04.408883 [info]: work message 37 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:04.408937 [info]: workitem 37 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:05.826147 [info]: result message for 36 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:05.826207 [info]: workitem 36 done: 0
+2021-09-30 10:01:05.826697 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:05.826751 [info]: work message 38 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:05.826798 [info]: workitem 38 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:08.917030 [info]: result message for 38 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:08.917090 [info]: workitem 38 done: 0
+2021-09-30 10:01:08.917841 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:08.917877 [info]: work message 39 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:08.917924 [info]: workitem 39 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:09.523280 [info]: result message for 37 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:09.523366 [info]: workitem 37 done: 0
+2021-09-30 10:01:09.523990 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:09.524019 [info]: work message 40 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:09.524066 [info]: workitem 40 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:10.007828 [info]: result message for 39 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:10.007913 [info]: workitem 39 done: 0
+2021-09-30 10:01:10.008662 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:10.008698 [info]: work message 41 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:10.008750 [info]: workitem 41 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:15.109098 [info]: result message for 41 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:15.109173 [info]: workitem 41 done: 0
+2021-09-30 10:01:15.109668 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:15.109689 [info]: work message 42 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:15.109732 [info]: workitem 42 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:16.614366 [info]: result message for 40 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:16.614463 [info]: workitem 40 done: 0
+2021-09-30 10:01:16.615278 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:16.615310 [info]: work message 43 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:16.615354 [info]: workitem 43 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:24.212250 [info]: result message for 42 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:24.212309 [info]: workitem 42 done: 0
+2021-09-30 10:01:24.212879 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:24.212899 [info]: work message 44 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:24.212952 [info]: workitem 44 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:24.797619 [info]: result message for 43 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:24.797681 [info]: workitem 43 done: 0
+2021-09-30 10:01:24.798196 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:24.798217 [info]: work message 45 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:24.798253 [info]: workitem 45 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:28.302216 [info]: result message for 44 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:28.302276 [info]: workitem 44 done: 0
+2021-09-30 10:01:28.302981 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:28.303023 [info]: work message 46 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:28.303107 [info]: workitem 46 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:29.885592 [info]: result message for 45 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:29.885654 [info]: workitem 45 done: 0
+2021-09-30 10:01:29.886572 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:29.886601 [info]: work message 47 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:29.886684 [info]: workitem 47 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:29.981041 [info]: result message for 47 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:29.981133 [info]: workitem 47 done: 0
+2021-09-30 10:01:29.981604 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:29.981624 [info]: work message 48 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:29.981673 [info]: workitem 48 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:31.066697 [info]: result message for 48 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:31.066759 [info]: workitem 48 done: 0
+2021-09-30 10:01:31.067260 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:31.067285 [info]: work message 49 to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:31.067357 [info]: workitem 49 started: bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:32.418711 [info]: result message for 46 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:32.418772 [info]: workitem 46 done: 0
+2021-09-30 10:01:32.419699 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:32.419724 [info]: work message 50 to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:32.419770 [info]: workitem 50 started: a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:33.503453 [info]: result message for 50 from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:33.503526 [info]: workitem 50 done: 0
+2021-09-30 10:01:33.504020 [info]: query message from a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:33.504046 [info]: stop message to a2d56055-fd3f-4f5f-8785-9f56050ec0af
+2021-09-30 10:01:38.160412 [info]: result message for 49 from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:38.160516 [info]: workitem 49 done: 0
+2021-09-30 10:01:38.161086 [info]: query message from bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:38.161113 [info]: stop message to bda16ea3-cff8-4306-98ba-8c9471da67e3
+2021-09-30 10:01:38.161256 [info]: processing done
+2021-09-30 10:01:38.161283 [info]: exiting normally
