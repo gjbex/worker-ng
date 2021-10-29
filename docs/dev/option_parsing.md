@@ -16,8 +16,8 @@ The scheduler's options can be divided into three categories:
    scheduler, e.g., array job specifications.
 
 worker has two commands for which scheduler options are relevant:
-1. initial job submission (wsub) and
-1. resuming a job (wresume).
+1. initial job submission (`wsub`) and
+1. resuming a job (`wresume`).
 
 On initial job submission, all scheduler options that should be passed to
 the scheduler can be passed unaltered.
@@ -25,7 +25,7 @@ the scheduler can be passed unaltered.
 On resuming a job, the situation is a bit more complicated.  The options
 to be passed to the scheduler can now be specified in
 1. the original job script,
-1. the command line of the submission command,
+1. the command line of the original submit command,
 1. the command line of the resume command.
 
 The options specified as directives can be passed without issue.  The options

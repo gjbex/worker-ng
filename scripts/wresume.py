@@ -2,6 +2,7 @@
 
 import argparse
 import pathlib
+import shlex
 import sys
 from worker.log_parsers import WorkitemLogParser
 from worker.option_parser import get_scheduler_option_parser, ResubmitOptionParser, parse_submit_cmd
@@ -43,8 +44,6 @@ def main():
     filter_workfile(previous_job_dir / 'workerfile.txt',
                     tempdir_path / 'workerfile.txt',
                     '#WORKER----', work_ids)
-
-    # retrieve original submit command line options
 
     # create job script in the worker artifacts directory
     jobscript_path = tempdir_path / 'jobscript.sh'

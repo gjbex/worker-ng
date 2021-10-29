@@ -17,7 +17,6 @@ def _merge_resources(old_resources, new_resources):
         return new_resources
     if new_resources is None:
         return old_resources
-    print(old_resources)
     resources = _normalize_resources(old_resources)
     resources.update(_normalize_resources(new_resources))
     return [f'{key}={value}' for key, value in resources.items()]
@@ -102,14 +101,11 @@ class PbsTorqueOptionParser:
         for flag in pass_through_flags:
             arg_parser.add_argument(flag, action='store_true')
         old_options, _ = arg_parser.parse_known_args(old_args)
-        new_options, _ = arg_parser.parse_known_args(new_args)
+        merged_options, _ = arg_parser.parse_known_args(new_args, namespace=old_options)
         resource_parser = argparse.ArgumentParser()
         resource_parser.add_argument('-l', action='append')
         old_resources, _ = resource_parser.parse_known_args(old_args)
         new_resources, _ = resource_parser.parse_known_args(new_args)
         resources = _merge_resources(old_resources.l, new_resources.l)
-        merged_options = vars(old_options)
-        merged_options.update(vars(new_options))
-        merged_options = argparse.Namespace(l=resources, **merged_options)
+        merged_options = argparse.Namespace(l=resources, **vars(merged_options))
         return merged_options
-

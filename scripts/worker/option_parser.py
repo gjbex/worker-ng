@@ -202,7 +202,7 @@ class ResubmitOptionParser(OptionParser):
         # get the resubmit command line options
         resubmit_options = self.filter_command_cl(args)
 
-        # merge submit and resubmit optoins
+        # merge submit and resubmit options
         options = self._scheduler_option_parser.merge_options(resubmit_options, original_submit_options)
 
         # parse worker jobsccript to get options and directives
