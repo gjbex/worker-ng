@@ -41,6 +41,16 @@ class PbsTorqueOptionParser:
         self._base_parser.add_argument(self.array_option)
 
     @property
+    def pass_through_options(self):
+        return ['-a', '-A', '-b', '-c', '-d', '-D', '-e', '-j', '-k', '-K', '-L',
+                '-m', '-M', '-n', '-N', '-o', '-p', '-P', '-q', '-r', '-S',
+                '-T', '-u', '-v', '-w', '-W', ]
+
+    @property
+    def pass_through_flags(self):
+        return ['-V', '-h', '-f', '-F', ]
+
+    @property
     def array_option(self):
         return '-t'
 
@@ -91,14 +101,10 @@ class PbsTorqueOptionParser:
         return ParseData(options, shebang, pbs_directives, script)
 
     def merge_options(self, new_args, old_args):
-        pass_through_options = ['-a', '-A', '-b', '-c', '-d', '-D', '-e', '-j', '-k', '-K', '-L',
-                                '-m', '-M', '-n', '-N', '-o', '-p', '-P', '-q', '-r', '-S',
-                                '-T', '-u', '-v', '-w', '-W', ]
-        pass_through_flags = ['-V', '-h', '-f', '-F', ]
         arg_parser = argparse.ArgumentParser(add_help=False)
-        for option in pass_through_options:
+        for option in self.pass_through_options:
             arg_parser.add_argument(option)
-        for flag in pass_through_flags:
+        for flag in self.pass_through_flags:
             arg_parser.add_argument(flag, action='store_true')
         old_options, _ = arg_parser.parse_known_args(old_args)
         merged_options, _ = arg_parser.parse_known_args(new_args, namespace=old_options)
