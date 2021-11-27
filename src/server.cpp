@@ -1,4 +1,5 @@
 #include <boost/asio/ip/host_name.hpp>
+#include <boost/filesystem.hpp>
 #include <boost/filesystem/exception.hpp>
 #define BOOST_LOG_DYN_LINK 1
 #include <boost/log/trivial.hpp>
