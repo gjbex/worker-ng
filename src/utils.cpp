@@ -26,7 +26,7 @@ void print_version_info() {
         << zmq_major << "."
         << zmq_minor << "."
         << zmq_patch << std::endl;
-};
+}
 
 wm::Message unpack_message(const zmq::message_t& zmq_msg,
                            const wm::Message_builder& msg_builder) {
