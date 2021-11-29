@@ -51,3 +51,6 @@ err-*
 
 # Python caching
 __pycache__
+
+# Singularity images
+*.sif
