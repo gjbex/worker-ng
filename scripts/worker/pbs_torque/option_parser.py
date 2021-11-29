@@ -78,6 +78,14 @@ class PbsTorqueOptionParser:
             path to the job script
         directive_prefix: str
             directive prefix used in the script
+
+        Returns
+        -------
+        ParseData
+            * options: relevent options passed via scheduler directives (e.g., -N, -t)
+            * shebang
+            * directives: string of scheduler directives in the script, unfiltered
+            * script
         '''
         args = list()
         shebang = None
