@@ -119,16 +119,42 @@ class OptionParser:
         return self._scheduler_option_parser._directive_prefix
 
     def filter_worker_cl(self, args):
+        '''Return all options relevant to worker, i.e.,
+          * the options for worker itself,
+          * the options for the scheduler that worker intercepts (e.g., job array request),
+          * relevant scheduler options (e.g., scheduler directive, job name)
+
+        Parameters
+        ----------
+        args: list
+            list of all arguments passed via the command line
+
+        Returns
+        -------
+        namespace
+            command line options as a namespace
+        '''
         worker_options, _ = self._cl_parser.parse_known_args(args)
         return worker_options
 
     def filter_command_cl(self, args):
+        '''Return only options that should be passed to the scheduler's submission command
+
+        Parameters
+        ----------
+        args: list
+            list of all arguments passed via the command line
+
+        Returns
+        -------
+        list
+            arguments that should be passed to the scheduler's submit command
+        '''
         _, command_args = self._passthrough_parser.parse_known_args(args)
         return command_args
 
     def _parse_script(self, file_name, directive_prefix):
         return self._scheduler_option_parser._parse_script(file_name, directive_prefix)
-
 
 
 class SubmitOptionParser(OptionParser):
