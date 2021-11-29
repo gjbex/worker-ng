@@ -37,7 +37,6 @@ class PbsTorqueOptionParser:
         '''
         self._base_parser = argparse.ArgumentParser(add_help=False)
         self._base_parser.add_argument(self.name_option)
-        self._base_parser.add_argument(self.directive_prefix_option)
         self._base_parser.add_argument(self.array_option)
 
     @property
