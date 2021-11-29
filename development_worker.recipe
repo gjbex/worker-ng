@@ -117,7 +117,7 @@ From: ubuntu:20.04
     pip install pandas
 
 %environment
-    PYTHONPATH=/usr/local/lib/python3.8/dist-packages/
+    export PYTHONPATH=/usr/local/lib/python3.8/dist-packages/
 
 %runscript
     /bin/bash
