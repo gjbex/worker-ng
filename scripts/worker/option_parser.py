@@ -5,7 +5,8 @@ import pathlib
 import shlex
 
 
-ParseData = collections.namedtuple('ParseData', ['options', 'shebang', 'directives', 'script'])
+ParseData = collections.namedtuple('ParseData', ['options', 'shebang', 'directives', 'script',
+                                                 'scheduler_options'])
 
 def _get_parser_class_info(scheduler_name):
     '''Retrieve the appropriate class and module for the specified scheduler
@@ -25,6 +26,18 @@ def _get_parser_class_info(scheduler_name):
     class_name = ''.join(map(str.capitalize, name_parts + class_parts))
     module_name = 'worker.' + '_'.join(map(str.lower, name_parts)) + '.' + '_'.join(class_parts)
     return class_name, module_name
+
+def _options_dict2list(opt_dict):
+    opt_list = []
+    for key, value in opt_dict.items():
+        if value is not False and value is not None:
+            opt_list.append(f'-{key}')
+            if value is not True:
+                if type(value) is list:
+                    opt_list.append(','.join(value))
+                else:
+                    opt_list.append(value)
+    return opt_list
 
 def get_scheduler_option_parser(scheduler_name):
     '''Instantiate a scheduler option parser based on the scheduler's name
@@ -199,8 +212,9 @@ class SubmitOptionParser(OptionParser):
         parser_result = self._parse_script(cl_options.script, cl_options.directive_prefix)
         # merge script and command line options
         options = argparse.Namespace(**vars(parser_result.options), **vars(cl_options))
+        scheduler_options = self.filter_command_cl(args)
         return ParseData(options, parser_result.shebang, parser_result.directives,
-                         parser_result.script)
+                         parser_result.script, scheduler_options)
 
 
 class ResubmitOptionParser(OptionParser):
@@ -229,15 +243,16 @@ class ResubmitOptionParser(OptionParser):
         resubmit_options = self.filter_command_cl(args)
 
         # merge submit and resubmit options
-        options = self._scheduler_option_parser.merge_options(resubmit_options, original_submit_options)
+        submit_options = self._scheduler_option_parser.merge_options(resubmit_options,
+                                                                     original_submit_options)
 
         # parse worker jobsccript to get options and directives
         script_name = previous_job_dir / 'jobscript.sh'
-        script_options, shebang, directives, _ = self._parse_script(script_name,
-                                                                    cl_options.directive_prefix)
+        script_options, shebang, directives, _, _ = self._parse_script(script_name,
+                                                                       cl_options.directive_prefix)
 
         # merge script options for job name
         merged_options = vars(script_options)
-        merged_options.update(vars(options))
-        options = argparse.Namespace(**merged_options, **vars(cl_options))
-        return ParseData(options, shebang, directives, None)
+        merged_options.update(vars(submit_options))
+        return ParseData(cl_options, shebang, directives, None,
+                         _options_dict2list(merged_options))

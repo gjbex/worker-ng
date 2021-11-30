@@ -105,7 +105,7 @@ class PbsTorqueOptionParser:
                     parsing_pbs = False
                     script += line
         options, _ = self._base_parser.parse_known_args(args)
-        return ParseData(options, shebang, pbs_directives, script)
+        return ParseData(options, shebang, pbs_directives, script, None)
 
     def merge_options(self, new_args, old_args):
         arg_parser = argparse.ArgumentParser(add_help=False)

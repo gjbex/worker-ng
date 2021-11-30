@@ -27,9 +27,6 @@ def main():
         print('\t{0}'.format(str(parser_result)), file=sys.stderr)
     previous_job_dir = pathlib.Path(parser_result.options.dir)
 
-    original_cl_options = option_parser.filter_command_cl(sys.argv[1:])
-    if parser_result.options.verbose:
-        print('\toriginal options: {0}'.format(original_cl_options))
     # create directory to store worker artfifacts
     tempdir_path = create_tempdir(config['worker']['tempdir_prefix'])
 
@@ -52,7 +49,7 @@ def main():
     # submit the job
     submit_cmd_path = tempdir_path / 'submit.sh'
     job_id = submit_job(submit_cmd_path, jobscript_path, parser_result, config,
-                        parser_result.options)
+                        parser_result.scheduler_options)
 
     # rename the worker artifacts directory
     if job_id:

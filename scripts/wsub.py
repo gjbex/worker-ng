@@ -18,7 +18,6 @@ def main():
     scheduler_option_parser = get_scheduler_option_parser(scheduler_name)
     option_parser = SubmitOptionParser(scheduler_option_parser, 'submit worker job')
     parser_result = option_parser.parse(sys.argv[1:])
-    original_cl_options = option_parser.filter_command_cl(sys.argv[1:])
 
     # create directory to store worker artfifacts
     tempdir_path = create_tempdir(config['worker']['tempdir_prefix'])
@@ -33,7 +32,8 @@ def main():
 
     # submit the job
     submit_cmd_path = tempdir_path / 'submit.sh'
-    job_id = submit_job(submit_cmd_path, jobscript_path, parser_result, config, original_cl_options)
+    job_id = submit_job(submit_cmd_path, jobscript_path, parser_result, config,
+                        parser_result.scheduler_options)
 
     # rename the worker artifacts directory
     if job_id:
