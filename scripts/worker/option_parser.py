@@ -27,14 +27,14 @@ def _get_parser_class_info(scheduler_name):
     module_name = 'worker.' + '_'.join(map(str.lower, name_parts)) + '.' + '_'.join(class_parts)
     return class_name, module_name
 
-def _options_dict2list(opt_dict):
+def _options_dict2list(opt_dict, opt_sep=','):
     opt_list = []
     for key, value in opt_dict.items():
         if value is not False and value is not None:
             opt_list.append(f'-{key}')
             if value is not True:
                 if type(value) is list:
-                    opt_list.append(','.join(value))
+                    opt_list.append(opt_sep.join(value))
                 else:
                     opt_list.append(value)
     return opt_list
