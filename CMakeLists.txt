@@ -17,6 +17,9 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 # search and configure doxygen
 find_package (Doxygen)
     
+# use shared libraries for build
+set(CMAKE_FIND_LIBRARY_SUFFIXES .so)
+
 # search 0MQ library
 find_package (PkgConfig)
 pkg_check_modules (PC_ZeroMQ QUIET zmq)
