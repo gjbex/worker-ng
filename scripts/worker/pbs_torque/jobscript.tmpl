@@ -15,6 +15,9 @@
 #
 {scheduler_directives}
 
+# source worker software environment variables (LD_LIBRARY_PATH et al.)
+source "{worker_path}/conf/worker_env.sh"
+
 # source worker functions used in this script
 source "{worker_path}/scripts/worker_functions.sh"
 
@@ -50,7 +53,11 @@ env_variables=$(compute_env_vars {env_var_exprs})
 
 # launch clients
 nodes=$(cat $PBS_NODEFILE)
-num_clients=$(( ${{#nodes[@]}} / num_cores ))
+if [ -z "$num_cores" ]
+then
+    num_cores=1
+fi
+num_clients=$(( ${{#nodes[@]}} / $num_cores ))
 
 # compute numactl arguments
 numactl_args=( $( compute_numactl_args $num_cores $nodes ) )
@@ -58,7 +65,7 @@ numactl_status=$?
 
 for (( client_num=0; client_num < num_clients; client_num++ ))
 do
-    client_nodes="${{nodes[@_]:$(( client_num*num_cores )):$num_cores}}"
+    client_nodes="${{nodes[@]:$(( client_num*num_cores )):$num_cores}}"
     host_info=$( compute_host_file $num_cores $client_nodes )
     numactl_opt=''
     if [ $numactl_status ]
