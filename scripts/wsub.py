@@ -39,5 +39,9 @@ def main():
     if job_id:
         tempdir_path.rename(f'worker_{job_id}')
 
+    # write the job ID to standard output
+    if job_id:
+        print(jobid)
+
 if __name__ == '__main__':
     main()
