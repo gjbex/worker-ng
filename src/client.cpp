@@ -2,10 +2,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/lexical_cast.hpp>
-#define BOOST_LOG_DYN_LINK 1
 #include <boost/log/trivial.hpp>
-#include <boost/log/utility/setup/common_attributes.hpp>
-#include <boost/log/sources/severity_logger.hpp>
 #include <boost/program_options.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -38,7 +35,6 @@ using Options = struct {
 Options get_options(int argc, char* argv[]);
 
 namespace logging = boost::log;
-namespace src = boost::log::sources;
 namespace wm = worker::message;
 namespace wpr = worker::work_processor;
 
@@ -76,10 +72,9 @@ int main(int argc, char* argv[]) {
        boost::lexical_cast<std::string>(client_id) + options.log_name_ext;
     
     using namespace logging::trivial;
-    src::severity_logger<severity_level> logger;
     try {
         init_logging(log_name);
-        BOOST_LOG_SEV(logger, info) << "client ID " << client_id;
+        BOOST_LOG_TRIVIAL(info) << "client ID " << client_id;
     } catch (boost::wrapexcept<boost::filesystem::filesystem_error>& err) {
         std::cerr << "### error: can not create log file, " << err.what() << std::endl;
         worker::exit(worker::Error::file);
@@ -92,10 +87,10 @@ int main(int argc, char* argv[]) {
     socket.set(zmq::sockopt::sndtimeo, options.time_out);
     try {
         socket.connect(options.server_name);
-        BOOST_LOG_SEV(logger, info) << "connected to server"
+        BOOST_LOG_TRIVIAL(info) << "connected to server"
                                     << options.server_name;
     } catch (zmq::error_t& err) {
-        BOOST_LOG_SEV(logger, error) << "socket connection failed, " << err.what();
+        BOOST_LOG_TRIVIAL(error) << "socket connection failed, " << err.what();
         std::cerr << "### error: socket can not connect to " << options.server_name << std::endl;
         worker::exit(worker::Error::socket);
     }
@@ -108,36 +103,36 @@ int main(int argc, char* argv[]) {
         auto msg = msg_builder.to(options.server_id)
                            .subject(wm::Subject::query) .build();
         zmq::message_t request = pack_message(msg);
-        BOOST_LOG_SEV(logger, info) << "query message to " << msg.to();
+        BOOST_LOG_TRIVIAL(info) << "query message to " << msg.to();
         auto send_result = socket.send(request, zmq::send_flags::none);
         if (!send_result) {
-            BOOST_LOG_SEV(logger, error) << "client can not send message";
+            BOOST_LOG_TRIVIAL(error) << "client can not send message";
         }
         // get and handle server's reply
         zmq::message_t reply;
         auto recv_resuolt = socket.recv(reply, zmq::recv_flags::none);
         if (!recv_resuolt) {
-            BOOST_LOG_SEV(logger, error) << "client can not receive message";
+            BOOST_LOG_TRIVIAL(error) << "client can not receive message";
         }
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == wm::Subject::stop) {
             // no more work, stop
-            BOOST_LOG_SEV(logger, info) << "stop message from "
+            BOOST_LOG_TRIVIAL(info) << "stop message from "
                                         << msg.from();
             break;
         } else if(msg.subject() == wm::Subject::work) {
             // handle work
-            BOOST_LOG_SEV(logger, info) << "work message for " << msg.id()
+            BOOST_LOG_TRIVIAL(info) << "work message for " << msg.id()
                                         << " from " << msg.from();
             auto work_str = msg.content();
             auto work_id = msg.id();
-            BOOST_LOG_SEV(logger, info) << "work item " << work_id
+            BOOST_LOG_TRIVIAL(info) << "work item " << work_id
                                         << " started";
             // add item-specific info to the environment
             env["WORKER_ITEM_ID"] = std::to_string(work_id);
             // execute work item
             auto result = wpr::process_work(work_str, env);
-            BOOST_LOG_SEV(logger, info) << "work item " << work_id
+            BOOST_LOG_TRIVIAL(info) << "work item " << work_id
                                         << " finished: "
                                         << result.exit_status();
             // send result of work to server
@@ -145,25 +140,25 @@ int main(int argc, char* argv[]) {
                                   .subject(wm::Subject::result).id(work_id)
                                   .content(result.to_string()).build();
             zmq::message_t result_reply = pack_message(result_msg);
-            BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
+            BOOST_LOG_TRIVIAL(info) << "result message for " << msg.id()
                                         << " to " << msg.to();
             auto send_result = socket.send(result_reply, zmq::send_flags::none);
             if (!send_result) {
-                BOOST_LOG_SEV(logger, error) << "client can not send message";
+                BOOST_LOG_TRIVIAL(error) << "client can not send message";
             }
             // wait for acknowledgement from server
             zmq::message_t ack_response;
             auto recv_result = socket.recv(ack_response, zmq::recv_flags::none);
             if (!recv_result) {
-                BOOST_LOG_SEV(logger, error) << "client can not receive message";
+                BOOST_LOG_TRIVIAL(error) << "client can not receive message";
             }
         } else {
             // unknown message type
-            BOOST_LOG_SEV(logger, fatal) << "invalid message";
+            BOOST_LOG_TRIVIAL(fatal) << "invalid message";
             worker::exit(worker::Error::unexpected);
         }
     }
-    BOOST_LOG_SEV(logger, info) << "exiting normally";
+    BOOST_LOG_TRIVIAL(info) << "exiting normally";
     return 0;
 }
 

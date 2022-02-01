@@ -1,10 +1,7 @@
 #include <boost/asio/ip/host_name.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/exception.hpp>
-#define BOOST_LOG_DYN_LINK 1
 #include <boost/log/trivial.hpp>
-#include <boost/log/utility/setup/common_attributes.hpp>
-#include <boost/log/sources/severity_logger.hpp>
 #include <boost/program_options.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -40,23 +37,20 @@ void print_to_do(const std::set<size_t> to_do) {
 Options get_options(int argc, char* argv[]);
 
 namespace logging = boost::log;
-namespace src = boost::log::sources;
 namespace wm = worker::message;
 namespace wp = worker::work_parser;
 namespace wpr = worker::work_processor;
 
 using namespace logging::trivial;
-using Logger = src::severity_logger<severity_level>;
 
 void write_server_info(const std::string& file_name, const Uuid& id,
-        const std::string& info_str, Logger& logger);
+        const std::string& info_str);
 size_t send_work(zmq::socket_t& socket, const Uuid& dest,
-        wp::Work_parser& parser, wm::Message_builder& msg_builder,
-        Logger& logger);
+        wp::Work_parser& parser, wm::Message_builder& msg_builder);
 void send_stop(zmq::socket_t& socket, const Uuid& dest,
-        wm::Message_builder& msg_builder, Logger& logger);
+        wm::Message_builder& msg_builder);
 void send_ack(zmq::socket_t& socket, const Uuid& dest,
-        wm::Message_builder& msg_builder, Logger& logger);
+        wm::Message_builder& msg_builder);
 
 int main(int argc, char* argv[]) {
     // determine UUID for this run
@@ -67,10 +61,9 @@ int main(int argc, char* argv[]) {
     auto options = get_options(argc, argv);
 
     // set up logging
-    Logger logger;
     try {
         init_logging(options.log_name);
-        BOOST_LOG_SEV(logger, info) << "server ID " << id;
+        BOOST_LOG_TRIVIAL(info) << "server ID " << id;
     } catch (boost::wrapexcept<boost::filesystem::filesystem_error>& err) {
         std::cerr << "### error: can not create log file, " << err.what() << std::endl;
         worker::exit(worker::Error::file);
@@ -79,7 +72,7 @@ int main(int argc, char* argv[]) {
     // open workfile and create work parser
     std::ifstream ifs(options.workfile_name);
     if (ifs.fail()) {
-        BOOST_LOG_SEV(logger, error) << "could not open workfile '" << options.workfile_name << "'";
+        BOOST_LOG_TRIVIAL(error) << "could not open workfile '" << options.workfile_name << "'";
         std::cerr << "### error: can not open workfile '" << options.workfile_name << "'" << std::endl;
         worker::exit(worker::Error::file);
     }
@@ -90,7 +83,7 @@ int main(int argc, char* argv[]) {
     if (options.out_name.length() > 0) {
         ofs.open(options.out_name);
         if (ofs.fail()) {
-            BOOST_LOG_SEV(logger, error) << "could not open output '" << options.out_name << "'";
+            BOOST_LOG_TRIVIAL(error) << "could not open output '" << options.out_name << "'";
             std::cerr << "### error: can not create output file '" << options.out_name << "'" << std::endl;
             worker::exit(worker::Error::file);
         }
@@ -102,7 +95,7 @@ int main(int argc, char* argv[]) {
     if (options.err_name.length() > 0) {
         efs.open(options.err_name);
         if (efs.fail()) {
-            BOOST_LOG_SEV(logger, error) << "could not open error '" << options.err_name << "'";
+            BOOST_LOG_TRIVIAL(error) << "could not open error '" << options.err_name << "'";
             std::cerr << "### error: can not create error file '" << options.err_name << "'" << std::endl;
             worker::exit(worker::Error::file);
         }
@@ -119,9 +112,9 @@ int main(int argc, char* argv[]) {
     zmq::socket_t socket(context, ZMQ_REP);
     try {
         socket.bind(bind_str);
-        BOOST_LOG_SEV(logger, info) << "socket boundi on " << bind_str;
+        BOOST_LOG_TRIVIAL(info) << "socket boundi on " << bind_str;
     } catch (zmq::error_t& err) {
-        BOOST_LOG_SEV(logger, error) << "socket binding failed, " << err.what();
+        BOOST_LOG_TRIVIAL(error) << "socket binding failed, " << err.what();
         std::cerr << "### error: socket can not bind to " << bind_str << std::endl;
         worker::exit(worker::Error::socket);
     }
@@ -129,8 +122,8 @@ int main(int argc, char* argv[]) {
     // show server info for use by clients
     const std::string info_str {protocol + "://" + hostname +
         ":" + std::to_string(options.port_nr)};
-    BOOST_LOG_SEV(logger, info) << "server address " << info_str;
-    write_server_info(options.server_info, id, info_str, logger);
+    BOOST_LOG_TRIVIAL(info) << "server address " << info_str;
+    write_server_info(options.server_info, id, info_str);
 
     wm::Message_builder msg_builder(id);
     // set of open work item IDs, i.e., work items started, but not completed yet
@@ -143,45 +136,45 @@ int main(int argc, char* argv[]) {
         zmq::message_t request;
         auto recv_result = socket.recv(request, zmq::recv_flags::none);
         if (!recv_result) {
-            BOOST_LOG_SEV(logger, error) << "server could not receive message";
+            BOOST_LOG_TRIVIAL(error) << "server could not receive message";
         }
         auto msg = unpack_message(request, msg_builder);
 
         // handle incoming message
         if (msg.subject() == wm::Subject::query) {
             // client wants work, if there is work, send it, if not send stop message
-            BOOST_LOG_SEV(logger, info) << "query message from "
+            BOOST_LOG_TRIVIAL(info) << "query message from "
                 << msg.from();
             if (parser.has_next()) {
-                size_t work_id = send_work(socket, msg.from(), parser, msg_builder, logger);
+                size_t work_id = send_work(socket, msg.from(), parser, msg_builder);
                 to_do.insert(work_id);
-                BOOST_LOG_SEV(logger, info) << "workitem " << work_id
+                BOOST_LOG_TRIVIAL(info) << "workitem " << work_id
                     << " started: " << msg.from();
             } else {
-                send_stop(socket, msg.from(), msg_builder, logger);
+                send_stop(socket, msg.from(), msg_builder);
                 if (to_do.empty()) {
-                    BOOST_LOG_SEV(logger, info) << "processing done";
+                    BOOST_LOG_TRIVIAL(info) << "processing done";
                     break;
                 }
             }
         } else if (msg.subject() == wm::Subject::result) {
             // client sent result, handle it, and send acknowledgement
-            BOOST_LOG_SEV(logger, info) << "result message for " << msg.id()
+            BOOST_LOG_TRIVIAL(info) << "result message for " << msg.id()
                 << " from " << msg.from();
             std::string result_str = msg.content();
             wpr::Result result(result_str);
             out_stream << result.stdout() << std::endl;
             err_stream << result.stderr() << std::endl;
-            BOOST_LOG_SEV(logger, info) << "workitem " << msg.id()
+            BOOST_LOG_TRIVIAL(info) << "workitem " << msg.id()
                 << " done: " << result.exit_status();
             to_do.erase(msg.id());
-            send_ack(socket, msg.from(), msg_builder, logger);
+            send_ack(socket, msg.from(), msg_builder);
         } else {
-            BOOST_LOG_SEV(logger, fatal) << "invalid message";
+            BOOST_LOG_TRIVIAL(fatal) << "invalid message";
             worker::exit(worker::Error::unexpected);
         }
     }
-    BOOST_LOG_SEV(logger, info) << "exiting normally";
+    BOOST_LOG_TRIVIAL(info) << "exiting normally";
     return 0;
 }
 
@@ -254,51 +247,50 @@ Options get_options(int argc, char* argv[]) {
 }
 
 void write_server_info(const std::string& file_name, const Uuid& id,
-        const std::string& info_str, Logger& logger) {
+        const std::string& info_str) {
     std::ofstream ofs(file_name);
     if (ofs.fail()) {
-        BOOST_LOG_SEV(logger, error) << "could not open server_info file '" << file_name << "'";
+        BOOST_LOG_TRIVIAL(error) << "could not open server_info file '" << file_name << "'";
         std::cerr << "### error: can not open server_info file '" << file_name << "'" << std::endl;
         worker::exit(worker::Error::file);
     }
     ofs << id << " " << info_str << std::endl;
-    BOOST_LOG_SEV(logger, info) << "created server_info file '" << file_name << "'";
+    BOOST_LOG_TRIVIAL(info) << "created server_info file '" << file_name << "'";
 }
 
 size_t send_work(zmq::socket_t& socket, const Uuid& dest,
-        wp::Work_parser& parser, wm::Message_builder& msg_builder,
-        Logger& logger) {
+        wp::Work_parser& parser, wm::Message_builder& msg_builder) {
     std::string work_item = parser.next();
     size_t work_id = parser.nr_items();
     msg_builder.to(dest) .subject(wm::Subject::work)
         .id(work_id) .content(work_item);
     auto work_msg = msg_builder.build();
-    BOOST_LOG_SEV(logger, info) << "work message " << work_id
+    BOOST_LOG_TRIVIAL(info) << "work message " << work_id
                                 << " to " << work_msg.to();
     auto send_result = socket.send(pack_message(work_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_SEV(logger, error) << "server could not send messag";
+        BOOST_LOG_TRIVIAL(error) << "server could not send messag";
     }
     return work_id;
 }
 
 void send_stop(zmq::socket_t& socket, const Uuid& dest,
-        wm::Message_builder& msg_builder, Logger& logger) {
+        wm::Message_builder& msg_builder) {
     msg_builder.to(dest) .subject(wm::Subject::stop);
     auto stop_msg = msg_builder.build();
-    BOOST_LOG_SEV(logger, info) << "stop message to "
+    BOOST_LOG_TRIVIAL(info) << "stop message to "
                                 << stop_msg.to();
     auto send_result = socket.send(pack_message(stop_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_SEV(logger, error) << "server could not send message";
+        BOOST_LOG_TRIVIAL(error) << "server could not send message";
     }
 }
 
 void send_ack(zmq::socket_t& socket, const Uuid& dest,
-        wm::Message_builder& msg_builder, Logger& logger) {
+        wm::Message_builder& msg_builder) {
     auto ack_msg = msg_builder.to(dest) .subject(wm::Subject::ack).build();
     auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_SEV(logger, error) << "server could not send message";
+        BOOST_LOG_TRIVIAL(error) << "server could not send message";
     }
 }

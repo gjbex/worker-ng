@@ -33,9 +33,8 @@ find_library (ZeroMQ_LIBRARY
         )
 
 # find Boost
-set (Boost_USE_MULTIHREADED ON)
 find_package (Boost 1.66.0 COMPONENTS
-         program_options filesystem system log log_setup
+         program_options filesystem system log_setup log
          )
 if (NOT Boost_FOUND)
     message (FATAL_ERROR "Boost is required, but not found")
