@@ -51,6 +51,7 @@ void init_logging(const std::string& file_name) {
     logging::register_simple_formatter_factory<severity_level,char>("Severity");
     logging::add_file_log(
             keywords::file_name = file_name,
+            keywords::auto_flush = true,
             keywords::format = "%TimeStamp% [%Severity%]: %Message%"
     );
     logging::core::get()->set_filter(
