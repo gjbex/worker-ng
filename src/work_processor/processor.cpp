@@ -23,7 +23,7 @@ namespace worker {
             bp::child process(bp::search_path("bash"), "-l", env,
                     bp::std_out > ips, bp::std_err > eps,
                     bp::std_in < ops);
-            ops << work_item << std::endl;
+            ops << work_item << "\nexit $?" << std::endl;
             process.wait();
             std::string line;
             while (std::getline(ips, line)) {
