@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
+import argparse
 import sys
+import worker.errors
 import worker.option_parser
 from worker.option_parser import get_scheduler_option_parser, SubmitOptionParser
 import worker.utils
 from worker.utils import (get_worker_path, read_config_file, create_tempdir,
-                          create_workfile, create_jobscript, submit_job)
+                          create_workfile, create_jobscript, submit_job,
+                          exit_on_error)
 
 def main():
     # read configuration file
@@ -17,14 +20,24 @@ def main():
     # parse command line options and job script directives
     scheduler_option_parser = get_scheduler_option_parser(scheduler_name)
     option_parser = SubmitOptionParser(scheduler_option_parser, 'submit worker job')
-    parser_result = option_parser.parse(sys.argv[1:])
+    try:
+        parser_result = option_parser.parse(sys.argv[1:])
+    except FileNotFoundError as error:
+        exit_on_error(worker.errors.batch_file_error, msg=error)
+    except argparse.ArgumentError as error:
+        exit_on_error(worker.errors.scheduler_option_error, msg=error)
 
     # create directory to store worker artfifacts
     tempdir_path = create_tempdir(config['worker']['tempdir_prefix'])
 
     # create workfile in the worker artifacts directory
     workfile_path = tempdir_path / 'workerfile.txt'
-    create_workfile(workfile_path, parser_result, config)
+    try:
+        create_workfile(workfile_path, parser_result, config)
+    except ValueError as error:
+        exit_on_error(worker.errors.data_error, msg=error)
+    except FileNotFoundError as error:
+        exit_on_error(worker.errors.data_error, msg=error)
 
     # create job script in the worker artifacts directory
     jobscript_path = tempdir_path / 'jobscript.sh'
@@ -43,5 +56,9 @@ def main():
     if job_id:
         print(jobid)
 
+    # everything was fine
+    return 0
+
+
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

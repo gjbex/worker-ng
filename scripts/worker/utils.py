@@ -2,10 +2,16 @@ import configparser
 import pathlib
 import shlex
 import subprocess
+import sys
 import uuid
 from worker.data_sources import DataSource
 from worker.templates import get_jobscript_template
 
+
+def exit_on_error(error, **extra):
+    msg = error.msg.format(**extra)
+    print(f'error: {msg}', file=sys.stderr)
+    sys.exit(error.status)
 
 def get_worker_dir_path(config):
     '''Return the path to the woker directory based on the job ID

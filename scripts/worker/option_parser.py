@@ -113,6 +113,14 @@ class OptionParser:
                                          dest='array_request',
                                          help='array request')
 
+    def _verify_scheduler_args(self, args):
+        arg_parser = argparse.ArgumentParser(add_help=False, exit_on_error=False)
+        for option in self._scheduler_option_parser.pass_through_options:
+            arg_parser.add_argument(option)
+        for flag in self._scheduler_option_parser.pass_through_flags:
+            arg_parser.add_argument(flag, action='store_true')
+        _ = arg_parser.parse_known_args(args)
+        
     def _merge_parsers(self):
         self._cl_parser = argparse.ArgumentParser(parents=[self._relevant_parser,
                                                            self._filter_parser,
@@ -213,6 +221,7 @@ class SubmitOptionParser(OptionParser):
         # merge script and command line options
         options = argparse.Namespace(**vars(parser_result.options), **vars(cl_options))
         scheduler_options = self.filter_command_cl(args)
+        self._verify_scheduler_args(scheduler_options)
         return ParseData(options, parser_result.shebang, parser_result.directives,
                          parser_result.script, scheduler_options)
 
