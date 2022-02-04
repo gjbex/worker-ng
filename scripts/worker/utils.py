@@ -1,18 +1,38 @@
 import configparser
 import pathlib
 import shlex
+import shutil
 import subprocess
 import sys
 import uuid
 from worker.data_sources import DataSource
+from worker.errors import JobSubmissionException
 from worker.templates import get_jobscript_template
 
 
-def exit_on_error(error, **extra):
+def exit_on_error(error, cleanup=None, **extra):
     msg = error.msg.format(**extra)
     print(f'error: {msg}', file=sys.stderr)
+    if cleanup:
+        cleanup()
     sys.exit(error.status)
 
+def create_cleanup_function(artifacts, is_debug=False, is_verbose=False):
+    if is_debug:
+        def cleanup():
+            if is_verbose:
+                print(f'not cleaning up, debug mode is on', file=sys.stderr)
+    else:
+        def cleanup():
+            for artifact in artifacts:
+                if is_verbose:
+                    print(f'removing {artifact}', file=sys.stderr)
+                if artifact.is_dir():
+                    shutil.rmtree(artifact)
+                elif artifact.is_file():
+                    artifact.unlink()
+    return cleanup
+        
 def get_worker_dir_path(config):
     '''Return the path to the woker directory based on the job ID
 
@@ -159,7 +179,7 @@ def submit_job(submit_cmd_path, jobscript_path, parser_result, config, original_
         return ''
     else:
         completed = subprocess.run(command, capture_output=True, text=True)
-        if completed.returncode:
-            raise(OSError(completed.returncode, completed.stderr))
+        if completed.returncode != 0:
+            raise(JobSubmissionException(completed.stderr))
         else:
             return completed.stdout.strip()

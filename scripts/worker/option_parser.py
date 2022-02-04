@@ -93,6 +93,8 @@ class OptionParser:
                                            help='give verbose output for debugging')
         self._worker_parser.add_argument('--dryrun', action='store_true',
                                            help='create worker artifacts but do not submit job')
+        self._worker_parser.add_argument('--debug', action='store_true',
+                                         help='enable debug mode')
         self._relevant_parser = argparse.ArgumentParser(add_help=False)
         self._relevant_parser.add_argument(scheduler_option_parser.name_option, dest='name',
                                            help='job name')
