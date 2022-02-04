@@ -77,14 +77,6 @@ def parse_submit_cmd(submit_cmd_name):
     return shlex.split(arg_str)
 
 
-class OptionParserException(Exception):
-    '''Base class for exceptions related to parsing options for schedulers
-    '''
-    
-    def __init__(self, *args):
-        super().__init__(*args)
-
-
 class OptionParser:
 
     def __init__(self, scheduler_option_parser, description):
