@@ -30,3 +30,7 @@ class WorkerException(Exception):
 
 class JobSubmissionException(WorkerException):
     pass
+
+
+class LogParseException(WorkerException):
+    pass

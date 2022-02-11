@@ -31,6 +31,11 @@ if __name__ == '__main__':
         report = parser.parse(options.log)
     except FileNotFoundError as error:
         exit_on_error(worker.errors.log_file_error, msg=error)
+    except worker.errors.LogParseException as error:
+        exit_on_error(worker.errors.log_file_error, msg=error)
+    if report is None:
+        print('no work done')
+        sys.exit(0)
     if options.show_raw:
         print(report.raw)
         if not options.show_all:

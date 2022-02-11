@@ -8,6 +8,7 @@ import pandas as pd
 import pathlib
 import re
 import typing
+from worker.errors import LogParseException
 
 
 @dataclass
@@ -63,12 +64,18 @@ class WorkitemLogParser(LogParser):
         self._exprs['msg'] = r'workitem\s+{workitem_id}'.format(**self._exprs)
         self._exprs['started_msg'] = r'{msg}\s+started\s*:\s*{client_id}'.format(**self._exprs)
         self._exprs['done_msg'] = r'{msg}\s+done\s*:\s*{exit_status}'.format(**self._exprs)
+        self._log_line_expr = re.compile(r'{prefix}\s+.+'.format(**self._exprs))
         self._started_expr = re.compile(r'{prefix}\s+{started_msg}'.format(**self._exprs))
         self._done_expr = re.compile(r'{prefix}\s+{done_msg}'.format(**self._exprs))
 
     def _parse(self, file):
         workitems = defaultdict(WorkItem)
+        nr_lines = 0
+        nr_log_lines = 0
         for line in file:
+            nr_lines += 1
+            if self._log_line_expr.match(line):
+                nr_log_lines += 1
             if (match := self._started_expr.match(line)) is not None:
                 item_id = int(match.group('workitem_id'))
                 workitems[item_id].item_id = item_id
@@ -79,6 +86,12 @@ class WorkitemLogParser(LogParser):
                 workitems[item_id].status = int(match.group('exit_status'))
                 end_time = WorkitemLogParser.parse_time(match.group('datetime'))
                 workitems[item_id].duration = end_time - workitems[item_id].start_time
+        if nr_lines == 0:
+            raise LogParseException('empty log file')
+        if nr_log_lines < nr_lines:
+            raise LogParseException('ill-formed log file, verify log file')
+        if len(workitems) == 0:
+            return None
         return WorkitemReport(pd.DataFrame(convert_to_dict(workitems.values())).set_index('item_id'))
 
 
