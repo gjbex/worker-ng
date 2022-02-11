@@ -2,7 +2,9 @@
 
 import argparse
 import pandas as pd
+import worker.errors
 from worker.log_parsers import WorkitemLogParser
+from worker.utils import exit_on_error
 import sys
 
 
@@ -25,7 +27,10 @@ if __name__ == '__main__':
                             help='show all information')
     options = arg_parser.parse_args()
     parser = WorkitemLogParser()
-    report = parser.parse(options.log)
+    try:
+        report = parser.parse(options.log)
+    except FileNotFoundError as error:
+        exit_on_error(worker.errors.log_file_error, msg=error)
     if options.show_raw:
         print(report.raw)
         if not options.show_all:

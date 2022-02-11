@@ -19,6 +19,10 @@ submission_error = WorkerError(
         msg='job submission issue, {msg}',
         status=12)
 
+log_file_error = WorkerError(
+        msg='log file issue, {msg}',
+        status=13)
+
 
 class WorkerException(Exception):
     pass
