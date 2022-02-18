@@ -4,11 +4,13 @@ import argparse
 import pathlib
 import shlex
 import sys
+import worker.errors
 from worker.log_parsers import WorkitemLogParser
 from worker.option_parser import get_scheduler_option_parser, ResubmitOptionParser, parse_submit_cmd
-from worker.workfile_parser import WorkfileParser, filter_workfile
 from worker.utils import (get_worker_path, read_config_file, create_tempdir,
-                          create_workfile, create_jobscript, submit_job)
+                          create_workfile, create_jobscript, submit_job,
+                          exit_on_error)
+from worker.workfile_parser import WorkfileParser, filter_workfile
 
 
 def main():
@@ -21,10 +23,12 @@ def main():
     # parse command line options and job script directives
     scheduler_option_parser = get_scheduler_option_parser(scheduler_name)
     option_parser = ResubmitOptionParser(scheduler_option_parser, 'resume worker job')
-    parser_result = option_parser.parse(sys.argv[1:])
-    if parser_result.options.verbose:
-        print('wresume command line options:', file=sys.stderr)
-        print('\t{0}'.format(str(parser_result)), file=sys.stderr)
+    try:
+        parser_result = option_parser.parse(sys.argv[1:])
+    except worker.errors.WorkerDirException as error:
+        exit_on_error(worker.errors.worker_dir_error, msg=error)
+    except FileNotFoundError as error:
+        exit_on_error(worker.errors.worker_dir_error, msg=error)
     previous_job_dir = pathlib.Path(parser_result.options.dir)
 
     # create directory to store worker artfifacts
@@ -38,6 +42,9 @@ def main():
         work_ids.extend(report.failures)
     if parser_result.options.verbose:
         print(f'wresume items to do: {work_ids}')
+    if len(work_ids) == 0:
+        print(f'no work to be done')
+        sys.exit(0)
     filter_workfile(previous_job_dir / 'workerfile.txt',
                     tempdir_path / 'workerfile.txt',
                     '#WORKER----', work_ids)
@@ -55,6 +62,10 @@ def main():
     if job_id:
         tempdir_path.rename(f'worker_{job_id}')
 
+    # write the job ID to standard output
+    if job_id:
+        print(f'total number of work items: {len(work_ids)}')
+        print(job_id)
 
 if __name__ == '__main__':
     main()

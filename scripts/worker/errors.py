@@ -23,6 +23,9 @@ log_file_error = WorkerError(
         msg='log file issue, {msg}',
         status=13)
 
+worker_dir_error = WorkerError(
+        msg='worker directory issue, {msg}',
+        status=14)
 
 class WorkerException(Exception):
     pass
@@ -33,4 +36,8 @@ class JobSubmissionException(WorkerException):
 
 
 class LogParseException(WorkerException):
+    pass
+
+
+class WorkerDirException(WorkerException):
     pass

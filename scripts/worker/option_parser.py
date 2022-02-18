@@ -3,6 +3,7 @@ import collections
 import importlib
 import pathlib
 import shlex
+import worker.errors
 
 
 ParseData = collections.namedtuple('ParseData', ['options', 'shebang', 'directives', 'script',
@@ -237,6 +238,10 @@ class ResubmitOptionParser(OptionParser):
         # get current worker resubmit command line options
         cl_options = self.filter_worker_cl(args)
         previous_job_dir = pathlib.Path(cl_options.dir)
+        if not previous_job_dir.exists():
+            raise worker.errors.WorkerDirException(f'directory {previous_job_dir} does not exist')
+        if not previous_job_dir.is_dir():
+            raise worker.errors.WorkerDirException(f'{previous_job_dir} is not a directory')
 
         # get command line options for the original submit command
         submit_cmd_name = previous_job_dir / 'submit.sh'
