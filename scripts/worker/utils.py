@@ -124,6 +124,7 @@ def create_workfile(file_path, parser_result, config):
     data_sources = DataSource(parser_result.options.data, 1024,
                               parser_result.options.array_request,
                               config['scheduler']['arrayid_var_name'])
+    nr_workitems = 0
     with open(file_path, 'w') as file:
         data = next(data_sources)
         for var_name, value in data.items():
@@ -131,11 +132,13 @@ def create_workfile(file_path, parser_result, config):
         print(file=file)
         print(parser_result.script, file=file)
         for data in data_sources:
+            nr_workitems += 1
             print(config['worker']['workitem_separator'], file=file)
             for var_name, value in data.items():
                 print(f"export {var_name}='{value}'", file=file)
             print(file=file)
             print(parser_result.script, file=file)
+    return nr_workitems
 
 def create_jobscript(file_path, parser_result, config):
     '''create the job script for the computation

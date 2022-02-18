@@ -38,7 +38,7 @@ def main():
     # create workfile in the worker artifacts directory
     workfile_path = tempdir_path / 'workerfile.txt'
     try:
-        create_workfile(workfile_path, parser_result, config)
+        nr_workitems = create_workfile(workfile_path, parser_result, config)
     except ValueError as error:
         exit_on_error(worker.errors.data_error, cleanup_function, msg=error)
     except FileNotFoundError as error:
@@ -62,6 +62,7 @@ def main():
 
     # write the job ID to standard output
     if job_id:
+        print(f'total number of work items: {nr_workitems}')
         print(job_id)
 
     # everything was fine
