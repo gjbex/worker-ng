@@ -1,0 +1,6 @@
+name: worker
+channels:
+  - defaults
+dependencies:
+  - pandas
+prefix: /data/leuven/301/vsc30140/miniconda3/envs/worker
