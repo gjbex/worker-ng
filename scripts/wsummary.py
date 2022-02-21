@@ -2,6 +2,7 @@
 
 import argparse
 import pandas as pd
+import pathlib
 import worker.errors
 from worker.log_parsers import WorkitemLogParser
 from worker.utils import exit_on_error
@@ -12,7 +13,9 @@ SEP = 72*'-'
 
 if __name__ == '__main__':
     arg_parser = argparse.ArgumentParser(description='parse log file')
-    arg_parser.add_argument('log', help='log file to parse')
+    input_group = arg_parser.add_mutually_exclusive_group(required=True)
+    input_group.add_argument('--log', help='log file to parse')
+    input_group.add_argument('--dir', help='worker directory')
     arg_parser.add_argument('--show_raw', action='store_true',
                             help='show raw data')
     arg_parser.add_argument('--show_failed', action='store_true',
@@ -28,8 +31,14 @@ if __name__ == '__main__':
     options = arg_parser.parse_args()
     parser = WorkitemLogParser()
     try:
-        report = parser.parse(options.log)
+        if options.log:
+            report = parser.parse(options.log)
+        else:
+            path = pathlib.Path(options.dir)
+            report = parser.parse(str(path / 'server.log'))
     except FileNotFoundError as error:
+        exit_on_error(worker.errors.log_file_error, msg=error)
+    except NotADirectoryError as error:
         exit_on_error(worker.errors.log_file_error, msg=error)
     except worker.errors.LogParseException as error:
         exit_on_error(worker.errors.log_file_error, msg=error)
