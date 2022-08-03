@@ -6,6 +6,8 @@
 
 namespace wm = worker::message;
 
+using Uuid = boost::uuids::uuid;
+
 int main() {
     auto uuid_generator = boost::uuids::random_generator();
     Uuid from = uuid_generator();
@@ -21,7 +23,7 @@ int main() {
     sstr << message;
     try {
         message = builder.build(sstr.str());
-    } catch (wm::message_parse_exception e) {
+    } catch (wm::message_parse_exception& e) {
         std::cout << e.what() << std::endl;
     }
     std::cout << message << std::endl;

@@ -26,7 +26,7 @@ void print_version_info() {
         << zmq_major << "."
         << zmq_minor << "."
         << zmq_patch << std::endl;
-};
+}
 
 wm::Message unpack_message(const zmq::message_t& zmq_msg,
                            const wm::Message_builder& msg_builder) {
@@ -47,10 +47,9 @@ zmq::message_t pack_message(const wm::Message& msg) {
 void init_logging(const std::string& file_name) {
     namespace logging = boost::log;
     namespace keywords = boost::log::keywords;
-    using namespace logging::trivial;
-    logging::register_simple_formatter_factory<severity_level,char>("Severity");
     logging::add_file_log(
             keywords::file_name = file_name,
+            keywords::auto_flush = true,
             keywords::format = "%TimeStamp% [%Severity%]: %Message%"
     );
     logging::core::get()->set_filter(

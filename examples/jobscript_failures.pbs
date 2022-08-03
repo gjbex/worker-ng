@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#PBS -A lp_worker_test
+#PBS -l nodes=1:ppn=2
+#PBS -l walltime=00:15:00
+#PBS -l mem=3gb
+
+if [ $(( $RANDOM % 3 )) -eq 0 ]
+then
+    exit 1
+else
+    echo "hello to $dest from $source"
+fi

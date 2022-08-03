@@ -14,21 +14,23 @@ namespace worker {
 
         std::ostream& operator<<(std::ostream& out,
                                  const Message& message) {
-            out << message._from << " "
-                << message._to << " "
-                << static_cast<char>(message._subject) << " "
-                << message._id << " "
+            out << message.from_ << " "
+                << message.to_ << " "
+                << static_cast<char>(message.subject_) << " "
+                << message.id_ << " "
                 << message.length() << " "
-                << message._content;
+                << message.content_;
             return out;
         }
 
         Message Message_builder::build() {
-            Message msg(_from, _to, _subject, _id, _content);
-            _id = 0;
-            _content = std::string("");
+            Message msg(from_, to_, subject_, id_, content_);
+            id_ = 0;
+            content_ = std::string("");
             return msg;
         }
+
+        using Uuid = boost::uuids::uuid;
 
         Message Message_builder::build(const std::string& str) const {
             std::stringstream input(str);

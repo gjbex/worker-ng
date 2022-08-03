@@ -1,0 +1,129 @@
+BootStrap: docker
+From: ubuntu:20.04
+%post
+    . /.singularity.d/env/10-docker*.sh
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        ack \
+        less \
+        tmux \
+        vim
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        bzip2 \
+        ca-certificates \
+        gzip \
+        tar \
+        wget
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        git \
+        openssh-client
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        build-essential \
+        make \
+        pkg-config
+    rm -rf /var/lib/apt/lists/*
+
+# CMake version 3.18.3
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        make \
+        wget
+    rm -rf /var/lib/apt/lists/*
+%post
+    cd /
+    mkdir -p /var/tmp && wget -q -nc --no-check-certificate -P /var/tmp https://cmake.org/files/v3.18/cmake-3.18.3-Linux-x86_64.sh
+    mkdir -p /usr/local
+    /bin/sh /var/tmp/cmake-3.18.3-Linux-x86_64.sh --prefix=/usr/local --skip-license
+    rm -rf /var/tmp/cmake-3.18.3-Linux-x86_64.sh
+%environment
+    export PATH=/usr/local/bin:$PATH
+%post
+    export PATH=/usr/local/bin:$PATH
+
+# GNU compiler
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        g++ \
+        gcc \
+        gfortran
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        gdb \
+        strace \
+        valgrind
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        doxygen
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        libboost-dev \
+        libboost-filesystem-dev \
+        libboost-log-dev \
+        libboost-program-options-dev \
+        libboost-system-dev \
+        libbsd-dev
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    cd /
+    mkdir -p /tmp/
+    cd /tmp/
+
+%post
+    cd /
+    wget --no-check-certificate https://github.com/zeromq/libzmq/releases/download/v4.3.4/zeromq-4.3.4.tar.gz
+    tar xaf zeromq-4.3.4.tar.gz
+    cd zeromq-4.3.4
+    mkdir build && cd build
+    cmake ..
+    make install
+
+%post
+    cd /
+    wget --no-check-certificate https://github.com/zeromq/cppzmq/archive/refs/tags/v4.8.1.tar.gz
+    tar xaf v4.8.1.tar.gz
+    cd cppzmq-4.8.1
+    mkdir build && cd build
+    cmake ..
+    make install
+
+%post
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        python3-pip
+    rm -rf /var/lib/apt/lists/*
+
+%post
+    cd /
+    pip install pandas
+
+%environment
+    export PYTHONPATH=/usr/local/lib/python3.8/dist-packages/
+
+%runscript
+    /bin/bash
