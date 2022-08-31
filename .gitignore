@@ -54,3 +54,7 @@ __pycache__
 
 # Singularity images
 *.sif
+
+# local installation directories
+distr_genius/
+distr_wice/
