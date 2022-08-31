@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#SBATCH -A lpt2_sysadmin
+#SBATCH --cluster=wice
+#SBATCH --nodes=1 --cpus-per-task=1 
+#SBATCH hetjob
+#SBATCH --nodes=2 --ntasks=36 --cpus-per-task=4
+#SBATCH --time=00:15:00
+
+source setup_wice.sh
+work_file=examples/omp_workload.txt
+server_info=slurm_server_info.txt
+
+# (>&2 echo "launching server...")
+srun --exclusive --nodes=1 --ntasks=1 --cpus-per-task=1 \
+     distr_wice/bin/worker_server \
+        --workfile "$work_file" \
+        --server_info $server_info &
+
+if [ $? -ne 0 ]
+then
+    (>&2 echo "### error: failed to launch server")
+    exit 1
+fi
+sleep 5
+uuid=$(cut -d ' ' -f 1 $server_info)
+server=$(cut -d ' ' -f 2 $server_info)
+
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+
+for (( client_id=1; client_id <= $SLURM_NTASKS_HET_GROUP_1; client_id++ ))
+do
+    srun --exclusive --het-group=1 \
+        --ntasks=1 --nodes=1 --cpus-per-task=$SLURM_CPUS_PER_TASK_HET_GROUP_1 \
+        --threads-per-core=1 \
+            distr_wice/bin/worker_client \
+                --server $server --uuid $uuid &
+    if [ $? -ne 0 ]
+    then
+        (>&2 echo "### error: client $client_id failed to launch")
+    fi
+done
+
+wait
