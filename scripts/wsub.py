@@ -15,7 +15,8 @@ def main():
     worker_distr_path = get_worker_path(__file__)
     config_path = worker_distr_path / 'conf' / 'worker.conf'
     if not config_path.exists():
-        exit_on_error(worker.errors.config_error, msg=f'"{config_path}" not found')
+        exit_on_error(worker.errors.config_error,
+                      msg=f'"{config_path}" not found')
     config = read_config_file(config_path)
     config['worker']['path'] = str(worker_distr_path)
     scheduler_name = config['scheduler']['name']
