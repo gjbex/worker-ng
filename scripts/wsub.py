@@ -13,7 +13,10 @@ from worker.utils import (get_worker_path, read_config_file, create_tempdir,
 def main():
     # read configuration file
     worker_distr_path = get_worker_path(__file__)
-    config = read_config_file(worker_distr_path / 'conf' / 'worker.conf')
+    config_path = worker_distr_path / 'conf' / 'worker.conf'
+    if not config_path.exists():
+        exit_on_error(worker.errors.config_error, msg=f'"{config_path}" not found')
+    config = read_config_file(config_path)
     config['worker']['path'] = str(worker_distr_path)
     scheduler_name = config['scheduler']['name']
 
