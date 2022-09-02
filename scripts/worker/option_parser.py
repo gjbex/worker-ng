@@ -97,8 +97,12 @@ class OptionParser:
         self._worker_parser.add_argument('--debug', action='store_true',
                                          help='enable debug mode')
         self._relevant_parser = argparse.ArgumentParser(add_help=False)
-        self._relevant_parser.add_argument(scheduler_option_parser.name_option, dest='name',
-                                           help='job name')
+        if isinstance(scheduler_option_parser.name_option, str):
+            self._relevant_parser.add_argument(scheduler_option_parser.name_option, dest='name',
+                                               help='job name')
+        else:
+            self._relevant_parser.add_argument(*scheduler_option_parser.name_option, dest='name',
+                                               help='job name')
         self._relevant_parser.add_argument(scheduler_option_parser.directive_prefix_option,
                                            dest='directive_prefix',
                                            default=scheduler_option_parser.default_directive_prefix,
