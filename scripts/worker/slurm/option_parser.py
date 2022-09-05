@@ -78,6 +78,10 @@ class SlurmOptionParser:
                 '--spread-job',
                ]
 
+    def _is_resource_directive_line(self, args):
+        return any(map(lambda arg: arg in self.resource_options, args)) or \
+               any(map(lambda arg: arg in self.resource_flags, args))
+        
     def parse_cl(self, args, context=None):
         return self._base_parser.parse_known_args(args, context)
 
@@ -102,7 +106,8 @@ class SlurmOptionParser:
         '''
         args = list()
         shebang = None
-        pbs_directives = ''
+        slurm_directives = ''
+        slurm_group1_directives = ''
         script = ''
         parsing_pbs = True
         with open(file_name, 'r') as file:
@@ -110,15 +115,20 @@ class SlurmOptionParser:
                 if line.startswith('#!') and line_nr == 0:
                     shebang = line.strip()
                 elif line.startswith(directive_prefix) and parsing_pbs:
-                    args.extend(shlex.split(line[len(directive_prefix):], comments=True))
-                    pbs_directives += line
+                    new_args = shlex.split(line[len(directive_prefix):], comments=True)
+                    args.extend(new_args)
+                    if self._is_resource_directive_line(new_args):
+                        slurm_group1_directives += line
+                    else:
+                        slurm_directives += line
                 elif (line.startswith('#') or line.isspace()) and parsing_pbs:
                     continue
                 else:
                     parsing_pbs = False
                     script += line
+        slurm_directives += f'{self.default_directive_prefix}\n{slurm_group1_directives}'
         options, _ = self._base_parser.parse_known_args(args)
-        return ParseData(options, shebang, pbs_directives, script, None)
+        return ParseData(options, shebang, slurm_directives, script, None)
 
     def merge_options(self, new_args, old_args):
         arg_parser = argparse.ArgumentParser(add_help=False)
