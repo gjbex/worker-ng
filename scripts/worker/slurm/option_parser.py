@@ -1,8 +1,17 @@
 import argparse
+import itertools
 from worker.option_parser import ParseData
 from worker.utils import expand_options
 import shlex
 
+
+def flatten(data):
+    for item in data:
+        if hasattr(item, '__iter__') and not isinstance(item, str):
+            for subitem in item:
+                yield subitem
+        else:
+            yield item
 
 def _merge_resources(old_resources, new_resources):
     if old_resources is None:
@@ -73,14 +82,20 @@ class SlurmOptionParser:
                 '--propagate', '--sockets-per-node', '--threads-per-core',
                ]
 
+    @property
     def resource_flags(self):
         return ['--contiguous', ('-O', '--overcommit'), ('-s', '--oversubscribe'),
                 '--spread-job',
                ]
 
     def _is_resource_directive_line(self, args):
-        return any(map(lambda arg: arg in self.resource_options, args)) or \
-               any(map(lambda arg: arg in self.resource_flags, args))
+        for arg in args:
+            for option in flatten(self.resource_options):
+                if f'{option}=' in arg:
+                    return True
+            if arg in itertools.chain(*self.resource_flags):
+                return True
+        return False
         
     def parse_cl(self, args, context=None):
         return self._base_parser.parse_known_args(args, context)
@@ -109,24 +124,25 @@ class SlurmOptionParser:
         slurm_directives = ''
         slurm_group1_directives = ''
         script = ''
-        parsing_pbs = True
+        parsing_slurm = True
         with open(file_name, 'r') as file:
             for line_nr, line in enumerate(file):
                 if line.startswith('#!') and line_nr == 0:
                     shebang = line.strip()
-                elif line.startswith(directive_prefix) and parsing_pbs:
+                elif line.startswith(directive_prefix) and parsing_slurm:
                     new_args = shlex.split(line[len(directive_prefix):], comments=True)
                     args.extend(new_args)
                     if self._is_resource_directive_line(new_args):
                         slurm_group1_directives += line
                     else:
                         slurm_directives += line
-                elif (line.startswith('#') or line.isspace()) and parsing_pbs:
+                elif (line.startswith('#') or line.isspace()) and parsing_slurm:
                     continue
                 else:
-                    parsing_pbs = False
+                    parsing_slurm = False
                     script += line
-        slurm_directives += f'{self.default_directive_prefix}\n{slurm_group1_directives}'
+        slurm_directives += f'{self.default_directive_prefix} --nodes=1 --ntasks=1 --cpus-per-task=1\n'
+        slurm_directives += f'{self.default_directive_prefix} --het-group\n{slurm_group1_directives}'
         options, _ = self._base_parser.parse_known_args(args)
         return ParseData(options, shebang, slurm_directives, script, None)
 
