@@ -103,21 +103,34 @@ class OptionParser:
         else:
             self._relevant_parser.add_argument(*scheduler_option_parser.name_option, dest='name',
                                                help='job name')
-        self._relevant_parser.add_argument(scheduler_option_parser.directive_prefix_option,
-                                           dest='directive_prefix',
-                                           default=scheduler_option_parser.default_directive_prefix,
-                                           help='directive prefix')
+        if scheduler_option_parser.directive_prefix_option:
+            self._relevant_parser.add_argument(scheduler_option_parser.directive_prefix_option, dest='directive_prefix',
+                                               default=scheduler_option_parser.default_directive_prefix,
+                                               help='directive prefix')
+        else:
+            self._relevant_parser.set_defaults(directive_prefix=scheduler_option_parser.default_directive_prefix)
         self._filter_parser = argparse.ArgumentParser(add_help=False)
-        self._filter_parser.add_argument(scheduler_option_parser.array_option,
-                                         dest='array_request',
-                                         help='array request')
+        if isinstance(scheduler_option_parser.array_option, str):
+            self._filter_parser.add_argument(scheduler_option_parser.array_option,
+                                             dest='array_request',
+                                             help='array request')
+        else:
+            self._filter_parser.add_argument(*scheduler_option_parser.array_option,
+                                             dest='array_request',
+                                             help='array request')
 
     def _verify_scheduler_args(self, args):
         arg_parser = argparse.ArgumentParser(add_help=False, exit_on_error=False)
         for option in self._scheduler_option_parser.pass_through_options:
-            arg_parser.add_argument(option)
+            if isinstance(option, str):
+                arg_parser.add_argument(option)
+            else:
+                arg_parser.add_argument(*option)
         for flag in self._scheduler_option_parser.pass_through_flags:
-            arg_parser.add_argument(flag, action='store_true')
+            if isinstance(flag, str):
+                arg_parser.add_argument(flag, action='store_true')
+            else:
+                arg_parser.add_argument(*flag, action='store_true')
         _ = arg_parser.parse_known_args(args)
         
     def _merge_parsers(self):
