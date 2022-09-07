@@ -142,7 +142,7 @@ class SlurmOptionParser:
                     parsing_slurm = False
                     script += line
         slurm_directives += f'{self.default_directive_prefix} --nodes=1 --ntasks=1 --cpus-per-task=1\n'
-        slurm_directives += f'{self.default_directive_prefix} --het-group\n{slurm_group1_directives}'
+        slurm_directives += f'{self.default_directive_prefix} hetjob\n{slurm_group1_directives}'
         options, _ = self._base_parser.parse_known_args(args)
         return ParseData(options, shebang, slurm_directives, script, None)
 
