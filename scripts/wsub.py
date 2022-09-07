@@ -4,6 +4,7 @@ import argparse
 import sys
 import worker.errors
 import worker.option_parser
+from worker.submit_output_parser import get_submit_output_parser
 from worker.option_parser import get_scheduler_option_parser, SubmitOptionParser
 import worker.utils
 from worker.utils import (get_worker_path, read_config_file, create_tempdir,
@@ -52,11 +53,15 @@ def main():
     jobscript_path = tempdir_path / 'jobscript.sh'
     create_jobscript(jobscript_path, parser_result, config)
 
+    # get submit output parse function
+    parse_submit_output = get_submit_output_parser(scheduler_name)
+
     # submit the job
     submit_cmd_path = tempdir_path / 'submit.sh'
     try:
-        job_id = submit_job(submit_cmd_path, jobscript_path, parser_result, config,
-                            parser_result.scheduler_options)
+        submit_output = submit_job(submit_cmd_path, jobscript_path, parser_result, config,
+                                   parser_result.scheduler_options)
+        job_id = parse_submit_output(submit_output)
     except worker.errors.JobSubmissionException as error:
         exit_on_error(worker.errors.submission_error, cleanup_function, msg=error.args[0])
 
