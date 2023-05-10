@@ -61,7 +61,10 @@ def main():
     try:
         submit_output = submit_job(submit_cmd_path, jobscript_path, parser_result, config,
                                    parser_result.scheduler_options)
-        job_id = parse_submit_output(submit_output)
+        if not parser_result.options.dryrun:
+            job_id = parse_submit_output(submit_output)
+        else:
+            job_id = None
     except worker.errors.JobSubmissionException as error:
         exit_on_error(worker.errors.submission_error, cleanup_function, msg=error.args[0])
 
