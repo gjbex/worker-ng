@@ -18,8 +18,9 @@ def _merge_resources(old_resources, new_resources):
         return new_resources
     if new_resources is None:
         return old_resources
-    old_resources.update(new_resources)
-    return old_resources
+    resource_dict = vars(old_resources)
+    resource_dict.update(vars(new_resources))
+    return argparse.Namespace(**resource_dict)
 
 
 class SlurmOptionParser:
