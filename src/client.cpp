@@ -140,8 +140,8 @@ int main(int argc, char* argv[]) {
                                   .subject(wm::Subject::result).id(work_id)
                                   .content(result.to_string()).build();
             zmq::message_t result_reply = pack_message(result_msg);
-            BOOST_LOG_TRIVIAL(info) << "result message for " << msg.id()
-                                        << " to " << msg.to();
+            BOOST_LOG_TRIVIAL(info) << "result message for " << result_msg.id()
+                                        << " to " << result_msg.to();
             auto send_result = socket.send(result_reply, zmq::send_flags::none);
             if (!send_result) {
                 BOOST_LOG_TRIVIAL(error) << "client can not send message";

@@ -31,7 +31,7 @@ srun --exclusive --nodes=1 --ntasks=1 --cpus-per-task=1 \
         {server_log_opt} \
         {port_opt} \
         --workfile "{workfile}" \
-        --server_info "{server_info}" &
+        --server_info "$SERVER_INFO" &
 server_exit=$?
 if [ $server_exit -ne 0 ]
 then
@@ -40,18 +40,19 @@ then
     exit $server_exit
 fi
 
-# ensure it is up and running
+# ensure it is up and running and check whether it is actually up
 sleep {server_start_delay}
+if [ ! -f "$SERVER_INFO" ]
+then
+    (>&2 echo "### error: failed to launch server, no server info file created")
+    exit 1
+fi
 
 # determine the server address and UUID for the clients to use
-uuid=$(cut -d ' ' -f 1 $SERVER_INFO)
-server=$(cut -d ' ' -f 2 $SERVER_INFO)
+uuid=$(cut -d ' ' -f 1 "$SERVER_INFO")
+server=$(cut -d ' ' -f 2 "$SERVER_INFO")
 
-(>&2 echo "### info: server launhed at '$server' with UUID '$uuid'")
-     distr_wice/bin/worker_server \
-        --workfile "$work_file" \
-        --server_info $server_info &
-
+(>&2 echo "### info: server launched at '$server' with UUID '$uuid'")
 
 export OMP_PROC_BIND=true
 export OMP_PLACES=cores
@@ -67,9 +68,9 @@ do
     client_exit=$?
     if [ $client_exit -eq 0 ]
     then
-        (>&2 echo "### info: client launhed on '${{client_nodes[0]}}'")
+        (>&2 echo "### info: client $client_id launched")
     else
-        (>&2 echo "### error: client failed to launhed on '${{client_nodes[0]}}', exit status $client_exit")
+        (>&2 echo "### error: client $client_id failed to launch, exit status $client_exit")
         if [ {exit_on_client_fail} ]
         then
             exit $client_exit

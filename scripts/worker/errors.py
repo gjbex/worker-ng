@@ -3,6 +3,10 @@ from collections import namedtuple
 
 WorkerError = namedtuple('WorkerError', ['msg', 'status'])
 
+config_error = WorkerError(
+        msg='worker configuration issue, {msg}',
+        status=1)
+
 batch_file_error = WorkerError(
         msg='batch file issue, {msg}',
         status=2)
