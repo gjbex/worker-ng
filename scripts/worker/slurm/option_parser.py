@@ -154,7 +154,7 @@ class SlurmOptionParser:
             else:
                 arg_parser.add_argument(*option)
         for flag in self.pass_through_flags:
-            if isinstance(option, str):
+            if isinstance(flag, str):
                 arg_parser.add_argument(flag, action='store_true')
             else:
                 arg_parser.add_argument(*flag, action='store_true')
