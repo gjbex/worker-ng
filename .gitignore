@@ -61,3 +61,6 @@ distr_wice/
 
 # directories created by worker
 tmp_worker_*
+
+# direnv configuration file
+.envrc
