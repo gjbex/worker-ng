@@ -58,3 +58,6 @@ __pycache__
 # local installation directories
 distr_genius/
 distr_wice/
+
+# directories created by worker
+tmp_worker_*
