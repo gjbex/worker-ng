@@ -58,6 +58,25 @@ def get_scheduler_option_parser(scheduler_name):
     parser_class = getattr(parser_module, class_name)
     return parser_class()
 
+
+def get_scheduler_options_preprocessor(scheduler_name):
+    '''Return the options preprocessing function appropriate for the scheduler
+
+    Parameters
+    ----------
+    scheduler_name: str
+        name of the scheduler
+
+    Returns
+    -------
+    Callable
+        callable to preprocess the command line options
+    '''
+    _, module_name = _get_parser_class_info(scheduler_name)
+    parser_module = importlib.import_module(module_name)
+    return getattr(parser_module, 'preprocess_cli_options')
+
+
 def parse_submit_cmd(submit_cmd_name):
     '''Parse the submit command stored in the given file name and return the
     command line arguments

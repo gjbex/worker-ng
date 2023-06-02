@@ -121,3 +121,7 @@ class PbsTorqueOptionParser:
         resources = _merge_resources(old_resources.l, new_resources.l)
         merged_options = argparse.Namespace(l=resources, **vars(merged_options))
         return merged_options
+
+
+def preprocess_cli_options(options):
+    return options

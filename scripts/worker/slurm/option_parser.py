@@ -178,3 +178,20 @@ class SlurmOptionParser:
         merged_options = argparse.Namespace(**vars(resources), **vars(merged_options))
         return merged_options
 
+
+def preprocess_cli_options(options):
+    '''ensure that options in the form [..., '-nodes', '5', ...] get reformatted to [..., '--nodes=5', ...]
+    '''
+    new_options = []
+    ignore_next = False
+    for i, item in enumerate(options):
+        if ignore_next:
+            ignore_next = False
+            continue
+        if item.startswith('-'):
+            if i + 1 < len(options) and not options[i + 1].startswith('-'):
+                ignore_next = True
+                new_options.append(f'-{item}={options[i + 1]}')
+            else:
+                new_options.append(f'-{item}')
+    return new_options

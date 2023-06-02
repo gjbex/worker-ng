@@ -6,7 +6,7 @@ import shlex
 import sys
 import worker.errors
 from worker.log_parsers import WorkitemLogParser
-from worker.option_parser import get_scheduler_option_parser, ResubmitOptionParser, parse_submit_cmd
+from worker.option_parser import get_scheduler_option_parser, get_scheduler_options_preprocessor, ResubmitOptionParser, parse_submit_cmd
 from worker.utils import (get_worker_path, read_config_file, create_tempdir,
                           create_workfile, create_jobscript, submit_job,
                           exit_on_error)
@@ -22,6 +22,7 @@ def main():
 
     # parse command line options and job script directives
     scheduler_option_parser = get_scheduler_option_parser(scheduler_name)
+    preprocess_options = get_scheduler_options_preprocessor(scheduler_name)
     option_parser = ResubmitOptionParser(scheduler_option_parser, 'resume worker job')
     try:
         parser_result = option_parser.parse(sys.argv[1:])
@@ -54,9 +55,10 @@ def main():
     create_jobscript(jobscript_path, parser_result, config)
 
     # submit the job
+    print(parser_result.scheduler_options)
     submit_cmd_path = tempdir_path / 'submit.sh'
     job_id = submit_job(submit_cmd_path, jobscript_path, parser_result, config,
-                        parser_result.scheduler_options)
+                        preprocess_options(parser_result.scheduler_options))
 
     # rename the worker artifacts directory
     if job_id:
