@@ -64,3 +64,6 @@ tmp_worker_*
 
 # direnv configuration file
 .envrc
+
+# ignore test deployment directory
+deploy/
