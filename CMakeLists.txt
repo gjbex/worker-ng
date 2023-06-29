@@ -44,6 +44,12 @@ endif (NOT Boost_FOUND)
 # define source target
 add_subdirectory (src)
 
+# define script target
+add_subdirectory (scripts)
+
+# define configuration target
+add_subdirectory (conf)
+
 # define documentation target
 add_subdirectory (docs)
 
