@@ -11,7 +11,7 @@ foreach(python_script ${python_scripts})
     install(PROGRAMS ${wrapper_file_name} DESTINATION bin)
 endforeach()
 
-install(DIRECTORY utils TYPE LIB
+install(DIRECTORY worker TYPE LIB
     PATTERN "*~" EXCLUDE
     PATTERN "*.bak" EXCLUDE
     PATTERN "__pycache__" EXCLUDE)
