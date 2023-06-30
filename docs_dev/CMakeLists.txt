@@ -6,7 +6,7 @@ if (DOXYGEN_FOUND)
         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
         COMMENT "Generating API documentation using doxygen"
         )
-    install (DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/docs_doxygen"
+    install (DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/development"
          DESTINATION docs
          )
 else (DOXYGEN_FOUND)
