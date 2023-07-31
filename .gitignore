@@ -65,5 +65,12 @@ tmp_worker_*
 # direnv configuration file
 .envrc
 
+# ignore build directories
+build_wice/
+build_genius/
+
 # ignore test deployment directory
 deploy/
+distr_wice/
+distr_genius/
+
