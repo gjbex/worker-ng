@@ -11,6 +11,8 @@ foreach(python_script ${python_scripts})
     install(PROGRAMS ${wrapper_file_name} DESTINATION bin)
 endforeach()
 
+ install(FILES worker_functions.sh DESTINATION scripts)
+
 install(DIRECTORY worker TYPE LIB
     PATTERN "*~" EXCLUDE
     PATTERN "*.bak" EXCLUDE
