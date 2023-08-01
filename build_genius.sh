@@ -11,7 +11,7 @@ module load cppzmq/4.8.1-GCCcore-10.3.0
 BUILD_DIR="$(pwd)/build_genius"
 DISTR_DIR="$(pwd)/distr_genius"
 BUILD_TYPE="RelWithDebInfo"
-SCHEDULER="wice"
+SCHEDULER="slurm"
 
 if [[ $1 == 'clean' ]]
 then
