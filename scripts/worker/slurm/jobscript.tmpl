@@ -17,17 +17,46 @@
 #
 
 # source worker software environment variables (LD_LIBRARY_PATH et al.)
-source "{worker_path}/conf/worker_env.sh"
+env_conf_file="{worker_path}/conf/worker_env_${{SLURM_CLUSTER_NAME}}.sh"
+if [ ! -e "${{env_conf_file}}" ]
+then
+    (>&2 echo "### error: can not read environment configuration file '${{env_conf_file}}'")
+    exit 1
+fi
+source "${{env_conf_file}}"
 
 # source worker functions used in this script
-source "{worker_path}/scripts/worker_functions.sh"
+worker_functions_file="{worker_path}/scripts/worker_functions.sh"
+if [ ! -e "${{worker_functions_file}}" ]
+then
+    (>&2 echo "### error: can not read worker functions file '${{worker_functions_file}}'")
+    exit 1
+fi
+source "${{worker_functions_file}}"
 
 # file to store the server details
 SERVER_INFO={server_info}
 
+# add worker library path to LD_LIBRARY_PATH
+LD_LIBRARY_PATH="{worker_path}/lib:${{LD_LIBRARY_PATH}}"
+
+# check worker server and client
+worker_server_exec="{worker_path}/bin/worker_server"
+if [ ! -e "${{worker_server_exec}}" ]
+then
+    (>&2 echo "### error: can not find worker server executable '${{worker_server_exec}}'")
+    exit 1
+fi
+worker_client_exec="{worker_path}/bin/worker_client"
+if [ ! -e "${{worker_client_exec}}" ]
+then
+    (>&2 echo "### error: can not find worker client executable '${{worker_client_exec}}'")
+    exit 1
+fi
+
 # start the server
 srun --exclusive --nodes=1 --ntasks=1 --cpus-per-task=1 \
-    "{worker_path}/bin/worker_server" \
+    "${{worker_server_exec}}" \
         {server_log_opt} \
         {port_opt} \
         --workfile "{workfile}" \
@@ -62,7 +91,7 @@ do
     srun --exclusive --het-group=1 \
         --ntasks=1 --nodes=1 --cpus-per-task=$SLURM_CPUS_PER_TASK_HET_GROUP_1 \
         --threads-per-core=1 \
-            "{worker_path}/bin/worker_client" \
+            "${{worker_client_exec}}" \
                 --server "$server" --uuid "$uuid" {client_log_prefix_opt} \
                 $numactl_opt --host_info "$host_info" &
     client_exit=$?
