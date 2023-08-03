@@ -148,7 +148,7 @@ as follows.
 
 ```bash
 #!/usr/bin/env bash
-#SBATCH --account=my_account
+#SBATCH --account=lpt2_sysadmin
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -158,11 +158,12 @@ as follows.
 mkdir -p output
 
 # define input and output file names based on the array ID
-INPUT_FILE="data/text-$(printf '%03d' $SLURM_ARRAYID").txt"
-OUTPUT_FILE="output/count-$(printf '%03d' $SLURM_ARRAYID").txt"
+INPUT_FILE="data/file_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt"
+OUTPUT_FILE="output/count_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt"
 
 # count the words and write the result in the output file
-echo -n "$INPUT_FILE: " && cat $INPUT_FILE | wc -w > $OUTPUT_FILE
+echo -n "$INPUT_FILE: " > $OUTPUT_FILE
+cat $INPUT_FILE | wc -w >> $OUTPUT_FILE
 ```
 
 We can submit this as a standard slurm job array as follows.
@@ -179,21 +180,22 @@ to the job script.
 
 ```bash
 #!/usr/bin/env bash
-#SBATCH --account=my_account
+#SBATCH --account=lpt2_sysadmin
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --ntasks=10
+#SBATCH --cpus-per-task=1
 #SBATCH --time=00:20:00
 
 # create an output directory if it doesn't exist
 mkdir -p output
 
 # define input and output file names based on the array ID
-INPUT_FILE="data/text-$(printf '%03d' $SLURM_ARRAYID").txt"
-OUTPUT_FILE="output/count-$(printf '%03d' $SLURM_ARRAYID").txt"
+INPUT_FILE="data/file_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt"
+OUTPUT_FILE="output/count_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt"
 
 # count the words and write the result in the output file
-echo -n "$INPUT_FILE: " && cat $INPUT_FILE | wc -w > $OUTPUT_FILE
+echo -n "$INPUT_FILE: " > $OUTPUT_FILE
+cat $INPUT_FILE | wc -w >> $OUTPUT_FILE
 ```
 
 Note that
@@ -210,7 +212,7 @@ The job is now submitted as follows.
 
 ```bash
 $ module load worker
-$ wsub --array 1-100  --batch wc.slurm
+$ wsub  --array=1-100  --batch=wc.slurm
 ```
 
 The `wc` program  will now be run for all 100 input files --— 10
