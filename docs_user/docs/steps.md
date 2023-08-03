@@ -24,11 +24,15 @@ def main():
                             help='B value')
     options = arg_parser.parse_args()
     print(options.a + options.b)
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
 ```
 
 On the command line, we would run this as follows:
 ```bash
-python sum.py  -a 1.3  -b 2.5
+python sum.py  -a=1.3  -b=2.5
 ```
 The program will write its results to standard output.
 
@@ -36,6 +40,7 @@ A slurm script (say `sum.slurm`) that would run this as a job would
 then look like:
 ```bash
 #!/usr/bin/env bash
+
 #SBATCH --account=my_account
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -59,13 +64,14 @@ To this end, the PBS file can be modified as follows.
 
 ```bash
 #!/usr/bin/env bash
+
 #SBATCH --account=my_account
 #SBATCH --nodes=1
 #SBATCH --ntasks=10
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:20:00
 
-python sum.py  -a $a  -b $b
+python sum.py  -a=$a  -b=$b
 ```
 
 Note that
