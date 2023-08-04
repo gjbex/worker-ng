@@ -7,6 +7,7 @@ Examples of workloads to run using worker.
 
 Some examples for users, the examples in the user documentation.
 
+1. `simple`: trivial job to run using worker.
 1. `python_sum`: the job runs a Python script for each work item in a CSV file.
    This illustrates the use of `--data`.
 1. `wc`: pure Bash job that uses job arrays to operate on text files, for each
