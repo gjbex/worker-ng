@@ -20,3 +20,5 @@ For developers, a number of artefacts are available as well.
 
 1. `worker_1234`: worker directory for job ID 1234 to experiment with the log
    files and other artefacts.
+1. `worker_1234_failures`: worker directory for job ID 1234 that had failed work
+   items to experiment with the log files and other artefacts.

@@ -1,0 +1,530 @@
+2023-08-04 10:49:13.707674 [info]: client ID 410551d5-0d4a-44d9-9ff0-5bfbf8def86a
+2023-08-04 10:49:13.709028 [info]: connected to servertcp://r22i27n01:5555
+2023-08-04 10:49:13.709052 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:13.709882 [info]: work message for 8 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:13.709893 [info]: work item 8 started
+2023-08-04 10:49:13.951812 [info]: work item 8 finished: 0
+2023-08-04 10:49:13.951878 [info]: result message for 8 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:13.952474 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:13.952700 [info]: work message for 18 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:13.952707 [info]: work item 18 started
+2023-08-04 10:49:14.287238 [info]: work item 18 finished: 0
+2023-08-04 10:49:14.287298 [info]: result message for 18 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.287777 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.287991 [info]: work message for 25 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.287998 [info]: work item 25 started
+2023-08-04 10:49:14.570667 [info]: work item 25 finished: 0
+2023-08-04 10:49:14.570723 [info]: result message for 25 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.571088 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.571236 [info]: work message for 35 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.571243 [info]: work item 35 started
+2023-08-04 10:49:14.812316 [info]: work item 35 finished: 0
+2023-08-04 10:49:14.812375 [info]: result message for 35 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.812836 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.813026 [info]: work message for 45 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:14.813034 [info]: work item 45 started
+2023-08-04 10:49:15.049470 [info]: work item 45 finished: 0
+2023-08-04 10:49:15.049528 [info]: result message for 45 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.050024 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.050207 [info]: work message for 55 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.050215 [info]: work item 55 started
+2023-08-04 10:49:15.285031 [info]: work item 55 finished: 0
+2023-08-04 10:49:15.285090 [info]: result message for 55 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.285571 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.285755 [info]: work message for 65 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.285762 [info]: work item 65 started
+2023-08-04 10:49:15.501212 [info]: work item 65 finished: 1
+2023-08-04 10:49:15.501267 [info]: result message for 65 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.501667 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.501811 [info]: work message for 75 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.501818 [info]: work item 75 started
+2023-08-04 10:49:15.738708 [info]: work item 75 finished: 0
+2023-08-04 10:49:15.738755 [info]: result message for 75 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.739152 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.739293 [info]: work message for 83 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:15.739300 [info]: work item 83 started
+2023-08-04 10:49:16.009533 [info]: work item 83 finished: 0
+2023-08-04 10:49:16.009579 [info]: result message for 83 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.009877 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.010024 [info]: work message for 92 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.010032 [info]: work item 92 started
+2023-08-04 10:49:16.230006 [info]: work item 92 finished: 1
+2023-08-04 10:49:16.230070 [info]: result message for 92 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.230576 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.230718 [info]: work message for 101 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.230725 [info]: work item 101 started
+2023-08-04 10:49:16.465789 [info]: work item 101 finished: 0
+2023-08-04 10:49:16.465848 [info]: result message for 101 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.466328 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.466482 [info]: work message for 110 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.466489 [info]: work item 110 started
+2023-08-04 10:49:16.678267 [info]: work item 110 finished: 1
+2023-08-04 10:49:16.678327 [info]: result message for 110 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.678780 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.678918 [info]: work message for 120 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.678925 [info]: work item 120 started
+2023-08-04 10:49:16.910159 [info]: work item 120 finished: 0
+2023-08-04 10:49:16.910218 [info]: result message for 120 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.910637 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.910774 [info]: work message for 130 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:16.910781 [info]: work item 130 started
+2023-08-04 10:49:17.152765 [info]: work item 130 finished: 0
+2023-08-04 10:49:17.152807 [info]: result message for 130 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.153086 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.153216 [info]: work message for 141 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.153223 [info]: work item 141 started
+2023-08-04 10:49:17.442144 [info]: work item 141 finished: 0
+2023-08-04 10:49:17.442186 [info]: result message for 141 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.442535 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.442666 [info]: work message for 150 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.442673 [info]: work item 150 started
+2023-08-04 10:49:17.744129 [info]: work item 150 finished: 0
+2023-08-04 10:49:17.744185 [info]: result message for 150 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.744899 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.745098 [info]: work message for 157 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.745105 [info]: work item 157 started
+2023-08-04 10:49:17.999514 [info]: work item 157 finished: 0
+2023-08-04 10:49:17.999572 [info]: result message for 157 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:17.999979 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.000119 [info]: work message for 167 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.000127 [info]: work item 167 started
+2023-08-04 10:49:18.233637 [info]: work item 167 finished: 0
+2023-08-04 10:49:18.233697 [info]: result message for 167 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.234105 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.234244 [info]: work message for 177 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.234251 [info]: work item 177 started
+2023-08-04 10:49:18.464108 [info]: work item 177 finished: 0
+2023-08-04 10:49:18.464162 [info]: result message for 177 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.464591 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.464727 [info]: work message for 187 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.464734 [info]: work item 187 started
+2023-08-04 10:49:18.704972 [info]: work item 187 finished: 0
+2023-08-04 10:49:18.705038 [info]: result message for 187 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.705431 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.705588 [info]: work message for 196 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.705595 [info]: work item 196 started
+2023-08-04 10:49:18.939728 [info]: work item 196 finished: 0
+2023-08-04 10:49:18.939790 [info]: result message for 196 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.940209 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.940356 [info]: work message for 206 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:18.940364 [info]: work item 206 started
+2023-08-04 10:49:19.177871 [info]: work item 206 finished: 0
+2023-08-04 10:49:19.177931 [info]: result message for 206 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.178356 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.178495 [info]: work message for 215 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.178502 [info]: work item 215 started
+2023-08-04 10:49:19.431955 [info]: work item 215 finished: 0
+2023-08-04 10:49:19.432018 [info]: result message for 215 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.432451 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.432594 [info]: work message for 225 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.432602 [info]: work item 225 started
+2023-08-04 10:49:19.689412 [info]: work item 225 finished: 0
+2023-08-04 10:49:19.689473 [info]: result message for 225 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.689876 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.690020 [info]: work message for 234 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.690027 [info]: work item 234 started
+2023-08-04 10:49:19.909896 [info]: work item 234 finished: 1
+2023-08-04 10:49:19.909956 [info]: result message for 234 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.910482 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.910621 [info]: work message for 243 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:19.910629 [info]: work item 243 started
+2023-08-04 10:49:20.144943 [info]: work item 243 finished: 0
+2023-08-04 10:49:20.145009 [info]: result message for 243 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.145456 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.145603 [info]: work message for 253 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.145610 [info]: work item 253 started
+2023-08-04 10:49:20.376303 [info]: work item 253 finished: 0
+2023-08-04 10:49:20.376360 [info]: result message for 253 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.376770 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.376908 [info]: work message for 263 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.376915 [info]: work item 263 started
+2023-08-04 10:49:20.607413 [info]: work item 263 finished: 0
+2023-08-04 10:49:20.607474 [info]: result message for 263 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.607881 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.608021 [info]: work message for 273 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.608028 [info]: work item 273 started
+2023-08-04 10:49:20.839105 [info]: work item 273 finished: 0
+2023-08-04 10:49:20.839162 [info]: result message for 273 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.839575 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.839713 [info]: work message for 282 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:20.839720 [info]: work item 282 started
+2023-08-04 10:49:21.092405 [info]: work item 282 finished: 0
+2023-08-04 10:49:21.092463 [info]: result message for 282 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.092891 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.093037 [info]: work message for 291 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.093045 [info]: work item 291 started
+2023-08-04 10:49:21.339798 [info]: work item 291 finished: 0
+2023-08-04 10:49:21.339863 [info]: result message for 291 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.340228 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.340375 [info]: work message for 300 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.340383 [info]: work item 300 started
+2023-08-04 10:49:21.601401 [info]: work item 300 finished: 0
+2023-08-04 10:49:21.601459 [info]: result message for 300 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.601878 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.602020 [info]: work message for 309 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.602028 [info]: work item 309 started
+2023-08-04 10:49:21.870934 [info]: work item 309 finished: 0
+2023-08-04 10:49:21.871004 [info]: result message for 309 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.871439 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.871581 [info]: work message for 319 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:21.871589 [info]: work item 319 started
+2023-08-04 10:49:22.116181 [info]: work item 319 finished: 0
+2023-08-04 10:49:22.116240 [info]: result message for 319 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.116660 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.116798 [info]: work message for 329 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.116806 [info]: work item 329 started
+2023-08-04 10:49:22.349015 [info]: work item 329 finished: 0
+2023-08-04 10:49:22.349077 [info]: result message for 329 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.349626 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.349770 [info]: work message for 339 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.349777 [info]: work item 339 started
+2023-08-04 10:49:22.589365 [info]: work item 339 finished: 0
+2023-08-04 10:49:22.589426 [info]: result message for 339 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.589844 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.589993 [info]: work message for 349 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.590001 [info]: work item 349 started
+2023-08-04 10:49:22.832724 [info]: work item 349 finished: 0
+2023-08-04 10:49:22.832784 [info]: result message for 349 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.833203 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.833351 [info]: work message for 359 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:22.833359 [info]: work item 359 started
+2023-08-04 10:49:23.083444 [info]: work item 359 finished: 0
+2023-08-04 10:49:23.083495 [info]: result message for 359 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.083906 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.084048 [info]: work message for 367 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.084056 [info]: work item 367 started
+2023-08-04 10:49:23.318842 [info]: work item 367 finished: 1
+2023-08-04 10:49:23.318894 [info]: result message for 367 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.319298 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.319445 [info]: work message for 376 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.319453 [info]: work item 376 started
+2023-08-04 10:49:23.577015 [info]: work item 376 finished: 0
+2023-08-04 10:49:23.577067 [info]: result message for 376 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.577491 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.577637 [info]: work message for 387 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.577648 [info]: work item 387 started
+2023-08-04 10:49:23.833673 [info]: work item 387 finished: 0
+2023-08-04 10:49:23.833718 [info]: result message for 387 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.834322 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.834489 [info]: work message for 397 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:23.834496 [info]: work item 397 started
+2023-08-04 10:49:24.071807 [info]: work item 397 finished: 1
+2023-08-04 10:49:24.071861 [info]: result message for 397 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.072283 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.072425 [info]: work message for 403 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.072432 [info]: work item 403 started
+2023-08-04 10:49:24.357353 [info]: work item 403 finished: 0
+2023-08-04 10:49:24.357411 [info]: result message for 403 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.357828 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.357972 [info]: work message for 413 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.357980 [info]: work item 413 started
+2023-08-04 10:49:24.603514 [info]: work item 413 finished: 0
+2023-08-04 10:49:24.603557 [info]: result message for 413 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.603965 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.604113 [info]: work message for 424 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.604121 [info]: work item 424 started
+2023-08-04 10:49:24.877895 [info]: work item 424 finished: 0
+2023-08-04 10:49:24.877942 [info]: result message for 424 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.878365 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.878508 [info]: work message for 433 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:24.878516 [info]: work item 433 started
+2023-08-04 10:49:25.142766 [info]: work item 433 finished: 0
+2023-08-04 10:49:25.142806 [info]: result message for 433 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.143203 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.143350 [info]: work message for 444 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.143357 [info]: work item 444 started
+2023-08-04 10:49:25.397529 [info]: work item 444 finished: 0
+2023-08-04 10:49:25.397574 [info]: result message for 444 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.397981 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.398122 [info]: work message for 454 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.398130 [info]: work item 454 started
+2023-08-04 10:49:25.657600 [info]: work item 454 finished: 0
+2023-08-04 10:49:25.657650 [info]: result message for 454 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.658218 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.658438 [info]: work message for 464 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.658445 [info]: work item 464 started
+2023-08-04 10:49:25.927653 [info]: work item 464 finished: 0
+2023-08-04 10:49:25.927705 [info]: result message for 464 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.928112 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.928255 [info]: work message for 475 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:25.928263 [info]: work item 475 started
+2023-08-04 10:49:26.168518 [info]: work item 475 finished: 1
+2023-08-04 10:49:26.168579 [info]: result message for 475 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.169192 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.169346 [info]: work message for 482 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.169353 [info]: work item 482 started
+2023-08-04 10:49:26.425829 [info]: work item 482 finished: 0
+2023-08-04 10:49:26.425895 [info]: result message for 482 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.426368 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.426519 [info]: work message for 492 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.426527 [info]: work item 492 started
+2023-08-04 10:49:26.691077 [info]: work item 492 finished: 0
+2023-08-04 10:49:26.691136 [info]: result message for 492 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.691564 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.691708 [info]: work message for 503 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.691716 [info]: work item 503 started
+2023-08-04 10:49:26.932543 [info]: work item 503 finished: 1
+2023-08-04 10:49:26.932591 [info]: result message for 503 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.933022 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.933167 [info]: work message for 513 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:26.933175 [info]: work item 513 started
+2023-08-04 10:49:27.173439 [info]: work item 513 finished: 1
+2023-08-04 10:49:27.173501 [info]: result message for 513 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.174107 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.174261 [info]: work message for 522 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.174269 [info]: work item 522 started
+2023-08-04 10:49:27.486434 [info]: work item 522 finished: 0
+2023-08-04 10:49:27.486491 [info]: result message for 522 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.486908 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.487053 [info]: work message for 533 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.487061 [info]: work item 533 started
+2023-08-04 10:49:27.832607 [info]: work item 533 finished: 0
+2023-08-04 10:49:27.832661 [info]: result message for 533 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.833075 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.833221 [info]: work message for 542 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:27.833229 [info]: work item 542 started
+2023-08-04 10:49:28.130532 [info]: work item 542 finished: 0
+2023-08-04 10:49:28.130593 [info]: result message for 542 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.131018 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.131163 [info]: work message for 552 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.131171 [info]: work item 552 started
+2023-08-04 10:49:28.386823 [info]: work item 552 finished: 0
+2023-08-04 10:49:28.386876 [info]: result message for 552 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.387290 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.387439 [info]: work message for 562 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.387447 [info]: work item 562 started
+2023-08-04 10:49:28.643139 [info]: work item 562 finished: 0
+2023-08-04 10:49:28.643186 [info]: result message for 562 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.643590 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.643734 [info]: work message for 572 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.643742 [info]: work item 572 started
+2023-08-04 10:49:28.899010 [info]: work item 572 finished: 0
+2023-08-04 10:49:28.899055 [info]: result message for 572 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.899407 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.899544 [info]: work message for 583 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:28.899552 [info]: work item 583 started
+2023-08-04 10:49:29.137493 [info]: work item 583 finished: 1
+2023-08-04 10:49:29.137555 [info]: result message for 583 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.137975 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.138186 [info]: work message for 591 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.138194 [info]: work item 591 started
+2023-08-04 10:49:29.410520 [info]: work item 591 finished: 0
+2023-08-04 10:49:29.410572 [info]: result message for 591 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.410989 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.411132 [info]: work message for 603 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.411140 [info]: work item 603 started
+2023-08-04 10:49:29.687524 [info]: work item 603 finished: 0
+2023-08-04 10:49:29.687581 [info]: result message for 603 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.687999 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.688146 [info]: work message for 611 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.688154 [info]: work item 611 started
+2023-08-04 10:49:29.976093 [info]: work item 611 finished: 0
+2023-08-04 10:49:29.976157 [info]: result message for 611 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.976589 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.976731 [info]: work message for 621 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:29.976739 [info]: work item 621 started
+2023-08-04 10:49:30.251099 [info]: work item 621 finished: 0
+2023-08-04 10:49:30.251158 [info]: result message for 621 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.251603 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.251816 [info]: work message for 632 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.251824 [info]: work item 632 started
+2023-08-04 10:49:30.531255 [info]: work item 632 finished: 0
+2023-08-04 10:49:30.531305 [info]: result message for 632 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.531680 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.531911 [info]: work message for 643 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.531918 [info]: work item 643 started
+2023-08-04 10:49:30.783472 [info]: work item 643 finished: 1
+2023-08-04 10:49:30.783531 [info]: result message for 643 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.783939 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.784075 [info]: work message for 651 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:30.784083 [info]: work item 651 started
+2023-08-04 10:49:31.019284 [info]: work item 651 finished: 0
+2023-08-04 10:49:31.019347 [info]: result message for 651 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.019739 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.019878 [info]: work message for 661 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.019885 [info]: work item 661 started
+2023-08-04 10:49:31.257643 [info]: work item 661 finished: 0
+2023-08-04 10:49:31.257701 [info]: result message for 661 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.258115 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.258252 [info]: work message for 671 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.258259 [info]: work item 671 started
+2023-08-04 10:49:31.471535 [info]: work item 671 finished: 1
+2023-08-04 10:49:31.471598 [info]: result message for 671 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.472026 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.472170 [info]: work message for 681 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.472177 [info]: work item 681 started
+2023-08-04 10:49:31.692344 [info]: work item 681 finished: 1
+2023-08-04 10:49:31.692400 [info]: result message for 681 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.692808 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.692943 [info]: work message for 690 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.692950 [info]: work item 690 started
+2023-08-04 10:49:31.963634 [info]: work item 690 finished: 0
+2023-08-04 10:49:31.963698 [info]: result message for 690 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.964115 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.964258 [info]: work message for 697 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:31.964266 [info]: work item 697 started
+2023-08-04 10:49:32.211323 [info]: work item 697 finished: 1
+2023-08-04 10:49:32.211381 [info]: result message for 697 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.211790 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.211922 [info]: work message for 707 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.211929 [info]: work item 707 started
+2023-08-04 10:49:32.450120 [info]: work item 707 finished: 0
+2023-08-04 10:49:32.450177 [info]: result message for 707 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.450541 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.450677 [info]: work message for 717 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.450684 [info]: work item 717 started
+2023-08-04 10:49:32.690599 [info]: work item 717 finished: 0
+2023-08-04 10:49:32.690653 [info]: result message for 717 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.691048 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.691184 [info]: work message for 727 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.691190 [info]: work item 727 started
+2023-08-04 10:49:32.949271 [info]: work item 727 finished: 0
+2023-08-04 10:49:32.949328 [info]: result message for 727 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.949720 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.949863 [info]: work message for 735 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:32.949871 [info]: work item 735 started
+2023-08-04 10:49:33.220091 [info]: work item 735 finished: 0
+2023-08-04 10:49:33.220139 [info]: result message for 735 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.220555 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.220693 [info]: work message for 745 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.220701 [info]: work item 745 started
+2023-08-04 10:49:33.473262 [info]: work item 745 finished: 0
+2023-08-04 10:49:33.473318 [info]: result message for 745 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.473712 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.473850 [info]: work message for 754 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.473857 [info]: work item 754 started
+2023-08-04 10:49:33.694979 [info]: work item 754 finished: 1
+2023-08-04 10:49:33.695100 [info]: result message for 754 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.695537 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.695677 [info]: work message for 763 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.695685 [info]: work item 763 started
+2023-08-04 10:49:33.939360 [info]: work item 763 finished: 0
+2023-08-04 10:49:33.939418 [info]: result message for 763 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.939823 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.939963 [info]: work message for 773 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:33.939971 [info]: work item 773 started
+2023-08-04 10:49:34.186377 [info]: work item 773 finished: 1
+2023-08-04 10:49:34.186429 [info]: result message for 773 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.186838 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.186982 [info]: work message for 782 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.186996 [info]: work item 782 started
+2023-08-04 10:49:34.429673 [info]: work item 782 finished: 0
+2023-08-04 10:49:34.429726 [info]: result message for 782 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.430131 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.430271 [info]: work message for 792 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.430279 [info]: work item 792 started
+2023-08-04 10:49:34.651316 [info]: work item 792 finished: 1
+2023-08-04 10:49:34.651362 [info]: result message for 792 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.651648 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.651793 [info]: work message for 801 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.651801 [info]: work item 801 started
+2023-08-04 10:49:34.947041 [info]: work item 801 finished: 0
+2023-08-04 10:49:34.947104 [info]: result message for 801 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.947554 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.947756 [info]: work message for 808 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:34.947765 [info]: work item 808 started
+2023-08-04 10:49:35.172285 [info]: work item 808 finished: 1
+2023-08-04 10:49:35.172347 [info]: result message for 808 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.172764 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.172904 [info]: work message for 818 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.172912 [info]: work item 818 started
+2023-08-04 10:49:35.398373 [info]: work item 818 finished: 1
+2023-08-04 10:49:35.398435 [info]: result message for 818 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.398848 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.398995 [info]: work message for 828 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.399003 [info]: work item 828 started
+2023-08-04 10:49:35.644544 [info]: work item 828 finished: 0
+2023-08-04 10:49:35.644604 [info]: result message for 828 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.645020 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.645164 [info]: work message for 838 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.645172 [info]: work item 838 started
+2023-08-04 10:49:35.896050 [info]: work item 838 finished: 0
+2023-08-04 10:49:35.896108 [info]: result message for 838 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.896536 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.896679 [info]: work message for 848 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:35.896687 [info]: work item 848 started
+2023-08-04 10:49:36.120679 [info]: work item 848 finished: 1
+2023-08-04 10:49:36.120739 [info]: result message for 848 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.121149 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.121290 [info]: work message for 857 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.121298 [info]: work item 857 started
+2023-08-04 10:49:36.376144 [info]: work item 857 finished: 0
+2023-08-04 10:49:36.376205 [info]: result message for 857 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.376623 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.376765 [info]: work message for 865 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.376772 [info]: work item 865 started
+2023-08-04 10:49:36.605788 [info]: work item 865 finished: 0
+2023-08-04 10:49:36.605843 [info]: result message for 865 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.606250 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.606393 [info]: work message for 875 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.606400 [info]: work item 875 started
+2023-08-04 10:49:36.846642 [info]: work item 875 finished: 0
+2023-08-04 10:49:36.846701 [info]: result message for 875 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.847108 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.847251 [info]: work message for 884 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:36.847258 [info]: work item 884 started
+2023-08-04 10:49:37.079902 [info]: work item 884 finished: 0
+2023-08-04 10:49:37.079954 [info]: result message for 884 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.080363 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.080500 [info]: work message for 894 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.080507 [info]: work item 894 started
+2023-08-04 10:49:37.341926 [info]: work item 894 finished: 0
+2023-08-04 10:49:37.342008 [info]: result message for 894 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.342447 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.342584 [info]: work message for 901 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.342591 [info]: work item 901 started
+2023-08-04 10:49:37.575208 [info]: work item 901 finished: 0
+2023-08-04 10:49:37.575279 [info]: result message for 901 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.575832 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.575976 [info]: work message for 911 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.575988 [info]: work item 911 started
+2023-08-04 10:49:37.811180 [info]: work item 911 finished: 0
+2023-08-04 10:49:37.811239 [info]: result message for 911 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.811781 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.811926 [info]: work message for 921 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:37.811933 [info]: work item 921 started
+2023-08-04 10:49:38.049556 [info]: work item 921 finished: 0
+2023-08-04 10:49:38.049612 [info]: result message for 921 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.050067 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.050215 [info]: work message for 931 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.050222 [info]: work item 931 started
+2023-08-04 10:49:38.300594 [info]: work item 931 finished: 1
+2023-08-04 10:49:38.300643 [info]: result message for 931 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.301031 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.301169 [info]: work message for 937 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.301177 [info]: work item 937 started
+2023-08-04 10:49:38.576160 [info]: work item 937 finished: 0
+2023-08-04 10:49:38.576215 [info]: result message for 937 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.576628 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.576768 [info]: work message for 947 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.576775 [info]: work item 947 started
+2023-08-04 10:49:38.816725 [info]: work item 947 finished: 0
+2023-08-04 10:49:38.816784 [info]: result message for 947 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.817186 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.817324 [info]: work message for 957 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:38.817332 [info]: work item 957 started
+2023-08-04 10:49:39.058899 [info]: work item 957 finished: 0
+2023-08-04 10:49:39.058955 [info]: result message for 957 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.059411 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.059549 [info]: work message for 967 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.059559 [info]: work item 967 started
+2023-08-04 10:49:39.272306 [info]: work item 967 finished: 1
+2023-08-04 10:49:39.272367 [info]: result message for 967 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.272773 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.272910 [info]: work message for 975 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.272917 [info]: work item 975 started
+2023-08-04 10:49:39.519536 [info]: work item 975 finished: 0
+2023-08-04 10:49:39.519592 [info]: result message for 975 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.520012 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.520153 [info]: work message for 986 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.520161 [info]: work item 986 started
+2023-08-04 10:49:39.745675 [info]: work item 986 finished: 1
+2023-08-04 10:49:39.745721 [info]: result message for 986 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.746128 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.746273 [info]: work message for 996 from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:39.746280 [info]: work item 996 started
+2023-08-04 10:49:40.047432 [info]: work item 996 finished: 0
+2023-08-04 10:49:40.047492 [info]: result message for 996 to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:40.047856 [info]: query message to ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:40.048045 [info]: stop message from ad9ebfe4-0c6f-4abb-b684-b7441b1180c1
+2023-08-04 10:49:40.048052 [info]: exiting normally
