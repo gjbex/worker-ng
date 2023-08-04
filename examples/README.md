@@ -11,3 +11,5 @@ Examples of workloads to run using worker.
    file the word count is computed using the `wc` command, and the output is
     written to files in an output directory, one per input file.  Illustrates
     the use of `--array`.
+1. `failures`: some of the work items for this job will fail to help experiment
+   with `wresume` and `wsummarize`.
