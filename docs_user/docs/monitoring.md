@@ -1,3 +1,5 @@
+# Monitoring worker jobs
+
 You will have noticed that when you have submitted a job using `wsub`, a directory is created with a name that starts with `worker_`, and ends in the job ID.  Among other things, this directory contains files that allow you to monitor the progress of a running worker job, or analyze its performance once it is done.
 
 Since a worker job will typically run for several hours, it may be reassuring to monitor its progress. worker server keeps a log of its activity in the directory mentioned abovewhere the job was submitted.  You can use the `wsummarize` command to get information, e.g., for job ID was `1234`.

@@ -1,3 +1,5 @@
+# worker commands
+
 The worker framework has the following commands:
 
   * `wsub`: submit a worker job

@@ -1,3 +1,5 @@
+# Resuming worker jobs
+
 Unfortunately, it is not always easy to estimate the walltime for a job, and consequently, sometimes the latter is underestimated. When using the worker framework, this implies that not all work items will have been processed. worker makes it very easy to resume such a job without having to figure out which work items did complete successfully, and which remain to be computed. Suppose the job that did not complete all its work items had ID '1234'.
 
 ```bash

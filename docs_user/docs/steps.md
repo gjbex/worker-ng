@@ -1,3 +1,5 @@
+# worker step-by-step
+
 As prerequisites, one should have a (sequential) job that has to be
 run many times
 
