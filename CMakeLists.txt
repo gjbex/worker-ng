@@ -50,8 +50,9 @@ add_subdirectory (scripts)
 # define configuration target
 add_subdirectory (conf)
 
-# define documentation target
+# define documentation targets
 add_subdirectory (docs_dev)
+add_subdirectory (docs_user)
 
 # add packer settings
 include (InstallRequiredSystemLibraries)
