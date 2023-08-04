@@ -7,7 +7,7 @@ set (worker_ng_VERSION_MAJOR 0)
 set (worker_ng_VERSION_MINOR 1)
 
 # set C++ specification
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
@@ -34,7 +34,7 @@ find_library (ZeroMQ_LIBRARY
 
 # find Boost
 set(Boost_USE_MULTITHREADED ON)
-find_package (Boost 1.66.0 COMPONENTS
+find_package (Boost 1.74.0 COMPONENTS
          program_options filesystem system log_setup log
          )
 if (NOT Boost_FOUND)
@@ -44,8 +44,15 @@ endif (NOT Boost_FOUND)
 # define source target
 add_subdirectory (src)
 
-# define documentation target
-add_subdirectory (docs)
+# define script target
+add_subdirectory (scripts)
+
+# define configuration target
+add_subdirectory (conf)
+
+# define documentation targets
+add_subdirectory (docs_dev)
+add_subdirectory (docs_user)
 
 # add packer settings
 include (InstallRequiredSystemLibraries)

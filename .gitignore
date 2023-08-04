@@ -54,3 +54,23 @@ __pycache__
 
 # Singularity images
 *.sif
+
+# local installation directories
+distr_genius/
+distr_wice/
+
+# directories created by worker
+tmp_worker_*
+
+# direnv configuration file
+.envrc
+
+# ignore build directories
+build_wice/
+build_genius/
+
+# ignore test deployment directory
+deploy/
+distr_wice/
+distr_genius/
+

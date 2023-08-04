@@ -18,7 +18,7 @@ fi
 
 SERVER_INFO="server_info.txt"
 
-./worker_server --workfile "$work_file" --server_info $SERVER_INFO &
+worker_server --workfile "$work_file" --server_info $SERVER_INFO &
 if [ $? -ne 0 ]
 then
     (>&2 echo "### error: failed to launch server")
@@ -34,7 +34,7 @@ server=$(cut -d ' ' -f 2 $SERVER_INFO)
 
 for i in $(seq $nr_clients)
 do
-    ./worker_client --server "$server" --uuid "$uuid" &
+    worker_client --server "$server" --uuid "$uuid" &
     if [ $? -ne 0 ]
     then
         (>&2 echo "### error: failed launching client $i")

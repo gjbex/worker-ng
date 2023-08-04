@@ -3,6 +3,7 @@ from worker.option_parser import ParseData
 from worker.utils import expand_options
 import shlex
 
+
 def _normalize_resources(resources):
     resource_dict = {}
     for resource in resources:
@@ -20,8 +21,6 @@ def _merge_resources(old_resources, new_resources):
     resources = _normalize_resources(old_resources)
     resources.update(_normalize_resources(new_resources))
     return [f'{key}={value}' for key, value in resources.items()]
-
-
 
 
 class PbsTorqueOptionParser:
@@ -122,3 +121,7 @@ class PbsTorqueOptionParser:
         resources = _merge_resources(old_resources.l, new_resources.l)
         merged_options = argparse.Namespace(l=resources, **vars(merged_options))
         return merged_options
+
+
+def preprocess_cli_options(options):
+    return options

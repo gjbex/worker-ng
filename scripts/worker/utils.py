@@ -126,6 +126,7 @@ def create_workfile(file_path, parser_result, config):
                               config['scheduler']['arrayid_var_name'])
     nr_workitems = 0
     with open(file_path, 'w') as file:
+        nr_workitems += 1
         data = next(data_sources)
         for var_name, value in data.items():
             print(f"export {var_name}='{value}'", file=file)

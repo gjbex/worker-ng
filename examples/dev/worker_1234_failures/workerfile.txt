@@ -1,0 +1,11999 @@
+export a='0.06947958425541212'
+export b='0.8011588660421538'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2764697135559111'
+export b='0.03081304690232023'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.33770039645884053'
+export b='0.49380500274361394'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5333168555170635'
+export b='0.5742630319525084'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7996021487749125'
+export b='0.7910200924332556'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7598727238586327'
+export b='0.9896455071615597'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7884043614262343'
+export b='0.06680177959337064'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9926893993159115'
+export b='0.2144345088476186'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.22022567380385438'
+export b='0.1622358659748372'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7199038061226792'
+export b='0.15777440560148515'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.427385585770514'
+export b='0.917996596884995'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2560315884606237'
+export b='0.7215255539619398'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0010262206757370995'
+export b='0.4450088775494456'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.009600721202424833'
+export b='0.5051702476114641'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.981198074708946'
+export b='0.9628895111545469'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9581803439389177'
+export b='0.7409298025730279'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9297232347260956'
+export b='0.9770766061773835'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6251857351943485'
+export b='0.7427747765144087'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.560229771225966'
+export b='0.6605983433118133'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9654918909781448'
+export b='0.1433044123609697'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6242789434755681'
+export b='0.48296133947834907'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9869781621995515'
+export b='0.7260879508974803'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9913034417075318'
+export b='0.19767124441051298'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.33730136281780687'
+export b='0.4540696852344417'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8262819265865872'
+export b='0.4270681890830108'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5675319107425358'
+export b='0.6547242188659899'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5852032763985041'
+export b='0.1702081021216577'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.33712488214496483'
+export b='0.8159543779935458'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2641991225325786'
+export b='0.15205444073826013'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6384013718544591'
+export b='0.6023589168141671'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9772764665374237'
+export b='0.6153052914047258'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15406801466265208'
+export b='0.7332578732847602'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3881676123370308'
+export b='0.040043005726201786'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.28525386494533944'
+export b='0.4165525147639286'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8130062399455722'
+export b='0.9946414441928759'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5688184780059891'
+export b='0.12412150392326937'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9050401209559613'
+export b='0.8983484647045031'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17733482514708'
+export b='0.7791614967390702'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6394467347669374'
+export b='0.11096700732090026'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.20689029312982965'
+export b='0.7254260385620358'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6488234283921709'
+export b='0.8263966651142551'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2859768026791879'
+export b='0.9501175511496042'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.325734634558979'
+export b='0.10013003827289668'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7722682940037355'
+export b='0.20618997303059983'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.685202506309735'
+export b='0.20981872762625786'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.43834733291541284'
+export b='0.9670432180866945'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2786056741358043'
+export b='0.8931267702889012'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9560961866901645'
+export b='0.6123624950570733'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8305465727511903'
+export b='0.9076645654366987'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4572057247250192'
+export b='0.47511583375767874'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6844414412764623'
+export b='0.9042535175631957'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7150019550226672'
+export b='0.7655422069160727'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7768219126074504'
+export b='0.5371408725318867'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.38886959499688245'
+export b='0.20379890673033796'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5936225157573024'
+export b='0.3640144366871738'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17157281695551674'
+export b='0.02229013386861245'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09350282889053385'
+export b='0.6638178507995922'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7087350949299656'
+export b='0.5137944822832867'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5199982524686598'
+export b='0.6506714529790456'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8056670385638468'
+export b='0.7321571394775466'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8227090358011384'
+export b='0.8336242811357326'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7332707358895232'
+export b='0.4564507477030516'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1536243442178592'
+export b='0.12258311541543365'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9324901842462917'
+export b='0.5838090877554872'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7624628091943362'
+export b='0.8986443152865013'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9935081666620315'
+export b='0.6637133589989493'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2414276871461497'
+export b='0.35808355977278084'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8981991565127581'
+export b='0.10378685123692999'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.12495168218323427'
+export b='0.29543199385821484'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.05329569021473202'
+export b='0.5571033016292494'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.941193846262006'
+export b='0.5340707083833423'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.483360403924569'
+export b='0.24727104682350654'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.04118229874458512'
+export b='0.3016490595437761'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6468263969317414'
+export b='0.5884610014873385'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6636105844053373'
+export b='0.03575109578975766'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.686532972919712'
+export b='0.25201482702358746'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8749229815154606'
+export b='0.16523748125478122'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1463928791627005'
+export b='0.145542632118821'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5859720082690619'
+export b='0.8073454133022384'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4360916853597917'
+export b='0.019298500815661646'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6487058912840462'
+export b='0.7301164657069509'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8846770616647907'
+export b='0.9159943602426496'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7153728524688591'
+export b='0.30883860005359953'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.20277353964849365'
+export b='0.7990671130994442'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40059309168272716'
+export b='0.6376524201148802'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.45957299388288864'
+export b='0.9421632759150436'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.48553779010845566'
+export b='0.43683238675588176'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.42988901878615304'
+export b='0.5302995111677145'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3284093746700887'
+export b='0.8742850956870225'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5520326335701417'
+export b='0.5132025613839325'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.49722132122597584'
+export b='0.8999298633945007'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5991247790208807'
+export b='0.28422059966877566'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9346745271443236'
+export b='0.17000044281835813'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8089193014976851'
+export b='0.5825555322319707'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24440993009667877'
+export b='0.3989988239834815'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17595974529430614'
+export b='0.551874039200444'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.43665267486486237'
+export b='0.46435904676765716'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6409934825480461'
+export b='0.20402269078999324'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40735838354888954'
+export b='0.29401558853079723'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.892593831587895'
+export b='0.40719438229386595'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9815912809128992'
+export b='0.7918193395878342'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6799623056216717'
+export b='0.9795715220993516'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7167839212819919'
+export b='0.5318909270004518'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9950834845985507'
+export b='0.8648685620781764'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.820462686806083'
+export b='0.9851677101721709'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17203620985282242'
+export b='0.09962748607100669'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6758237868625047'
+export b='0.9834719194011295'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.047259883347681164'
+export b='0.7452689905609531'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.423876179563332'
+export b='0.16375191591208782'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5542975504180477'
+export b='0.1630079196543014'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.10615389676156295'
+export b='0.41414679501807516'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.487270350492664'
+export b='0.3366396905062228'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6717302521850392'
+export b='0.6172764836602325'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.857058394264599'
+export b='0.0015474175924535816'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03792967640216871'
+export b='0.6560113566216391'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.702856899485427'
+export b='0.4795382657542835'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3496253688732728'
+export b='0.7703410457085482'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9936219010839844'
+export b='0.5787997990710488'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.01507935190080023'
+export b='0.0965907863233938'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5549889579373726'
+export b='0.5405403977359906'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.144594668988405'
+export b='0.7336586097074733'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.604502522830663'
+export b='0.9444663283164693'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5847618117922011'
+export b='0.7464784527235153'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5588260229708826'
+export b='0.6526847531078015'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.06010077477850462'
+export b='0.12177989288428537'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.32967341031496133'
+export b='0.8849726818576212'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.208763670483327'
+export b='0.4761633872162311'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8107564476901011'
+export b='0.9256645648037527'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6539935334111735'
+export b='0.9460773239486122'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7178916529554438'
+export b='0.021047024168733497'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9498155857890312'
+export b='0.47415114611928766'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.301784043374399'
+export b='0.5767257530096086'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3878206772985563'
+export b='0.8819964089454224'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8324260124015885'
+export b='0.4125422297571113'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2782454485249374'
+export b='0.001161987855529345'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0524183928530263'
+export b='0.915670328862554'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8146718505673468'
+export b='0.8876212762734634'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6462794241570105'
+export b='0.052230694637738884'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.35211520575471345'
+export b='0.3524343849866325'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8037265608968535'
+export b='0.23996381769887187'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5475122463251901'
+export b='0.6977570876859086'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09547422808248529'
+export b='0.2865485049514094'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9423491339048209'
+export b='0.5484532564677339'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6172957929059428'
+export b='0.26037766343904445'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8734358093021212'
+export b='0.6395488176873612'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9487241793640466'
+export b='0.8456029674980217'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.681231172840611'
+export b='0.00926650955314201'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4738664711729441'
+export b='0.7100980769126598'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7729195996424424'
+export b='0.4385951726483198'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3794398024392083'
+export b='0.22805682631540491'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.34442240414709'
+export b='0.5237770534929871'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.38518196242053937'
+export b='0.09394997622618562'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2057274277681116'
+export b='0.5391721049778365'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7288926028828291'
+export b='0.14362568015563915'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7228985710706779'
+export b='0.5380231504861827'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.45576761594262793'
+export b='0.40756480765076986'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7575451483264616'
+export b='0.934593134652068'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7754209858089222'
+export b='0.9232292177306555'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18812840885875604'
+export b='0.9715068636613899'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9923056997710754'
+export b='0.42421549291073246'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9907832104535547'
+export b='0.3365565647697063'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15874117363680162'
+export b='0.1041432376479543'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.38538681634613536'
+export b='0.3532771247626133'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.33106495638628586'
+export b='0.22363811452826476'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07098401828178569'
+export b='0.1741495028732909'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.08258868310893308'
+export b='0.05330816735582178'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6946642213736371'
+export b='0.9241342541985238'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6238474127794879'
+export b='0.22000191485844112'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.20854549697993685'
+export b='0.5868872398359399'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17422393263430336'
+export b='0.08362356067332066'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9262771110946391'
+export b='0.2799957909576547'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3858597198996613'
+export b='0.3452355469483094'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.439485844841942'
+export b='0.144386005663801'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8874362543822637'
+export b='0.19266675477950468'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7059985599675939'
+export b='0.9109898800562487'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9006866704942564'
+export b='0.7462032470586157'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7656680519940672'
+export b='0.9747574722832364'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8669454379712318'
+export b='0.0536371743945433'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6641148206532638'
+export b='0.5805057134021357'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7393951439011427'
+export b='0.863261619075875'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5990095788365648'
+export b='0.19750617657122538'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9329739844111269'
+export b='0.73522160075172'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8440238517224281'
+export b='0.2237224330351908'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07431879068212066'
+export b='0.5594889215390205'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.42598268214493906'
+export b='0.04588481268637501'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5274497153349047'
+export b='0.21037786550111304'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7983756331848156'
+export b='0.21425453063594524'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5687852078041364'
+export b='0.027929687553044702'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11171560528431457'
+export b='0.5011074771533269'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.22912178920807535'
+export b='0.6839002534902011'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8447453096619292'
+export b='0.18730308498500248'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6332998675855669'
+export b='0.004751921101540435'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9139740283941071'
+export b='0.6115487505695313'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7022266956498191'
+export b='0.36498942075828544'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.10510693612223143'
+export b='0.7453139807880038'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5386035766808428'
+export b='0.9035944599683501'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.20153778599434657'
+export b='0.5802852987018721'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.015027129489497137'
+export b='0.41209796862915027'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3215687902452291'
+export b='0.1704436997111416'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9284138281963334'
+export b='0.4087551508353743'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3917447611888778'
+export b='0.6624196188314637'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0673383924179578'
+export b='0.8877283125744669'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.924823069055958'
+export b='0.9110742414945396'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.32276165228147635'
+export b='0.6951324331448553'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7675553064570144'
+export b='0.9611658746616545'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7773965270845467'
+export b='0.785694090201763'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4420702458531953'
+export b='0.40832656290110414'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6425869531053591'
+export b='0.5972043986577693'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9788736040679897'
+export b='0.5351131541914603'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15392811087318925'
+export b='0.007515755142202263'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5209477772921262'
+export b='0.6703977915406276'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9962187967833858'
+export b='0.25533005053645874'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8806402403906854'
+export b='0.823890124411314'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03193192441496073'
+export b='0.15296697393514302'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.20810462462027657'
+export b='0.11101240415395186'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.945055291380919'
+export b='0.6928438658124518'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.46418381922345986'
+export b='0.9517600567014535'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7094296887101299'
+export b='0.15613648243556966'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.26817242492946103'
+export b='0.4658649662798975'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1941321427509134'
+export b='0.10206837470518981'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2754937559468421'
+export b='0.4724502560178405'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3496000768635307'
+export b='0.23895942336991416'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.05054472386734288'
+export b='0.40414493207703095'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.868275170716485'
+export b='0.7706559981134823'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.34638414578264154'
+export b='0.29837250977429475'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9798905877277475'
+export b='0.7286215676627062'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9449309531768701'
+export b='0.7782778677328173'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9384884294597463'
+export b='0.3369226038204429'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8823470432858361'
+export b='0.28447651714752764'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7635869967725673'
+export b='0.3421733600225598'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.731537915290599'
+export b='0.9874947652180545'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9736937337316316'
+export b='0.8283604185901992'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8951702709052402'
+export b='0.39090661483636024'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.41260141513750603'
+export b='0.8893172705398996'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7611087293218349'
+export b='0.6555972480134864'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6969960707397882'
+export b='0.627100630333813'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9801808670423986'
+export b='0.4458846861888044'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5407234225780384'
+export b='0.49965209242269326'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1830170354750723'
+export b='0.7944178689093668'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24753510532871636'
+export b='0.7050884294448012'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8125908692887905'
+export b='0.48407956468361923'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17330228274037307'
+export b='0.8560101516232829'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.06540709905983255'
+export b='0.25216487212278715'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.44304026590945444'
+export b='0.6839230761884443'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6440614904391531'
+export b='0.584025075898268'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8724207119465813'
+export b='0.5726767315408887'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7114935088741181'
+export b='0.4761537196597935'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6285833919104801'
+export b='0.702092809851764'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9264588777253426'
+export b='0.5365994345051366'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.13388366325940815'
+export b='0.8742756744318666'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3316364081674782'
+export b='0.19742956614825835'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6978470873661974'
+export b='0.6141909373741417'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40061161781670773'
+export b='0.09381107178973636'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40628772886793474'
+export b='0.7029816336837211'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1677407623265974'
+export b='0.32811263919635314'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.507553949549065'
+export b='0.38382843596341965'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9136329350391763'
+export b='0.9347925506131369'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6059682300961521'
+export b='0.14905699708142062'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8569240796915019'
+export b='0.8023784610633284'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18189602860929388'
+export b='0.18733467403300508'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5143962150923752'
+export b='0.944637353521936'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.465532113909533'
+export b='0.862074959417649'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8947999497721123'
+export b='0.2600813950023111'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.45765370189245735'
+export b='0.2676928621990097'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6583732098423387'
+export b='0.9165459119042044'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.529931060682144'
+export b='0.7355358173936694'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4578022072669514'
+export b='0.05696653818823971'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7455059430174584'
+export b='0.5485515674342256'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5300628613240319'
+export b='0.4938569497785993'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7111579670828643'
+export b='0.9674119247760288'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4651983586436854'
+export b='0.5550335042580541'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3447638179770883'
+export b='0.6842978743578886'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2417157618362149'
+export b='0.1330988749543256'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8968602506730589'
+export b='0.8315092433831189'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4411952606277857'
+export b='0.4871632788011576'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1297958511864009'
+export b='0.9507260668388648'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.512292463875947'
+export b='0.8947716014202577'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6858160977192569'
+export b='0.26303462151049695'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9300781153778283'
+export b='0.635044548961543'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2971279536728769'
+export b='0.5282812359960782'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40703847181046315'
+export b='0.414232100647013'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8142343255627444'
+export b='0.010522276942470876'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24094268696053656'
+export b='0.7691809082390351'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3377038919190868'
+export b='0.1462629272417174'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.055199981777068974'
+export b='0.5867452479594031'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4593011152568155'
+export b='0.9212645742196166'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9449422409438758'
+export b='0.6757169184462114'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0421358817866907'
+export b='0.2738237683452329'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8812800293070845'
+export b='0.581712058228177'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.004308899432600377'
+export b='0.5520546970564921'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5926017506191298'
+export b='0.2691296336000184'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4545090504350121'
+export b='0.7757685202573756'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6685572584649817'
+export b='0.5593413938869239'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8916485659271041'
+export b='0.14147309778860195'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8943455620179338'
+export b='0.26211970857162503'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7668911866622048'
+export b='0.3130540926544282'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2902865661436964'
+export b='0.46438342875564076'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40471581795661693'
+export b='0.4950206721562628'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09456090122710892'
+export b='0.8699950559185999'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2553737460696184'
+export b='0.14839184346608192'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2470312666218254'
+export b='0.0841134979322059'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.21315096638309594'
+export b='0.8397107398240649'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8864256456123232'
+export b='0.4670632930386337'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24243863181852365'
+export b='0.1328140072602959'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07939808022151074'
+export b='0.9942799444318444'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7957942133386537'
+export b='0.4391323942750375'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2905995292018059'
+export b='0.07814174890334791'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5301295320380858'
+export b='0.8571097446921521'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5271034238635279'
+export b='0.6188436550168497'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15605862309657004'
+export b='0.4395440430809411'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.28529039250564736'
+export b='0.4180203115818324'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3828132597964816'
+export b='0.5941479330235223'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.38031554266964973'
+export b='0.7673236728359638'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18831159711375867'
+export b='0.9245873583265702'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9752282539153156'
+export b='0.12965926644213888'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5081413872797976'
+export b='0.8580663060614823'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1625650025142088'
+export b='0.6805349535612742'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.34666770145236436'
+export b='0.5189249326593125'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.474670850690209'
+export b='0.015739706635010564'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9178466822812815'
+export b='0.8197732556736818'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5720070735979731'
+export b='0.11958534505080287'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2951144665891101'
+export b='0.7717082265104853'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5895205995576097'
+export b='0.7940415101835101'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5899010345144953'
+export b='0.24080660904401707'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4207915149932341'
+export b='0.7432547423993198'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14374413653180151'
+export b='0.416133920712607'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.65550293342809'
+export b='0.5398424929234'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6023556770888958'
+export b='0.5234443349911454'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4479121574046019'
+export b='0.44805845884714'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8766778058073935'
+export b='0.74737438247962'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.851520731431539'
+export b='0.17312262447755256'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.017369022530956735'
+export b='0.42279506808554546'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7374186744803609'
+export b='0.48935532515901103'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1917286831664502'
+export b='0.7996431442731918'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14908978567693254'
+export b='0.20743280145110343'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24619560251674621'
+export b='0.609375835844145'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7313706017693533'
+export b='0.834253262392035'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24488132577067467'
+export b='0.29239201153108874'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9842290880621358'
+export b='0.5446065685993213'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17998945037001413'
+export b='0.28165052516617206'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.75004102313146'
+export b='0.8979059716521505'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9333803477963191'
+export b='0.004091903832449839'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.060055803427023546'
+export b='0.7006695346394717'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7450740630348762'
+export b='0.8895077154661795'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.06004697468508202'
+export b='0.9858024894726807'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7195658637741125'
+export b='0.9272161134351335'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5423298232042795'
+export b='0.38595088774272623'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8117976521422264'
+export b='0.05120465907870231'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1530548022234819'
+export b='0.8471323290743883'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4229349981188546'
+export b='0.23996780757593572'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03991260890295434'
+export b='0.3220801724686492'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3713704150200341'
+export b='0.6863523100760344'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.12119173536585193'
+export b='0.11455992084369193'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.860376087256934'
+export b='0.0978037739594686'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7718709751566423'
+export b='0.24647370694598503'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.47947278127653226'
+export b='0.02647609130599049'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5747880144606865'
+export b='0.718831519687476'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5791479993231599'
+export b='0.9404299457503388'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17525858722314847'
+export b='0.34930335593282713'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8412684510710545'
+export b='0.1767194310588467'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4371431522819921'
+export b='0.22866760582140322'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6841778405421592'
+export b='0.3817132631585003'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8810682407265396'
+export b='0.9522756667209171'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3728714722107148'
+export b='0.2936434974568115'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.08835219909927294'
+export b='0.1969382804494214'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9016359065294562'
+export b='0.1336437897079854'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9742696787177261'
+export b='0.23805701094356957'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8021671835834489'
+export b='0.48029500032232686'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.41383222324334923'
+export b='0.26888060821756643'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.36232895329435166'
+export b='0.48824547700843934'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8782564579751092'
+export b='0.9334983223948987'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9990761677954899'
+export b='0.4029017383781447'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.530127068200005'
+export b='0.2079181803725637'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5035657033960753'
+export b='0.7790706536241759'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3813176435045681'
+export b='0.42264241680276315'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9054207596410482'
+export b='0.11206567876194673'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.42810018216653156'
+export b='0.9696882065997255'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8837475948097925'
+export b='0.31602351303977905'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.904197517907779'
+export b='0.15923143326772926'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.20082102732187423'
+export b='0.40350574470890066'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2878732754101718'
+export b='0.3195613821749863'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8914560327784661'
+export b='0.9575040053288705'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.22867543937458534'
+export b='0.34460992424647163'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4738941356261156'
+export b='0.6128662789376481'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.052571163277616906'
+export b='0.6103809154127681'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7033284227555551'
+export b='0.22791995940582443'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.06618827375286951'
+export b='0.6879774649644222'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1338088857651849'
+export b='0.6163065374016834'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5292777269948283'
+export b='0.4879714425122479'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.283340445936221'
+export b='0.7067336989580538'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3178847857614605'
+export b='0.335533952177942'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.45094539375289777'
+export b='0.803494040621502'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9846276200510204'
+export b='0.545471067862646'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6814402251126391'
+export b='0.4105727812794423'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2237222481194865'
+export b='0.06931947072824374'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9098280964422207'
+export b='0.8952554602236746'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14951748500554352'
+export b='0.07809167364845793'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.16798119459244587'
+export b='0.7447863354015073'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7347655449363917'
+export b='0.811832146506322'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.13022286706027797'
+export b='0.0535245368743984'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.283252879253417'
+export b='0.34338345125132896'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3183240826932997'
+export b='0.8984699528029879'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6723976053642853'
+export b='0.21648956532138752'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8279037496762089'
+export b='0.3933780684429111'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0018589455835189561'
+export b='0.44156086887751533'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6099456241774206'
+export b='0.6391670556935293'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.037663620928466646'
+export b='0.8726006137688388'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7132940006956809'
+export b='0.29605539267974457'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4434088546416025'
+export b='0.9457491395593715'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.79793056993976'
+export b='0.792914587915019'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3615811185963055'
+export b='0.7772652083789416'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8607914502069164'
+export b='0.047767658555814885'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.33124237341392115'
+export b='0.6593053509935707'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0758118896794685'
+export b='0.8918454385627931'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7170304816785915'
+export b='0.717397193457703'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7416880714931556'
+export b='0.00431771574881501'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5847728346768618'
+export b='0.5492479732033086'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11417528186088832'
+export b='0.39572220338099906'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07977615800825977'
+export b='0.30697538462023755'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8280949926435933'
+export b='0.34166069433304536'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9178969875585467'
+export b='0.46175169964362406'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.313851416006651'
+export b='0.05732610566277063'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6581048273563365'
+export b='0.8218313155060822'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.49710060033968395'
+export b='0.4317194988870455'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9642258312300176'
+export b='0.9010332856672336'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9066013106223523'
+export b='0.6497029116571501'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.37570949797598574'
+export b='0.20447649493934106'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19296878735054102'
+export b='0.27625247987732826'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2272311872028172'
+export b='0.7943274298149019'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.35625457253261605'
+export b='0.5990050553817581'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11039271264603412'
+export b='0.40242661311554584'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8775590013831477'
+export b='0.05907901658961856'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9667898179982645'
+export b='0.009137133846376488'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2369582753028'
+export b='0.22812270048333771'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5587429323933251'
+export b='0.8227820230328492'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6953993924075557'
+export b='0.19931057323192458'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9146247251778659'
+export b='0.8922336389054075'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.43381141586002436'
+export b='0.11472197201386014'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9666678874072517'
+export b='0.9981276094801815'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7000167073953675'
+export b='0.5845484523923912'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3182004959921969'
+export b='0.3436775447279138'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.891193552336384'
+export b='0.31430774123862504'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.10512702269928964'
+export b='0.3584562320291165'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6317537425592386'
+export b='0.00847639641949427'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5884588223147924'
+export b='0.5022492130049633'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09310048014522532'
+export b='0.7533983690421491'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9360174504577051'
+export b='0.7347606961455958'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9228953353778326'
+export b='0.8483640894592784'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.125535809156184'
+export b='0.8026390034624125'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4682063092989618'
+export b='0.2554445902817164'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9438793325521632'
+export b='0.02702949867996629'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8431338168906874'
+export b='0.6753886485726731'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.10540297601670012'
+export b='0.8934769461504785'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5693836914333895'
+export b='0.565758133073836'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5315367198524519'
+export b='0.3628837910614088'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9757960424654007'
+export b='0.38525612526462105'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7534382623380874'
+export b='0.484230890403611'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4087248369693962'
+export b='0.9914927160465068'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2263023879084286'
+export b='0.0846350633824754'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9894468316552492'
+export b='0.8051726659028386'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9480771191378283'
+export b='0.3608121692350694'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.13914979635251978'
+export b='0.8671914871262254'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.26887004414523696'
+export b='0.5220942230498825'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4905830547454766'
+export b='0.4658759940530589'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9314446439223231'
+export b='0.11323762292401873'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6016559477695734'
+export b='0.8003232901201011'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.48854393736586943'
+export b='0.28293451038034456'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.016886896539433982'
+export b='0.3601459228464664'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3356469517287862'
+export b='0.5168814696540484'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07912797489154832'
+export b='0.52188279189706'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2839052045400756'
+export b='0.5631885525329362'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9488998660578177'
+export b='0.5391382118776837'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0929142297414085'
+export b='0.5781696208940986'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7411250438381008'
+export b='0.3203569984447906'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.477027893559133'
+export b='0.19180048413211404'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.487619968162776'
+export b='0.398421828597749'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18218878831997898'
+export b='0.8665608481133448'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9785572013455609'
+export b='0.688558061808982'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7145008113207796'
+export b='0.527140660755143'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9876370399649483'
+export b='0.783009331552006'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.08443619664575253'
+export b='0.5052725188737034'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.41149507060013946'
+export b='0.5811847708388846'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5801190334512029'
+export b='0.10508454118580401'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9148907533632875'
+export b='0.26102614972879434'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6711991154909606'
+export b='0.32187080240517707'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5797567335830495'
+export b='0.005129472563584425'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5540548352779779'
+export b='0.5810366357320215'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.04822317440350865'
+export b='0.9629676696840663'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9547562088984956'
+export b='0.15072034293661007'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9715207022708129'
+export b='0.29027069733642363'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6688998083641003'
+export b='0.13068193914438875'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3784979970979855'
+export b='0.678965942789912'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2293170722537664'
+export b='0.08424081990092402'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.30721620931421534'
+export b='0.8229411771063132'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8024404692930159'
+export b='0.045290743084007934'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.20934679874043638'
+export b='0.7697701551133448'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8422008223302642'
+export b='0.17968027717295543'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.48153664075067937'
+export b='0.2626503123656474'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.02803153578245232'
+export b='0.527014307671253'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14500457001342937'
+export b='0.5869305586736226'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.37242690328971206'
+export b='0.7967404665343435'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0019705173689613664'
+export b='0.17993293855392578'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.34395274717676216'
+export b='0.11592937454858476'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3043135434839157'
+export b='0.6653216792644531'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7837556404705142'
+export b='0.31801329754913765'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.554733319892969'
+export b='0.05338442558839862'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.38933368852759753'
+export b='0.8961176698136519'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9490378827384451'
+export b='0.3979406490944427'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.27433548748249836'
+export b='0.6114323829191778'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9084295132507172'
+export b='0.13304591306924152'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24193902990692584'
+export b='0.05636400806316222'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6162475942644885'
+export b='0.7766610685748224'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5087233360591384'
+export b='0.8471925833200586'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03392916007379532'
+export b='0.7231321431578899'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9897653605075033'
+export b='0.17274589384941352'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7627804603749236'
+export b='0.1963670310303538'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7132625073209455'
+export b='0.6603116227354071'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.21900705369861373'
+export b='0.8592117529879659'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.27559324315540534'
+export b='0.9143920770837359'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8455760504714805'
+export b='0.42383628561713027'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.26463101212504214'
+export b='0.7407425677948821'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1864318768218869'
+export b='0.3748985721335145'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8344440224823972'
+export b='0.3463119930582379'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.791715985764004'
+export b='0.28704894109305057'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9301998115142863'
+export b='0.8699120130181309'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.42376800695094485'
+export b='0.08647255273741972'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9871281521524012'
+export b='0.18106725423184333'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.37878588709653505'
+export b='0.03176916474242297'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.012197217534297033'
+export b='0.7611047997753194'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9111656245575359'
+export b='0.18122638555563186'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5469214957283856'
+export b='0.5854259224201922'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40610564370555025'
+export b='0.6257309128721126'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7509163976342782'
+export b='0.3020984382043074'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.13670997621089342'
+export b='0.7089222500971848'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.35083732181435356'
+export b='0.4283172978928764'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8805009109852224'
+export b='0.09464031188177247'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15775856637554875'
+export b='0.5236044885287834'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.526557907285042'
+export b='0.48539197776714305'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9061404828920128'
+export b='0.6343236369843911'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.021814452653394656'
+export b='0.11463059947154308'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40179433320252933'
+export b='0.6077923099925597'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4806296495850463'
+export b='0.845473361722334'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.12563559415454484'
+export b='0.7391820724383195'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7904267369706104'
+export b='0.850502314644688'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3371813408878218'
+export b='0.051446291057209326'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9868631783921927'
+export b='0.13756571170109722'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.325411858788513'
+export b='0.9378380118541532'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8610799647161164'
+export b='0.8201829584324795'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6332014898388049'
+export b='0.47478054543283565'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8583236051717523'
+export b='0.5004607521852567'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14663032173203938'
+export b='0.34787087333459377'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4020541439372558'
+export b='0.9362312046731531'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7403145957376677'
+export b='0.8743848159351846'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8521241545347772'
+export b='0.34388150377585636'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6910455718816897'
+export b='0.17098514845377444'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19398529817664378'
+export b='0.3395648145456732'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8992268732695411'
+export b='0.5171045730435051'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.807352615195142'
+export b='0.7972773352411836'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.819653556038214'
+export b='0.029259022784487665'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.23083464672868192'
+export b='0.9384358257937341'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2844565572526433'
+export b='0.764722835950799'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4864278449688536'
+export b='0.38314969552177935'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2754025805896356'
+export b='0.7811641162637097'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6510168896717251'
+export b='0.8698896035233444'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.28939889032600585'
+export b='0.719089425149412'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5458042216631926'
+export b='0.6722634194001873'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1981373433537812'
+export b='0.4570606262863248'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.32837802016735806'
+export b='0.19370571155452754'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9380969806499861'
+export b='0.8177787253395449'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4141429646855025'
+export b='0.4840990068061475'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3294972437779411'
+export b='0.01552332595984407'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5001662076873093'
+export b='0.7703742790381907'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9416699464381444'
+export b='0.9431397598093628'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8277302927940361'
+export b='0.474948914726538'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.621822303187964'
+export b='0.27561218570373036'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2369734364639079'
+export b='0.013703695722858344'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19341285501012906'
+export b='0.48140221071741374'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07351255358606168'
+export b='0.45719818457162353'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09569489495213013'
+export b='0.4061874768061725'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5839827614372074'
+export b='0.3529549526503867'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2915842843733679'
+export b='0.8051068476269265'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.28003006165254773'
+export b='0.7738403558737467'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3891113120961004'
+export b='0.31316437359791405'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3676780472304443'
+export b='0.11259892882332934'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8950934883127033'
+export b='0.39943254106047377'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.04863621800583784'
+export b='0.9028189496795875'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.027538859073002908'
+export b='0.4101708134700297'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8690424513615346'
+export b='0.5370323097419458'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7572696260240841'
+export b='0.8786272115687236'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9987723115491366'
+export b='0.4922021751968916'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2977944354712203'
+export b='0.4665139567091866'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.059007903146778284'
+export b='0.9561639962167595'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.025821125073352547'
+export b='0.21581120156170785'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3840946329337407'
+export b='0.14178668540285355'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4289166817708705'
+export b='0.80370356684245'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8682656115508114'
+export b='0.10879828579354389'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.007446633559943572'
+export b='0.27958663866213895'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5983496761748436'
+export b='0.5795686807816927'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9495987558073982'
+export b='0.9327455084726541'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6368027708281567'
+export b='0.47525866467157507'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5531948539663735'
+export b='0.31709571548475457'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1706362104630671'
+export b='0.7867461515055585'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5428344129456152'
+export b='0.06457495054593554'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.37519574597178884'
+export b='0.10650574663020673'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07468155409064503'
+export b='0.529047570203869'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7653724781414938'
+export b='0.25369995482594654'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5697002984435763'
+export b='0.6619519915678932'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8888179020337982'
+export b='0.8483995860272974'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19985782276300634'
+export b='0.6879620355269482'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18292769466142245'
+export b='0.6818357599026302'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.48169789016898257'
+export b='0.3509412579380585'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9161398329565033'
+export b='0.5092376489194369'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.13175352600946488'
+export b='0.3943967551607105'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.45968111359200214'
+export b='0.2016764183630625'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09657669864363283'
+export b='0.12396595401506671'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7095012145411833'
+export b='0.7298592163129878'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5169364620314606'
+export b='0.23436860111283586'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5521039238673149'
+export b='0.2990268733024968'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.35865127746703707'
+export b='0.3681167016306921'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6008677361256701'
+export b='0.37153579219588106'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2525681136904051'
+export b='0.3026737454892896'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6810923999251245'
+export b='0.3949265038940454'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9227279173152806'
+export b='0.7278842813929451'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6962736410807838'
+export b='0.3136045697718558'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8329838624934962'
+export b='0.7287607025092774'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.34100049791473186'
+export b='0.5478693375679113'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.807187655512075'
+export b='0.39951242476344506'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9889378527431252'
+export b='0.7873813207965984'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5287207861553959'
+export b='0.07312623413022423'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3487234515299371'
+export b='0.06649074621457818'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1215833078530516'
+export b='0.5910949462570313'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9322784776692475'
+export b='0.14403407096341392'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6838336344225098'
+export b='0.06863817675870454'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8594954854106431'
+export b='0.06493995575020017'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.37490055690206125'
+export b='0.75566386453763'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7827958279671452'
+export b='0.32171560929677945'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2716981861320955'
+export b='0.19814803110450074'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.020420452786941157'
+export b='0.23024539559778323'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11225327081095038'
+export b='0.6901754192644536'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.34595207351526425'
+export b='0.07298652142190798'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5501450243451044'
+export b='0.723223344048466'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.10326889059897959'
+export b='0.9647768990341071'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.556472634642081'
+export b='0.9718053535128752'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3620825494877059'
+export b='0.544166317247447'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9194259606208162'
+export b='0.8378659825732635'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9642186227176515'
+export b='0.576958286619326'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4551253159808365'
+export b='0.16293885163768473'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6583491143668446'
+export b='0.9294005462816392'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8840987590601443'
+export b='0.2490011003785514'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6823800506166499'
+export b='0.41925517719086214'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6997352709016795'
+export b='0.1457590737682941'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8573686770761522'
+export b='0.2929241066988453'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9586147860909352'
+export b='0.10116261453791442'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.10622519442651535'
+export b='0.14693425185286502'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15810369691682147'
+export b='0.9851140924709798'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6854590904124173'
+export b='0.07897299015377113'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5846116411761979'
+export b='0.015221153971699986'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14150204710045688'
+export b='0.5164306487542476'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19734602229950637'
+export b='0.3209459208154748'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4201025412151843'
+export b='0.5623603940062577'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.08049820734037183'
+export b='0.288730572713799'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.21606709959517756'
+export b='0.0575503408145418'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.254170487004059'
+export b='0.30446038430801625'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.22136033145799816'
+export b='0.6992951893059974'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9032342946273936'
+export b='0.9773986680486139'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.019110545755175457'
+export b='0.3079306483051736'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1649633914200429'
+export b='0.8473714993007612'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.44240471536974935'
+export b='0.34885361443909324'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5953840417776923'
+export b='0.3441053847235177'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.27416843597774776'
+export b='0.10301940942553589'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.874971572311079'
+export b='0.3659250360629882'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4050921993418076'
+export b='0.21499336482796794'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18327616217643228'
+export b='0.31882032314352504'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9631985039314185'
+export b='0.3526986559622143'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.49618720028006613'
+export b='0.9419126058642138'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6872335744664212'
+export b='0.8521525801454493'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.31415157622223144'
+export b='0.4888032912712754'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.42097181194709987'
+export b='0.026026975812885156'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19786739756494043'
+export b='0.5848840016970696'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6085236376883216'
+export b='0.2658440693590759'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4586548932012713'
+export b='0.5087331977424676'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.22922221325365366'
+export b='0.4356581876294515'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6636022065092289'
+export b='0.7077956174544848'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9379244560317775'
+export b='0.1618768055882961'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9574413728579411'
+export b='0.47660207977657754'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7484865956065035'
+export b='0.2925361166729069'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7793394133499945'
+export b='0.7475139724503262'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.46322038348595407'
+export b='0.5808033768062401'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2693519909762796'
+export b='0.2594126621474113'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5631793451078714'
+export b='0.7032340293148194'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40482879647703274'
+export b='0.9580699651863985'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9473295308936794'
+export b='0.9398828349818182'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4080360602469383'
+export b='0.1698572241872559'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.010141338978245762'
+export b='0.21447535607270707'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.23564546828524957'
+export b='0.44318437572161096'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8632828261290233'
+export b='0.05371498635474714'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.36479097643633596'
+export b='0.5658827450640788'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03860325642698492'
+export b='0.6611766204428247'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8215883804319395'
+export b='0.544303787462795'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.007210830602929041'
+export b='0.31500165446824124'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7159831162629544'
+export b='0.2555492342486847'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4722339257401742'
+export b='0.9200967752576151'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9497699636071433'
+export b='0.6061577789043029'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11708991286793635'
+export b='0.022273303485569107'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6692720996997258'
+export b='0.8632373856973146'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7564653913039276'
+export b='0.743799237092063'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.39673657200503276'
+export b='0.023044057245357408'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.13719483646478725'
+export b='0.5571834944143178'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7403207187482677'
+export b='0.2791345644922225'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7216768712537379'
+export b='0.9878627314476579'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8422553384794649'
+export b='0.6325308020584947'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.657675594840662'
+export b='0.10587746576682189'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5891717634238639'
+export b='0.30536686259677237'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07618314290049277'
+export b='0.4011601035910446'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7751573738005518'
+export b='0.8858036568459304'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.004224839982028272'
+export b='0.23316467635890803'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.35312985374154104'
+export b='0.13308390360193922'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7860230814055833'
+export b='0.4842562817227525'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.05578882663217566'
+export b='0.6439243681785705'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9297706469650496'
+export b='0.012975317018422361'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8723109826436181'
+export b='0.5080294879422194'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.004013034732343046'
+export b='0.10343782354972786'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0023355582386495044'
+export b='0.3944540565153579'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.618572184885542'
+export b='0.4631562036021907'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7188331524180864'
+export b='0.8130245620482214'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.12802202047945888'
+export b='0.5237644295226218'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5410000650004141'
+export b='0.5023061209670083'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6568687250110752'
+export b='0.4032814646062579'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6569854990230491'
+export b='0.9243423739094355'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18217846022797057'
+export b='0.7211037171075227'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8781472362433683'
+export b='0.5575945989387063'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6957083303311481'
+export b='0.04398716934788305'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5349889071717968'
+export b='0.4294871855539857'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6813023129832501'
+export b='0.7920145163693995'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.429910120925876'
+export b='0.939789612687831'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9653866102835076'
+export b='0.5799998865026417'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9732839098406689'
+export b='0.9771696808156153'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4938198125741665'
+export b='0.20962877097124322'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7116115391682434'
+export b='0.6725120109206226'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.26363455261666136'
+export b='0.2532602432741752'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.36957494955911685'
+export b='0.618029666102807'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.06776750010043797'
+export b='0.3833554793510182'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14760157753817282'
+export b='0.7477541979963888'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3313360063375551'
+export b='0.1982666954079274'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19693626546332965'
+export b='0.15469846193381254'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5927602401803588'
+export b='0.34645670747286617'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.861296704971697'
+export b='0.5111536249760801'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7927843472383571'
+export b='0.6606837174344511'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6443645476125799'
+export b='0.27340790866536957'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.26070805252543494'
+export b='0.1873013226608382'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9849851246234026'
+export b='0.85016761727142'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.12528921034801177'
+export b='0.4483254912875696'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8643597169020086'
+export b='0.9559182652137574'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1768459917971409'
+export b='0.9876166932503464'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4872760511319605'
+export b='0.6081947924809098'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8006987739419364'
+export b='0.8823444357404854'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9182329660646091'
+export b='0.45167968587620155'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4137701571505775'
+export b='0.8587873954673402'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5440254307156686'
+export b='0.4294790446080897'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6433880491132946'
+export b='0.6072183928757403'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6739619002298411'
+export b='0.9783499228534305'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03237628113989155'
+export b='0.29949252489641487'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.029252577812143077'
+export b='0.28767318071940073'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9335439785818442'
+export b='0.48594760833800177'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.38050027988780033'
+export b='0.34620522145406596'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4213717699079734'
+export b='0.2699097237067133'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2550703008163334'
+export b='0.21505584802684252'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2385834789360849'
+export b='0.4021291042117141'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.996850649414026'
+export b='0.8539067058967186'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.710261874367419'
+export b='0.7768893100921663'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17344329587425822'
+export b='0.6023369933253631'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4472175284020824'
+export b='0.5537073269292363'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8108361101363076'
+export b='0.845936589900784'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6009029271454556'
+export b='0.23027523514784276'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.47950738871955556'
+export b='0.6232103156746002'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.08786893073391744'
+export b='0.029776553214730828'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.953632344728694'
+export b='0.809137570389494'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1590533480108347'
+export b='0.6163941443801793'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.45010549546407685'
+export b='0.8641402673248627'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24772094483519747'
+export b='0.8468031389268752'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9152620149874965'
+export b='0.3121664963999168'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6437170621811868'
+export b='0.5555789960178176'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2357080190615647'
+export b='0.5832124181346732'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6685961420354748'
+export b='0.7969421303499888'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.25160402876893884'
+export b='0.7962264287464724'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4101462288522012'
+export b='0.033345154874182104'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.39837361482463707'
+export b='0.24701484648476868'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14064434124721747'
+export b='0.6394762067474146'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9277865509553596'
+export b='0.8803414628033578'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7438660762060116'
+export b='0.9578429227924502'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.148571555575419'
+export b='0.5097200513109921'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8922809729495668'
+export b='0.7050652894927253'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9208474781297659'
+export b='0.4851627933826663'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.43787219951571255'
+export b='0.9454558997180642'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.944841104978884'
+export b='0.48893988142417877'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9599269166817714'
+export b='0.6431037632791288'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14627824024022562'
+export b='0.6292738177766681'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.053241782939001725'
+export b='0.8039617501861781'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.47458197805961555'
+export b='0.8945970904901746'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7691346175466074'
+export b='0.33861816733118155'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5766436404153001'
+export b='0.6953586351537794'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7961838615096299'
+export b='0.9043412032552414'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24955297064248005'
+export b='0.5173140040226843'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.552815818659978'
+export b='0.5330594934868774'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.28634963498879695'
+export b='0.2325933413526754'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8679688064764279'
+export b='0.9834370915054148'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7241227697816615'
+export b='0.9020676606921245'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14275467694444555'
+export b='0.7189412227244736'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15651857862713048'
+export b='0.9591342690525096'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5587568618293951'
+export b='0.46228863305410295'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1967629562476093'
+export b='0.9095016403831421'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7692968843930021'
+export b='0.29556960534537013'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.296108524261787'
+export b='0.18266096638944074'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4670286901247993'
+export b='0.28292866803333183'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11905139652084429'
+export b='0.23381182080484297'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6922411268248913'
+export b='0.27207939151028304'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.0720408740830002'
+export b='0.5211114387842328'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6956643149181727'
+export b='0.10846868341632754'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4889866962949553'
+export b='0.9116814023717513'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6904899387122041'
+export b='0.004849966610965928'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7158536496315184'
+export b='0.4360400769367817'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6282541115594348'
+export b='0.3136774684743786'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.160858591513379'
+export b='0.4322025304009788'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5320407610181737'
+export b='0.9263516209751974'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9775171700899011'
+export b='0.6152064327762122'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.719152153538836'
+export b='0.5544856709204201'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.06437845427658784'
+export b='0.957914777615861'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7917806791727623'
+export b='0.5229453603699139'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18028941623410366'
+export b='0.905306320140776'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.798406023174743'
+export b='0.5717185865941655'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8914391680867643'
+export b='0.014915457135611598'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.23142176606708365'
+export b='0.47990754829426885'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3521008200529907'
+export b='0.5539762560977859'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7676234338214689'
+export b='0.9702469165859523'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.25712993353402913'
+export b='0.915735892556457'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.185907826088066'
+export b='0.19950377640791783'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5909838310644931'
+export b='0.71185901384459'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.749196703051193'
+export b='0.9860003685576526'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5886599166569486'
+export b='0.6263950223024166'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9654681733241625'
+export b='0.29054784417453916'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6779597592916009'
+export b='0.6205002921741936'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8928539460297006'
+export b='0.3160170461773827'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.043315588671227756'
+export b='0.8222831391814306'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9771383031591125'
+export b='0.07430703806904071'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8652623799518547'
+export b='0.716518479161818'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.678859184035208'
+export b='0.02342575687204196'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6105167536156096'
+export b='0.822881451234579'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3611676509355105'
+export b='0.9388437866976803'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2134241135305377'
+export b='0.10364992143355889'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5847860974581072'
+export b='0.1625904023600494'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.34559657124251686'
+export b='0.29484009908366293'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6371668151853969'
+export b='0.904029152136628'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.25484939713465504'
+export b='0.5957828132715537'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.055252801211279734'
+export b='0.28409511232508167'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3722483360469927'
+export b='0.31361118839588975'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09244535279726684'
+export b='0.8455536409780958'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3350232216029708'
+export b='0.38207425938723005'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.14776400255271172'
+export b='0.2734451601352139'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7842896650320783'
+export b='0.21037161205268906'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24138650687188845'
+export b='0.645489490349936'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8108750029055899'
+export b='0.8018981245422376'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.38248858275124953'
+export b='0.2256398449880811'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.41701918037139074'
+export b='0.9639460542547629'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03277923882734002'
+export b='0.8532550198013469'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.423581449738753'
+export b='0.018454673037711644'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.018535259102490986'
+export b='0.6774233939621105'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11871342214396452'
+export b='0.21663689080093218'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7375158138045822'
+export b='0.33556822073343073'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7633480109309984'
+export b='0.2645516559186374'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.04670314984328816'
+export b='0.7905731501573955'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.40618851397650546'
+export b='0.8972030783971691'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.49431388203034576'
+export b='0.006399509997869424'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4653408138810692'
+export b='0.4143105854785817'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6235243375546499'
+export b='0.6165715803338794'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.01370525893784258'
+export b='0.20375381699181583'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5531783486164'
+export b='0.8039140189758568'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5235179591321423'
+export b='0.47626969773061634'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9532539737524967'
+export b='0.757061452861447'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7215612908289433'
+export b='0.3478014465834226'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03239609497984142'
+export b='0.39829237463686307'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19849592228876423'
+export b='0.05473643419873786'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9559832040196414'
+export b='0.7527807732754254'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.17981778329202935'
+export b='0.3375097826103306'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7937002504044556'
+export b='0.6152811784644625'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5224391760139017'
+export b='0.474485177632615'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1884445998738864'
+export b='0.05547936903004558'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.05804152720748579'
+export b='0.14488495091739784'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7485713190551284'
+export b='0.9032977043775268'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1718942685563537'
+export b='0.09883422052637125'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9034216695078979'
+export b='0.29791222383398763'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.21928799145563782'
+export b='0.32070282084119894'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8191095419090099'
+export b='0.7475212221148804'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7811850377500841'
+export b='0.6413197989151177'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6706513276033869'
+export b='0.811382618487612'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.24837298323124157'
+export b='0.9627228361385952'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5317775140222596'
+export b='0.8914705525245462'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.06174670549337291'
+export b='0.005451014469769588'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2256838166489169'
+export b='0.2713358329631672'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8498631348581746'
+export b='0.08799945521292918'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.07775275826826644'
+export b='0.46969993540834887'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.460783203874372'
+export b='0.7329996133097507'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6232449108208337'
+export b='0.30573279056865255'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5585139908824852'
+export b='0.7500979810744995'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.03826546494847216'
+export b='0.08466308469661743'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09403848506258039'
+export b='0.10529306069694944'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6762441899925621'
+export b='0.29132309942626644'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.35080259052013707'
+export b='0.426143010777261'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3986286621631403'
+export b='0.6486967291015864'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1751251089935566'
+export b='0.41596249613508873'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5176636923854602'
+export b='0.8925526329918935'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.35128810681834755'
+export b='0.2908184165203552'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5213727433212926'
+export b='0.032755142386533764'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.04308025796220427'
+export b='0.6418317671242217'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9265246364287368'
+export b='0.2296851814250821'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8662399424596336'
+export b='0.522509924653974'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.19721523875097757'
+export b='0.3374341473605613'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3331257611392059'
+export b='0.1858794475186022'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5872381962271949'
+export b='0.3906782552948008'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.542577489775085'
+export b='0.5035857340278286'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3674537726014001'
+export b='0.7170533354122398'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9595712648650552'
+export b='0.8956550186542708'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5660828466147062'
+export b='0.8642226651237057'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.32847166825690377'
+export b='0.7205692424703072'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3064423908774411'
+export b='0.10309818403862203'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7735651810951999'
+export b='0.6086763186731587'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11970266495995463'
+export b='0.050210749796547605'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9510207617155738'
+export b='0.10707473054727712'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.530291463193134'
+export b='0.44499513179067895'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6917337569364442'
+export b='0.5825092310690442'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.43808001577211586'
+export b='0.16994824229267025'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.49761932910305995'
+export b='0.55817849002515'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.426301165280053'
+export b='0.16417209070765482'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15105564617465417'
+export b='0.7841874906953056'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.31416778128581735'
+export b='0.03973510685101933'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7233089661187061'
+export b='0.0406930454752259'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.013210146848429583'
+export b='0.48078036789726053'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4973525232240332'
+export b='0.6169883616422984'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.15998205620729022'
+export b='0.14208505052846598'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.23330598816810744'
+export b='0.6704768043291268'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4077516404115965'
+export b='0.35587918220191594'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9153890463850256'
+export b='0.8476396803476557'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6498198319311771'
+export b='0.27294683738859626'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7826945586920238'
+export b='0.4936141020735987'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.43354778158187224'
+export b='0.33773738554813226'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.406994129679929'
+export b='0.5971009409351787'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9123659525637277'
+export b='0.24648425738020063'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.36925232480186077'
+export b='0.24600274947486722'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4690362550169441'
+export b='0.7001541135601027'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.09615448260058868'
+export b='0.5680745553930625'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.36775198839957246'
+export b='0.77664100119632'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.11057751266567173'
+export b='0.06003451168525964'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8114699758372461'
+export b='0.18118391328208483'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.22448385081281796'
+export b='0.7467864861687106'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6900065299217725'
+export b='0.2994080651544473'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.30189513257808087'
+export b='0.0006857325804965342'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5788403253979932'
+export b='0.7314691825340313'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4245439035031048'
+export b='0.15908526238922227'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.31893375830447035'
+export b='0.7000774686643212'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.39848159724056764'
+export b='0.32312248417051437'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3389925500914177'
+export b='0.08575272126779898'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8216688550571942'
+export b='0.9315745601497923'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.33835953177965017'
+export b='0.5286593424810471'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.36674557543273545'
+export b='0.038845307335141244'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5743295790909673'
+export b='0.8765526388597443'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.25408048905524205'
+export b='0.4246055781379936'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9603633155766349'
+export b='0.35769098291226675'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6687069373955518'
+export b='0.3717792095079542'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8326029801032104'
+export b='0.6350366073510567'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8949359080993382'
+export b='0.8026334602763228'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6204816765859136'
+export b='0.041637667388085386'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7034064511775145'
+export b='0.09291644413162525'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7539169330340844'
+export b='0.4418043818139904'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6858017429234362'
+export b='0.7203960010297024'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.9356387070573807'
+export b='0.8750693049435766'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3216710142674378'
+export b='0.5219356203732205'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.3566850104827549'
+export b='0.04116978608602162'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.1745044189162468'
+export b='0.6720170814141468'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.23643229136774213'
+export b='0.5867615831067623'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7445182900366254'
+export b='0.3032541493549292'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7058054571864008'
+export b='0.6628034216640035'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7096983863932915'
+export b='0.11901163891332933'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7649351246250301'
+export b='0.2816399616715498'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8257239015096306'
+export b='0.8081101253821334'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8057773004151983'
+export b='0.7084450693940116'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7982984918703496'
+export b='0.7197019395165851'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8427168028236811'
+export b='0.8237718044458406'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7173034042751012'
+export b='0.24036610310538686'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.4648086321195032'
+export b='0.40478263627647015'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.02303303731623252'
+export b='0.9211156907968272'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.18425676091024334'
+export b='0.24745046802819526'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.5414686803464461'
+export b='0.6092188343840296'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8330860147262684'
+export b='0.291411780027907'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.2589341270962766'
+export b='0.11949454036674245'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6476903782379696'
+export b='0.6153854300953779'
+export fails='1'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.6085033707272275'
+export b='0.19028320582353497'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8321862476821664'
+export b='0.9666305102665413'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7542184179163408'
+export b='0.04484266104863521'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.21026778780587452'
+export b='0.46204972096833374'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.8141173355252965'
+export b='0.7463169744438601'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+
+#WORKER----
+export a='0.7458550652552198'
+export b='0.573351544996542'
+export fails='0'
+
+if [ $fails == 1 ]
+then
+    exit 1
+else
+    python sum.py  -a=$a  -b=$b
+fi
+

@@ -1,0 +1,3 @@
+# runtime artefacts
+worker_[0-9]*/
+slutrm-[0-9]*.out
