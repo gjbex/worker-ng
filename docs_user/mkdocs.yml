@@ -10,10 +10,11 @@ nav:
 # - Post processing: 'postprocessing.md'
 # - Multithreaded work items: 'multithreading.md'
 # - Prologue and epilogue: 'mapreduce.md'
-- Worker commands: 'commands.md'
+- worker commands: 'commands.md'
 - Further information: 'further_info.md'
 # - Troubleshooting: 'trouble.md'
 # - Changes: 'changes.md'
+- To do: 'todo.md'
 - Contact information: 'contact.md'
 site_dir: html_docs/worker
 theme: readthedocs
