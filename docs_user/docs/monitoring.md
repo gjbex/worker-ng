@@ -1,18 +1,24 @@
-Since a Worker job will typically run for several hours, it may be reassuring to monitor its progress. Worker keeps a log of its activity in the directory where the job was submitted. The log's name is derived from the job's name and the job's ID, i.e., it has the form <jobname>.log<jobid>. For the running example, this could be `run.pbs.log445948`, assuming the job's ID is 445948. To keep an eye on the progress, one can use:
-```
-$ tail -f run.pbs.log445948
-```
-Alternatively, a Worker command that summarizes a log file can be used:
-```
-$ watch -n 60 wsummarize run.pbs.log445948
-```
-This will summarize the log file every 60 seconds.
+You will have noticed that when you have submitted a job using `wsub`, a directory is created with a name that starts with `worker_`, and ends in the job ID.  Among other things, this directory contains files that allow you to monitor the progress of a running worker job, or analyze its performance once it is done.
 
-For more detailed analysis of perfornmance issues, the `wload` command can be used.  It will analyze a log file, and output a summary by default.  The latter will provide statistics on the work items (total number, average, minimum and maximum compute time), and the workers (total number, average compute time and average work items computed.
-However, more detailed in formation is available by specifying the `-workitems` command line option.  This will list the compute time for each individual work item, the worker it was processed by, and the exit status.
-Alternatively, the `-workers` option will list the total execution time and work items processed by each individual worker, which is useful for a load balance analysis.
-For example,
+Since a worker job will typically run for several hours, it may be reassuring to monitor its progress. worker server keeps a log of its activity in the directory mentioned abovewhere the job was submitted.  You can use the `wsummarize` command to get information, e.g., for job ID was `1234`.
+
+```bash
+$ wsummarize  --dir=worker_1234/
 ```
-$ wload -workers run.pbs.log445948
+
+This will give you an overview of the status of your work items, i.e., the number of
+  * succesful items: the number of computations that finished with exit status 0;
+  * failed items: the computations that finished with a non-zero exit status;
+  * incomplete items: the number of items that are currnetly being executed.
+
+To monitor progress "in real time", you can use the `watch` Linux command.
+```bash
+$ watch  -n 60  wsummarize  --dir=worker_1234/
 ```
-would provide worker statistics.
+This will summarize the status of the work items every 60 seconds.  *Note:* use a reasonable value for the update period, this will cause load on the login node where you run this ocmmand.
+
+The `wsummarize` command has various command line options to get a more detailed analysis of perfornmance issues.  For instance, to get statistics on the walltime of your work items, you can use the `--show_walltime_stats` flag.  This will give you descriptive statistics on the walltime of your work items such as the minimum and maximum, the average and median, as well as informaiton on the spread.
+
+In order to detect problems with load balancing between the worker clients, you can use the `--show_client_stats` flag.  This will provide you with the same descriptive statistics on the walltime, but grouped by client.  In addition, you will get the total walltime for each client, a good measure for load balance.
+
+Finally, the `--show_all` options will given the output of `--show_walltime_stats` and `--show_client_stats` in a single `wsammarize` invocation.
