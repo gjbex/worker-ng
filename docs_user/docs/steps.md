@@ -226,5 +226,5 @@ concurrently --— until all computations are done. Again, a
 computation for an individual input file, or, equivalently, an
 array id, is called a work item in worker speak.
 
-Note that in constrast to torque job arrays, a worker job array submits
+Note that in constrast to slurm job arrays, a worker job array submits
 a single job.
