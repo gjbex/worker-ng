@@ -47,4 +47,18 @@ For developers:
 1. `tmpl`: templates to generate the Bash wrappers for the
    Python scripts.
 1. `CMakeLists.txt`: top-level CMake build script.
-
+1. `environment.yml`: conda environment file to build and run
+   the worker framework.
+1  `development_worker.recipe`: Singularity/Apptainer recipe to
+   build an image that contains all tools and libraries required
+   for development.
+1. Various convenience scripts
+    * `run_test.sh`: script to run the tests.
+    * `build_genius.sh`: script to build worker on the KU Leuven genius
+      cluster.
+    * `setup_genius.sh`: script to be sourced to set up your environment
+      to run worker on the genius cluster.
+    * `build_wice.sh`: script to build worker on the KU Leuven wice
+      cluster.
+    * `setup_wice.sh`: script to be sourced to set up your environment
+      to run worker on the wice cluster.
