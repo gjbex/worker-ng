@@ -3,7 +3,7 @@ project (worker_ng LANGUAGES CXX)
 
 # version information
 set (worker_ng_NAME "worker_ng")
-set (worker_ng_VERSION_MAJOR 0)
+set (worker_ng_VERSION_MAJOR 1)
 set (worker_ng_VERSION_MINOR 1)
 
 # set C++ specification
