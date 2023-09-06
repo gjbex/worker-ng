@@ -1,3 +1,6 @@
+# search for doxygen
+find_package (Doxygen)
+
 if (DOXYGEN_FOUND)
     set (DOXYGEN_IN Doxyfile.in)
     set (DOXYGEN_OUT Doxyfile)

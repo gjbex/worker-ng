@@ -15,9 +15,6 @@ set(CMAKE_CXX_EXTENSIONS NO)
 # set extra compiler options
 add_compile_options(-Wall -Wextra -Wpedantic)
 
-# search and configure doxygen
-find_package (Doxygen)
-    
 # use shared libraries for build
 set(CMAKE_FIND_LIBRARY_SUFFIXES .so)
 
@@ -51,8 +48,10 @@ add_subdirectory (scripts)
 # define configuration target
 add_subdirectory (conf)
 
-# define documentation targets
+# define development documentation targets
 add_subdirectory (docs_dev)
+
+# define user documentation targets
 add_subdirectory (docs_user)
 
 # add packer settings
