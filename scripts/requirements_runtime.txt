@@ -1,0 +1,6 @@
+numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1691056235090/work
+pandas @ file:///home/conda/feedstock_root/build_artifacts/pandas_1693415143648/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1693930252784/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1680081134351/work

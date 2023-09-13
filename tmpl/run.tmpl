@@ -8,7 +8,11 @@ exec_dir=$( cd -P "$( dirname "${exec}" )" && pwd )
 base_dir="${exec_dir}/.."
 script_dir="${base_dir}/lib"
 module_dir="${base_dir}/lib"
+venv_dir="${base_dir}/lib/venv"
 
 export PYTHONPATH="${module_dir}:${PYTHONPATH}"
+
+# activate the rutime virtual environment
+source "${venv_dir}/bin/activate"
 
 python "${script_dir}/@python_script_name@" "$@"
