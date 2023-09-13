@@ -1,5 +1,5 @@
 BootStrap: docker
-From: ubuntu:20.04
+From: ubuntu:22.04
 %post
     . /.singularity.d/env/10-docker*.sh
 
@@ -34,16 +34,12 @@ From: ubuntu:20.04
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         build-essential \
         make \
-        pkg-config
+        pkg-config \
+        gcc \
+        g++
     rm -rf /var/lib/apt/lists/*
 
 # CMake version 3.18.3
-%post
-    apt-get update -y
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        make \
-        wget
-    rm -rf /var/lib/apt/lists/*
 %post
     cd /
     mkdir -p /var/tmp && wget -q -nc --no-check-certificate -P /var/tmp https://cmake.org/files/v3.18/cmake-3.18.3-Linux-x86_64.sh
@@ -54,15 +50,6 @@ From: ubuntu:20.04
     export PATH=/usr/local/bin:$PATH
 %post
     export PATH=/usr/local/bin:$PATH
-
-# GNU compiler
-%post
-    apt-get update -y
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        g++ \
-        gcc \
-        gfortran
-    rm -rf /var/lib/apt/lists/*
 
 %post
     apt-get update -y
@@ -75,17 +62,14 @@ From: ubuntu:20.04
 %post
     apt-get update -y
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        doxygen
+        doxygen \
+        graphviz
     rm -rf /var/lib/apt/lists/*
 
 %post
     apt-get update -y
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        libboost-dev \
-        libboost-filesystem-dev \
-        libboost-log-dev \
-        libboost-program-options-dev \
-        libboost-system-dev \
+        libboost-all-dev \
         libbsd-dev
     rm -rf /var/lib/apt/lists/*
 
@@ -100,16 +84,16 @@ From: ubuntu:20.04
     tar xaf zeromq-4.3.4.tar.gz
     cd zeromq-4.3.4
     mkdir build && cd build
-    cmake ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr  ..
     make install
 
 %post
     cd /
-    wget --no-check-certificate https://github.com/zeromq/cppzmq/archive/refs/tags/v4.8.1.tar.gz
-    tar xaf v4.8.1.tar.gz
-    cd cppzmq-4.8.1
+    wget --no-check-certificate https://github.com/zeromq/cppzmq/archive/refs/tags/v4.10.0.tar.gz
+    tar xaf v4.10.0.tar.gz
+    cd cppzmq-4.10.0
     mkdir build && cd build
-    cmake ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr  ..
     make install
 
 %post

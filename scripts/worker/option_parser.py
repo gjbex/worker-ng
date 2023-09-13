@@ -58,6 +58,25 @@ def get_scheduler_option_parser(scheduler_name):
     parser_class = getattr(parser_module, class_name)
     return parser_class()
 
+
+def get_scheduler_options_preprocessor(scheduler_name):
+    '''Return the options preprocessing function appropriate for the scheduler
+
+    Parameters
+    ----------
+    scheduler_name: str
+        name of the scheduler
+
+    Returns
+    -------
+    Callable
+        callable to preprocess the command line options
+    '''
+    _, module_name = _get_parser_class_info(scheduler_name)
+    parser_module = importlib.import_module(module_name)
+    return getattr(parser_module, 'preprocess_cli_options')
+
+
 def parse_submit_cmd(submit_cmd_name):
     '''Parse the submit command stored in the given file name and return the
     command line arguments
@@ -97,23 +116,40 @@ class OptionParser:
         self._worker_parser.add_argument('--debug', action='store_true',
                                          help='enable debug mode')
         self._relevant_parser = argparse.ArgumentParser(add_help=False)
-        self._relevant_parser.add_argument(scheduler_option_parser.name_option, dest='name',
-                                           help='job name')
-        self._relevant_parser.add_argument(scheduler_option_parser.directive_prefix_option,
-                                           dest='directive_prefix',
-                                           default=scheduler_option_parser.default_directive_prefix,
-                                           help='directive prefix')
+        if isinstance(scheduler_option_parser.name_option, str):
+            self._relevant_parser.add_argument(scheduler_option_parser.name_option, dest='name',
+                                               help='job name')
+        else:
+            self._relevant_parser.add_argument(*scheduler_option_parser.name_option, dest='name',
+                                               help='job name')
+        if scheduler_option_parser.directive_prefix_option:
+            self._relevant_parser.add_argument(scheduler_option_parser.directive_prefix_option, dest='directive_prefix',
+                                               default=scheduler_option_parser.default_directive_prefix,
+                                               help='directive prefix')
+        else:
+            self._relevant_parser.set_defaults(directive_prefix=scheduler_option_parser.default_directive_prefix)
         self._filter_parser = argparse.ArgumentParser(add_help=False)
-        self._filter_parser.add_argument(scheduler_option_parser.array_option,
-                                         dest='array_request',
-                                         help='array request')
+        if isinstance(scheduler_option_parser.array_option, str):
+            self._filter_parser.add_argument(scheduler_option_parser.array_option,
+                                             dest='array_request',
+                                             help='array request')
+        else:
+            self._filter_parser.add_argument(*scheduler_option_parser.array_option,
+                                             dest='array_request',
+                                             help='array request')
 
     def _verify_scheduler_args(self, args):
         arg_parser = argparse.ArgumentParser(add_help=False, exit_on_error=False)
         for option in self._scheduler_option_parser.pass_through_options:
-            arg_parser.add_argument(option)
+            if isinstance(option, str):
+                arg_parser.add_argument(option)
+            else:
+                arg_parser.add_argument(*option)
         for flag in self._scheduler_option_parser.pass_through_flags:
-            arg_parser.add_argument(flag, action='store_true')
+            if isinstance(flag, str):
+                arg_parser.add_argument(flag, action='store_true')
+            else:
+                arg_parser.add_argument(*flag, action='store_true')
         _ = arg_parser.parse_known_args(args)
         
     def _merge_parsers(self):
