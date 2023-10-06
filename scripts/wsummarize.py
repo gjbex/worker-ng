@@ -36,9 +36,7 @@ if __name__ == '__main__':
         else:
             path = pathlib.Path(options.dir)
             report = parser.parse(str(path / 'server.log'))
-    except FileNotFoundError as error:
-        exit_on_error(worker.errors.log_file_error, msg=error)
-    except NotADirectoryError as error:
+    except (FileNotFoundError, NotADirectoryError) as error:
         exit_on_error(worker.errors.log_file_error, msg=error)
     except worker.errors.LogParseException as error:
         exit_on_error(worker.errors.log_file_error, msg=error)
