@@ -15,4 +15,8 @@ export PYTHONPATH="${module_dir}:${PYTHONPATH}"
 # activate the rutime virtual environment
 source "${venv_dir}/bin/activate"
 
+# ensure the user's site directory doesn't wreck havoc
+export PYTHONNOUSERSITE=1
+
+# run the actual scripts
 python "${script_dir}/@python_script_name@" "$@"
