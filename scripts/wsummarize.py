@@ -65,5 +65,5 @@ if __name__ == '__main__':
             print(f'\t{quantity:10s} {value}')
     if options.show_client_stats or options.show_all:
         print(SEP)
-        with pd.option_context('display.max_columns', None, "display.max_rows", None):
+        with pd.option_context('display.max_columns', None, 'display.max_rows', None):
             print(report.client_stats)

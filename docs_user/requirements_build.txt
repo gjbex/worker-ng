@@ -1,19 +1,15 @@
-click @ file:///home/conda/feedstock_root/build_artifacts/click_1692311806742/work
-colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1666700638685/work
-ghp-import @ file:///home/conda/feedstock_root/build_artifacts/ghp-import_1651585738538/work
-importlib-metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1688754491823/work
-Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1654302431367/work
-Markdown @ file:///home/conda/feedstock_root/build_artifacts/markdown_1690307387991/work
-MarkupSafe @ file:///home/conda/feedstock_root/build_artifacts/markupsafe_1685769042879/work
-mergedeep @ file:///home/conda/feedstock_root/build_artifacts/mergedeep_1612711302171/work
-mkdocs @ file:///home/conda/feedstock_root/build_artifacts/mkdocs_1690991179021/work
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1681337016113/work
-pathspec @ file:///home/conda/feedstock_root/build_artifacts/pathspec_1690597952537/work
-platformdirs @ file:///home/conda/feedstock_root/build_artifacts/platformdirs_1690813113769/work
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
-PyYAML @ file:///home/conda/feedstock_root/build_artifacts/pyyaml_1692737134679/work
-pyyaml_env_tag @ file:///home/conda/feedstock_root/build_artifacts/pyyaml-env-tag_1624388951658/work
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1688315532570/work
-watchdog @ file:///home/conda/feedstock_root/build_artifacts/watchdog_1679332848074/work
-zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1689374466814/work
+click==8.1.7
+ghp-import==2.1.0
+Jinja2==3.1.2
+Markdown==3.4.4
+MarkupSafe==2.1.3
+mergedeep==1.3.4
+mkdocs==1.5.3
+packaging==23.2
+pathspec==0.11.2
+platformdirs==3.11.0
+python-dateutil==2.8.2
+PyYAML==6.0.1
+pyyaml_env_tag==0.1
+six==1.16.0
+watchdog==3.0.0

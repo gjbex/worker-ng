@@ -1,7 +1,7 @@
 easyblock = 'CMakeMake'
 
 name = 'worker-ng'
-version = '1.0'
+version = '1.0.1'
 
 homepage = 'https://github.com/gjbex/worker-ng'
 description = 'worker-ng helps you run and manage embarrassingly parallel worlloads.'
