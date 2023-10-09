@@ -49,24 +49,7 @@ add_subdirectory (scripts)
 add_subdirectory (conf)
 
 # define development documentation targets
-# search for doxygen
-find_package (Doxygen)
-
-# issue warming if the documentation cannot be built, but don't fail
-if(NOT DOXYGEN_FOUND)
-    message ("Doxygen needs to be installed to generate the documentation")
-else()
-    set(doxygen_dir ${CMAKE_CURRENT_BINARY_DIR}/docs_doxygen)
-    set(DOXYGEN_IN docs_dev/Doxyfile.in)
-    set(DOXYGEN_OUT ${doxygen_dir}/Doxyfile)
-    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-    add_custom_target (docs_doxygen ALL
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-        COMMENT "Generating API documentation using doxygen"
-        WORKING_DIRECTORY ${doxygen_dir})
-    install (DIRECTORY ${doxygen_dir}/
-         DESTINATION "docs/development/")
-endif()
+add_subdirectory(docs_dev)
 
 # add packer settings
 include (InstallRequiredSystemLibraries)
