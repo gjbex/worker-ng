@@ -51,9 +51,6 @@ add_subdirectory (conf)
 # define development documentation targets
 add_subdirectory (docs_dev)
 
-# define user documentation targets
-add_subdirectory (docs_user)
-
 # add packer settings
 include (InstallRequiredSystemLibraries)
 set (CPACK_RESOURCE_FILE_LICENSE
