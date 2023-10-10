@@ -25,10 +25,11 @@ install(DIRECTORY worker TYPE LIB
 # find Python 3.x
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 
+# set venv directory
+set(venv_dir ${CMAKE_INSTALL_PREFIX}/lib/venv)
+
 install(CODE "
 # create and install the runtime Python virtual environment
-# set venv directory
-    set(venv_dir ${CMAKE_INSTALL_PREFIX}/lib/venv)
 
 # create virtual environment
     execute_process(COMMAND ${Python3_EXECUTABLE} -m venv ${venv_dir})

@@ -5,7 +5,7 @@ project (worker_ng LANGUAGES CXX)
 set (worker_ng_NAME "worker_ng")
 set (worker_ng_VERSION_MAJOR 1)
 set (worker_ng_VERSION_MINOR 0)
-set (worker_ng_VERSION_PATCH 1)
+set (worker_ng_VERSION_PATCH 2)
 
 # set C++ specification
 set(CMAKE_CXX_STANDARD 20)
@@ -49,7 +49,7 @@ add_subdirectory (scripts)
 add_subdirectory (conf)
 
 # define development documentation targets
-add_subdirectory (docs_dev)
+add_subdirectory(docs_dev)
 
 # add packer settings
 include (InstallRequiredSystemLibraries)
