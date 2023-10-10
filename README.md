@@ -62,3 +62,23 @@ For developers:
       cluster.
     * `setup_wice.sh`: script to be sourced to set up your environment
       to run worker on the wice cluster.
+
+
+## Installation
+
+Installion is done using CMake:
+
+```bash
+$ cmake -S . -B build/ -DSCHEDULER_NAME=slurm -DCMAKE_INSTALL_PREFIX=<where-you-want>
+$ cmake --build build/
+$ cmake --install build/
+```
+
+Requirements:
+1. Boost 1.76.0
+1. cppzmq 4.8.1
+1. CMake >= 3.20
+1. doxygen >= 1.9
+1. Python >= 3.9
+  a. numpy
+  a. pandas
