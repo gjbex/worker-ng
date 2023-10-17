@@ -8,7 +8,10 @@ exec_dir=$( cd -P "$( dirname "${exec}" )" && pwd )
 base_dir="${exec_dir}/.."
 script_dir="${base_dir}/lib"
 module_dir="${base_dir}/lib"
-venv_dir="${base_dir}/lib/venv"
+conf_dir="${base_dir}/conf"
+
+# set up Python environment
+source "${conf_dir}/worker_python_env.sh
 
 export PYTHONPATH="${module_dir}:${PYTHONPATH}"
 
@@ -19,4 +22,4 @@ source "${venv_dir}/bin/activate"
 export PYTHONNOUSERSITE=1
 
 # run the actual scripts
-python "${script_dir}/@python_script_name@" "$@"
+$PYTHON_EXEC "${script_dir}/@python_script_name@" "$@"
