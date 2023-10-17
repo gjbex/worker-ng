@@ -22,33 +22,5 @@ install(DIRECTORY worker TYPE LIB
     PATTERN "*.bak" EXCLUDE
     PATTERN "__pycache__" EXCLUDE)
 
-# find Python 3.x
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
-
-# set venv directory
-set(venv_dir ${CMAKE_INSTALL_PREFIX}/lib/venv)
-
-install(CODE "
-# create and install the runtime Python virtual environment
-
-# create virtual environment
-    execute_process(COMMAND ${Python3_EXECUTABLE} -m venv ${venv_dir})
-
-# set virtual environment as active
-    set(ENV{VIRTUAL_ENV} ${venv_dir})
-
-# find Python 3.x again, this time in the virtual environment
-    unset(Python3_EXECUTABLE)
-    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
-
-# upgrade pip, setuptools and wheel
-    execute_process(COMMAND ${venv_dir}/bin/pip install --upgrade pip)
-    execute_process(COMMAND ${venv_dir}/bin/pip install --upgrade setuptools)
-    execute_process(COMMAND ${venv_dir}/bin/pip install --upgrade wheel)
-
-# install package from the requirements file
-    execute_process(COMMAND ${venv_dir}/bin/pip install -r ${CMAKE_CURRENT_SOURCE_DIR}/requirements_runtime.txt)
-")
-
 # install Bash function library file
 install(FILES worker_functions.sh DESTINATION scripts)

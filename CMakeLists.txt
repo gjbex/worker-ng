@@ -1,11 +1,11 @@
-cmake_minimum_required (VERSION 3.11 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.20 FATAL_ERROR)
 project (worker_ng LANGUAGES CXX)
 
 # version information
-set (worker_ng_NAME "worker_ng")
+set (worker_ng_NAME "worker-ng")
 set (worker_ng_VERSION_MAJOR 1)
 set (worker_ng_VERSION_MINOR 0)
-set (worker_ng_VERSION_PATCH 2)
+set (worker_ng_VERSION_PATCH 3)
 
 # set C++ specification
 set(CMAKE_CXX_STANDARD 20)
