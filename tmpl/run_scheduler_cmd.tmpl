@@ -8,18 +8,15 @@ exec_dir=$( cd -P "$( dirname "${exec}" )" && pwd )
 base_dir="${exec_dir}/.."
 script_dir="${base_dir}/lib"
 module_dir="${base_dir}/lib"
-conf_dir="${base_dir}/conf"
 
-# set up Python environment
-source "${conf_dir}/worker_python_env.sh
-
-export PYTHONPATH="${module_dir}:${PYTHONPATH}"
-
-# activate the rutime virtual environment
-source "${venv_dir}/bin/activate"
+# add worker module directory to PYTHONPATH
+PYTHONPATH="${module_dir}:${PYTHONPATH}"
 
 # ensure the user's site directory doesn't wreck havoc
-export PYTHONNOUSERSITE=1
+PYTHONNOUSERSITE=1
+
+# set library path
+LD_LIBRARY_PATH="@Python3_RUNTIME_LIBRARY_DIRS@:$LD_LIBRARY_PATH"
 
 # run the actual scripts
-$PYTHON_EXEC "${script_dir}/@python_script_name@" "$@"
+@Python3_EXECUTABLE@ "${script_dir}/@python_script_name@" "$@"

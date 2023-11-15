@@ -1,3 +1,9 @@
+# set supported schedulers
+set(schedulers "'slurm' or 'torque'")
+
+# set SCHEDULER_NAME as cache variable
+set(SCHEDULER_NAME "slurm" CACHE STRING "name of the scheduler to use, can be either ${schedulers}")
+
 # install correct configuration file depending on scheduler
 set(config_file "worker.conf")
 if(SCHEDULER_NAME STREQUAL "pbs")
@@ -5,7 +11,7 @@ if(SCHEDULER_NAME STREQUAL "pbs")
 elseif(SCHEDULER_NAME STREQUAL "slurm")
     install(FILES slurm_config.conf DESTINATION conf RENAME ${config_file})
 else()
-    message(FATAL_ERROR "Invalid SCHEDULER_NAME specified")
+    message(FATAL_ERROR "Invalid SCHEDULER_NAME specified, should be ${schedulers}")
 endif()
 
 # create worker environment file
@@ -16,14 +22,3 @@ file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/worker_env.sh "${env_file_text}")
 
 # install the environment file
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/worker_env.sh DESTINATION conf)
-
-# find Python 3.x
-find_package(Python3 3.9.5 EXACT COMPONENTS Interpreter REQUIRED)
-
-# create worker Python environment file
-get_filename_component(python_bin_dir ${Python3_EXECUTABLE} DIRECTORY)
-set(python_env_file_text "# Python executable\nPYTHON_EXE=\"${Python3_EXECUTABLE}\"\n# Python shared object directory\nLD_LIBRARY_PATH=\"${python_bin_dir}/../lib/\"")
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/worker_python_env.sh "${python_env_file_text}")
-
-# install the Python environment file
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/worker_python_env.sh DESTINATION conf)
