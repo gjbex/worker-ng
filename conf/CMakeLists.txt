@@ -1,3 +1,9 @@
+# set supported schedulers
+set(schedulers "'slurm' or 'torque'")
+
+# set SCHEDULER_NAME as cache variable
+set(SCHEDULER_NAME "slurm" CACHE STRING "name of the scheduler to use, can be either ${schedulers}")
+
 # install correct configuration file depending on scheduler
 set(config_file "worker.conf")
 if(SCHEDULER_NAME STREQUAL "pbs")
@@ -5,7 +11,7 @@ if(SCHEDULER_NAME STREQUAL "pbs")
 elseif(SCHEDULER_NAME STREQUAL "slurm")
     install(FILES slurm_config.conf DESTINATION conf RENAME ${config_file})
 else()
-    message(FATAL_ERROR "Invalid SCHEDULER_NAME specified")
+    message(FATAL_ERROR "Invalid SCHEDULER_NAME specified, should be ${schedulers}")
 endif()
 
 # create worker environment file
