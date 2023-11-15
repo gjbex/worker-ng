@@ -1,38 +1,48 @@
 easyblock = 'CMakeMake'
 
 name = 'worker-ng'
-version = '1.0.1'
+version = '1.0.4'
+scipy_version = '2021.05'
+scipy_toolchain = ('foss', '2021a')
+scheduler = 'slurm'
 
 homepage = 'https://github.com/gjbex/worker-ng'
 description = 'worker-ng helps you run and manage embarrassingly parallel worlloads.'
 
 toolchain = {'name': 'GCCcore', 'version': '10.3.0'}
+# toolchain = SYSTEM
 toolchainopts = {'pic': True}
 
 source_urls = ['https://github.com/gjbex/worker-ng/archive']
 sources = [f'v{version}.tar.gz']
 
-dependencies = [
-    ('cppzmq', '4.8.1'),
-    ('Boost', '1.76.0', '', ('GCC', '10.3.0')),
-]
+dependencies = []
 
 builddependencies = [
-    ('CMake', '3.20.1'),
-    ('Doxygen', '1.9.1'),
-    ('Python', '3.9.5'), 
+    ('cppzmq', '4.8.1', '', ('GCCcore', '10.3.0')),
+    ('Boost', '1.76.0', '', ('GCC', '10.3.0')),
+    ('CMake', '3.20.1', '', ('GCCcore', '10.3.0')),
+    ('Doxygen', '1.9.1', '', ('GCCcore', '10.3.0')),
+    ('Graphviz', '2.47.2', '', ('GCCcore', '10.3.0')),
+    ('SciPy-bundle', scipy_version, scipy_toolchain,, 
 ]
+
+scipy_module = f'SciPy-bundle/{scipy_version}-{"-".join(scipy_toolchain)}'
+python_version = subprocess.check_output( f'module load {scipy_module} && python --version | cut -d" " -f2', shell=True, text=True).strip()
 
 separate_build_dir = True
 
 osdependencies = []
 
-configopts = ' -DSCHEDULER_NAME=slurm '
+configopts = f' -DSCHEDULER_NAME={scheduler} -DPYTHON_VERSION={python_version -DPANDAS_MODULE={scipy_module}}  '
 
 sanity_check_paths = {
     'files': [
         'bin/worker_client',
         'bin/worker_server',
+        'bin/wsub',
+        'bin/wresume',
+        'bin/wsummarize',
     ],
     'dirs': []
 }
