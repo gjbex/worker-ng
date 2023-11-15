@@ -19,7 +19,8 @@ namespace wm = worker::message;
 void print_version_info() {
     std::cout << worker_ng_NAME << " "
         << worker_ng_VERSION_MAJOR << "."
-        << worker_ng_VERSION_MINOR;
+        << worker_ng_VERSION_MINOR << "."
+        << worker_ng_VERSION_PATCH;
     int zmq_major, zmq_minor, zmq_patch;
     std::tie(zmq_major, zmq_minor, zmq_patch) = zmq::version();
     std::cout << ", using 0MQ "
