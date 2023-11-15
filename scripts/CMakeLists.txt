@@ -1,6 +1,3 @@
-# find Python 3.x
-find_package(Python3 3.9.5 EXACT COMPONENTS Interpreter Development REQUIRED)
-
 # there are two types of Python scripts:
 #   * scripts that will interact with the scheduler;
 #   * scripts that don't interact with the scheduler
@@ -8,6 +5,11 @@ find_package(Python3 3.9.5 EXACT COMPONENTS Interpreter Development REQUIRED)
 # runtime envirnment, while this is of little concern
 # for the second category
 
+# find Python 3.x that will be used for scheduler interaction scripts
+set(PYTHON_VERSION "3.9.5" CACHE STRING "exact version of Python to be used")
+find_package(Python3 "${PYTHON_VERSION}" EXACT COMPONENTS Interpreter Development REQUIRED)
+
+# module that defines a Python with pandas installed to be used for queries
 set(PANDAS_MODULE "system" CACHE STRING "module that provides Python with pandas installed")
 
 # check whether a module has been specified to load so that a Python version
