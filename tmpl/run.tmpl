@@ -18,4 +18,4 @@ export PYTHONNOUSERSITE=1
 LD_LIBRARY_PATH="@Python3_RUNTIME_LIBRARY_DIRS@:$LD_LIBRARY_PATH"
 
 # run the actual scripts
-@Python3_EXECUTABLE@ "${script_dir}/@python_script_name@" "$@"
+$PYTHON_EXEC "${script_dir}/@python_script_name@" "$@"
