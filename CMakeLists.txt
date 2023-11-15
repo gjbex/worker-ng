@@ -43,7 +43,7 @@ endif()
 add_subdirectory(src)
 
 # find Python 3.x
-find_package(Python3 3.9.5 EXACT COMPONENTS Interpreter REQUIRED)
+find_package(Python3 3.9.5 EXACT COMPONENTS Interpreter Development REQUIRED)
 
 # define script target
 add_subdirectory(scripts)
