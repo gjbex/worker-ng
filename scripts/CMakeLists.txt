@@ -1,3 +1,6 @@
+# find Python 3.x
+find_package(Python3 3.9.5 EXACT COMPONENTS Interpreter Development REQUIRED)
+
 # there are two types of Python scripts:
 #   * scripts that will interact with the scheduler;
 #   * scripts that don't interact with the scheduler
