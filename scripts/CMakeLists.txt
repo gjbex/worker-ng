@@ -23,13 +23,13 @@ set(python_query_scripts "${CMAKE_CURRENT_SOURCE_DIR}/wsummarize.py")
 file(GLOB python_scripts "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
 
 # set the Bash wrapper template file
-set(template_bash_submit_script "${CMAKE_CURRENT_SOURCE_DIR}/../tmpl/run.tmpl")
+set(scheduler_cmd_tmpl "${CMAKE_CURRENT_SOURCE_DIR}/../tmpl/run_scheduler_cmd.tmpl")
 set(template_bash_query_script "${CMAKE_CURRENT_SOURCE_DIR}/../tmpl/run_analysis.tmpl")
 
 # create a wrapper file for each Python script and add install targts
 foreach(python_script ${python_scripts})
     if("${python_script}" IN_LIST python_submit_scripts)
-        set(template_bash_script "${template_bash_submit_script}")
+        set(template_bash_script "${scheduler_cmd_tmpl}")
     elseif("${python_script}" IN_LIST python_query_scripts)
         set(template_bash_script "${template_bash_query_script}")
     else()
