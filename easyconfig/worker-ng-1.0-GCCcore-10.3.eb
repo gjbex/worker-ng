@@ -1,10 +1,12 @@
+import subprocess
+
 easyblock = 'CMakeMake'
 
 name = 'worker-ng'
-version = '1.0.4'
-scipy_version = '2021.05'
-scipy_toolchain = ('foss', '2021a')
-scheduler = 'slurm'
+version = '1.0.5'
+local_scipy_version = '2021.05'
+local_scipy_toolchain = ('foss', '2021a')
+local_scheduler = 'slurm'
 
 homepage = 'https://github.com/gjbex/worker-ng'
 description = 'worker-ng helps you run and manage embarrassingly parallel worlloads.'
@@ -24,17 +26,21 @@ builddependencies = [
     ('CMake', '3.20.1', '', ('GCCcore', '10.3.0')),
     ('Doxygen', '1.9.1', '', ('GCCcore', '10.3.0')),
     ('Graphviz', '2.47.2', '', ('GCCcore', '10.3.0')),
-    ('SciPy-bundle', scipy_version, scipy_toolchain,, 
+    ('SciPy-bundle', local_scipy_version, '', local_scipy_toolchain),
 ]
 
-scipy_module = f'SciPy-bundle/{scipy_version}-{"-".join(scipy_toolchain)}'
-python_version = subprocess.check_output( f'module load {scipy_module} && python --version | cut -d" " -f2', shell=True, text=True).strip()
+# determine the Python version that is loaded via the SciPy-bundle
+local_scipy_module = f'SciPy-bundle/{local_scipy_version}-{"-".join(local_scipy_toolchain)}'
+local_python_version = subprocess.check_output(
+    f'module load {local_scipy_module} && python --version | cut -d" " -f2',
+    shell=True
+).decode('utf-8').strip()
 
 separate_build_dir = True
 
 osdependencies = []
 
-configopts = f' -DSCHEDULER_NAME={scheduler} -DPYTHON_VERSION={python_version -DPANDAS_MODULE={scipy_module}}  '
+configopts = f' -DSCHEDULER_NAME={local_scheduler} -DPYTHON_VERSION={local_python_version} -DPANDAS_MODULE={local_scipy_module} '
 
 sanity_check_paths = {
     'files': [
