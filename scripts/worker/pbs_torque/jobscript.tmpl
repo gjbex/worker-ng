@@ -17,7 +17,13 @@
 #
 
 # source worker software environment variables (LD_LIBRARY_PATH et al.)
-source "{worker_path}/conf/worker_env.sh"
+env_conf_file="{worker_path}/conf/worker_env.sh"
+if [ ! -e "${{env_conf_file}}" ]
+then
+    (>&2 echo "### error: can not read environment configuration file '${{env_conf_file}}'")
+    exit 1
+fi
+source "${{env_conf_file}}"
 
 # source worker functions used in this script
 source "{worker_path}/scripts/worker_functions.sh"
