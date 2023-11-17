@@ -3,7 +3,7 @@ import subprocess
 easyblock = 'CMakeMake'
 
 name = 'worker-ng'
-version = '1.0.5'
+version = '1.0.6'
 local_scipy_version = '2021.05'
 local_scipy_toolchain = ('foss', '2021a')
 local_scheduler = 'slurm'
