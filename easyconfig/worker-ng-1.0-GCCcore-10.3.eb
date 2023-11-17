@@ -5,8 +5,9 @@ easyblock = 'CMakeMake'
 name = 'worker-ng'
 version = '1.0.6'
 local_cppzmq_version = '4.8.1'
+local_cppzmq_toolchain = ('GCC', '10.3.0')
 local_boost_version = '1.76.0'
-local_lib_toolchain = ('GCCcore', '10.3.0')
+local_boost_toolchain = ('GCC', '10.3.0')
 local_scipy_version = '2021.05'
 local_scipy_toolchain = ('foss', '2021a')
 local_scheduler = 'slurm'
@@ -24,8 +25,8 @@ sources = [f'v{version}.tar.gz']
 dependencies = []
 
 builddependencies = [
-    ('cppzmq', local_cppzmq_version, '', local_lib_toolchain),
-    ('Boost', local_boost_version, '', local_lib_toolchain),
+    ('cppzmq', local_cppzmq_version, '', local_cppzmq_toolchain),
+    ('Boost', local_boost_version, '', local_boost_toolchain),
     ('CMake', '3.20.1', '', ('GCCcore', '10.3.0')),
     ('Doxygen', '1.9.1', '', ('GCCcore', '10.3.0')),
     ('Graphviz', '2.47.2', '', ('GCCcore', '10.3.0')),
@@ -40,8 +41,8 @@ local_python_version = subprocess.check_output(
 ).decode('utf-8').strip()
 
 # deterine the names of the cppzmq and Boost modules
-local_cppzmq_module = f'cppzmq/{local_cppzmq_version}-{"-".join(local_lib_toolchain)}'
-local_boost_module = f'Boost/{local_boost_version}-{"-".join(local_lib_toolchain)}'
+local_cppzmq_module = f'cppzmq/{local_cppzmq_version}-{"-".join(local_cppzmq_toolchain)}'
+local_boost_module = f'Boost/{local_boost_version}-{"-".join(local_boost_toolchain)}'
 
 separate_build_dir = True
 
