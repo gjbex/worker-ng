@@ -4,6 +4,9 @@ easyblock = 'CMakeMake'
 
 name = 'worker-ng'
 version = '1.0.6'
+local_cppzmq_version = '4.8.1'
+local_boost_version = '1.76.0'
+local_lib_toolchain = ('GCCcore', '10.3.0')
 local_scipy_version = '2021.05'
 local_scipy_toolchain = ('foss', '2021a')
 local_scheduler = 'slurm'
@@ -21,8 +24,8 @@ sources = [f'v{version}.tar.gz']
 dependencies = []
 
 builddependencies = [
-    ('cppzmq', '4.8.1', '', ('GCCcore', '10.3.0')),
-    ('Boost', '1.76.0', '', ('GCC', '10.3.0')),
+    ('cppzmq', local_cppzmq_version, '', local_lib_toolchain),
+    ('Boost', local_boost_version, '', local_lib_toolchain),
     ('CMake', '3.20.1', '', ('GCCcore', '10.3.0')),
     ('Doxygen', '1.9.1', '', ('GCCcore', '10.3.0')),
     ('Graphviz', '2.47.2', '', ('GCCcore', '10.3.0')),
@@ -36,11 +39,18 @@ local_python_version = subprocess.check_output(
     shell=True
 ).decode('utf-8').strip()
 
+# deterine the names of the cppzmq and Boost modules
+local_cppzmq_module = f'cppzmq/{local_cppzmq_version}-{"-".join(local_lib_toolchain)}'
+local_boost_module = f'Boost/{local_boost_version}-{"-".join(local_lib_toolchain)}'
+
 separate_build_dir = True
 
 osdependencies = []
 
-configopts = f' -DSCHEDULER_NAME={local_scheduler} -DPYTHON_VERSION={local_python_version} -DPANDAS_MODULE={local_scipy_module} '
+configopts = f' -DSCHEDULER_NAME={local_scheduler} -DPYTHON_VERSION={local_python_version} '
+configopts += f'-DPANDAS_MODULE={local_scipy_module} '
+configopts += f'-DCPPZMQ_MODULE={local_cppzmq_module} '
+configopts += f'-DBOOST_MODULE={local_boost_module} '
 
 sanity_check_paths = {
     'files': [
