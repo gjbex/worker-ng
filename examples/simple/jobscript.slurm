@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#SBATCH --accout lpt2_sysadmin
+#SBATCH --account lpt2_sysadmin
 #SBATCH --nodes=1
 #SBATCH --ntasks=10
 #SBATCH --cpus-per-task=1
