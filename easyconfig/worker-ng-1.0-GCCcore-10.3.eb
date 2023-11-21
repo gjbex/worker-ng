@@ -3,7 +3,7 @@ import subprocess
 easyblock = 'CMakeMake'
 
 name = 'worker-ng'
-version = '1.0.6'
+version = '1.0.7'
 local_cppzmq_version = '4.8.1'
 local_cppzmq_toolchain = ('GCCcore', '10.3.0')
 local_boost_version = '1.76.0'
