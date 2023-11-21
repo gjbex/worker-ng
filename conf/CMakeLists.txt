@@ -15,14 +15,14 @@ else()
 endif()
 
 # set CPPZMQ_MODULE and BOOST_MODULE as cache variables
-set(CPPZMQ_MODULE "" CACHE STRING "name of the cppzmq module to use")
-set(BOOST_MODULE "" CACHE STRING "name of the Boost module to use")
+set(CPPZMQ_MODULE "system" CACHE STRING "name of the cppzmq module to use")
+set(BOOST_MODULE "system" CACHE STRING "name of the Boost module to use")
 
 # create worker environment file
-if(NOT (${CPPZMQ_MODULE} STR_EQUAL "" AND ${BOOST_MODULE} STR_EQUAL "")
-    set(env_file_text "# load the cppzmq and Boost modules\nmodule load ${CPPZMQ_MODULE} ${BOOST_MODULE}")
-else()
+if(${CPPZMQ_MODULE} STREQUAL "system" AND ${BOOST_MODULE} STREQUAL "system")
     set(env_file_text "# relying on system versions of cppzmq and Boost libraries")
+else()
+    set(env_file_text "# load the cppzmq and Boost modules\nmodule load ${CPPZMQ_MODULE} ${BOOST_MODULE}")
 endif()
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/worker_env.sh "${env_file_text}")
 
