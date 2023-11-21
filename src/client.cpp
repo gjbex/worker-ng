@@ -47,13 +47,14 @@ int main(int argc, char* argv[]) {
     std::cout << client_id << std::endl;
 
     // parse environment variables
-    wpr::Env env;
+    wpr::Env env {boost::this_process::environment()};
     env["WORKER_CLIENT_ID"] = boost::lexical_cast<std::string>(client_id);
     env["WORKER_SERVER_NAME"] = options.server_name;
     env["WORKER_SERVER_ID"] = boost::lexical_cast<std::string>(options.server_id);
     env["WORKER_NUMACTL_OPTS"] = options.numactl;
     env["WORKER_NUM_CORES"] = std::to_string(options.nr_cores);
     env["WORKER_HOST_INFO"] = options.host_info;
+    /*
     for (const auto& env_var: options.env_variables) {
         std::string var_name;
         std::string var_value;
@@ -66,6 +67,7 @@ int main(int argc, char* argv[]) {
         }
         env[var_name] = var_value;
     }
+    */
 
     // set up logging
     std::string log_name = options.log_name_prefix + 
