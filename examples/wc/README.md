@@ -19,5 +19,5 @@ the file names are derived from the array ID.
 
 This job should be submitted using the `--array` option.
 ```bash
-$ wsub  --batch=wc.slurm  -array=1-100
+$ wsub  --batch=wc.slurm  --array=1-100
 ```
