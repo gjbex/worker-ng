@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash -l
 
 #SBATCH --account=lpt2_sysadmin
 #SBATCH --nodes=1
