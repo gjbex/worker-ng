@@ -18,5 +18,5 @@ you to experiment with the `wresume` command.
 
 Submit using, e.g.,
 ```bash
-$ wsub  --cluster=genius  --batch=failures.slurm  --data=data.csv
+$ wsub  --cluster=genius  --batch=jobscript.slurm  --data=data.csv
 ```
