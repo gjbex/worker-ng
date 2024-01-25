@@ -16,6 +16,8 @@ Some examples for users, the examples in the user documentation.
     the use of `--array`.
 1. `failures`: some of the work items for this job will fail to help experiment
    with `wresume` and `wsummarize`.
+1. `env`: simple script to get the values of all environment variables that
+   are defined when the job runs.
 
 For developers, a number of artefacts are available as well in the `dev`
  subdirectory.
