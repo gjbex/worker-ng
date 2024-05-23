@@ -62,7 +62,7 @@ class CsvDataSource:
         self._filename = filename
         self._sniff_length = sniff_length
         self._file = open(self._filename, newline='')
-        dialect = csv.Sniffer().sniff(self._file.read(self._sniff_length))
+        dialect = csv.Sniffer().sniff(self._file.read(self._sniff_length), delimiters='; ,\t')
         self._file.seek(0)
         self._reader = csv.reader(self._file, dialect)
         self._fieldnames = next(self._reader)
