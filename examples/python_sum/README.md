@@ -9,7 +9,7 @@ This is an example of a job script that runs a Python script.
    sum and writes the result to standard output.
 1. `jobscript.slurm`: slurm job script to use with worker.
 1. `data.csv`: data file that contains 1,000 work items.
-1. `create_data_file.py`: Python script to produce a data file for this job scriot.
+1. `create_data_file.py`: Python script to produce a data file for this job script.
 
 
 ## How to run?
