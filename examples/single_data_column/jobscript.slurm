@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash -l
 
 #SBATCH --account=lpt2_sysadmin
 #SBATCH --nodes=1
@@ -6,9 +6,4 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:20:00
 
-if [ $fails == 1 ]
-then
-    exit 1
-else
-    python sum.py  -a=$a  -b=$b
-fi
+python sum.py  $a
