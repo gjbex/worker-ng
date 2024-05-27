@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash -l
 
 #PBS -A lpt2_sysadmin
 #PBS -l nodes=1:ppn=10
