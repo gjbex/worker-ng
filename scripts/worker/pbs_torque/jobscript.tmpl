@@ -52,7 +52,7 @@ sleep {server_start_delay}
 uuid=$(cut -d ' ' -f 1 $SERVER_INFO)
 server=$(cut -d ' ' -f 2 $SERVER_INFO)
 
-(>&2 echo "### info: server launhed at '$server' with UUID '$uuid'")
+(>&2 echo "### info: server launched at '$server' with UUID '$uuid'")
 
 # determine log directory
 
@@ -91,9 +91,9 @@ EOF
     client_exit=$?
     if [ $client_exit -eq 0 ]
     then
-        (>&2 echo "### info: client launhed on '${{client_nodes[0]}}'")
+        (>&2 echo "### info: client launched on '${{client_nodes[0]}}'")
     else
-        (>&2 echo "### error: client failed to launhed on '${{client_nodes[0]}}', exit status $client_exit")
+        (>&2 echo "### error: client failed to launch on '${{client_nodes[0]}}', exit status $client_exit")
         if [ {exit_on_client_fail} ]
         then
             exit $client_exit
