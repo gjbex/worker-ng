@@ -75,7 +75,7 @@ numactl_status=$?
 
 for (( client_num=0; client_num < num_clients; client_num++ ))
 do
-    client_nodes="${{nodes[@]:$(( client_num*num_cores )):$num_cores}}"
+    client_nodes=(${{nodes[@]:$(( client_num*num_cores )):$num_cores}})
     host_info=$( compute_host_file $num_cores $client_nodes )
     numactl_opt=''
     if [ $numactl_status ]
