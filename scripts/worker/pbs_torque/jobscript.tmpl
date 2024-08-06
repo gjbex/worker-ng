@@ -75,6 +75,7 @@ numactl_status=$?
 
 for (( client_num=0; client_num < num_clients; client_num++ ))
 do
+    (>&2 echo "### info: launching client $client_num")
     client_nodes=(${{nodes[@]:$(( client_num*num_cores )):$num_cores}})
     host_info=$( compute_host_file $num_cores $client_nodes )
     numactl_opt=''
@@ -100,6 +101,7 @@ EOF
         fi
     fi
 done
+(>&2 echo "### info: all clients launched")
 
 # wait for the server to finish
 wait
