@@ -108,13 +108,13 @@ int main(int argc, char* argv[]) {
         BOOST_LOG_TRIVIAL(info) << "query message to " << msg.to();
         auto send_result = socket.send(request, zmq::send_flags::none);
         if (!send_result) {
-            BOOST_LOG_TRIVIAL(error) << "client can not send message";
+            BOOST_LOG_TRIVIAL(error) << "client can not send query message";
         }
         // get and handle server's reply
         zmq::message_t reply;
-        auto recv_resuolt = socket.recv(reply, zmq::recv_flags::none);
-        if (!recv_resuolt) {
-            BOOST_LOG_TRIVIAL(error) << "client can not receive message";
+        auto recv_result = socket.recv(reply, zmq::recv_flags::none);
+        if (!recv_result) {
+            BOOST_LOG_TRIVIAL(error) << "client can not receive query reply message";
         }
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == wm::Subject::stop) {
@@ -146,13 +146,13 @@ int main(int argc, char* argv[]) {
                                         << " to " << result_msg.to();
             auto send_result = socket.send(result_reply, zmq::send_flags::none);
             if (!send_result) {
-                BOOST_LOG_TRIVIAL(error) << "client can not send message";
+                BOOST_LOG_TRIVIAL(error) << "client can not send result message";
             }
             // wait for acknowledgement from server
             zmq::message_t ack_response;
             auto recv_result = socket.recv(ack_response, zmq::recv_flags::none);
             if (!recv_result) {
-                BOOST_LOG_TRIVIAL(error) << "client can not receive message";
+                BOOST_LOG_TRIVIAL(error) << "client can not receive result acknowledgement message";
             }
         } else {
             // unknown message type
