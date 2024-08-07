@@ -106,14 +106,14 @@ int main(int argc, char* argv[]) {
                            .subject(wm::Subject::query) .build();
         zmq::message_t request = pack_message(msg);
         BOOST_LOG_TRIVIAL(info) << "query message to " << msg.to();
-        auto send_result = socket.send(request, zmq::send_flags::none);
-        if (!send_result) {
+        auto query_send_status = socket.send(request, zmq::send_flags::none);
+        if (!query_send_status) {
             BOOST_LOG_TRIVIAL(error) << "client can not send query message";
         }
         // get and handle server's reply
         zmq::message_t reply;
-        auto recv_result = socket.recv(reply, zmq::recv_flags::none);
-        if (!recv_result) {
+        auto reply_recv_status = socket.recv(reply, zmq::recv_flags::none);
+        if (!reply_recv_status) {
             BOOST_LOG_TRIVIAL(error) << "client can not receive query reply message";
         }
         msg = unpack_message(reply, msg_builder);
@@ -144,14 +144,14 @@ int main(int argc, char* argv[]) {
             zmq::message_t result_reply = pack_message(result_msg);
             BOOST_LOG_TRIVIAL(info) << "result message for " << result_msg.id()
                                         << " to " << result_msg.to();
-            auto send_result = socket.send(result_reply, zmq::send_flags::none);
-            if (!send_result) {
+            auto result_send_status = socket.send(result_reply, zmq::send_flags::none);
+            if (!result_send_status) {
                 BOOST_LOG_TRIVIAL(error) << "client can not send result message";
             }
             // wait for acknowledgement from server
             zmq::message_t ack_response;
-            auto recv_result = socket.recv(ack_response, zmq::recv_flags::none);
-            if (!recv_result) {
+            auto ack_recv_status = socket.recv(ack_response, zmq::recv_flags::none);
+            if (!ack_recv_status) {
                 BOOST_LOG_TRIVIAL(error) << "client can not receive result acknowledgement message";
             }
         } else {
