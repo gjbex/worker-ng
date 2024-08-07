@@ -19,6 +19,7 @@ namespace worker {
             * query: q
             * result: r
             * work: w
+            * ack_stop: x
             * stop: s
          */
         enum class Subject : char {
@@ -26,6 +27,7 @@ namespace worker {
             query = 'q',
             result = 'r',
             work = 'w',
+            ack_stop = 'x',
             stop = 's'
         };
 
