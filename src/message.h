@@ -68,13 +68,13 @@ namespace worker {
 
         class message_parse_exception : public Worker_exception {
             public:
-                message_parse_exception(const char* msg) :
+                explicit message_parse_exception(const char* msg) :
                     Worker_exception(msg) {};
         };
 
         class Message_builder {
             public:
-                Message_builder(boost::uuids::uuid process_id) :
+                explicit Message_builder(boost::uuids::uuid process_id) :
                     from_ {process_id}, id_ {0}, content_ {""} {};
                 Message_builder& to(const boost::uuids::uuid& to) {
                     to_ = to;
