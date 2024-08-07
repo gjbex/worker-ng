@@ -140,6 +140,13 @@ int main(int argc, char* argv[]) {
             if (!ack_recv_status) {
                 BOOST_LOG_TRIVIAL(error) << "client can not receive result acknowledgement message";
             }
+            auto ack_msg = unpack_message(reply, msg_builder);
+            if (ack_msg.subject() == wm::Subject::ack_stop) {
+                // no more work, stop
+                BOOST_LOG_TRIVIAL(info) << "stop message from "
+                                            << msg.from();
+                break;
+            }
         } else {
             // unknown message type
             BOOST_LOG_TRIVIAL(fatal) << "invalid message";

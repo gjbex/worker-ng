@@ -51,6 +51,8 @@ void send_stop(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder);
 void send_ack(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder);
+void send_ack_stop(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder);
 
 int main(int argc, char* argv[]) {
     // determine UUID for this run
@@ -152,10 +154,6 @@ int main(int argc, char* argv[]) {
                     << " started: " << msg.from();
             } else {
                 send_stop(socket, msg.from(), msg_builder);
-                if (to_do.empty()) {
-                    BOOST_LOG_TRIVIAL(info) << "processing done";
-                    break;
-                }
             }
         } else if (msg.subject() == wm::Subject::result) {
             // client sent result, handle it, and send acknowledgement
@@ -168,10 +166,18 @@ int main(int argc, char* argv[]) {
             BOOST_LOG_TRIVIAL(info) << "workitem " << msg.id()
                 << " done: " << result.exit_status();
             to_do.erase(msg.id());
-            send_ack(socket, msg.from(), msg_builder);
+            if (parser.has_next()) {
+                send_ack(socket, msg.from(), msg_builder);
+            } else {
+                send_ack_stop(socket, msg.from(), msg_builder);
+            }
         } else {
             BOOST_LOG_TRIVIAL(fatal) << "invalid message";
             worker::exit(worker::Error::unexpected);
+        }
+        if (!parser.has_next() && to_do.empty()) {
+            BOOST_LOG_TRIVIAL(info) << "processing done";
+            break;
         }
     }
     BOOST_LOG_TRIVIAL(info) << "exiting normally";
@@ -289,6 +295,15 @@ void send_stop(zmq::socket_t& socket, const Uuid& dest,
 void send_ack(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder) {
     auto ack_msg = msg_builder.to(dest) .subject(wm::Subject::ack).build();
+    auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
+    if (!send_result) {
+        BOOST_LOG_TRIVIAL(error) << "server could not send ack message";
+    }
+}
+
+void send_ack_stop(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder) {
+    auto ack_msg = msg_builder.to(dest).subject(wm::Subject::ack_stop).build();
     auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
     if (!send_result) {
         BOOST_LOG_TRIVIAL(error) << "server could not send ack message";
