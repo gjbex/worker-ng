@@ -269,7 +269,7 @@ size_t send_work(zmq::socket_t& socket, const Uuid& dest,
                                 << " to " << work_msg.to();
     auto send_result = socket.send(pack_message(work_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_TRIVIAL(error) << "server could not send messag";
+        BOOST_LOG_TRIVIAL(error) << "server could not send work messag";
     }
     return work_id;
 }
@@ -282,7 +282,7 @@ void send_stop(zmq::socket_t& socket, const Uuid& dest,
                                 << stop_msg.to();
     auto send_result = socket.send(pack_message(stop_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_TRIVIAL(error) << "server could not send message";
+        BOOST_LOG_TRIVIAL(error) << "server could not send stop message";
     }
 }
 
@@ -291,6 +291,6 @@ void send_ack(zmq::socket_t& socket, const Uuid& dest,
     auto ack_msg = msg_builder.to(dest) .subject(wm::Subject::ack).build();
     auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_TRIVIAL(error) << "server could not send message";
+        BOOST_LOG_TRIVIAL(error) << "server could not send ack message";
     }
 }
