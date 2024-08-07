@@ -154,6 +154,8 @@ int main(int argc, char* argv[]) {
                     << " started: " << msg.from();
             } else {
                 send_stop(socket, msg.from(), msg_builder);
+                BOOST_LOG_TRIVIAL(info) << "stop message to "
+                    << msg.from();
             }
         } else if (msg.subject() == wm::Subject::result) {
             // client sent result, handle it, and send acknowledgement
@@ -168,8 +170,12 @@ int main(int argc, char* argv[]) {
             to_do.erase(msg.id());
             if (parser.has_next()) {
                 send_ack(socket, msg.from(), msg_builder);
+                BOOST_LOG_TRIVIAL(info) << "ack message to "
+                    << msg.from();
             } else {
                 send_ack_stop(socket, msg.from(), msg_builder);
+                BOOST_LOG_TRIVIAL(info) << "ack_stop message to "
+                    << msg.from();
             }
         } else {
             BOOST_LOG_TRIVIAL(fatal) << "invalid message";

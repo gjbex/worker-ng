@@ -138,14 +138,17 @@ int main(int argc, char* argv[]) {
             zmq::message_t ack_response;
             auto ack_recv_status = socket.recv(ack_response, zmq::recv_flags::none);
             if (!ack_recv_status) {
-                BOOST_LOG_TRIVIAL(error) << "client can not receive result acknowledgement message";
-            }
-            auto ack_msg = unpack_message(reply, msg_builder);
-            if (ack_msg.subject() == wm::Subject::ack_stop) {
-                // no more work, stop
-                BOOST_LOG_TRIVIAL(info) << "stop message from "
-                                            << msg.from();
-                break;
+                BOOST_LOG_TRIVIAL(error) << "client can not receive result ack message";
+            } else {
+                auto ack_msg = unpack_message(reply, msg_builder);
+                BOOST_LOG_TRIVIAL(info) << "ack message from "
+                    << ack_msg.from();
+                if (ack_msg.subject() == wm::Subject::ack_stop) {
+                    // no more work, stop
+                    BOOST_LOG_TRIVIAL(info) << "stop message from "
+                                                << ack_msg.from();
+                    break;
+                }
             }
         } else {
             // unknown message type
