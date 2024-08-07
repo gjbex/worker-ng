@@ -21,6 +21,8 @@ namespace worker {
             * work: w
             * ack_stop: x
             * stop: s
+            * invalid: i, used for initialization and ensuring that
+              the message's subject is properly set.
          */
         enum class Subject : char {
             ack = 'a',
@@ -28,7 +30,8 @@ namespace worker {
             result = 'r',
             work = 'w',
             ack_stop = 'x',
-            stop = 's'
+            stop = 's',
+            invalid = 'i'
         };
 
         /*!
@@ -75,7 +78,7 @@ namespace worker {
         class Message_builder {
             public:
                 explicit Message_builder(boost::uuids::uuid process_id) :
-                    from_ {process_id}, id_ {0}, content_ {""} {};
+                    from_ {process_id}, subject_ {Subject::invalid}, id_ {0}, content_ {""} {};
                 Message_builder& to(const boost::uuids::uuid& to) {
                     to_ = to;
                     return *this;
