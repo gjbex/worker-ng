@@ -268,7 +268,7 @@ size_t send_work(zmq::socket_t& socket, const Uuid& dest,
         wp::Work_parser& parser, wm::Message_builder& msg_builder) {
     std::string work_item = parser.next();
     size_t work_id = parser.nr_items();
-    msg_builder.to(dest) .subject(wm::Subject::work)
+    msg_builder.to(dest).subject(wm::Subject::work)
         .id(work_id) .content(work_item);
     auto work_msg = msg_builder.build();
     BOOST_LOG_TRIVIAL(info) << "work message " << work_id
@@ -282,7 +282,7 @@ size_t send_work(zmq::socket_t& socket, const Uuid& dest,
 
 void send_stop(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder) {
-    msg_builder.to(dest) .subject(wm::Subject::stop);
+    msg_builder.to(dest).subject(wm::Subject::stop);
     auto stop_msg = msg_builder.build();
     BOOST_LOG_TRIVIAL(info) << "stop message to "
                                 << stop_msg.to();
@@ -294,7 +294,7 @@ void send_stop(zmq::socket_t& socket, const Uuid& dest,
 
 void send_ack(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder) {
-    auto ack_msg = msg_builder.to(dest) .subject(wm::Subject::ack).build();
+    auto ack_msg = msg_builder.to(dest).subject(wm::Subject::ack).build();
     auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
     if (!send_result) {
         BOOST_LOG_TRIVIAL(error) << "server could not send ack message";
