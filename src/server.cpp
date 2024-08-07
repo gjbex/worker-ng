@@ -131,7 +131,7 @@ int main(int argc, char* argv[]) {
 
 
     // start message loop
-    for (size_t msg_nr = 0; ; ++msg_nr) {
+    for (;;) {
         // wait for incoming messages
         zmq::message_t request;
         auto recv_result = socket.recv(request, zmq::recv_flags::none);
