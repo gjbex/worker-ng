@@ -54,20 +54,6 @@ int main(int argc, char* argv[]) {
     env["WORKER_NUMACTL_OPTS"] = options.numactl;
     env["WORKER_NUM_CORES"] = std::to_string(options.nr_cores);
     env["WORKER_HOST_INFO"] = options.host_info;
-    /*
-    for (const auto& env_var: options.env_variables) {
-        std::string var_name;
-        std::string var_value;
-        if (auto pos = env_var.find("="); pos != std::string::npos) {
-            var_name = env_var.substr(0, pos);
-            var_value = env_var.substr(pos + 1);
-        } else {
-            var_name = env_var;
-            var_value = "";
-        }
-        env[var_name] = var_value;
-    }
-    */
 
     // set up logging
     std::string log_name = options.log_name_prefix + 
