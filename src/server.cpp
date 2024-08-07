@@ -5,9 +5,11 @@
 #include <boost/program_options.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <set>
+#include <thread>
 #include <zmq.hpp>
 
 #include "message.h"
@@ -23,6 +25,7 @@ using Options = struct {
     std::string out_name;
     std::string err_name;
     std::string log_name;
+    long wait_time;
 };
 
 using Uuid = boost::uuids::uuid;
@@ -186,6 +189,7 @@ int main(int argc, char* argv[]) {
             break;
         }
     }
+    std::this_thread::sleep_for(std::chrono::seconds(options.wait_time));
     BOOST_LOG_TRIVIAL(info) << "exiting normally";
     return 0;
 }
@@ -197,6 +201,7 @@ Options get_options(int argc, char* argv[]) {
     std::string default_out_name {""};
     std::string default_err_name {""};
     std::string default_log_name {"server.log"};
+    long default_wait_time {3};
 
     po::options_description desc("Allowed options");
     desc.add_options()
@@ -215,6 +220,9 @@ Options get_options(int argc, char* argv[]) {
         ("log", po::value<std::string>(&options.log_name)
          ->default_value(default_log_name),
          "log file name")
+        ("wait", po::value<long>(&options.wait_time)
+         ->default_value(default_wait_time),
+         "wait time before server exit in seconds")
         ;
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);
