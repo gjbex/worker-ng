@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
             if (!ack_recv_status) {
                 BOOST_LOG_TRIVIAL(error) << "client can not receive result ack message";
             } else {
-                auto ack_msg = unpack_message(reply, msg_builder);
+                auto ack_msg = unpack_message(ack_response, msg_builder);
                 BOOST_LOG_TRIVIAL(info) << "ack message from "
                     << ack_msg.from();
                 if (ack_msg.subject() == wm::Subject::ack_stop) {
