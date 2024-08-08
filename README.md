@@ -82,3 +82,10 @@ Requirements:
 1. Python >= 3.9
   a. numpy
   a. pandas
+
+
+## Contribors
+
+1. Geert Jan Bex ([geertjan.bex@uhasselt.be](mailto:geertjan.bex@uhasselt.be)):
+   main developer.
+1. Mag Selwa: testing and feedback.

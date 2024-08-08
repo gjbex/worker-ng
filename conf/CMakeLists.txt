@@ -1,5 +1,5 @@
 # set supported schedulers
-set(schedulers "'slurm' or 'torque'")
+set(schedulers "'slurm' or 'pbs'")
 
 # set SCHEDULER_NAME as cache variable
 set(SCHEDULER_NAME "slurm" CACHE STRING "name of the scheduler to use, can be either ${schedulers}")
