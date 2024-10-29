@@ -1,22 +1,21 @@
-import subprocess
-
 easyblock = 'CMakeMake'
 
 name = 'worker-ng'
 version = '1.0.9'
+
+# dependencies
 local_cppzmq_version = '4.8.1'
 local_cppzmq_toolchain = ('GCC', '10.3.0')
 local_boost_version = '1.76.0'
 local_boost_toolchain = ('GCC', '10.3.0')
-local_scipy_version = '2021.05'
-local_scipy_toolchain = ('foss', '2021a')
+local_python_version = '3.9.5'
+local_tools_toolchain = ('GCCcore', '10.3.0')
 local_scheduler = 'slurm'
 
 homepage = 'https://github.com/gjbex/worker-ng'
 description = 'worker-ng helps you run and manage embarrassingly parallel worlloads.'
 
 toolchain = {'name': 'GCCcore', 'version': '10.3.0'}
-# toolchain = SYSTEM
 toolchainopts = {'pic': True}
 
 source_urls = ['https://github.com/gjbex/worker-ng/archive']
@@ -27,18 +26,11 @@ dependencies = []
 builddependencies = [
     ('cppzmq', local_cppzmq_version, '', local_cppzmq_toolchain),
     ('Boost', local_boost_version, '', local_boost_toolchain),
-    ('CMake', '3.20.1', '', ('GCCcore', '10.3.0')),
-    ('Doxygen', '1.9.1', '', ('GCCcore', '10.3.0')),
-    ('Graphviz', '2.47.2', '', ('GCCcore', '10.3.0')),
-    ('SciPy-bundle', local_scipy_version, '', local_scipy_toolchain),
+    ('CMake', '3.20.1', '', local_tools_toolchain),
+    ('Doxygen', '1.9.1', '', local_tools_toolchain),
+    ('Graphviz', '2.47.2', '', local_tools_toolchain),
+    ('Python', local_python_version, '', local_tools_toolchain),
 ]
-
-# determine the Python version that is loaded via the SciPy-bundle
-local_scipy_module = f'SciPy-bundle/{local_scipy_version}-{"-".join(local_scipy_toolchain)}'
-local_python_version = subprocess.check_output(
-    f'module load {local_scipy_module} && python --version | cut -d" " -f2',
-    shell=True
-).decode('utf-8').strip()
 
 # deterine the names of the cppzmq and Boost modules
 local_cppzmq_module = f'cppzmq/{local_cppzmq_version}-{"-".join(local_cppzmq_toolchain)}'
@@ -48,8 +40,7 @@ separate_build_dir = True
 
 osdependencies = []
 
-configopts = f' -DSCHEDULER_NAME={local_scheduler} -DPYTHON_VERSION={local_python_version} '
-configopts += f'-DPANDAS_MODULE={local_scipy_module} '
+configopts = f' -DSCHEDULER_NAME={local_scheduler} '
 configopts += f'-DCPPZMQ_MODULE={local_cppzmq_module} '
 configopts += f'-DBOOST_MODULE={local_boost_module} '
 
@@ -60,6 +51,8 @@ sanity_check_paths = {
         'bin/wsub',
         'bin/wresume',
         'bin/wsummarize',
+        'conf/worker.conf',
+        'comf/jobscript.tmpl',
     ],
     'dirs': []
 }
