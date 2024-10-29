@@ -51,7 +51,8 @@ def main():
 
     # create job script in the worker artifacts directory
     jobscript_path = tempdir_path / 'jobscript.sh'
-    create_jobscript(jobscript_path, parser_result, config)
+    template_path = worker_distr_path / 'conf' / 'jobscript.tmpl'
+    create_jobscript(jobscript_path, parser_result, template_path, config)
 
     # get submit output parse function
     parse_submit_output = get_submit_output_parser(scheduler_name)

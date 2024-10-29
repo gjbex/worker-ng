@@ -4,12 +4,15 @@ set(schedulers "'slurm' or 'pbs'")
 # set SCHEDULER_NAME as cache variable
 set(SCHEDULER_NAME "slurm" CACHE STRING "name of the scheduler to use, can be either ${schedulers}")
 
-# install correct configuration file depending on scheduler
+# install correct configuration file and jobscript template depending on scheduler
 set(config_file "worker.conf")
+set(jobscript_file "jobscript.tmpl")
 if(SCHEDULER_NAME STREQUAL "pbs")
     install(FILES pbs_config.conf DESTINATION conf RENAME ${config_file})
+    install(FILES pbs_jobscript.tmpl DESTINATION conf RENAME ${jobscript_file})
 elseif(SCHEDULER_NAME STREQUAL "slurm")
     install(FILES slurm_config.conf DESTINATION conf RENAME ${config_file})
+    install(FILES slurm_jobscript.tmpl DESTINATION conf RENAME ${jobscript_file})
 else()
     message(FATAL_ERROR "Invalid SCHEDULER_NAME specified, should be ${schedulers}")
 endif()
