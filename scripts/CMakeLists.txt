@@ -6,56 +6,51 @@
 # for the second category
 
 # find Python 3.x that will be used for scheduler interaction scripts
-set(PYTHON_VERSION "3.9.5" CACHE STRING "exact version of Python to be used")
-find_package(Python3 "${PYTHON_VERSION}" EXACT COMPONENTS Interpreter Development REQUIRED)
+find_package(Python3  COMPONENTS Interpreter Development REQUIRED)
 
-# module that defines a Python with pandas installed to be used for queries
-set(PANDAS_MODULE "system" CACHE STRING "module that provides Python with pandas installed")
+# create executables for Python scripts using PyInstaller
+add_custom_command(
+    OUTPUT dist/prod_columns dist/sum_columns
+    COMMAND python -m venv ${CMAKE_CURRENT_BINARY_DIR}/build_venv
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pip install
+                -r ${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pyinstaller --onefile
+                ${CMAKE_CURRENT_SOURCE_DIR}/wsummarize.py
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pyinstaller --onefile
+                --hidden-import worker.slurm.option_parser
+                --hidden-import worker.slurm.submit_output_parser
+                --collect-submodules worker.slurm.option_parser
+                --collect-submodules worker.slurm.submit_output_parser
+                --add-data worker/slurm/jobscript.tmpl:worker/slurm
+                --hidden-import worker.pbs_torque.option_parser
+                --hidden-import worker.pbs_torque.submit_output_parser
+                --collect-submodules worker.pbs_torque.option_parser
+                --collect-submodules worker.pbs_torque.submit_output_parser
+                ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pyinstaller --onefile
+                --hidden-import worker.slurm.option_parser
+                --hidden-import worker.slurm.submit_output_parser
+                --collect-submodules worker.slurm.option_parser
+                --collect-submodules worker.slurm.submit_output_parser
+                --add-data worker/slurm/jobscript.tmpl:worker/slurm
+                --hidden-import worker.pbs_torque.option_parser
+                --hidden-import worker.pbs_torque.submit_output_parser
+                --collect-submodules worker.pbs_torque.option_parser
+                --collect-submodules worker.pbs_torque.submit_output_parser
+                ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/wsummarize.py
+            ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py
+            ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py
+    VERBATIM)
 
-# check whether a module has been specified to load so that a Python version
-# with pandas is available
-if("${PANDAS_MODULE}" STREQUAL "system")
-    message(WARN "no module for a Python version that has pandas installed specified, relying on current Python version")
-endif()
+# create a custom target to build the executables
+add_custom_target(create_executables ALL
+    DEPENDS dist/wsummarize dist/wsub dist/wresume)
 
-# list of Python scripts that interact with the scheduler
-set(python_submit_scripts "${CMAKE_CURRENT_SOURCE_DIR}/wsub.py" "${CMAKE_CURRENT_SOURCE_DIR}/wresume.py")
-
-# list of Python scripts that don't interact with the scheduler
-set(python_query_scripts "${CMAKE_CURRENT_SOURCE_DIR}/wsummarize.py")
-
-# list of all Python scripts
-file(GLOB python_scripts "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
-
-# set the Bash wrapper template file
-set(scheduler_cmd_tmpl "${CMAKE_CURRENT_SOURCE_DIR}/../tmpl/run_scheduler_cmd.tmpl")
-set(query_cmd_tmpl "${CMAKE_CURRENT_SOURCE_DIR}/../tmpl/run_query_cmd.tmpl")
-
-# create a wrapper file for each Python script and add install targts
-foreach(python_script ${python_scripts})
-    if("${python_script}" IN_LIST python_submit_scripts)
-        set(cmd_tmpl "${scheduler_cmd_tmpl}")
-    elseif("${python_script}" IN_LIST python_query_scripts)
-        set(cmd_tmpl "${query_cmd_tmpl}")
-    else()
-        message(WARNING "skipping ${python_script}")
-        continue()
-    endif()
-    get_filename_component(bash_script_name ${python_script} NAME_WE)
-    get_filename_component(python_script_name ${python_script} NAME)
-    install(FILES ${python_script_name} TYPE LIB)
-    set(wrapper_file_name "${CMAKE_CURRENT_BINARY_DIR}/${bash_script_name}")
-    configure_file(${cmd_tmpl} ${wrapper_file_name} @ONLY)
-    set(target "wrapper_script_${bash_script_name}")
-    add_custom_target(${target} ALL DEPENDS ${wrapper_file_name})
-    install(PROGRAMS ${wrapper_file_name} DESTINATION bin)
-endforeach()
-
-# install worker Python library
-install(DIRECTORY worker TYPE LIB
-    PATTERN "*~" EXCLUDE
-    PATTERN "*.bak" EXCLUDE
-    PATTERN "__pycache__" EXCLUDE)
+# install the executables
+install(
+    FILES ${CMAKE_BINARY_DIR}/dist/wsummarize ${CMAKE_BINARY_DIR}/dist/wsub ${CMAKE_BINARY_DIR}/dist/wresume
+    DESTINATION bin)
 
 # install Bash function library file
 install(FILES worker_functions.sh DESTINATION scripts)

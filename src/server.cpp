@@ -5,9 +5,11 @@
 #include <boost/program_options.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <set>
+#include <thread>
 #include <zmq.hpp>
 
 #include "message.h"
@@ -23,11 +25,12 @@ using Options = struct {
     std::string out_name;
     std::string err_name;
     std::string log_name;
+    long wait_time;
 };
 
 using Uuid = boost::uuids::uuid;
 
-void print_to_do(const std::set<size_t> to_do) {
+void print_to_do(const std::set<size_t>& to_do) {
     std::cerr << "To do: ";
     for (const auto& id: to_do)
         std::cerr << " " << id;
@@ -50,6 +53,8 @@ size_t send_work(zmq::socket_t& socket, const Uuid& dest,
 void send_stop(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder);
 void send_ack(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder);
+void send_ack_stop(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder);
 
 int main(int argc, char* argv[]) {
@@ -131,7 +136,7 @@ int main(int argc, char* argv[]) {
 
 
     // start message loop
-    for (size_t msg_nr = 0; ; ++msg_nr) {
+    for (;;) {
         // wait for incoming messages
         zmq::message_t request;
         auto recv_result = socket.recv(request, zmq::recv_flags::none);
@@ -152,10 +157,8 @@ int main(int argc, char* argv[]) {
                     << " started: " << msg.from();
             } else {
                 send_stop(socket, msg.from(), msg_builder);
-                if (to_do.empty()) {
-                    BOOST_LOG_TRIVIAL(info) << "processing done";
-                    break;
-                }
+                BOOST_LOG_TRIVIAL(info) << "stop message to "
+                    << msg.from();
             }
         } else if (msg.subject() == wm::Subject::result) {
             // client sent result, handle it, and send acknowledgement
@@ -168,12 +171,25 @@ int main(int argc, char* argv[]) {
             BOOST_LOG_TRIVIAL(info) << "workitem " << msg.id()
                 << " done: " << result.exit_status();
             to_do.erase(msg.id());
-            send_ack(socket, msg.from(), msg_builder);
+            if (parser.has_next()) {
+                send_ack(socket, msg.from(), msg_builder);
+                BOOST_LOG_TRIVIAL(info) << "ack message to "
+                    << msg.from();
+            } else {
+                send_ack_stop(socket, msg.from(), msg_builder);
+                BOOST_LOG_TRIVIAL(info) << "ack_stop message to "
+                    << msg.from();
+            }
         } else {
             BOOST_LOG_TRIVIAL(fatal) << "invalid message";
             worker::exit(worker::Error::unexpected);
         }
+        if (!parser.has_next() && to_do.empty()) {
+            BOOST_LOG_TRIVIAL(info) << "processing done";
+            break;
+        }
     }
+    std::this_thread::sleep_for(std::chrono::seconds(options.wait_time));
     BOOST_LOG_TRIVIAL(info) << "exiting normally";
     return 0;
 }
@@ -185,6 +201,7 @@ Options get_options(int argc, char* argv[]) {
     std::string default_out_name {""};
     std::string default_err_name {""};
     std::string default_log_name {"server.log"};
+    long default_wait_time {3};
 
     po::options_description desc("Allowed options");
     desc.add_options()
@@ -203,6 +220,9 @@ Options get_options(int argc, char* argv[]) {
         ("log", po::value<std::string>(&options.log_name)
          ->default_value(default_log_name),
          "log file name")
+        ("wait", po::value<long>(&options.wait_time)
+         ->default_value(default_wait_time),
+         "wait time before server exit in seconds")
         ;
     po::positional_options_description pos_desc;
     pos_desc.add("workfile", -1);
@@ -262,35 +282,44 @@ size_t send_work(zmq::socket_t& socket, const Uuid& dest,
         wp::Work_parser& parser, wm::Message_builder& msg_builder) {
     std::string work_item = parser.next();
     size_t work_id = parser.nr_items();
-    msg_builder.to(dest) .subject(wm::Subject::work)
+    msg_builder.to(dest).subject(wm::Subject::work)
         .id(work_id) .content(work_item);
     auto work_msg = msg_builder.build();
     BOOST_LOG_TRIVIAL(info) << "work message " << work_id
                                 << " to " << work_msg.to();
     auto send_result = socket.send(pack_message(work_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_TRIVIAL(error) << "server could not send messag";
+        BOOST_LOG_TRIVIAL(error) << "server could not send work messag";
     }
     return work_id;
 }
 
 void send_stop(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder) {
-    msg_builder.to(dest) .subject(wm::Subject::stop);
+    msg_builder.to(dest).subject(wm::Subject::stop);
     auto stop_msg = msg_builder.build();
     BOOST_LOG_TRIVIAL(info) << "stop message to "
                                 << stop_msg.to();
     auto send_result = socket.send(pack_message(stop_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_TRIVIAL(error) << "server could not send message";
+        BOOST_LOG_TRIVIAL(error) << "server could not send stop message";
     }
 }
 
 void send_ack(zmq::socket_t& socket, const Uuid& dest,
         wm::Message_builder& msg_builder) {
-    auto ack_msg = msg_builder.to(dest) .subject(wm::Subject::ack).build();
+    auto ack_msg = msg_builder.to(dest).subject(wm::Subject::ack).build();
     auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
     if (!send_result) {
-        BOOST_LOG_TRIVIAL(error) << "server could not send message";
+        BOOST_LOG_TRIVIAL(error) << "server could not send ack message";
+    }
+}
+
+void send_ack_stop(zmq::socket_t& socket, const Uuid& dest,
+        wm::Message_builder& msg_builder) {
+    auto ack_msg = msg_builder.to(dest).subject(wm::Subject::ack_stop).build();
+    auto send_result = socket.send(pack_message(ack_msg), zmq::send_flags::none);
+    if (!send_result) {
+        BOOST_LOG_TRIVIAL(error) << "server could not send ack message";
     }
 }

@@ -7,7 +7,6 @@ import sys
 import uuid
 from worker.data_sources import DataSource
 from worker.errors import JobSubmissionException
-from worker.templates import get_jobscript_template
 
 
 def exit_on_error(error, cleanup=None, **extra):
@@ -141,7 +140,7 @@ def create_workfile(file_path, parser_result, config):
             print(parser_result.script, file=file)
     return nr_workitems
 
-def create_jobscript(file_path, parser_result, config):
+def create_jobscript(file_path, parser_result, template_path, config):
     '''create the job script for the computation
 
     Parameters
@@ -151,11 +150,13 @@ def create_jobscript(file_path, parser_result, config):
     parser_result: ParserResults
         configuration options from the job script directives and the command
         line arguments
+    template_path: pathlib.Path
+        path to the job script template
     config: configparser.configparser
         configuration of the worker framework
     '''
     worker_dir_path = get_worker_dir_path(config)
-    template = get_jobscript_template(config['scheduler']['name'])
+    template = template_path.read_text()
     templ_params = {
         'shebang': parser_result.shebang,
         'scheduler_directives': parser_result.directives,

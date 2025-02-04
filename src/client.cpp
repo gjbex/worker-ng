@@ -54,20 +54,6 @@ int main(int argc, char* argv[]) {
     env["WORKER_NUMACTL_OPTS"] = options.numactl;
     env["WORKER_NUM_CORES"] = std::to_string(options.nr_cores);
     env["WORKER_HOST_INFO"] = options.host_info;
-    /*
-    for (const auto& env_var: options.env_variables) {
-        std::string var_name;
-        std::string var_value;
-        if (auto pos = env_var.find("="); pos != std::string::npos) {
-            var_name = env_var.substr(0, pos);
-            var_value = env_var.substr(pos + 1);
-        } else {
-            var_name = env_var;
-            var_value = "";
-        }
-        env[var_name] = var_value;
-    }
-    */
 
     // set up logging
     std::string log_name = options.log_name_prefix + 
@@ -106,15 +92,15 @@ int main(int argc, char* argv[]) {
                            .subject(wm::Subject::query) .build();
         zmq::message_t request = pack_message(msg);
         BOOST_LOG_TRIVIAL(info) << "query message to " << msg.to();
-        auto send_result = socket.send(request, zmq::send_flags::none);
-        if (!send_result) {
-            BOOST_LOG_TRIVIAL(error) << "client can not send message";
+        auto query_send_status = socket.send(request, zmq::send_flags::none);
+        if (!query_send_status) {
+            BOOST_LOG_TRIVIAL(error) << "client can not send query message";
         }
         // get and handle server's reply
         zmq::message_t reply;
-        auto recv_resuolt = socket.recv(reply, zmq::recv_flags::none);
-        if (!recv_resuolt) {
-            BOOST_LOG_TRIVIAL(error) << "client can not receive message";
+        auto reply_recv_status = socket.recv(reply, zmq::recv_flags::none);
+        if (!reply_recv_status) {
+            BOOST_LOG_TRIVIAL(error) << "client can not receive query reply message";
         }
         msg = unpack_message(reply, msg_builder);
         if (msg.subject() == wm::Subject::stop) {
@@ -144,15 +130,25 @@ int main(int argc, char* argv[]) {
             zmq::message_t result_reply = pack_message(result_msg);
             BOOST_LOG_TRIVIAL(info) << "result message for " << result_msg.id()
                                         << " to " << result_msg.to();
-            auto send_result = socket.send(result_reply, zmq::send_flags::none);
-            if (!send_result) {
-                BOOST_LOG_TRIVIAL(error) << "client can not send message";
+            auto result_send_status = socket.send(result_reply, zmq::send_flags::none);
+            if (!result_send_status) {
+                BOOST_LOG_TRIVIAL(error) << "client can not send result message";
             }
             // wait for acknowledgement from server
             zmq::message_t ack_response;
-            auto recv_result = socket.recv(ack_response, zmq::recv_flags::none);
-            if (!recv_result) {
-                BOOST_LOG_TRIVIAL(error) << "client can not receive message";
+            auto ack_recv_status = socket.recv(ack_response, zmq::recv_flags::none);
+            if (!ack_recv_status) {
+                BOOST_LOG_TRIVIAL(error) << "client can not receive result ack message";
+            } else {
+                auto ack_msg = unpack_message(ack_response, msg_builder);
+                BOOST_LOG_TRIVIAL(info) << "ack message from "
+                    << ack_msg.from();
+                if (ack_msg.subject() == wm::Subject::ack_stop) {
+                    // no more work, stop
+                    BOOST_LOG_TRIVIAL(info) << "stop message from "
+                                                << ack_msg.from();
+                    break;
+                }
             }
         } else {
             // unknown message type
