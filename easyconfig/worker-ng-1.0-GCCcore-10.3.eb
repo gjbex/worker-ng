@@ -18,8 +18,9 @@ description = 'worker-ng helps you run and manage embarrassingly parallel worllo
 toolchain = {'name': 'GCCcore', 'version': '10.3.0'}
 toolchainopts = {'pic': True}
 
-source_urls = ['https://github.com/gjbex/worker-ng/archive']
-sources = [f'v{version}.tar.gz']
+source_urls = ['https://github.com/gjbex/worker-ng.git']
+source_git = True
+gitbranch = 'development'
 
 dependencies = []
 
