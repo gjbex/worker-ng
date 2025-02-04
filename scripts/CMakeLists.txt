@@ -10,7 +10,7 @@ find_package(Python3  COMPONENTS Interpreter Development REQUIRED)
 
 # create executables for Python scripts using PyInstaller
 add_custom_command(
-    OUTPUT dist/prod_columns dist/sum_columns
+    OUTPUT dist/wsummarize dist/wsub dist/wresume
     COMMAND python -m venv ${CMAKE_CURRENT_BINARY_DIR}/build_venv
     COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pip install
                 -r ${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt
@@ -21,7 +21,6 @@ add_custom_command(
                 --hidden-import worker.slurm.submit_output_parser
                 --collect-submodules worker.slurm.option_parser
                 --collect-submodules worker.slurm.submit_output_parser
-                --add-data worker/slurm/jobscript.tmpl:worker/slurm
                 --hidden-import worker.pbs_torque.option_parser
                 --hidden-import worker.pbs_torque.submit_output_parser
                 --collect-submodules worker.pbs_torque.option_parser
@@ -32,7 +31,6 @@ add_custom_command(
                 --hidden-import worker.slurm.submit_output_parser
                 --collect-submodules worker.slurm.option_parser
                 --collect-submodules worker.slurm.submit_output_parser
-                --add-data worker/slurm/jobscript.tmpl:worker/slurm
                 --hidden-import worker.pbs_torque.option_parser
                 --hidden-import worker.pbs_torque.submit_output_parser
                 --collect-submodules worker.pbs_torque.option_parser
