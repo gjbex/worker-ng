@@ -18,9 +18,16 @@ description = 'worker-ng helps you run and manage embarrassingly parallel worllo
 toolchain = {'name': 'GCCcore', 'version': '10.3.0'}
 toolchainopts = {'pic': True}
 
-source_urls = ['https://github.com/gjbex/worker-ng.git']
-source_git = True
-gitbranch = 'development'
+sources = [{
+    'filename': 'worker-ng-35f633397698521070ac9fd8d6c8cc3661ee1983.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/gjbex/',
+        'repo_name': 'worker-ng',
+        'commit': '35f633397698521070ac9fd8d6c8cc3661ee1983',
+        'recursive': True,
+        'keep_git_dir': True,
+    },
+}]
 
 dependencies = []
 
@@ -42,8 +49,9 @@ separate_build_dir = True
 osdependencies = []
 
 configopts = f' -DSCHEDULER_NAME={local_scheduler} '
-configopts += f'-DCPPZMQ_MODULE={local_cppzmq_module} '
-configopts += f'-DBOOST_MODULE={local_boost_module} '
+configopts += f' -DCPPZMQ_MODULE={local_cppzmq_module} '
+configopts += f' -DBOOST_MODULE={local_boost_module} '
+configopts += ' -DCMAKE_VERBOSE_MAKEFILE=ON '
 
 sanity_check_paths = {
     'files': [
