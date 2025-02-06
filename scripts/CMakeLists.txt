@@ -47,7 +47,7 @@ add_custom_target(create_executables ALL
 
 # install the executables
 install(
-    FILES ${CMAKE_BINARY_DIR}/dist/wsummarize ${CMAKE_BINARY_DIR}/dist/wsub ${CMAKE_BINARY_DIR}/dist/wresume
+    PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/dist/wsummarize ${CMAKE_CURRENT_BINARY_DIR}/dist/wsub ${CMAKE_CURRENT_BINARY_DIR}/dist/wresume
     DESTINATION bin)
 
 # install Bash function library file
