@@ -44,8 +44,6 @@ For developers:
 1. `src`: source code for the C++ server and client and the
    supporting library.
 1. `test`: tests for the Python library.
-1. `tmpl`: templates to generate the Bash wrappers for the
-   Python scripts.
 1. `CMakeLists.txt`: top-level CMake build script.
 1. `environment.yml`: conda environment file to build and run
    the worker framework.
@@ -80,8 +78,6 @@ Requirements:
 1. CMake >= 3.20
 1. doxygen >= 1.9
 1. Python >= 3.9
-  a. numpy
-  a. pandas
 
 
 ## Contribors
