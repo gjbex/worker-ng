@@ -19,11 +19,11 @@ toolchain = {'name': 'GCCcore', 'version': '10.3.0'}
 toolchainopts = {'pic': True}
 
 sources = [{
-    'filename': 'worker-ng-35f633397698521070ac9fd8d6c8cc3661ee1983.tar.gz',
+    'filename': 'worker-ng-development.tar.gz',
     'git_config': {
         'url': 'https://github.com/gjbex/',
         'repo_name': 'worker-ng',
-        'commit': '35f633397698521070ac9fd8d6c8cc3661ee1983',
+        'commit': 'development',
         'recursive': True,
         'keep_git_dir': True,
     },
@@ -61,7 +61,7 @@ sanity_check_paths = {
         'bin/wresume',
         'bin/wsummarize',
         'conf/worker.conf',
-        'comf/jobscript.tmpl',
+        'conf/jobscript.tmpl',
     ],
     'dirs': []
 }
