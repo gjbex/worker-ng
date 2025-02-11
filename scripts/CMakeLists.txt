@@ -8,15 +8,31 @@
 # find Python 3.x that will be used for scheduler interaction scripts
 find_package(Python3  COMPONENTS Interpreter Development REQUIRED)
 
-# create executables for Python scripts using PyInstaller
-add_custom_command(
-    OUTPUT dist/wsummarize dist/wsub dist/wresume
+# define a virtual environment and install dependencies
+add_custom_target(setup_venv
     COMMAND python -m venv ${CMAKE_CURRENT_BINARY_DIR}/build_venv
-    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pip install
-                -r ${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pip install -r ${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Setting up virtual environment and installing dependencies"
+    VERBATIM
+)
+
+# Define custom commands for each PyInstaller executable
+add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/dist/wsummarize
     COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pyinstaller --onefile
+                --distpath ${CMAKE_CURRENT_BINARY_DIR}/dist
                 ${CMAKE_CURRENT_SOURCE_DIR}/wsummarize.py
+    DEPENDS setup_venv ${CMAKE_CURRENT_SOURCE_DIR}/wsummarize.py
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Building wsummarize executable"
+    VERBATIM
+)
+
+add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/dist/wsub
     COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pyinstaller --onefile
+                --distpath ${CMAKE_CURRENT_BINARY_DIR}/dist
                 --hidden-import worker.slurm.option_parser
                 --hidden-import worker.slurm.submit_output_parser
                 --collect-submodules worker.slurm.option_parser
@@ -26,7 +42,16 @@ add_custom_command(
                 --collect-submodules worker.pbs_torque.option_parser
                 --collect-submodules worker.pbs_torque.submit_output_parser
                 ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py
+    DEPENDS setup_venv ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Building wsub executable"
+    VERBATIM
+)
+
+add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/dist/wresume
     COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pyinstaller --onefile
+                --distpath ${CMAKE_CURRENT_BINARY_DIR}/dist
                 --hidden-import worker.slurm.option_parser
                 --hidden-import worker.slurm.submit_output_parser
                 --collect-submodules worker.slurm.option_parser
@@ -36,14 +61,29 @@ add_custom_command(
                 --collect-submodules worker.pbs_torque.option_parser
                 --collect-submodules worker.pbs_torque.submit_output_parser
                 ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/wsummarize.py
-            ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py
-            ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py
-    VERBATIM)
+    DEPENDS setup_venv ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Building wresume executable"
+    VERBATIM
+)
 
-# create a custom target to build the executables
+# Create explicit custom targets for each executable
+add_custom_target(wsummarize ALL
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/dist/wsummarize
+)
+
+add_custom_target(wsub ALL
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/dist/wsub
+)
+
+add_custom_target(wresume ALL
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/dist/wresume
+)
+
+# Create a meta target to build all executables
 add_custom_target(create_executables ALL
-    DEPENDS dist/wsummarize dist/wsub dist/wresume)
+    DEPENDS wsummarize wsub wresume
+)
 
 # install the executables
 install(
