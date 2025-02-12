@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import pathlib
 import sys
 import worker.errors
 import worker.option_parser
@@ -13,7 +14,7 @@ from worker.utils import (get_worker_path, read_config_file, create_tempdir,
 
 def main():
     # read configuration file
-    worker_distr_path = get_worker_path(__file__)
+    worker_distr_path = pathlib.Path('@CMAKE_INSTALL_PREFIX@')
     config_path = worker_distr_path / 'conf' / 'worker.conf'
     if not config_path.exists():
         exit_on_error(worker.errors.config_error,
