@@ -61,7 +61,7 @@ $ sbatch sum.slurm
 
 However, the user wants to run this program for many parameter instances,
 e.g., he wants to run the program on 100 instances of `a` and `b`.
-To this end, the PBS file can be modified as follows.
+To this end, the Slurm file can be modified as follows.
 
 ```bash
 #!/usr/bin/env -S bash -l

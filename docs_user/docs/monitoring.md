@@ -31,7 +31,7 @@ $ watch  -n 60  wsummarize  --dir=worker_1234/
 
 This will summarize the status of the work items every 60 seconds.  *Note:* use
 a reasonable value for the update period, this will cause load on the login
-node where you run this ocmmand.
+node where you run this command.
 
 The `wsummarize` command has various command line options to get a more
 detailed analysis of perfornmance issues.  For instance, to get statistics on
