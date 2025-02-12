@@ -1,4 +1,4 @@
-# worker step-by-step
+# worker-ng step-by-step
 
 As prerequisites, one should have a (sequential) job that has to be
 run many times
@@ -41,8 +41,7 @@ The program will write its results to standard output.
 A slurm script (say `sum.slurm`) that would run this as a job would
 then look like:
 ```bash
-#!/usr/bin/env bash
-
+#!/usr/bin/env -S bash -l
 #SBATCH --account=my_account
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -62,11 +61,10 @@ $ sbatch sum.slurm
 
 However, the user wants to run this program for many parameter instances,
 e.g., he wants to run the program on 100 instances of `a` and `b`.
-To this end, the PBS file can be modified as follows.
+To this end, the Slurm file can be modified as follows.
 
 ```bash
-#!/usr/bin/env bash
-
+#!/usr/bin/env -S bash -l
 #SBATCH --account=my_account
 #SBATCH --nodes=1
 #SBATCH --ntasks=10
@@ -77,7 +75,7 @@ python sum.py  -a=$a  -b=$b
 ```
 
 Note that
-  * the parameter values 1.3 and 2.5 isreplaced by variables `$a` and `$b`
+  * the parameter values 1.3 and 2.5 are replaced by variables `$a` and `$b`
     respectively;
   * the number of tasks, i.e., cores per node has been increased to 10, i.e.,
     `--ntasks=1` is replaced by `--ntasks=10`; and
@@ -90,7 +88,8 @@ use 10 cores, so the 100 calculations will be done in 200/10 = 20 minutes.
 
 Note that one core will always be required for management purposes, so if
 we specify `--ntasks=10` and `--cpus-per-task=1`, the job will required
-11 cores from the scheduler.
+11 cores from the scheduler.  This is done automatically by the worker-ng
+framework though.
 
 The 100 parameter instances can be stored in a Comma Separated Value file (CSV)
 that can be generated using a spreadsheet program such as Microsoft Excel, or
@@ -110,27 +109,26 @@ a,b
 
 It has to contain the names of the variables on the first line, i.e., `a` and
 `b` in this example, followed by 100 parameter instances in the current
-example. Items on a line are separated by commas.
+example, each on a line by itself. Values on a line are separated by commas.
 
 The job can now be submitted as follows.
 
 ```bash
-$ module load worker
-$ wsub --batch sum.slurm  --data data.txt
+$ module load worker-ng
+$ wsub --batch=sum.slurm  --data=data.txt
 ```
 
-Note that the PBS file is the value of the `--batch` option . The `sum.py`
-scripts program will now be run for all 100 parameter instances --— 10
-concurrently --— until all computations are done. A computation for such a
-parameter instance is called a work item in worker parlance.
+Note that the Slurm file is the value of the `--batch` option . The `sum.py`
+scripts program will now be run for all 100 parameter instances--—10
+concurrently--—until all computations are done. A computation for such a
+parameter instance is called a work item in worker-ng parlance.
 
 
 ## Job arrays
 
-Most schedulers including slurm and PBS torque support job arrays.
-However, often they are configured so that users can only have a fairly
-small number of jobs in the queue.  This implies that the size of job arrays
-is subject to that same limit.
+Most schedulers including Slurm support job arrays. However, often they are
+configured so that users can only have a fairly small number of jobs in the
+queue.  This implies that the size of job arrays is subject to that same limit.
 
 Although this makes sense from the point of view of system administrators
 who don't want to have their schedulers overloaded, it is sometimes less than
@@ -155,7 +153,7 @@ A typical slurm job script `wc.slurm` for use with job arrays would look
 as follows.
 
 ```bash
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash -l
 #SBATCH --account=lpt2_sysadmin
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -187,7 +185,7 @@ Using worker, a feature akin to job arrays can be used with minimal modification
 to the job script.
 
 ```bash
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash -l
 #SBATCH --account=lpt2_sysadmin
 #SBATCH --nodes=1
 #SBATCH --ntasks=10
@@ -219,14 +217,14 @@ use 10 cores, so the 100 calculations will be done in 200/10 = 20 minutes.
 The job is now submitted as follows.
 
 ```bash
-$ module load worker
+$ module load worker-ng
 $ wsub  --array=1-100  --batch=wc.slurm
 ```
 
-The `wc` program  will now be run for all 100 input files --— 10
-concurrently --— until all computations are done. Again, a
+The `wc` program  will now be run for all 100 input files--—10
+concurrently--—until all computations are done. Again, a
 computation for an individual input file, or, equivalently, an
-array id, is called a work item in worker speak.
+array ID, is called a work item in worker-ng speak.
 
-Note that in constrast to slurm job arrays, a worker job array submits
-a single job.
+Note that in constrast to Slurm job arrays, a worker job array submits
+a single job only.

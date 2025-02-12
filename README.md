@@ -80,7 +80,7 @@ Requirements:
 1. Python >= 3.9
 
 
-## Contribors
+## Contributors
 
 1. Geert Jan Bex ([geertjan.bex@uhasselt.be](mailto:geertjan.bex@uhasselt.be)):
    main developer.

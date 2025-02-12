@@ -5,6 +5,17 @@
 # runtime envirnment, while this is of little concern
 # for the second category
 
+# ensure that wsub and wresume have the CMake installation directory
+# hardcoded
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py.in
+    ${CMAKE_CURRENT_BINARY_DIR}/wsub.py
+)
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py.in
+    ${CMAKE_CURRENT_BINARY_DIR}/wresume.py
+)
+
 # find Python 3.x that will be used for scheduler interaction scripts
 find_package(Python3  COMPONENTS Interpreter Development REQUIRED)
 
@@ -14,6 +25,13 @@ add_custom_target(setup_venv
     COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_venv/bin/pip install -r ${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Setting up virtual environment and installing dependencies"
+    VERBATIM
+)
+
+# copy the worker directory from source to binary directory
+add_custom_target(copy_modules
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/worker ${CMAKE_CURRENT_BINARY_DIR}/worker
+    COMMENT "Copying modules for PyInstaller to find them"
     VERBATIM
 )
 
@@ -41,8 +59,8 @@ add_custom_command(
                 --hidden-import worker.pbs_torque.submit_output_parser
                 --collect-submodules worker.pbs_torque.option_parser
                 --collect-submodules worker.pbs_torque.submit_output_parser
-                ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py
-    DEPENDS setup_venv ${CMAKE_CURRENT_SOURCE_DIR}/wsub.py
+                ${CMAKE_CURRENT_BINARY_DIR}/wsub.py
+    DEPENDS setup_venv copy_modules ${CMAKE_CURRENT_BINARY_DIR}/wsub.py
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Building wsub executable"
     VERBATIM
@@ -60,8 +78,8 @@ add_custom_command(
                 --hidden-import worker.pbs_torque.submit_output_parser
                 --collect-submodules worker.pbs_torque.option_parser
                 --collect-submodules worker.pbs_torque.submit_output_parser
-                ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py
-    DEPENDS setup_venv ${CMAKE_CURRENT_SOURCE_DIR}/wresume.py
+                ${CMAKE_CURRENT_BINARY_DIR}/wresume.py
+    DEPENDS setup_venv copy_modules ${CMAKE_CURRENT_BINARY_DIR}/wresume.py
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Building wresume executable"
     VERBATIM

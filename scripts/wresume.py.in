@@ -15,7 +15,7 @@ from worker.workfile_parser import WorkfileParser, filter_workfile
 
 def main():
     # read configuration file
-    worker_distr_path = get_worker_path(__file__)
+    worker_distr_path = pathlib.Path('@CMAKE_INSTALL_PREFIX@')
     config = read_config_file(worker_distr_path / 'conf' / 'worker.conf')
     config['worker']['path'] = str(worker_distr_path)
     scheduler_name = config['scheduler']['name']

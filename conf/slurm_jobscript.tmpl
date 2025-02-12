@@ -90,6 +90,7 @@ for (( client_id=1; client_id <= $SLURM_NTASKS_HET_GROUP_1; client_id++ ))
 do
     srun --exclusive --het-group=1 \
         --ntasks=1 --nodes=1 --cpus-per-task=$SLURM_CPUS_PER_TASK_HET_GROUP_1 \
+        --partition=$SLURM_JOB_PARTITION_HET_GROUP_1 \
         --threads-per-core=1 \
             "${{worker_client_exec}}" \
                 --server "$server" --uuid "$uuid" {client_log_prefix_opt} \

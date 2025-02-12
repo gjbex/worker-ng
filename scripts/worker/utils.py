@@ -175,7 +175,7 @@ def create_jobscript(file_path, parser_result, template_path, config):
         print(template.format(**templ_params), file=jobscript_file)
 
 def submit_job(submit_cmd_path, jobscript_path, parser_result, config, original_cl_options):
-    command = [config['scheduler']['submit_command']] + original_cl_options + [str(jobscript_path)]
+    command = [config['scheduler']['submit_command']] + [f" {config['scheduler']['het_prefix'] "] + original_cl_options + [str(jobscript_path)]
     command_str = shlex.join(command)
     with open(submit_cmd_path, 'w') as file:
         print(command_str, file=file)
