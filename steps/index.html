@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Geert Jan Bex" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Step by step - worker-ng documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Step by step";
+        var mkdocs_page_input_path = "steps.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> worker-ng documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction and motivation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Step by step</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#parameter-exploration">Parameter exploration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#job-arrays">Job arrays</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../monitoring/">Monitoring worker jobs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../resume/">Resuming a worker job</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../time_limits/">Limiting execution time</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../multithreading/">Multithreaded work items</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mapreduce/">Prologue and epilogue</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">worker commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../further_info/">Further information</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trouble/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../changes/">Changes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../todo/">To do</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact information</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">worker-ng documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Step by step</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="worker-ng-step-by-step">worker-ng step-by-step</h1>
+<p>As prerequisites, one should have a (sequential) job that has to be
+run many times</p>
+<ul>
+<li>for various parameter values, i.e., parameter exploration; or</li>
+<li>on a large number of input files.</li>
+</ul>
+<h2 id="parameter-exploration">Parameter exploration</h2>
+<p>By way of running example, we will use a Python script <code>sum.py</code> that simply
+computes the sum of two numbers given on the command line:</p>
+<pre><code class="language-python">#!/usr/bin/env python
+
+import argparse
+import sys
+
+def main():
+    arg_parser = argparse.ArgumentParser(description='sum two values')
+    arg_parser.add_argument('-a', type=float, required=True,
+                            help='A value')
+    arg_parser.add_argument('-b', type=float, required=True,
+                            help='B value')
+    options = arg_parser.parse_args()
+    print(options.a + options.b)
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
+</code></pre>
+<p>On the command line, we would run this as follows:</p>
+<pre><code class="language-bash">python sum.py  -a=1.3  -b=2.5
+</code></pre>
+<p>The program will write its results to standard output.</p>
+<p>A slurm script (say <code>sum.slurm</code>) that would run this as a job would
+then look like:</p>
+<pre><code class="language-bash">#!/usr/bin/env -S bash -l
+#SBATCH --account=my_account
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:02:00
+
+python sum.py  -a 1.3  -b 2.5
+</code></pre>
+<p>When we submit this job, the calculation is performed for this particular
+instance of the parameters, i.e., <code>a = 1.3</code> and <code>b = 2.5</code>.</p>
+<p>To submit the job, the user would use:</p>
+<pre><code class="language-bash">$ sbatch sum.slurm
+</code></pre>
+<p>However, the user wants to run this program for many parameter instances,
+e.g., he wants to run the program on 100 instances of <code>a</code> and <code>b</code>.
+To this end, the Slurm file can be modified as follows.</p>
+<pre><code class="language-bash">#!/usr/bin/env -S bash -l
+#SBATCH --account=my_account
+#SBATCH --nodes=1
+#SBATCH --ntasks=10
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:20:00
+
+python sum.py  -a=$a  -b=$b
+</code></pre>
+<p>Note that
+  * the parameter values 1.3 and 2.5 are replaced by variables <code>$a</code> and <code>$b</code>
+    respectively;
+  * the number of tasks, i.e., cores per node has been increased to 10, i.e.,
+    <code>--ntasks=1</code> is replaced by <code>--ntasks=10</code>; and
+  * the walltime has been increased to 20 mintues, i.e., <code>--time=00:02:00</code>
+    is replaced by <code>--time=00:20:00</code>.</p>
+<p>The walltime is calculated as follows: one calculation takes 2 minutes,
+so 100 calculations take 200 minutes on one core.  However, this job will
+use 10 cores, so the 100 calculations will be done in 200/10 = 20 minutes.</p>
+<p>Note that one core will always be required for management purposes, so if
+we specify <code>--ntasks=10</code> and <code>--cpus-per-task=1</code>, the job will required
+11 cores from the scheduler.  This is done automatically by the worker-ng
+framework though.</p>
+<p>The 100 parameter instances can be stored in a Comma Separated Value file (CSV)
+that can be generated using a spreadsheet program such as Microsoft Excel, or
+just by hand using any text editor (do not use a word processor such as
+Microsoft Word though). The first few lines of the file <code>data.csv</code> would look
+as follows.</p>
+<pre><code>a,b
+1.3,2.5
+1.05,4.3
+1.05,4.3
+1.15,4.3
+1.25,4.3
+...
+</code></pre>
+<p>It has to contain the names of the variables on the first line, i.e., <code>a</code> and
+<code>b</code> in this example, followed by 100 parameter instances in the current
+example, each on a line by itself. Values on a line are separated by commas.</p>
+<p>The job can now be submitted as follows.</p>
+<pre><code class="language-bash">$ module load worker-ng
+$ wsub --batch=sum.slurm  --data=data.txt
+</code></pre>
+<p>Note that the Slurm file is the value of the <code>--batch</code> option . The <code>sum.py</code>
+scripts program will now be run for all 100 parameter instances--—10
+concurrently--—until all computations are done. A computation for such a
+parameter instance is called a work item in worker-ng parlance.</p>
+<h2 id="job-arrays">Job arrays</h2>
+<p>Most schedulers including Slurm support job arrays. However, often they are
+configured so that users can only have a fairly small number of jobs in the
+queue.  This implies that the size of job arrays is subject to that same limit.</p>
+<p>Although this makes sense from the point of view of system administrators
+who don't want to have their schedulers overloaded, it is sometimes less than
+convenient for users who want to have job arrays with many jobs.</p>
+<p>worker offers a way around this by "packing" the job array into a single job,
+hence allowing for large job arrays that do not impact the scheduler's
+performance in any way.</p>
+<p>As an example, we will consider the following use case.  We have a directory
+<code>data</code> that contains 100 text files, named <code>text-001.txt</code> to <code>text-100.txt</code>.
+We want to count the words in each of these files, and want to do the work
+in parallel.</p>
+<p>On the command line, we would to this as follows for a single file.</p>
+<pre><code class="language-bash">$ echo -n &quot;text-001.txt: &quot; &amp;&amp; cat data/text-001.txt | wc -w
+</code></pre>
+<p>A typical slurm job script <code>wc.slurm</code> for use with job arrays would look
+as follows.</p>
+<pre><code class="language-bash">#!/usr/bin/env -S bash -l
+#SBATCH --account=lpt2_sysadmin
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:02:00
+
+# create an output directory if it doesn't exist
+mkdir -p output
+
+# define input and output file names based on the array ID
+INPUT_FILE=&quot;data/file_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt&quot;
+OUTPUT_FILE=&quot;output/count_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt&quot;
+
+# count the words and write the result in the output file
+echo -n &quot;$INPUT_FILE: &quot; &gt; $OUTPUT_FILE
+cat $INPUT_FILE | wc -w &gt;&gt; $OUTPUT_FILE
+</code></pre>
+<p>We can submit this as a standard slurm job array as follows.</p>
+<pre><code class="language-bash">$ sbatch --array=1-100 wc.slurm
+</code></pre>
+<p>However, this would result in 100 arrays jobs, which may exceed the limitations
+set by the configuration of the scheduler.</p>
+<p>Using worker, a feature akin to job arrays can be used with minimal modifications
+to the job script.</p>
+<pre><code class="language-bash">#!/usr/bin/env -S bash -l
+#SBATCH --account=lpt2_sysadmin
+#SBATCH --nodes=1
+#SBATCH --ntasks=10
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:20:00
+
+# create an output directory if it doesn't exist
+mkdir -p output
+
+# define input and output file names based on the array ID
+INPUT_FILE=&quot;data/file_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt&quot;
+OUTPUT_FILE=&quot;output/count_$(printf '%04d' $SLURM_ARRAY_TASK_ID).txt&quot;
+
+# count the words and write the result in the output file
+echo -n &quot;$INPUT_FILE: &quot; &gt; $OUTPUT_FILE
+cat $INPUT_FILE | wc -w &gt;&gt; $OUTPUT_FILE
+</code></pre>
+<p>Note that
+  * the number of tasks, i.e., cores per node has been increased to 10, i.e.,
+    <code>--ntasks=1</code> is replaced by <code>--ntasks=10</code>; and
+  * the walltime has been increased to 20 mintues, i.e., <code>--time=00:02:00</code>
+    is replaced by <code>--time=00:20:00</code>.</p>
+<p>The walltime is calculated as follows: one calculation takes 2 minutes,
+so 100 calculations take 200 minutes on one core.  However, this job will
+use 10 cores, so the 100 calculations will be done in 200/10 = 20 minutes.</p>
+<p>The job is now submitted as follows.</p>
+<pre><code class="language-bash">$ module load worker-ng
+$ wsub  --array=1-100  --batch=wc.slurm
+</code></pre>
+<p>The <code>wc</code> program  will now be run for all 100 input files--—10
+concurrently--—until all computations are done. Again, a
+computation for an individual input file, or, equivalently, an
+array ID, is called a work item in worker-ng speak.</p>
+<p>Note that in constrast to Slurm job arrays, a worker job array submits
+a single job only.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Introduction and motivation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../monitoring/" class="btn btn-neutral float-right" title="Monitoring worker jobs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../monitoring/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

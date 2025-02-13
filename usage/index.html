@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Geert Jan Bex" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Usage scenarios - worker-ng documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Usage scenarios";
+        var mkdocs_page_input_path = "usage.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> worker-ng documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction and motivation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../steps/">Step by step</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../monitoring/">Monitoring worker jobs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../resume/">Resuming a worker job</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../time_limits/">Limiting execution time</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../multithreading/">Multithreaded work items</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mapreduce/">Prologue and epilogue</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">worker commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../further_info/">Further information</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trouble/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../changes/">Changes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../todo/">To do</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact information</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">worker-ng documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Usage scenarios</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="usage-scenarios">Usage scenarios</h1>
+<h2 id="job-arrays">Job arrays</h2>
+<p>The user prepares a PBS script that calls a program, e.g.,
+<code>cfd_solver</code>, that takes an parameter file specified on the
+command line.  The PBS file <code>cfd.pbs</code> could look something like:</p>
+<pre><code>#!/bin/bash -l
+#PBS -N cfd_solver
+#PBS -l nodes=1
+#PBS -l walltime=00:05:00
+
+cd $PBS_O_WORKDIR
+
+cfd_solver -p parameters-$PBS_ARRAYID.cfg &gt; result-$PBS_ARRAYID.dat
+</code></pre>
+<p>For 100 parameter instances called <code>parameters-1.cfg</code>,...,
+<code>parameters-100.cfg</code>, the following obsolete <code>qsub</code> command would run
+<code>cfd_solver</code> on each of those 100 parameter files, saving the results of
+each run in <code>result-1.dat</code>, ..., <code>result-100.dat</code> respectively:</p>
+<pre><code>qsub  -t 1-100  cfd.pbs
+</code></pre>
+<p>Each job in the job array was assigned a unique number between 1 and
+100 that is accessible via the shell variable <code>$PBS_ARRAYID</code>.</p>
+<p>Given that Moab does not support job arrays, Worker can now handle
+this setup transparently.</p>
+<pre><code>$ module load worker
+$ wsub  -t 1-100  -batch cfd.pbs  -l nodes=8
+</code></pre>
+<p>Notice that you have to request the number of nodes you want
+<code>worker</code> to use, multiples of 8 will be most efficient.  In
+this case, 7 nodes will do the work, so the speedup due to
+parallellization will be approximately 7.</p>
+<p>The <code>wsub</code> command takes all options that were valid for
+torque's <code>qsub</code>, notably the features and resources requested
+via the <code>-l</code> option.</p>
+<h2 id="parameter-variations">Parameter variations</h2>
+<p>A fairly common usage scenario is similar to the previous one,
+except that the parameter instances are to be provided on the command
+line, rather than in a configuration file.  By way of example,
+consider the parameters in the comma separated value (CSV) format in
+the file <code>data.csv</code> below:</p>
+<pre><code>temperature,pressure,volume
+293.0,1.0e6,1.0
+294.0,1.0e6,1.0
+295.0,1.0e6,1.0
+296.0,1.0e6,1.0
+...
+</code></pre>
+<p>These values can be supplied a program via the command line, e.g.,
+<code>simulate  -t 293.0  -p 1.0e6  -v 1.0</code>. Now the user want to run
+<code>simulate</code> for each parameter set in <code>data.csv&lt;</code>.  First,
+the following PBS script <code>simulate.pbs</code> should be created:</p>
+<pre><code>#!/bin/bash -l
+# PBS -N simulate
+
+simulate  -t $temperature  -p $pressure  -v $volume
+</code></pre>
+<p>Note that the variables <code>$temperature</code>, <code>$pressure</code>, and <code>$volume</code>
+correspond to the column names in <code>data.csv</code></p>
+<p>The job can now be run using:</p>
+<pre><code>$ module load worker
+$ wsub  -data data.csv  -batch simulate.pbs  -l nodes=8
+</code></pre>
+<p>Notice that you have to request the number of nodes you want
+worker to use, multiples of 8 will be most efficient.  In
+this case, 7 nodes will do the work, so the speedup due to
+parallellization will be approximately 7.</p>
+<p>The <code>wsub</code> command takes all options that were valid for
+torque's <code>qsub</code>, notably the features and resources requested
+via the <code>-l</code> option.</p>
+<h2 id="mapreduce">MapReduce</h2>
+<p>Using <code>wsub</code>'s <code>-prolog</code> and <code>-epilog</code> options, it is straightforward
+to implement MapReduce scenarios.  The shell scripts passed through
+<code>-prolog</code> and <code>-epilog</code> are processed by the worker master before any
+work is started, and after all work has been completed, respectively.
+Hence the prolog shell script can be used to split the data in chuncks
+that can be handled by the slaves in parallel, while the epilog script
+can collect the results and postprocess them.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
