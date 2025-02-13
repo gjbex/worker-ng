@@ -1,7 +1,7 @@
 easyblock = 'CMakeMake'
 
 name = 'worker-ng'
-version = '1.0.10'
+version = '1.0.11'
 
 # dependencies
 local_cppzmq_version = '4.8.1'

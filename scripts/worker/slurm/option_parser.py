@@ -123,7 +123,7 @@ class SlurmOptionParser:
         args = list()
         shebang = None
         slurm_directives = ''
-        slurm_group1_directives = ''
+        slurm_group0_directives = ''
         script = ''
         parsing_slurm = True
         with open(file_name, 'r') as file:
@@ -134,7 +134,7 @@ class SlurmOptionParser:
                     new_args = shlex.split(line[len(directive_prefix):], comments=True)
                     args.extend(new_args)
                     if self._is_resource_directive_line(new_args):
-                        slurm_group1_directives += line
+                        slurm_group0_directives += line
                     else:
                         slurm_directives += line
                 elif (line.startswith('#') or line.isspace()) and parsing_slurm:
@@ -142,8 +142,8 @@ class SlurmOptionParser:
                 else:
                     parsing_slurm = False
                     script += line
-        slurm_directives += f'{self.default_directive_prefix} --nodes=1 --ntasks=1 --cpus-per-task=1\n'
-        slurm_directives += f'{self.default_directive_prefix} hetjob\n{slurm_group1_directives}'
+        slurm_directives += f'{slurm_group0_directives}'
+        slurm_directives += f'{self.default_directive_prefix} hetjob\n{self.default_directive_prefix} --nodes=1 --ntasks=1 --cpus-per-task=1\n'
         options, _ = self._base_parser.parse_known_args(args)
         return ParseData(options, shebang, slurm_directives, script, None)
 
