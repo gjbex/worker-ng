@@ -5,7 +5,7 @@ project(worker_ng LANGUAGES CXX)
 set(worker_ng_NAME "worker_ng")
 set(worker_ng_VERSION_MAJOR 1)
 set(worker_ng_VERSION_MINOR 0)
-set(worker_ng_VERSION_PATCH 11)
+set(worker_ng_VERSION_PATCH 12)
 
 # define source target
 add_subdirectory(src)
