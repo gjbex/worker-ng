@@ -87,6 +87,12 @@ server=$(cut -d ' ' -f 2 "$SERVER_INFO")
 export OMP_PROC_BIND=true
 export OMP_PLACES=cores
 
+# if SLURM_CPUS_PER_TASK_HET_GROUP_0 is not set, set it to 1
+if [ -z "$SLURM_CPUS_PER_TASK_HET_GROUP_0" ]
+then
+    SLURM_CPUS_PER_TASK_HET_GROUP_0=1
+fi
+
 for (( client_id=1; client_id <= $SLURM_NTASKS_HET_GROUP_0; client_id++ ))
 do
     srun --exclusive --het-group=0 \
