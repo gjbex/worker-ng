@@ -249,7 +249,7 @@ Options get_options(int argc, char* argv[]) {
         worker::exit(worker::Error::cli_option);
     }
 
-    if (options.port_nr < 1 || options.port_nr > 65535) {
+    if (options.port_nr < 1024 || options.port_nr > 65535) {
         std::cerr << "### error: invalid port number" << std::endl;
         worker::exit(worker::Error::cli_option);
     }
