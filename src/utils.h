@@ -8,6 +8,8 @@
 
 void print_version_info();
 
+int bind_server_socket(zmq::socket_t& socket, const int init_port_nr);
+
 worker::message::Message unpack_message(
         const zmq::message_t& zmq_msg,
         const worker::message::Message_builder& msg_builder

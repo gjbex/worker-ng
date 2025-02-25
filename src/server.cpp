@@ -110,23 +110,14 @@ int main(int argc, char* argv[]) {
     // create socket and bind to it
     const std::string protocol {"tcp"};
     auto hostname = boost::asio::ip::host_name();
-    const std::string bind_str {protocol + "://*:" +
-        std::to_string(options.port_nr)};
 
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_REP);
-    try {
-        socket.bind(bind_str);
-        BOOST_LOG_TRIVIAL(info) << "socket boundi on " << bind_str;
-    } catch (zmq::error_t& err) {
-        BOOST_LOG_TRIVIAL(error) << "socket binding failed, " << err.what();
-        std::cerr << "### error: socket can not bind to " << bind_str << std::endl;
-        worker::exit(worker::Error::socket);
-    }
+    auto port_nr {bind_server_socket(socket, options.port_nr)};
 
     // show server info for use by clients
     const std::string info_str {protocol + "://" + hostname +
-        ":" + std::to_string(options.port_nr)};
+        ":" + std::to_string(port_nr)};
     BOOST_LOG_TRIVIAL(info) << "server address " << info_str;
     write_server_info(options.server_info, id, info_str);
 
