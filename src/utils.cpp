@@ -29,6 +29,39 @@ void print_version_info() {
         << zmq_patch << std::endl;
 }
 
+int bind_server_socket(zmq::socket_t& socket, const int init_port_nr) {
+    const std::string protocol {"tcp"};
+    int port_nr {init_port_nr};
+    try {
+        const std::string bind_str {protocol + "://*:" +
+            std::to_string(options.port_nr)};
+        socket.bind(bind_str);
+        BOOST_LOG_TRIVIAL(info) << "socket boundi on " << bind_str;
+        return port_nr;
+    } catch (zmq::error_t& err) {
+        BOOST_LOG_TRIVIAL(error) << "socket binding failed on port " << port_nr << ", " << err.what();
+        port_nr = 1024;
+    }
+    while (true) {
+        try {
+            const std::string bind_str {protocol + "://*:" +
+                std::to_string(port_nr)};
+            socket.bind(bind_str);
+            BOOST_LOG_TRIVIAL(info) << "socket bound on " << bind_str;
+            return port_nr;
+        } catch (zmq::error_t& err) {
+            BOOST_LOG_TRIVIAL(error) << "socket binding failed on port " << port_nr << ", " << err.what();
+            port_nr++;
+            if (port_nr > 65535) {
+                break;
+            }
+        }
+    }
+    BOOST_LOG_TRIVIAL(error) << "socket binding failed on all available ports";
+    std::cerr << "### error: socket can not bind to any port" << std::endl;
+    worker::exit(worker::Error::socket);
+}
+
 wm::Message unpack_message(const zmq::message_t& zmq_msg,
                            const wm::Message_builder& msg_builder) {
     std::string msg_str;

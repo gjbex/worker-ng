@@ -52,7 +52,7 @@ sleep {server_start_delay}
 uuid=$(cut -d ' ' -f 1 $SERVER_INFO)
 server=$(cut -d ' ' -f 2 $SERVER_INFO)
 
-(>&2 echo "### info: server launhed at '$server' with UUID '$uuid'")
+(>&2 echo "### info: server launched at '$server' with UUID '$uuid'")
 
 # determine log directory
 
@@ -75,31 +75,34 @@ numactl_status=$?
 
 for (( client_num=0; client_num < num_clients; client_num++ ))
 do
-    client_nodes="${{nodes[@]:$(( client_num*num_cores )):$num_cores}}"
+    (>&2 echo "### info: launching client $client_num")
+    client_nodes=(${{nodes[@]:$(( client_num*num_cores )):$num_cores}})
+    client_node=${{client_nodes[0]}}
     host_info=$( compute_host_file $num_cores $client_nodes )
     numactl_opt=''
     if [ $numactl_status ]
     then
         numactl_opt="--numactl ${{numactl_args[$client_num]}}"
     fi
-    ssh ${{client_nodes[0]}} << EOF
+    ssh $client_node << EOF &
         source "{worker_path}/conf/worker_env.sh";
-        nohup "{worker_path}/bin/worker_client" \
+        "{worker_path}/bin/worker_client" \
             --server "$server" --uuid "$uuid" {client_log_prefix_opt} \
-            $env_variables $numactl_opt --host_info "$host_info" >> nohup.txt &
+            $env_variables $numactl_opt --host_info "$host_info" >> clients.txt
 EOF
     client_exit=$?
     if [ $client_exit -eq 0 ]
     then
-        (>&2 echo "### info: client launhed on '${{client_nodes[0]}}'")
+        (>&2 echo "### info: client launched on '$client_node'")
     else
-        (>&2 echo "### error: client failed to launhed on '${{client_nodes[0]}}', exit status $client_exit")
+        (>&2 echo "### error: client failed to launch on '$client_node', exit status $client_exit")
         if [ {exit_on_client_fail} ]
         then
             exit $client_exit
         fi
     fi
 done
+(>&2 echo "### info: all clients launched")
 
 # wait for the server to finish
 wait

@@ -1,1 +1,9 @@
 tmp_*/
+
+# PyInstaller spec files
+*.spec
+
+# Virtual environment and build directories
+venv/
+build/
+dist/

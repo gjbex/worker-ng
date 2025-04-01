@@ -69,8 +69,8 @@ tmp_worker_*
 build_wice/
 build_genius/
 
-# ignore test deployment directory
+# ignore test deployment directories
 deploy/
 distr_wice/
 distr_genius/
-
+distribution/

@@ -32,8 +32,8 @@ endif()
 
 # header file to pass CMake settings to source code
 configure_file(
-    worker_ng_config.h.in
-    worker_ng_config.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/worker_ng_config.h.in
+    ${CMAKE_CURRENT_BINARY_DIR}/worker_ng_config.h
 )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/worker_ng_config.h DESTINATION include)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
