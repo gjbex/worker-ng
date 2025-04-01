@@ -18,6 +18,7 @@ Some examples for users, the examples in the user documentation.
    with `wresume` and `wsummarize`.
 1. `env`: simple script to get the values of all environment variables that
    are defined when the job runs.
+1. `resume`: example of a job that partially fails, and is resumed with `wresume`.
 
 For developers, a number of artefacts are available as well in the `dev`
  subdirectory.
